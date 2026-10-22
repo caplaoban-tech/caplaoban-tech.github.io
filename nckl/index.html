@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>NCKL Harita Nickel — Cap Laoban</title>
+<meta name="description" content="Harita Nickel (NCKL): справедливая цена, EBITDA, сравнение с INCO и MBMA, риски и калькулятор стоимости от цены никеля, кобальта и серы.">
+<meta property="og:title" content="NCKL Harita Nickel — Cap Laoban">
+<meta property="og:description" content="Калькулятор: как цена никеля, кобальта и серы меняет стоимость акции NCKL.">
+<meta property="og:image" content="../assets/og.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;800&family=Golos+Text:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="brand" href="../"><img src="../assets/mark.svg" alt="">Cap Laoban</a>
+    <nav class="nav"><a href="#calc">Калькулятор</a><a href="#peers">Аналоги</a><a href="#risks">Риски</a></nav>
+  </header>
+
+  <main class="stack">
+    <section class="stack" style="padding-block:4px 2px">
+      <div class="eyebrow" id="eyebrow">IDX · NCKL</div>
+      <h1>Harita Nickel: самый дешёвый никель на IDX</h1>
+      <div style="display:flex;align-items:baseline;gap:12px;flex-wrap:wrap">
+        <span class="big num" id="price">—</span>
+        <span class="muted" id="price-note">Rp за акцию</span>
+      </div>
+      <div><span class="chip warn" id="verdict">—</span></div>
+    </section>
+
+    <section class="kpis" id="kpis" aria-label="Ключевые цифры"></section>
+
+    <section class="panel" aria-label="Справедливая цена">
+      <h2>Сколько стоит</h2>
+      <div class="fv" id="fv" role="img" aria-label="Шкала справедливой цены"></div>
+      <p class="note">Красная полоса — базовый сценарий. Края шкалы — медвежий (никель US$15 тыс., руду не восполнили) и бычий (никель US$18–20 тыс., дивиденды ассоциатов, руда закрыта).</p>
+    </section>
+
+    <section id="calc" class="panel" aria-label="Калькулятор">
+      <div class="eyebrow">Калькулятор «что если»</div>
+      <h2>Подвигайте сырьё — увидите цену акции</h2>
+      <div class="calc">
+        <div class="stack">
+          <div class="ctl"><label for="lme">Никель LME, US$/т <output id="lme-o"></output></label><input id="lme" type="range" min="13000" max="22000" step="250"><small>Сейчас ~US$16 100. Консенсус брокеров на 2026–27 — US$17–17,5 тыс.</small></div>
+          <div class="ctl"><label for="co">Кобальт в MHP, % оплаты <output id="co-o"></output></label><input id="co" type="range" min="40" max="95" step="1"><small>Payable упал с ~90% в августе до 55–67% в сентябре.</small></div>
+          <div class="ctl"><label for="s">Сера, US$/т <output id="s-o"></output></label><input id="s" type="range" min="300" max="1400" step="25"><small>~11 т серы на тонну никеля в HPAL. Сейчас ~US$950–1 000, год назад ~US$250.</small></div>
+          <div class="ctl"><label for="idr">Курс, рупий за доллар <output id="idr-o"></output></label><input id="idr" type="range" min="15000" max="20000" step="100"><small>Выручка в долларах: слабая рупия повышает прибыль в рупиях.</small></div>
+          <div class="ctl"><label>Формула цены руды (HPM)</label>
+            <div class="seg" role="group" aria-label="Режим HPM"><button type="button" id="hpm-sept" aria-pressed="true">с 15.09.2026</button><button type="button" id="hpm-apr" aria-pressed="false">апрель 2026</button></div>
+            <small>В сентябре цену лимонита срезали на 45%: маржа ушла от добычи (100% NCKL) к заводам (40–45%).</small></div>
+          <div class="ctl"><label for="pe">Множитель P/E <output id="pe-o"></output></label><input id="pe" type="range" min="4" max="12" step="0.5"><small>INCO торгуется около 11x, MBMA около 20x, середина цикла для NCKL — 6–8x.</small></div>
+          <div class="ctl"><label for="disc">Скидка к долям в ассоциатах <output id="disc-o"></output></label><input id="disc" type="range" min="0" max="60" step="5"><small>Кэш HPL, ONC и KPS контролирует Lygend. Сейчас рынок даёт 30–40%; дивиденды ассоциатов её сожмут.</small></div>
+          <div class="ctl"><label for="po">Пейаут NCKL <output id="po-o"></output></label><input id="po" type="range" min="20" max="70" step="5"><small>Исторически 30%.</small></div>
+          <button type="button" class="reset" id="reset">Вернуть базовый сценарий</button>
+        </div>
+        <div class="result">
+          <div class="eyebrow">Справедливая цена по модели</div>
+          <div><span class="big num" id="fair">—</span> <span class="muted">Rp</span></div>
+          <div class="up" id="upside">—</div>
+          <div id="split"></div>
+          <div class="legend"><span><i style="background:var(--steel)"></i>Свой бизнес</span><span><i style="background:var(--ore)"></i>Доли в ассоциатах</span></div>
+          <div class="rows">
+            <span>Прибыль акционерам</span><span id="r-np">—</span>
+            <span>— свой бизнес</span><span id="r-own">—</span>
+            <span>— ассоциаты</span><span id="r-as">—</span>
+            <span>Прибыль на акцию</span><span id="r-eps">—</span>
+            <span>P/E при текущей цене</span><span id="r-pe">—</span>
+            <span>Дивиденд на акцию</span><span id="r-dps">—</span>
+            <span>Дивдоходность при текущей цене</span><span id="r-dy">—</span>
+          </div>
+          <p class="note" id="model-note"></p>
+        </div>
+      </div>
+    </section>
+
+    <div class="grid2">
+      <section class="panel" aria-label="EBITDA">
+        <div class="eyebrow">EBITDA, Rp трлн</div>
+        <h2>Прибыль растёт за счёт ассоциатов</h2>
+        <div id="ebitda"></div>
+        <div class="legend"><span><i style="background:var(--steel)"></i>Свой бизнес</span><span><i style="background:var(--ore)"></i>Ассоциаты (HPL, ONC, KPS)</span></div>
+        <p class="note">Свой бизнес почти стоит на месте, вклад ассоциатов вырос в 3,4 раза. Эти деньги NCKL получает, только когда ассоциаты платят дивиденды.</p>
+      </section>
+      <section class="panel" aria-label="Кварталы">
+        <div class="eyebrow">2026 по кварталам, Rp трлн</div>
+        <h2>Маржа переезжает за регулятором</h2>
+        <div id="quarters"></div>
+        <div class="legend"><span><i style="background:var(--steel)"></i>Валовая прибыль своего бизнеса</span><span><i style="background:var(--ore)"></i>Доля прибыли ассоциатов</span></div>
+        <p class="note">Апрель: дорогая руда, маржа в добыче. Сентябрь: лимонит дешевле на 45%, маржа уходит к заводам. III–IV кв. — оценка по прогнозу Lygend (полупрозрачные столбцы).</p>
+      </section>
+    </div>
+
+    <section id="peers" class="panel" aria-label="Аналоги">
+      <div class="eyebrow">Индонезийский никель, 1П2026</div>
+      <h2>Дешевле аналогов в 2,5–4 раза</h2>
+      <div class="tbl"><table id="peer-table"></table></div>
+      <p class="note">Слабое место NCKL — руда: собственных доказанных запасов на ~3,5 года при текущей добыче. Рынок за это даёт скидку.</p>
+    </section>
+
+    <div class="grid2">
+      <section id="risks" class="panel" aria-label="Риски"><h2>Что может сломать историю</h2><ul class="list" id="risk-list"></ul></section>
+      <section class="panel" aria-label="Календарь"><h2>Что ждём</h2><ul class="list" id="trig-list"></ul></section>
+    </div>
+  </main>
+
+  <footer class="bot">
+    <span id="sources"></span>
+    <span>Модель упрощённая: чувствительности выведены из отчётности и данных Lygend. Это инструмент «что если», не прогноз и не индивидуальная инвестиционная рекомендация.</span>
+  </footer>
+</div>
+
+<script>
+const $ = id => document.getElementById(id);
+const NS = "http://www.w3.org/2000/svg";
+const el = (t, a = {}, txt) => { const e = document.createElementNS(NS, t); for (const k in a) e.setAttribute(k, a[k]); if (txt != null) e.textContent = txt; return e; };
+const f1 = v => v.toLocaleString("ru-RU", { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+const f0 = v => Math.round(v).toLocaleString("ru-RU");
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+function stacked(id, data, max) {
+  const W = 520, H = 220, padB = 26, padT = 22, n = data.length, slot = W / n, bw = Math.min(54, slot * .56);
+  const y = v => H - padB - (v / max) * (H - padB - padT);
+  const s = el("svg", { viewBox: `0 0 ${W} ${H}`, role: "img" });
+  [.25, .5, .75, 1].forEach(f => s.appendChild(el("line", { x1: 0, x2: W, y1: y(max * f), y2: y(max * f), style: "stroke:var(--line)" })));
+  data.forEach((d, i) => {
+    const x = slot * i + (slot - bw) / 2; let b = 0;
+    [["own", "--steel"], ["assoc", "--ore"]].forEach(([k, c]) => { const y0 = y(b), y1 = y(b + d[k]); s.appendChild(el("rect", { x, y: y1, width: bw, height: Math.max(0, y0 - y1), rx: 2, style: `fill:var(${c})`, opacity: d.est ? .45 : 1 })); b += d[k]; });
+    s.appendChild(el("text", { x: x + bw / 2, y: y(b) - 6, "text-anchor": "middle", class: "lbl" }, f1(b)));
+    s.appendChild(el("text", { x: x + bw / 2, y: H - 8, "text-anchor": "middle" }, d.label));
+  });
+  $(id).replaceChildren(s);
+}
+
+fetch("../data/nckl.json").then(r => r.json()).then(D => {
+  const P = D.price.value, SH = D.shares_m, M = D.model;
+  $("eyebrow").textContent = `${D.exchange} · ${D.ticker} · обновлено ${D.updated.split("-").reverse().join(".")}`;
+  $("price").textContent = f0(P);
+  $("price-note").textContent = `Rp за акцию · ${D.price.date.split("-").reverse().join(".")} · ${D.price.source}`;
+  $("verdict").textContent = `${D.verdict.label} · ${D.verdict.detail}`;
+  $("kpis").innerHTML = D.kpi.map(k => `<div class="kpi"><b class="num">${k.v}</b><span>${esc(k.k)}</span></div>`).join("");
+
+  const fv = D.fair_value, lo = 500, hi = 1500, pos = v => ((v - lo) / (hi - lo)) * 100;
+  $("fv").innerHTML = `<div class="track"></div><div class="band" style="left:${pos(fv.base_lo)}%;width:${pos(fv.base_hi) - pos(fv.base_lo)}%"></div><div class="now" style="left:${pos(P)}%">сейчас ${f0(P)}<i></i></div>` +
+    [fv.bear, fv.base_lo, fv.base_hi, fv.bull].map(v => `<div class="tick" style="left:${pos(v)}%">${f0(v)}</div>`).join("");
+
+  stacked("ebitda", D.ebitda_trn, 17);
+  stacked("quarters", D.quarters_trn, 4.6);
+
+  const pr = D.peers;
+  $("peer-table").innerHTML = `<thead><tr><th></th>${pr.cols.map(c => `<th>${c}</th>`).join("")}</tr></thead><tbody>` +
+    pr.rows.map(r => `<tr><td>${esc(r[0])}</td>${r.slice(1).map((v, i) => `<td class="${i === 0 ? "me" : ""}">${esc(v)}</td>`).join("")}</tr>`).join("") + "</tbody>";
+  $("risk-list").innerHTML = D.risks.map(r => `<li><span class="dot" style="background:var(--${r.tone})"></span><span>${esc(r.text)}</span></li>`).join("");
+  $("trig-list").innerHTML = D.triggers.map(t => `<li><span class="num" style="color:var(--red);font-weight:600;font-size:12px;min-width:62px">${esc(t.when)}</span><span>${esc(t.text)}</span></li>`).join("");
+  $("sources").textContent = "Источники: " + D.sources.join("; ") + ".";
+  $("model-note").textContent = M.comment;
+
+  /* калькулятор */
+  const C = { lme: $("lme"), co: $("co"), s: $("s"), idr: $("idr"), pe: $("pe"), disc: $("disc"), po: $("po") };
+  let hpm = M.defaults.hpm;
+  const setDefaults = () => {
+    C.lme.value = M.defaults.lme; C.co.value = M.defaults.co_payable; C.s.value = M.defaults.sulfur; C.idr.value = M.defaults.idr;
+    C.pe.value = M.defaults.pe; C.disc.value = M.defaults.discount; C.po.value = M.defaults.payout; setHpm(M.defaults.hpm);
+  };
+  function setHpm(v) { hpm = v; $("hpm-sept").setAttribute("aria-pressed", v === "sept"); $("hpm-apr").setAttribute("aria-pressed", v === "apr"); }
+  function calc() {
+    const lme = +C.lme.value, co = +C.co.value, s = +C.s.value, idr = +C.idr.value, pe = +C.pe.value, disc = +C.disc.value / 100, po = +C.po.value / 100;
+    const b = M.base, fx = Math.pow(idr / b.idr, M.idr_elasticity);
+    let own = M.own_base + M.per_1000_lme.own * (lme - b.lme) / 1000 + (hpm === "apr" ? M.hpm_april_regime_bonus : 0);
+    let as = M.assoc_base + M.per_1000_lme.assoc * (lme - b.lme) / 1000 + M.per_10pp_co.assoc * (co - b.co_payable) / 10 + M.per_100_sulfur.assoc * (s - b.sulfur) / 100;
+    own = Math.max(own, 0) * fx; as = Math.max(as, 0) * fx;
+    const np = own + as, eps = np / SH * 1e6;
+    const vOwn = own * pe, vAs = as * pe * (1 - disc), fair = (vOwn + vAs) / SH * 1e6;
+    const up = fair / P - 1, dps = eps * po;
+    $("lme-o").textContent = f0(lme); $("co-o").textContent = co + "%"; $("s-o").textContent = f0(s); $("idr-o").textContent = f0(idr);
+    $("pe-o").textContent = f1(pe) + "x"; $("disc-o").textContent = Math.round(disc * 100) + "%"; $("po-o").textContent = Math.round(po * 100) + "%";
+    $("fair").textContent = f0(fair);
+    const u = $("upside"); u.textContent = `${up >= 0 ? "+" : ""}${Math.round(up * 100)}% к цене ${f0(P)}`; u.className = "up " + (up >= 0 ? "pos" : "neg");
+    $("r-np").textContent = f1(np) + " трлн"; $("r-own").textContent = f1(own) + " трлн"; $("r-as").textContent = f1(as) + " трлн";
+    $("r-eps").textContent = "Rp " + f0(eps); $("r-pe").textContent = eps > 0 ? f1(P / eps) + "x" : "—";
+    $("r-dps").textContent = "Rp " + f0(dps); $("r-dy").textContent = f1(dps / P * 100) + "%";
+    /* полоса: из чего состоит справедливая цена */
+    const W = 520, tot = Math.max(vOwn + vAs, 1e-9), wO = W * vOwn / tot;
+    const sv = el("svg", { viewBox: `0 0 ${W} 46`, role: "img", "aria-label": "Разбивка справедливой цены" });
+    sv.appendChild(el("rect", { x: 0, y: 4, width: Math.max(wO - 2, 0), height: 22, rx: 3, style: "fill:var(--steel)" }));
+    sv.appendChild(el("rect", { x: wO, y: 4, width: Math.max(W - wO, 0), height: 22, rx: 3, style: "fill:var(--ore)" }));
+    sv.appendChild(el("text", { x: 0, y: 42 }, `свой ${f0(vOwn / SH * 1e6)}`));
+    sv.appendChild(el("text", { x: W, y: 42, "text-anchor": "end" }, `ассоциаты ${f0(vAs / SH * 1e6)}`));
+    $("split").replaceChildren(sv);
+  }
+  Object.values(C).forEach(i => i.addEventListener("input", calc));
+  $("hpm-sept").addEventListener("click", () => { setHpm("sept"); calc(); });
+  $("hpm-apr").addEventListener("click", () => { setHpm("apr"); calc(); });
+  $("reset").addEventListener("click", () => { setDefaults(); calc(); });
+  setDefaults(); calc();
+}).catch(() => { document.querySelector("main").insertAdjacentHTML("afterbegin", '<p class="note">Не удалось загрузить данные компании. Обновите страницу.</p>'); });
+</script>
+</body>
+</html>

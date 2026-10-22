@@ -12,7 +12,7 @@
 <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;800&family=Golos+Text:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
-<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="../assets/style.css?v=2">
 </head>
 <body>
 <div class="wrap">
@@ -44,6 +44,9 @@
       <div class="eyebrow">Калькулятор «что если»</div>
       <h2>Подвигайте сырьё — увидите цену акции</h2>
       <div class="calc">
+        <div class="calc-bar" id="calc-bar" aria-live="polite">
+          <span>Справедливая цена</span><b class="num" id="bar-fair">—</b><span class="up" id="bar-up">—</span><span class="muted num" id="bar-pe"></span>
+        </div>
         <div class="stack">
           <div class="ctl"><label for="lme">Никель LME, US$/т <output id="lme-o"></output></label><input id="lme" type="range" min="13000" max="22000" step="250"><small>Сейчас ~US$16 100. Консенсус брокеров на 2026–27 — US$17–17,5 тыс.</small></div>
           <div class="ctl"><label for="co">Кобальт в MHP, % оплаты <output id="co-o"></output></label><input id="co" type="range" min="40" max="95" step="1"><small>Payable упал с ~90% в августе до 55–67% в сентябре.</small></div>
@@ -135,7 +138,7 @@ function stacked(id, data, max) {
   $(id).replaceChildren(s);
 }
 
-fetch("../data/nckl.json").then(r => r.json()).then(D => {
+fetch("../data/nckl.json?v=2").then(r => r.json()).then(D => {
   const P = D.price.value, SH = D.shares_m, M = D.model;
   $("eyebrow").textContent = `${D.exchange} · ${D.ticker} · обновлено ${D.updated.split("-").reverse().join(".")}`;
   $("price").textContent = f0(P);
@@ -178,6 +181,10 @@ fetch("../data/nckl.json").then(r => r.json()).then(D => {
     $("lme-o").textContent = f0(lme); $("co-o").textContent = co + "%"; $("s-o").textContent = f0(s); $("idr-o").textContent = f0(idr);
     $("pe-o").textContent = f1(pe) + "x"; $("disc-o").textContent = Math.round(disc * 100) + "%"; $("po-o").textContent = Math.round(po * 100) + "%";
     $("fair").textContent = f0(fair);
+    $("bar-fair").textContent = f0(fair);
+    const bu = $("bar-up"); bu.textContent = `${up >= 0 ? "+" : ""}${Math.round(up * 100)}%`; bu.className = "up " + (up >= 0 ? "pos" : "neg");
+    $("bar-pe").textContent = eps > 0 ? `P/E ${f1(P / eps)}x` : "";
+    [$("fair"), $("bar-fair")].forEach(n => { n.classList.remove("flash"); void n.offsetWidth; n.classList.add("flash"); });
     const u = $("upside"); u.textContent = `${up >= 0 ? "+" : ""}${Math.round(up * 100)}% к цене ${f0(P)}`; u.className = "up " + (up >= 0 ? "pos" : "neg");
     $("r-np").textContent = f1(np) + " трлн"; $("r-own").textContent = f1(own) + " трлн"; $("r-as").textContent = f1(as) + " трлн";
     $("r-eps").textContent = "Rp " + f0(eps); $("r-pe").textContent = eps > 0 ? f1(P / eps) + "x" : "—";
@@ -191,7 +198,7 @@ fetch("../data/nckl.json").then(r => r.json()).then(D => {
     sv.appendChild(el("text", { x: W, y: 42, "text-anchor": "end" }, `ассоциаты ${f0(vAs / SH * 1e6)}`));
     $("split").replaceChildren(sv);
   }
-  Object.values(C).forEach(i => i.addEventListener("input", calc));
+  Object.values(C).forEach(i => { i.addEventListener("input", calc); i.addEventListener("change", calc); });
   $("hpm-sept").addEventListener("click", () => { setHpm("sept"); calc(); });
   $("hpm-apr").addEventListener("click", () => { setHpm("apr"); calc(); });
   $("reset").addEventListener("click", () => { setDefaults(); calc(); });

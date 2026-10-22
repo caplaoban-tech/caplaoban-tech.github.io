@@ -70,7 +70,15 @@ td.me{color:var(--red);font-weight:600}
 .ctl label{display:flex;justify-content:space-between;gap:8px;font-size:14px}
 .ctl label output{font-family:var(--mono);font-weight:600;color:var(--red)}
 .ctl small{font-size:12px;color:var(--muted)}
-input[type=range]{width:100%;accent-color:var(--red);height:28px}
+input[type=range]{width:100%;accent-color:var(--red);height:36px;touch-action:pan-y;cursor:pointer}
+input[type=range]::-webkit-slider-thumb{width:26px;height:26px}
+input[type=range]::-moz-range-thumb{width:24px;height:24px}
+.calc-bar{position:sticky;top:0;z-index:5;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:10px 12px;box-shadow:0 6px 16px rgba(0,0,0,.08);font-size:13px}
+.calc-bar b{font-family:var(--display);font-size:26px;color:var(--ink)}
+@media (min-width:820px){.calc-bar{display:none}.result{position:sticky;top:16px;align-self:start}}
+@keyframes flash{from{color:var(--red)}to{color:inherit}}
+.flash{animation:flash .5s ease-out}
+@media (prefers-reduced-motion:reduce){.flash{animation:none}}
 .seg{display:flex;border:1px solid var(--line);border-radius:10px;overflow:hidden}
 .seg button{flex:1;border:0;background:transparent;color:var(--ink);font:inherit;font-size:13px;padding:8px 6px;cursor:pointer}
 .seg button[aria-pressed=true]{background:var(--red);color:#fff}

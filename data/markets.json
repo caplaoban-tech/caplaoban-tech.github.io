@@ -1,0 +1,61 @@
+{
+  "updated": "2026-10-23",
+  "update_mode": "Вручную, по рабочим дням. Автообновление никеля, курса и цены акции — в планах (см. «Как обновляются данные»).",
+  "series": [
+    {"id":"lme","name":"Никель LME, 3 месяца","value":16088,"unit":"US$/т","date":"2026-10-22","source":"Bloomberg через Feedberry / The Edge","url":"https://theedgemalaysia.com/node/822689","class":"В",
+     "how":"Биржа, ежедневно. Официальная цена — lme.com (с задержкой, частично платно); бесплатно — westmetall.com (цена cash settlement за день).",
+     "to_company":"Ферроникель (HJF, MSP) и MHP (HPL, ONC) продаются по формулам от LME/индекса сульфата никеля с лагом ~1 месяц (котировальный период контракта)."},
+    {"id":"hma","name":"HMA никель (база для HPM руды)","value":15847.67,"unit":"US$/т","date":"2026-10-15","source":"Kepmen ESDM, 2-я половина октября (через IMA)","url":"https://ima-api.org/wp-content/uploads/2026/10/IMA-Daily-News-Update-Monday-October-19-2026.pdf","class":"А",
+     "how":"Министерство энергетики, два раза в месяц, бесплатно (jdih.esdm.go.id, minerba.esdm.go.id).",
+     "to_company":"Цена руды NCKL своим заводам и ассоциатам считается по HPM от HMA предыдущего периода."},
+    {"id":"co","name":"Кобальт в MHP: % оплаты (payable)","value":56.5,"unit":"%","date":"2026-10-22","source":"SMM, дневной обзор MHP","url":"https://news.metal.com/newscontent/104173571-smm-nickel-intermediate-product-daily-review-october-22-mhp-high-grade-nickel-matte-nickel-prices-rise","class":"В",
+     "how":"SMM (metal.com) — ежедневно, заголовки бесплатно, полные данные платно. Альтернатива — Fastmarkets, Benchmark (платно).",
+     "to_company":"Контракты MHP HPL/ONC с покупателями обычно на квартал: сентябрьско-октябрьские скидки ложатся на отгрузки IV кв."},
+    {"id":"mhp_ni","name":"MHP: никель FOB Индонезия","value":12827,"unit":"US$/т Ni","date":"2026-10-22","source":"SMM, дневной обзор MHP (две цифры в тексте: 12 797 и 12 857, взято среднее)","url":"https://news.metal.com/newscontent/104173571-smm-nickel-intermediate-product-daily-review-october-22-mhp-high-grade-nickel-matte-nickel-prices-rise","class":"В",
+     "how":"SMM, ежедневно. Payable по никелю 79,5–83% к индексу сульфата никеля.",
+     "to_company":"Выручка HPL и ONC. Для справки: денежная себестоимость MHP у рынка ~US$14 500 (SMM), у заводов Оби ниже за счёт своей руды."},
+    {"id":"mhp_co","name":"MHP: кобальт FOB Индонезия","value":25442,"unit":"US$/т Co","date":"2026-10-22","source":"SMM, дневной обзор MHP","url":"https://news.metal.com/newscontent/104173571-smm-nickel-intermediate-product-daily-review-october-22-mhp-high-grade-nickel-matte-nickel-prices-rise","class":"В",
+     "how":"SMM, ежедневно.","to_company":"~0,10–0,11 т кобальта на тонну никеля в MHP."},
+    {"id":"s","name":"Сера CIF Индонезия","value":965,"unit":"US$/т","date":"2026-09-30","source":"SMM, недельная цена CIF Indonesia","url":"https://news.metal.com/newscontent/103222082/SMM-Officially-Launches-Weekly-Price-Point-for-Indonesia-CIF-Sulfur","class":"В","stale":true,
+     "how":"SMM — еженедельно (платно); ориентир бесплатно — контрактные цены Ближнего Востока FOB (Qatar, ADNOC, KPC) раз в месяц в новостях SMM, + фрахт ~US$60–90.",
+     "to_company":"Менеджмент (SIMC 05.08.2026): запас сырья на 2–3 месяца, сера закуплена ниже рынка. Значит, в себестоимость заводов спот приходит с лагом 2–3 месяца. В модели используется «эффективная» цена — средний спот за 3 месяца."},
+    {"id":"s_me","name":"Сера Ближний Восток, контракт октября FOB","value":835,"unit":"US$/т","date":"2026-10-08","source":"SMM: Qatar 835 (−45), KPC 820, ADNOC 890","url":"https://news.metal.com/newscontent/104145450-smm-flash-middle-east-october-sulfur-contract-prices-announced","class":"В",
+     "how":"Раз в месяц, бесплатно в новостях.","to_company":"Ведущий индикатор: CIF Индонезия ≈ FOB + фрахт; падение контрактов в октябре → CIF ~US$900–930 в ноябре (оценка)."},
+    {"id":"ore","name":"Руда Индонезии, спот: лимонит 1,2% / сапролит 1,6%","value":"25,5 / 59,0","unit":"US$/т влажной","date":"2026-10-14","source":"SMM","url":"https://news.metal.com/newscontent/104157595-smm-nickel-flash-news-indonesia-nickel-ore-price-update-october-14-2026","class":"В",
+     "how":"SMM, ежедневно.","to_company":"Фактическая цена лимонита у NCKL по выручке сегмента — ~US$10–18 за тонну (ниже рыночного 1,2% из-за содержания и формулы)."},
+    {"id":"fx","name":"Курс рупии (JISDOR)","value":18047,"unit":"Rp за US$","date":"2026-10-22","source":"Bank Indonesia, JISDOR","url":"https://www.bi.go.id/en/statistik/informasi-kurs/jisdor/Default.aspx","class":"А",
+     "how":"Центробанк, ежедневно, бесплатно.","to_company":"Выручка в долларах, отчётность в рупиях: FY2025 считался по ~16 475."},
+    {"id":"px","name":"Цена акции NCKL","value":785,"unit":"Rp","date":"2026-10-22","source":"Kontan (задержка ≥10 мин)","url":"https://pusatdata.kontan.co.id/quote/NCKL","class":"В",
+     "how":"IDX, ежедневно. Бесплатно — Kontan, Stockbit, Yahoo (NCKL.JK).","to_company":""}
+  ],
+  "reports": [
+    {"who":"Lygend (HKEX 2245)","what":"Промежуточный отчёт 1П2026","date":"2026-08-27","url":"https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0827/2026082701275.pdf","note":"Прибыль 1П2026; дивидендов HPL/ONC/KPS нет"},
+    {"who":"Lygend (SZSE 001246)","what":"Гайденс 9М2026","date":"2026-09-17","url":"","note":"III кв.: прибыль акционерам RMB0,41–0,51 млрд против 1,37 млрд в среднем за квартал 1П"},
+    {"who":"Lygend","what":"Квартальный отчёт за III кв. (A-акции)","date":"2026-10-31","due":true,"url":"","note":"Ждём: фактический III кв., комментарий о сокращениях MHP"},
+    {"who":"NCKL","what":"Отчёт 1П2026","date":"2026-08","url":"","note":"База текущей модели"},
+    {"who":"NCKL","what":"Отчёт 9М2026","date":"2026-10-31","due":true,"url":"","note":"Ждём: дивиденды от ассоциатов, денежный поток, дебиторка KPS"}
+  ],
+  "news": {
+    "sulfur": [
+      {"date":"2026-10-08","title":"Контракты Ближнего Востока на октябрь снижены на US$45–70: Qatar 835, KPC 820, ADNOC 890 FOB","url":"https://news.metal.com/newscontent/104145450-smm-flash-middle-east-october-sulfur-contract-prices-announced","src":"SMM"},
+      {"date":"2026-09-30","title":"Сера CIF Индонезия US$965 (−6% за сентябрь); Ормуз закрыт для серы с 18.07","url":"","src":"SMM, Discovery Alert"}
+    ],
+    "mhp": [
+      {"date":"2026-10-22","title":"MHP: никель ~US$12 800/т, кобальт US$25 442/т, payable кобальта 56–57%","url":"https://news.metal.com/newscontent/104173571-smm-nickel-intermediate-product-daily-review-october-22-mhp-high-grade-nickel-matte-nickel-prices-rise","src":"SMM"},
+      {"date":"2026-10-22","title":"Обсуждаются сокращения: MHP −50%, NPI −20% (Tsingshan, CNGR, Lygend, Huayou, GEM); решения нет","url":"https://news.metal.com/newscontent/104173852-smm-analysis-indonesian-nickel-output-cut-talk-gathers-pace-but-the-case-for-cutting-diverges-across-the-supply-chain","src":"Reuters, SMM"}
+    ],
+    "nickel": [
+      {"date":"2026-10-22","title":"LME ~US$16 090 (−1,2% за день), около −20% от майского максимума","url":"https://theedgemalaysia.com/node/822689","src":"Bloomberg"},
+      {"date":"2026-10-15","title":"HMA никеля 2-й половины октября US$15 847,67","url":"https://ima-api.org/wp-content/uploads/2026/10/IMA-Daily-News-Update-Monday-October-19-2026.pdf","src":"ESDM через IMA"}
+    ]
+  },
+  "sources_plan": [
+    ["Никель LME","westmetall.com (бесплатно, ежедневно)","автоматически, раз в день"],
+    ["Цена NCKL","Yahoo Finance NCKL.JK / IDX","автоматически, раз в день"],
+    ["Курс рупии","Bank Indonesia JISDOR","автоматически, раз в день"],
+    ["HMA / HPM","Kepmen ESDM (minerba.esdm.go.id)","вручную, 2 раза в месяц"],
+    ["MHP, payable, руда","SMM metal.com (заголовки бесплатно)","вручную, раз в неделю; полные ряды — платная подписка SMM/Fastmarkets"],
+    ["Сера","SMM CIF Indonesia (платно) + контракты Ближнего Востока (бесплатно)","вручную, раз в неделю/месяц"],
+    ["Lygend, NCKL","HKEX, SZSE, IDX","вручную при выходе отчёта"]
+  ]
+}

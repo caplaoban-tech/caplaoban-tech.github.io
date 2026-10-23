@@ -12,13 +12,13 @@
 <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;800&family=Golos+Text:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
-<link rel="stylesheet" href="../assets/style.css?v=9">
+<link rel="stylesheet" href="../assets/style.css?v=11">
 </head>
 <body>
 <div class="wrap">
   <header class="top">
     <a class="brand" href="../"><img src="../assets/mark.svg" alt="">Cap Laoban</a>
-    <nav class="nav"><a href="#calc">Оценка</a><a href="#peers">Аналоги</a><a href="#risks">Риски</a><a href="#glossary">Словарь</a></nav>
+    <nav class="nav"><a href="#calc">Оценка</a><a href="#market">Данные</a><a href="#peers">Аналоги</a><a href="#risks">Риски</a><a href="#glossary">Словарь</a></nav>
   </header>
 
   <main class="stack">
@@ -51,10 +51,11 @@
         </div>
         <div class="stack">
           <div class="eyebrow">Сырьё</div>
-          <div class="ctl"><label for="lme">Никель LME, US$/т <button type="button" class="q" data-term="lme" aria-label="Что это?">?</button> <output id="lme-o"></output></label><input id="lme" type="range" min="13000" max="22000" step="50"><small>22.10 — ~US$16 090. FY2025 — ~US$15 300 (оценка).</small></div>
-          <div class="ctl"><label for="co">Кобальт в MHP, % оплаты <button type="button" class="q" data-term="payable" aria-label="Что это?">?</button> <output id="co-o"></output></label><input id="co" type="range" min="40" max="95" step="1"><small>Конец сентября ~57%, FY2025 ~75% (оценка). <button type="button" class="qlink" data-term="why_payable">Почему падает скидка, а не цена?</button></small></div>
-          <div class="ctl"><label for="s">Сера, US$/т <button type="button" class="q" data-term="sulfur" aria-label="Что это?">?</button> <output id="s-o"></output></label><input id="s" type="range" min="250" max="1400" step="5"><small>Конец сентября ~US$965, FY2025 ~US$400 (оценка).</small></div>
-          <div class="ctl"><label for="hpm">Цена лимонита NCKL к FY2025, US$/т <button type="button" class="q" data-term="hpm" aria-label="Что это?">?</button> <output id="hpm-o"></output></label><input id="hpm" type="range" min="-10" max="15" step="1"><small>Фактически NCKL продаёт лимонит по ~US$10–18 за тонну, поэтому решения по HPM двигают цену на единицы долларов.</small></div>
+          <div class="ctl"><label for="lme">Никель LME, US$/т <button type="button" class="q" data-term="lme" aria-label="Что это?">?</button> <output id="lme-o"></output></label><input id="lme" type="range" min="13000" max="22000" step="50"><small class="srcl" data-src="lme"></small></div>
+          <div class="ctl"><label for="co">Кобальт в MHP, % оплаты <button type="button" class="q" data-term="payable" aria-label="Что это?">?</button> <output id="co-o"></output></label><input id="co" type="range" min="40" max="95" step="1"><small class="srcl" data-src="co"></small><small><button type="button" class="qlink" data-term="why_payable">Почему падает скидка, а не цена?</button></small></div>
+          <div class="ctl"><label for="s">Сера, US$/т <button type="button" class="q" data-term="sulfur" aria-label="Что это?">?</button> <output id="s-o"></output></label><input id="s" type="range" min="250" max="1400" step="5"><small class="srcl" data-src="s"></small><small>В модель идёт <b>эффективная</b> цена для заводов: спот доходит до себестоимости с лагом 2–3 месяца (запас сырья, слова менеджмента на SIMC 05.08.2026). Сейчас ≈ US$950: среднее за 3 месяца, контракты Ближнего Востока в октябре уже ниже.</small></div>
+          <div class="ctl"><label for="hpm">Цена лимонита NCKL к FY2025, US$/т <button type="button" class="q" data-term="hpm" aria-label="Что это?">?</button> <output id="hpm-o"></output></label><input id="hpm" type="range" min="-10" max="15" step="1"><small class="srcl" data-src="hma"></small><small>Фактически NCKL продаёт лимонит по ~US$10–18 за тонну, поэтому решения по HPM двигают цену на единицы долларов.</small></div>
+          <div class="ctl"><label for="fx">Курс, рупий за доллар <button type="button" class="q" data-term="fx" aria-label="Что это?">?</button> <output id="fx-o"></output></label><input id="fx" type="range" min="15500" max="20000" step="10"><small class="srcl" data-src="fx"></small><small>FY2025 считался по ~16 475. Выручка в долларах: слабая рупия повышает денежный поток в рупиях.</small></div>
           <div class="eyebrow" style="margin-top:6px">Оценка</div>
           <div class="ctl"><label for="y">Требуемая доходность <button type="button" class="q" data-term="yield" aria-label="Что это?">?</button> <output id="y-o"></output></label><input id="y" type="range" min="9" max="18" step="0.5"><small>Сколько процентов в год денежного потока вы хотите получать на вложенное. 13% ≈ доходность гособлигаций Индонезии ~6,5% + премия за риск акций.</small></div>
           <div class="ctl"><label for="ap">Пейаут ассоциатов <button type="button" class="q" data-term="ap" aria-label="Что это?">?</button> <output id="ap-o"></output></label><input id="ap" type="range" min="0" max="100" step="1"><small>Какая доля прибыли HPL, ONC и KPS дойдёт до NCKL деньгами. За 2024–2025 дошло 56%.</small></div>
@@ -93,6 +94,22 @@
       <details class="how">
         <summary>Что модель не учитывает</summary>
         <ul class="list" id="noinc"></ul>
+      </details>
+    </section>
+
+    <section id="market" class="panel" aria-label="Рыночные данные">
+      <div class="eyebrow">Рыночные данные · откуда и когда</div>
+      <h2>Цены сырья в модели: источник и дата</h2>
+      <p class="note" id="mk-upd"></p>
+      <div class="mk-grid" id="mk-table"></div>
+      <div class="grid3" id="mk-news"></div>
+      <div class="stack">
+        <h3>Отчётность: вышло и ждём</h3>
+        <ul class="feed" id="mk-reports"></ul>
+      </div>
+      <details class="how">
+        <summary>Как обновляются данные и откуда их правильно брать</summary>
+        <div class="tbl"><table id="mk-plan"></table></div>
       </details>
     </section>
 
@@ -160,7 +177,7 @@ function stacked(id, data, max) {
   $(id).replaceChildren(s);
 }
 
-fetch("../data/nckl.json?v=9").then(r => r.json()).then(D => {
+Promise.all([fetch("../data/nckl.json?v=10").then(r => r.json()), fetch("../data/markets.json?v=1").then(r => r.json())]).then(([D, MK]) => { window.__MK = MK; return D; }).then(D => {
   const P = D.price.value;
   $("eyebrow").textContent = `${D.exchange} · ${D.ticker} · обновлено ${D.updated.split("-").reverse().join(".")}`;
   $("price").textContent = f0(P);
@@ -194,15 +211,34 @@ fetch("../data/nckl.json?v=9").then(r => r.json()).then(D => {
   $("pop-x").addEventListener("click", () => { pop.hidden = true; });
   document.addEventListener("keydown", e => { if (e.key === "Escape") pop.hidden = true; });
 
+  /* рыночные данные */
+  const MK = window.__MK, ser = Object.fromEntries(MK.series.map(x => [x.id, x]));
+  const dd = s => { if (!s) return ""; const p = s.split("-"); return p.length === 3 ? `${p[2]}.${p[1]}.${p[0]}` : p.reverse().join("."); };
+  const short = s => { const p = s.split("-"); return p.length === 3 ? `${p[2]}.${p[1]}` : `${p[1]}.${p[0].slice(2)}`; };
+  const ageDays = s => (new Date(D.updated) - new Date(s)) / 864e5;
+  const fv0 = x => typeof x.value === "number" ? x.value.toLocaleString("ru-RU") : x.value;
+  document.querySelectorAll(".srcl").forEach(n => { const x = ser[n.dataset.src]; if (!x) return;
+    n.innerHTML = `Данные: <b>${esc(fv0(x))} ${esc(x.unit)}</b> на ${dd(x.date)} · ${x.url ? `<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.source)}</a>` : esc(x.source)} [${x.class}]${ageDays(x.date) > 14 ? ' <span class="chip warn">устарело</span>' : ""}`; });
+  $("mk-upd").textContent = `Обновлено ${dd(MK.updated)}. ${MK.update_mode} Метки: [А] — официальный источник, [В] — рыночный агрегатор или пресса.`;
+  $("mk-table").innerHTML = MK.series.map(x => `<div class="mk-card"><div class="mk-n">${esc(x.name)}</div>
+    <div class="mk-v"><b class="num">${esc(fv0(x))}</b> <span class="muted">${esc(x.unit)}</span></div>
+    <div class="mk-d">на ${dd(x.date)}${ageDays(x.date) > 14 ? ' <span class="chip warn">устарело</span>' : ""} · ${x.url ? `<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.source)}</a>` : esc(x.source)} [${x.class}]</div>
+    ${x.to_company ? `<div class="mk-c">${esc(x.to_company)}</div>` : ""}</div>`).join("");
+  const NN = { sulfur: "Сера", mhp: "MHP и кобальт", nickel: "Никель" };
+  $("mk-news").innerHTML = Object.entries(MK.news).map(([k, arr]) => `<div class="stack"><h3>${NN[k] || k}</h3><ul class="feed">${arr.map(n => `<li><time>${short(n.date)}</time><span>${n.url ? `<a href="${esc(n.url)}" target="_blank" rel="noopener">${esc(n.title)}</a>` : esc(n.title)}<br><span class="src">${esc(n.src)}</span></span></li>`).join("")}</ul></div>`).join("");
+  $("mk-reports").innerHTML = MK.reports.map(r => `<li><time>${short(r.date)}</time><span>${r.due ? '<span class="chip warn">ждём</span> ' : ""}<b>${esc(r.who)}</b> — ${r.url ? `<a href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.what)}</a>` : esc(r.what)}<br><span class="src">${esc(r.note)}</span></span></li>`).join("");
+  $("mk-plan").innerHTML = `<thead><tr><th>Данные</th><th>Источник</th><th>Обновление</th></tr></thead><tbody>` + MK.sources_plan.map(r => `<tr><td>${esc(r[0])}</td><td class="wrap-cell">${esc(r[1])}</td><td class="wrap-cell">${esc(r[2])}</td></tr>`).join("") + "</tbody>";
+
   /* SOTP-модель */
   const S = D.sotp, R = S.fy25_ref, SHR = S.shares_m;
-  const C = { lme: $("lme"), co: $("co"), s: $("s"), hpm: $("hpm"), y: $("y"), ap: $("ap"), po: $("po") };
+  const C = { lme: $("lme"), co: $("co"), s: $("s"), hpm: $("hpm"), fx: $("fx"), y: $("y"), ap: $("ap"), po: $("po") };
   const dl = { lme: v => (v - R.lme) / 1000, co: v => v - R.co, s: v => v - R.s, hpm: v => v - R.hpm };
   function model(v) {
     const rows = S.streams.map(st => {
       const adj = {}; let f = st.fcf;
       for (const k of ["lme", "co", "s", "hpm"]) { adj[k] = st.sens[k] * dl[k](v[k]); f += adj[k]; }
       f = Math.max(f, 0);
+      const fxm = Math.pow(v.fx / R.fx, S.fx_elasticity); adj.fx = f * (fxm - 1); f = f * fxm;
       const cash = st.cash_based ? f * v.ap / 100 : f;
       return { st, adj, f, cash, val: cash / (v.y / 100) };
     });
@@ -216,14 +252,14 @@ fetch("../data/nckl.json?v=9").then(r => r.json()).then(D => {
   function calc() {
     const v = read(), m = model(v), up = m.ps / P - 1;
     $("lme-o").textContent = f0(v.lme); $("co-o").textContent = v.co + "%"; $("s-o").textContent = f0(v.s);
-    $("hpm-o").textContent = (v.hpm > 0 ? "+" : "") + v.hpm; $("y-o").textContent = f1(v.y) + "%"; $("ap-o").textContent = v.ap + "%"; $("po-o").textContent = v.po + "%";
+    $("hpm-o").textContent = (v.hpm > 0 ? "+" : "") + v.hpm; $("fx-o").textContent = f0(v.fx); $("y-o").textContent = f1(v.y) + "%"; $("ap-o").textContent = v.ap + "%"; $("po-o").textContent = v.po + "%";
     $("fair").textContent = f0(m.ps); $("bar-fair").textContent = f0(m.ps);
     const ut = `${up >= 0 ? "+" : ""}${Math.round(up * 100)}% к цене ${f0(P)}`;
     for (const id of ["upside", "bar-up"]) { const u = $(id); u.textContent = id === "bar-up" ? `${up >= 0 ? "+" : ""}${Math.round(up * 100)}%` : ut; u.className = "up " + (up >= 0 ? "pos" : "neg"); }
     [$("fair"), $("bar-fair")].forEach(n => { n.classList.remove("flash"); void n.offsetWidth; n.classList.add("flash"); });
-    let h = `<thead><tr><th>Поток, Rp трлн/год</th><th>FY25</th><th>±сырьё</th><th>теперь</th><th>деньгами</th><th>стоим.</th><th>Rp/акц</th></tr></thead><tbody>`;
+    let h = `<thead><tr><th>Поток, Rp трлн/год</th><th>FY25</th><th>±сырьё, курс</th><th>теперь</th><th>деньгами</th><th>стоим.</th><th>Rp/акц</th></tr></thead><tbody>`;
     for (const r of m.rows) {
-      const adj = r.adj.lme + r.adj.co + r.adj.s + r.adj.hpm;
+      const adj = r.adj.lme + r.adj.co + r.adj.s + r.adj.hpm + r.adj.fx;
       h += `<tr><td>${esc(r.st.name)}</td><td>${t2(r.st.fcf)}</td><td>${sg(adj)}</td><td>${t2(r.f)}</td><td>${r.st.cash_based ? t2(r.cash) + ` <span class="muted">(${v.ap}%)</span>` : t2(r.cash)}</td><td>${f1(r.val)}</td><td class="me">${ps(r.val)}</td></tr>`;
     }
     h += `<tr><td>− Чистый долг</td><td></td><td></td><td></td><td></td><td>−${f1(S.net_debt)}</td><td class="me">−${ps(S.net_debt)}</td></tr>`;
@@ -238,7 +274,7 @@ fetch("../data/nckl.json?v=9").then(r => r.json()).then(D => {
   function tornado(v) {
     const base = model(v).ps, items = [
       ["Сера", "s", x => f0(x)], ["Кобальт, %", "co", x => x + "%"], ["Никель", "lme", x => f0(x)],
-      ["Доходность, %", "y", x => x + "%"], ["Пейаут ассоциатов", "ap", x => x + "%"], ["Лимонит к FY25", "hpm", x => (x > 0 ? "+" : "") + x]
+      ["Доходность, %", "y", x => x + "%"], ["Курс рупии", "fx", x => f0(x)], ["Пейаут ассоциатов", "ap", x => x + "%"], ["Лимонит к FY25", "hpm", x => (x > 0 ? "+" : "") + x]
     ].map(([lab, k, fm]) => { const [lo, hi] = S.ranges[k]; const a = model({ ...v, [k]: lo }).ps, b = model({ ...v, [k]: hi }).ps; return { lab, lo, hi, a, b, fm, span: Math.abs(b - a) }; })
      .sort((x, y) => y.span - x.span);
     const mn = Math.min(...items.flatMap(i => [i.a, i.b]), base, P) - 30, mx = Math.max(...items.flatMap(i => [i.a, i.b]), base, P) + 30;
@@ -257,7 +293,7 @@ fetch("../data/nckl.json?v=9").then(r => r.json()).then(D => {
     $("bt-note").textContent = B.note; }
   const scen = $("scen");
   scen.innerHTML = S.scenarios.map(x => `<button type="button" data-id="${x.id}" aria-pressed="${x.id === "now"}">${esc(x.label)}</button>`).join("");
-  const apply = x => { C.lme.value = x.lme; C.co.value = x.co; C.s.value = x.s; C.hpm.value = x.hpm; scen.querySelectorAll("button").forEach(z => z.setAttribute("aria-pressed", z.dataset.id === x.id)); calc(); };
+  const apply = x => { C.lme.value = x.lme; C.co.value = x.co; C.s.value = x.s; C.hpm.value = x.hpm; C.fx.value = x.fx; scen.querySelectorAll("button").forEach(z => z.setAttribute("aria-pressed", z.dataset.id === x.id)); calc(); };
   scen.addEventListener("click", e => { const b = e.target.closest("button"); if (b) apply(S.scenarios.find(z => z.id === b.dataset.id)); });
   const setDefaults = () => { const d = S.defaults; for (const k in C) C[k].value = d[k]; scen.querySelectorAll("button").forEach(z => z.setAttribute("aria-pressed", z.dataset.id === "now")); };
   Object.values(C).forEach(i => { i.addEventListener("input", () => { scen.querySelectorAll("button").forEach(z => z.setAttribute("aria-pressed", "false")); calc(); }); });

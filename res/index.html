@@ -1,0 +1,476 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>РЭС (Россети Новосибирск): модель оценки — Cap Laoban</title>
+<meta name="description" content="Интерактивная DCF-модель акции АО «РЭС» по отчёту об оценке № 1559262-4 для присоединения к «Россети Сибирь», обмен на MRKS и разбор ошибок отчёта.">
+<meta property="og:title" content="РЭС: модель оценки — Cap Laoban">
+<meta property="og:description" content="Покрутите DCF из отчёта об оценке РЭС: терминал, ставка, ОНО, обмен на MRKS.">
+<meta property="og:image" content="../assets/og.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@800&family=Golos+Text:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: control rail on the left (sticky on desktop), live outputs on the right; findings ledger below. */
+:root{
+  --bg:#fdf9f3; --surface:#ffffff; --ink:#1b1a19; --muted:#6b645c; --line:#e7dfd4;
+  --accent:#c56a17; --accent-soft:#fbeedd;
+  --crit:#d92b21; --crit-soft:#fbe9e6; --warn:#b7791f; --warn-soft:#faf0dc; --info:#5b5650; --info-soft:#efeae3;
+  --good:#1f8a5b; --good-soft:#e2f2ea;
+  --f-display:"M PLUS Rounded 1c","Golos Text",system-ui,sans-serif;
+  --f-body:"Golos Text", "Segoe UI", system-ui, sans-serif;
+  --f-mono:"JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#141210; --surface:#1d1a17; --ink:#efe9e2; --muted:#a59d93; --line:#2f2a25;
+  --accent:#e89a4c; --accent-soft:#3a2a18;
+  --crit:#ef5248; --crit-soft:#3a1c19; --warn:#e0a947; --warn-soft:#352812; --info:#b8b0a6; --info-soft:#26221e;
+  --good:#45c08a; --good-soft:#15301f; color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#141210; --surface:#1d1a17; --ink:#efe9e2; --muted:#a59d93; --line:#2f2a25;
+  --accent:#e89a4c; --accent-soft:#3a2a18;
+  --crit:#ef5248; --crit-soft:#3a1c19; --warn:#e0a947; --warn-soft:#352812; --info:#b8b0a6; --info-soft:#26221e;
+  --good:#45c08a; --good-soft:#15301f; color-scheme:dark }
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:14px;line-height:1.5}
+.wrap{max-width:1240px;margin:0 auto;padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px));padding-block:28px 56px;display:grid;gap:28px}
+h1,h2,h3{text-wrap:balance;margin:0}
+h1{font-size:1.75rem;font-weight:700;letter-spacing:-.01em}
+h2{font-size:1.15rem;font-weight:600}
+h3{font-size:.95rem;font-weight:600}
+.mono,.num{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.eyebrow{font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:500}
+.muted{color:var(--muted)}
+header{display:grid;gap:10px}
+header p{margin:0;max-width:72ch;color:var(--muted)}
+.presets{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+button{font:inherit;cursor:pointer;border-radius:8px;border:1px solid var(--line);background:var(--surface);color:var(--ink);padding:7px 12px}
+button:hover{border-color:var(--accent)}
+button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+button.on{background:var(--accent);border-color:var(--accent);color:var(--surface)}
+.main{display:grid;grid-template-columns:330px minmax(0,1fr);gap:24px;align-items:start}
+@media (max-width:900px){.main{grid-template-columns:minmax(0,1fr)}}
+.rail{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px;display:grid;gap:18px;position:sticky;top:calc(env(safe-area-inset-top, 0px) + 12px);max-height:calc(100vh - 24px);overflow:auto}
+@media (max-width:900px){.rail{position:static;max-height:none}}
+fieldset{border:0;margin:0;padding:0;display:grid;gap:10px}
+legend{padding:0;margin-bottom:6px}
+.ctl{display:grid;gap:3px}
+.ctl label{display:flex;justify-content:space-between;gap:8px;font-size:.85rem}
+.ctl label .v{font-family:var(--f-mono);color:var(--accent);font-weight:500}
+.ctl .hint{font-size:.75rem;color:var(--muted)}
+input[type=range]{width:100%;accent-color:var(--accent)}
+.toggle{display:flex;gap:8px;align-items:flex-start;font-size:.85rem}
+.toggle input{margin-top:3px;accent-color:var(--accent)}
+.seg{display:flex;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.seg button{border:0;border-radius:0;flex:1;padding:6px 8px;font-size:.82rem}
+.out{display:grid;gap:20px;min-width:0}
+.hero{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px;display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:18px}
+.big{font-family:var(--f-mono);font-size:2rem;font-weight:500;line-height:1.1}
+.delta{font-family:var(--f-mono);font-size:.85rem}
+.up{color:var(--good)} .down{color:var(--crit)}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px;display:grid;gap:12px;min-width:0}
+.kv{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px 18px}
+.kv div{display:grid;gap:2px}
+.kv b{font-family:var(--f-mono);font-weight:500;font-size:1rem}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:.82rem}
+th,td{padding:6px 8px;text-align:right;border-bottom:1px solid var(--line);white-space:nowrap}
+th:first-child,td:first-child{text-align:left;white-space:normal;min-width:180px}
+thead th{font-weight:500;color:var(--muted);font-size:.75rem;text-transform:uppercase;letter-spacing:.05em}
+td{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+td:first-child{font-family:var(--f-body)}
+tr.strong td{font-weight:600}
+tr.flag td{background:var(--crit-soft)}
+.bridge{display:grid;gap:6px}
+.brow{display:grid;grid-template-columns:150px minmax(0,1fr) 92px;gap:10px;align-items:center;font-size:.82rem}
+.btrack{position:relative;height:18px}
+.bbar{position:absolute;top:0;height:18px;border-radius:3px}
+.bval{font-family:var(--f-mono);text-align:right}
+@media (max-width:520px){.brow{grid-template-columns:100px minmax(0,1fr) 78px}}
+.heat td{text-align:center;font-size:.8rem}
+.heat td.cur{outline:2px solid var(--ink);outline-offset:-2px}
+.legend-row{display:flex;flex-wrap:wrap;gap:14px;font-size:.78rem;color:var(--muted)}
+.sw{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px}
+.errors{display:grid;gap:14px}
+.err{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--sev);border-radius:10px;padding:14px 16px;display:grid;gap:8px}
+.err.crit{--sev:var(--crit)} .err.warn{--sev:var(--warn)} .err.info{--sev:var(--info)} .err.good{--sev:var(--good)}
+.err-head{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline;justify-content:space-between}
+.chip{font-size:.7rem;text-transform:uppercase;letter-spacing:.07em;padding:2px 8px;border-radius:99px;font-weight:600}
+.crit .chip{background:var(--crit-soft);color:var(--crit)} .warn .chip{background:var(--warn-soft);color:var(--warn)}
+.info .chip{background:var(--info-soft);color:var(--info)} .good .chip{background:var(--good-soft);color:var(--good)}
+.err p{margin:0;max-width:85ch}
+.err .ref{font-size:.75rem;color:var(--muted)}
+.err .impact{font-family:var(--f-mono);font-size:.85rem}
+.err .row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between}
+svg text{fill:var(--muted);font-family:var(--f-mono);font-size:10px}
+footer{font-size:.78rem;color:var(--muted);max-width:90ch}
+@media (prefers-reduced-motion:no-preference){.bbar{transition:left .25s,width .25s}}
+header.top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{display:flex;align-items:center;gap:10px;white-space:nowrap;color:var(--ink);font-family:var(--f-display);font-weight:800;font-size:20px;text-decoration:none}
+.brand img{width:34px;height:34px}
+.topnav{display:flex;gap:12px;font-size:13px;flex-wrap:wrap;justify-content:flex-end}
+.topnav a{color:var(--muted);text-decoration:none}.topnav a:hover{color:var(--ink)}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="top"><a class="brand" href="../"><img src="../assets/mark.svg" alt="">Cap Laoban</a><nav class="topnav"><a href="#model">Модель</a><a href="#err-h">Ошибки отчёта</a></nav></header>
+  <header id="model">
+    <span class="eyebrow">Отчёт № 1559262-4 · SRG-Consulting · дата оценки 31.12.2025</span>
+    <h1>Модель оценки РЭС</h1>
+    <p>DCF из отчёта по акциям АО «РЭС» («Россети Новосибирск»), пересобранный по его же цифрам. Меняйте допущения слева: стоимость акции, коэффициент обмена на MRKS и мультипликаторы пересчитываются сразу. Ниже перечислены ошибки отчёта, по каждой есть кнопка, которая показывает её эффект в модели.</p>
+    <div class="presets" role="group" aria-label="Сценарии">
+      <button id="p-report" data-preset="report">Как в отчёте</button>
+      <button id="p-term" data-preset="term">Исправить терминал</button>
+      <button id="p-all" data-preset="all">Все исправления</button>
+    </div>
+  </header>
+
+  <div class="main">
+    <aside class="rail" aria-label="Допущения модели">
+      <fieldset>
+        <legend class="eyebrow">Терминальный период</legend>
+        <div class="seg" role="group" aria-label="Метод терминала">
+          <button id="tm-report" data-tm="report">Капзатраты как в отчёте</button>
+          <button id="tm-ronic" data-tm="ronic">Через RONIC</button>
+        </div>
+        <div class="ctl" id="ronic-ctl">
+          <label for="ronic">Доходность новых инвестиций (RONIC) <span class="v" id="ronic-v"></span></label>
+          <input type="range" id="ronic" min="4" max="24" step="0.25">
+          <span class="hint">Реинвестиции = g / RONIC × NOPLAT. Если RONIC = WACC, рост не создаёт и не разрушает стоимость.</span>
+        </div>
+        <div class="ctl">
+          <label for="g">Долгосрочный рост g <span class="v" id="g-v"></span></label>
+          <input type="range" id="g" min="0" max="8" step="0.25">
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend class="eyebrow">Ставка дисконтирования (CAPM, USD → RUB)</legend>
+        <div class="ctl"><label for="rf">Безрисковая ставка <span class="v" id="rf-v"></span></label><input type="range" id="rf" min="2" max="7" step="0.01"></div>
+        <div class="ctl"><label for="beta">Бета (unlevered) <span class="v" id="beta-v"></span></label><input type="range" id="beta" min="0.3" max="1.2" step="0.01"></div>
+        <div class="ctl"><label for="erp">Рыночная премия <span class="v" id="erp-v"></span></label><input type="range" id="erp" min="3" max="8" step="0.01"></div>
+        <div class="ctl"><label for="crp">Страновой риск <span class="v" id="crp-v"></span></label><input type="range" id="crp" min="0" max="8" step="0.05"></div>
+        <div class="ctl"><label for="size">Премия за размер <span class="v" id="size-v"></span></label><input type="range" id="size" min="0" max="5" step="0.01"></div>
+        <div class="ctl"><label for="spec">Специфический риск <span class="v" id="spec-v"></span></label><input type="range" id="spec" min="0" max="5" step="0.1"></div>
+        <div class="ctl"><label for="adj">Поправка на валюту (2027+) <span class="v" id="adj-v"></span></label><input type="range" id="adj" min="1.00" max="1.08" step="0.00001"><span class="hint">В отчёте 1,0189 на 2026 и 1,01763 далее (разница инфляций RUB/USD).</span></div>
+      </fieldset>
+
+      <fieldset>
+        <legend class="eyebrow">Прогноз</legend>
+        <div class="ctl"><label for="margin">Сдвиг маржи EBITDA <span class="v" id="margin-v"></span></label><input type="range" id="margin" min="-5" max="5" step="0.25"></div>
+        <div class="ctl"><label for="capex">Масштаб капзатрат <span class="v" id="capex-v"></span></label><input type="range" id="capex" min="60" max="130" step="1"><span class="hint">Применяется ко всем годам и к терминалу в режиме «как в отчёте».</span></div>
+      </fieldset>
+
+      <fieldset>
+        <legend class="eyebrow">Поправки к капиталу</legend>
+        <label class="toggle"><input type="checkbox" id="useDTL"> Вычитать ОНО (−1,24 млрд)</label>
+        <label class="toggle"><input type="checkbox" id="useTP"> Вычитать авансы по техприсоединению (−3,66 млрд)</label>
+      </fieldset>
+
+      <fieldset>
+        <legend class="eyebrow">Обмен на MRKS</legend>
+        <div class="ctl"><label for="mrks">Рыночная цена MRKS, ₽ <span class="v" id="mrks-v"></span></label><input type="range" id="mrks" min="0.30" max="0.80" step="0.001"><span class="hint">0,485 ₽ на 23.10.2026. Оценка MRKS для обмена 0,5253 ₽.</span></div>
+      </fieldset>
+    </aside>
+
+    <section class="out" aria-live="polite">
+      <div class="hero">
+        <div><span class="eyebrow">Стоимость акции по модели</span><div class="big" id="o-ps"></div><div class="delta" id="o-ps-d"></div></div>
+        <div><span class="eyebrow">В отчёте</span><div class="big">121,38</div><div class="delta muted">+ спецдивиденд 4,62 ₽</div></div>
+        <div><span class="eyebrow">Акций MRKS за 1 РЭС</span><div class="big" id="o-ratio"></div><div class="delta muted" id="o-ratio-d"></div></div>
+        <div><span class="eyebrow">Обмен по рынку MRKS</span><div class="big" id="o-conv"></div><div class="delta muted">₽ на акцию РЭС</div></div>
+      </div>
+
+      <div class="panel">
+        <h2>Ключевые показатели</h2>
+        <div class="kv">
+          <div><span class="eyebrow">WACC 2026 / 2027+</span><b id="k-wacc"></b></div>
+          <div><span class="eyebrow">Неявный RONIC в терминале</span><b id="k-ronic"></b></div>
+          <div><span class="eyebrow">Доля TV в EV</span><b id="k-tvshare"></b></div>
+          <div><span class="eyebrow">P/E 2025</span><b id="k-pe"></b></div>
+          <div><span class="eyebrow">P/BV (скорр. 235 ₽)</span><b id="k-pb"></b></div>
+          <div><span class="eyebrow">EV / EBITDA 2025</span><b id="k-ev"></b></div>
+          <div><span class="eyebrow">Див. доходность (13,05 ₽)</span><b id="k-dy"></b></div>
+          <div><span class="eyebrow">Капитал 100%, млрд ₽</span><b id="k-eq"></b></div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h2>От стоимости бизнеса к капиталу, млрд ₽</h2>
+        <div class="bridge" id="bridge"></div>
+      </div>
+
+      <div class="panel">
+        <h2>Денежный поток, млн ₽</h2>
+        <div class="scroll"><table id="dcf"></table></div>
+        <p class="muted" style="margin:0;font-size:.78rem">Строка, выделенная цветом, это главная проблема: в терминале капзатраты почти вдвое выше амортизации, а рост всего 4%.</p>
+      </div>
+
+      <div class="panel">
+        <h2>Капзатраты и амортизация, млн ₽</h2>
+        <div class="legend-row"><span><i class="sw" style="background:var(--accent)"></i>Капзатраты</span><span><i class="sw" style="background:var(--muted)"></i>Амортизация</span></div>
+        <div class="scroll"><svg id="capchart" viewBox="0 0 640 220" width="100%" role="img" aria-label="Капзатраты и амортизация по годам"></svg></div>
+      </div>
+
+      <div class="panel">
+        <h2>Чувствительность: ₽ на акцию</h2>
+        <p class="muted" style="margin:0;font-size:.8rem">Строки: WACC 2027+ (сдвиг всей кривой). Столбцы: метод терминала. Рамкой отмечена текущая ячейка, остальные допущения как слева.</p>
+        <div class="scroll"><table class="heat" id="heat"></table></div>
+      </div>
+    </section>
+  </div>
+
+  <section class="errors" aria-labelledby="err-h">
+    <div style="display:grid;gap:4px"><span class="eyebrow">Разбор отчёта</span><h2 id="err-h">Ошибки и слабые места, по убыванию влияния</h2></div>
+
+    <article class="err crit">
+      <div class="err-head"><h3>1. Терминал: стоимость разрушается бесконечно</h3><span class="chip">Критично</span></div>
+      <p>В постпрогнозе капзатраты 9,83 млрд ₽ против амортизации 5,38 млрд ₽, а рост денежного потока всего 4%. Значит, 64% NOPLAT ежегодно реинвестируется с доходностью около 6,3% при WACC 16,2%. Модель предполагает, что каждый вложенный рубль навсегда уничтожает стоимость. Это противоречит сноске 16 самого отчёта: по RAB тариф возвращает инвестиции с доходностью. Согласованный вариант: реинвестиции = g / RONIC.</p>
+      <div class="row"><span class="impact" id="e1-imp"></span><button data-fix="term">Показать в модели</button></div>
+      <span class="ref">Табл. 10.39, с. 100; сноска 16, с. 99</span>
+    </article>
+
+    <article class="err warn">
+      <div class="err-head"><h3>2. Отложенный налог вычтен как долг</h3><span class="chip">Существенно</span></div>
+      <p>Вычтено 1,24 млрд ₽ приведённой стоимости ОНО по основным средствам. Расчёт исходит из того, что ОНО гасится по 239 млн ₽ в год 12 лет подряд. Но при капзатратах вдвое выше амортизации разница между налоговой и бухгалтерской амортизацией растёт, и ОНО не гасится. Есть и арифметическая нестыковка: табл. 10.43 даёт 1 237 417, в итоговую табл. 10.45 перенесено 1 237 314.</p>
+      <div class="row"><span class="impact" id="e2-imp"></span><button data-fix="dtl">Показать в модели</button></div>
+      <span class="ref">Табл. 10.42–10.45, с. 102–104</span>
+    </article>
+
+    <article class="err warn">
+      <div class="err-head"><h3>3. Сравнительный подход внутренне противоречив</h3><span class="chip">Существенно</span></div>
+      <p>У «Россети Сибирь» EV/EBITDA 8,17 и EV/Sales 1,38 в табл. 11.7 превращаются в 1,78 и 0,78 в табл. 11.8. Максимум в 11.8 указан 6,01, хотя в выборке нет значения выше 2,25. Среднее 2,17 с перечисленными цифрами не сходится (по ним 1,70). Сам подход отброшен как «индикативный», поэтому на итог это не влияет напрямую. Но это единственная внешняя проверка DCF, и она сломана. Для сравнения: РЭС оценена в 1,8x EBITDA, а MRKS, к которому её присоединяют, по той же таблице стоит 8,2x.</p>
+      <span class="ref">Табл. 11.7–11.10, с. 112–114</span>
+    </article>
+
+    <article class="err warn">
+      <div class="err-head"><h3>4. Пакет «Электромагистрали» за 0,3 капитала</h3><span class="chip">Проверить</span></div>
+      <p>29,91% продаётся за 445 млн ₽. Доля в капитале компании (4,93 млрд ₽) около 1,47 млрд ₽. Перед продажей, в 2025 году, у «Электромагистрали» прошло списание на 2,3 млрд ₽ (основные средства упали с 7,8 до 5,0 млрд). Цена взята из другого отчёта № 4611/26, покупатель не назван. На стоимость акции РЭС это не влияет, потому что выручка уходит акционерам дивидендом. Но от цены зависит размер этого дивиденда: при продаже по балансу он был бы около 15 ₽ вместо 4,62 ₽.</p>
+      <span class="ref">Задание на оценку, с. 6; табл. 13.1, 13.7–13.8, с. 116–120</span>
+    </article>
+
+    <article class="err info">
+      <div class="err-head"><h3>5. Неверно указана цель оценки</h3><span class="chip">Формально</span></div>
+      <p>В задании цель указана как «реорганизация Общества в форме присоединения к нему других обществ». Фактически всё наоборот: РЭС присоединяется к ПАО «Россети Сибирь» (решение СД от 16.10.2026, ВОСА до 19.11.2026). Цель и предполагаемое использование обязательны по ФСО III. Довод для спора о качестве отчёта, но сам по себе отчёт он вряд ли опрокинет.</p>
+      <span class="ref">Табл. 1.1, с. 6</span>
+    </article>
+
+    <article class="err info">
+      <div class="err-head"><h3>6. Срок действия отчёта</h3><span class="chip">Формально</span></div>
+      <p>Отчёт составлен 01.06.2026 и рекомендован для сделок в течение шести месяцев, то есть до 01.12.2026. Выкуп акций у несогласных по ст. 75–76 ФЗ об АО растянется за эту дату. Довод слабый: цену выкупа совет директоров утвердил 16.10.2026, в пределах срока.</p>
+      <span class="ref">Раздел 5.5, с. 14</span>
+    </article>
+
+    <article class="err good">
+      <div class="err-head"><h3>Что ошибкой не является</h3><span class="chip">Для честности</span></div>
+      <p>Ставка 16,2% в рублях без долга скорее низкая, чем высокая: длинные ОФЗ на конец 2025 года давали около 14–15%, так что премия за риск акций всего 1–2 п.п. Если спорить о ставке, стоимость пойдёт вниз, а не вверх. Вычет авансов по техприсоединению (3,66 млрд) логичен: деньги уже получены и лежат в кассе, а выручка по этим договорам сидит в прогнозе. Оценка «дочки» РЭМиС по чистым активам (181 млн вместо 1,52 млрд по балансу) тоже корректна: компания убыточна.</p>
+    </article>
+  </section>
+
+  <footer>Источник цифр: отчёт об оценке № 1559262-4 от 01.06.2026 (ООО «ЭсАрДжи-Консалтинг» для ПАО «Россети»), табл. 6.2, 7.1, 10.38–10.46, 11.7–11.10, 13.1–13.8. Коэффициент обмена 0,5253 / 121,38: решение СД ПАО «Россети Сибирь» от 16.10.2026. Цена MRKS 0,485 ₽ на 23.10.2026. В режиме «Как в отчёте» модель даёт EV 14 199 млн ₽ и 121,5 ₽ на акцию против 14 189 млн ₽ и 121,38 ₽ в отчёте. Разница из-за округлений ставки и налога, к тому же отчёт округлил капитал вниз до 11,7 млрд. Это аналитическая модель, а не отчёт об оценке.</footer>
+</div>
+
+<script>
+(function(){
+const YEARS=["2026","2027","2028","2029","2030","2031"];
+const REV=[31732469,37462515,41483594,43430181,45503916,47324073];
+const EBITDA=[7688570,10938911,12444031,13075284,13772385,14327632];
+const DA=[2983861,3409779,3775594,4206132,4679308,5171412];
+const DAL=[12269,12761,13271,13802,14354,14928];
+const CAPEX=[5867263,7361397,7077208,8286360,9083891,9447246];
+const DWC=[748448,652421,911053,1037643,1136335,98288];
+const SHARES=96391942, CASH=1059609, DIV=445000, NONOP=1799305;
+const TP=[2005270,2263711], TP_AR=2128;
+const DTL_BAL=2950805, DTL_PAY=238994;
+const NI25=3898372, EBITDA25=7806054, BVPS_ADJ=235, DPS24=13.045;
+const MRKS_APPR=0.5253, REPORT_PS=121.38;
+
+const BASE={tm:"report",ronic:16.18,g:4,rf:4.18,beta:0.46,erp:4.18,crp:3.9,size:2.66,spec:1.5,adj:1.01763,margin:0,capex:100,useDTL:true,useTP:true,mrks:0.485};
+let S=Object.assign({},BASE);
+
+function compute(p,override){
+  p=Object.assign({},p,override||{});
+  const keUsd=(p.rf+p.beta*p.erp+p.crp+p.size+p.spec)/100;
+  const adj1=1.0189*(p.adj/1.01763);
+  let w1=(1+keUsd)*adj1-1, w2=(1+keUsd)*p.adj-1;
+  if(p.wshift){w1+=p.wshift;w2+=p.wshift;}
+  const g=p.g/100, cs=p.capex/100, t=0.25;
+  const rows=YEARS.map((y,i)=>{
+    const ebitda=EBITDA[i]+p.margin/100*REV[i];
+    const ebit=ebitda-DA[i]-DAL[i];
+    const tax=Math.max(0,ebit)*t;
+    const noplat=ebit-tax;
+    const capex=CAPEX[i]*cs;
+    const fcf=noplat+DA[i]-capex-DWC[i];
+    return {y,rev:REV[i],ebitda,ebit,tax,noplat,da:DA[i],capex,dwc:DWC[i],fcf};
+  });
+  const last=rows[5];
+  const tvRev=REV[5]*(1+g), tvEbitda=last.ebitda*(1+g), tvDa=DA[5]*(1+g), tvDal=DAL[5]*(1+g);
+  const tvEbit=tvEbitda-tvDa-tvDal, tvNoplat=tvEbit-Math.max(0,tvEbit)*t;
+  let tvCapex, tvDwc=DWC[5]*(1+g), tvFcf;
+  const ronic=(p.tm==="ronic")?(p.ronicEqW?w2:p.ronic/100):null;
+  if(p.tm==="ronic"){
+    const reinv=tvNoplat*Math.min(1,g/ronic);
+    tvFcf=tvNoplat-reinv;
+    tvCapex=reinv+tvDa-tvDwc; // presentational split
+  }else{
+    tvCapex=CAPEX[5]*cs*(1+g);
+    tvFcf=tvNoplat+tvDa-tvCapex-tvDwc;
+  }
+  const tvRow={y:"ПП",rev:tvRev,ebitda:tvEbitda,ebit:tvEbit,tax:tvEbit-tvNoplat,noplat:tvNoplat,da:tvDa,capex:tvCapex,dwc:tvDwc,fcf:tvFcf};
+  const f=[];f[0]=1/Math.pow(1+w1,0.5);f[1]=1/((1+w1)*Math.pow(1+w2,0.5));
+  for(let i=2;i<6;i++)f[i]=f[i-1]/(1+w2);
+  rows.forEach((r,i)=>{r.f=f[i];r.pv=r.fcf*f[i];});
+  const sumPv=rows.reduce((a,r)=>a+r.pv,0);
+  const tv=w2>g? tvFcf/(w2-g) : NaN;
+  const pvTv=tv*f[5];
+  const ev=sumPv+pvTv;
+  const cash=CASH-DIV;
+  const tp=p.useTP? (TP[0]*f[0]+TP[1]*f[1]-TP_AR) : 0;
+  let dtl=0;
+  if(p.useDTL){let bal=DTL_BAL,k=0;while(bal>0){k++;const pay=Math.min(DTL_PAY,bal);dtl+=pay/Math.pow(1+w1,k);bal-=pay;}}
+  const eq=ev+cash+NONOP-tp-dtl;
+  const ps=eq*1000/SHARES;
+  const implied=g/((tvNoplat-tvFcf)/tvNoplat);
+  return {w1,w2,rows,tvRow,sumPv,tv,pvTv,ev,cash,tp,dtl,eq,ps,implied,f};
+}
+
+const fmt=(n,d=0)=>isFinite(n)?n.toLocaleString("ru-RU",{minimumFractionDigits:d,maximumFractionDigits:d}):"—";
+const pct=(x,d=2)=>fmt(x*100,d)+"%";
+const mln=n=>fmt(n/1000,0);
+const bln=n=>fmt(n/1e6,2);
+const $=id=>document.getElementById(id);
+
+const sliders={ronic:[v=>fmt(v,2)+"%"],g:[v=>fmt(v,2)+"%"],rf:[v=>fmt(v,2)+"%"],beta:[v=>fmt(v,2)],erp:[v=>fmt(v,2)+"%"],crp:[v=>fmt(v,2)+"%"],size:[v=>fmt(v,2)+"%"],spec:[v=>fmt(v,1)+"%"],adj:[v=>fmt(v,5)],margin:[v=>(v>0?"+":"")+fmt(v,2)+" п.п."],capex:[v=>fmt(v,0)+"%"],mrks:[v=>fmt(v,3)]};
+
+function syncInputs(){
+  for(const k in sliders){$(k).value=S[k];$(k+"-v").textContent=sliders[k][0](S[k]);}
+  $("useDTL").checked=S.useDTL;$("useTP").checked=S.useTP;
+  $("tm-report").classList.toggle("on",S.tm==="report");$("tm-ronic").classList.toggle("on",S.tm==="ronic");
+  $("ronic-ctl").hidden=S.tm!=="ronic";
+}
+
+function renderBridge(r){
+  const steps=[["Стоимость бизнеса (EV)",r.ev,"base"],["Денежные средства − спецдивиденд",r.cash,"d"],["Неоперационные активы",NONOP,"d"],["Авансы по техприсоединению",-r.tp,"d"],["Отложенный налог (ОНО)",-r.dtl,"d"],["Капитал 100%",r.eq,"base"]];
+  let run=0;const pts=[];
+  steps.forEach(s=>{if(s[2]==="base"){pts.push([0,s[1]]);run=s[1];}else{pts.push([run,run+s[1]]);run+=s[1];}});
+  const max=Math.max(...pts.map(p=>Math.max(p[0],p[1])))*1.02;
+  $("bridge").innerHTML=steps.map((s,i)=>{
+    const a=Math.min(...pts[i]),b=Math.max(...pts[i]);
+    const col=s[2]==="base"?"var(--accent)":(s[1]>=0?"var(--good)":"var(--crit)");
+    const val=(s[2]==="d"&&s[1]>0?"+":"")+bln(s[1]);
+    return `<div class="brow"><span>${s[0]}</span><div class="btrack"><div class="bbar" style="left:${a/max*100}%;width:${Math.max(0.4,(b-a)/max*100)}%;background:${col}"></div></div><span class="bval">${s[1]===0?"0,00":val}</span></div>`;
+  }).join("");
+}
+
+function renderTable(r){
+  const all=r.rows.concat([r.tvRow]);
+  const head=`<thead><tr><th>Показатель</th>${all.map(x=>`<th>${x.y}</th>`).join("")}</tr></thead>`;
+  const line=(name,key,cls,neg)=>`<tr class="${cls||""}"><td>${name}</td>${all.map(x=>`<td>${x[key]===undefined?"":(neg?"("+mln(x[key])+")":mln(x[key]))}</td>`).join("")}</tr>`;
+  const disc=`<tr><td>Фактор дисконтирования</td>${r.rows.map(x=>`<td>${fmt(x.f,4)}</td>`).join("")}<td>${fmt(r.f[5],4)}</td></tr>`;
+  const pv=`<tr><td>Приведённый поток</td>${r.rows.map(x=>`<td>${mln(x.pv)}</td>`).join("")}<td>${mln(r.pvTv)}</td></tr>`;
+  const tvr=`<tr class="strong"><td>Терминальная стоимость</td>${r.rows.map(()=>"<td></td>").join("")}<td>${mln(r.tv)}</td></tr>`;
+  const capexRow=`<tr class="${S.tm==="report"?"flag":""}"><td>Капзатраты${S.tm==="ronic"?" (ПП: из реинвестиций)":""}</td>${all.map(x=>`<td>(${mln(x.capex)})</td>`).join("")}</tr>`;
+  $("dcf").innerHTML=head+"<tbody>"+line("Выручка","rev")+line("EBITDA","ebitda","strong")+line("EBIT","ebit")+line("Налог на прибыль 25%","tax","",true)+line("NOPLAT","noplat","strong")+line("Амортизация","da")+capexRow+line("Изменение оборотного капитала","dwc","",true)+line("Свободный денежный поток","fcf","strong")+disc+pv+tvr+"</tbody>";
+}
+
+function renderCapChart(r){
+  const all=r.rows.concat([r.tvRow]);
+  const W=640,H=220,L=44,B=24,T=10,R=8;
+  const max=Math.ceil(Math.max(...all.map(x=>Math.max(x.capex,x.da)))/2e6)*2e6;
+  const sy=v=>T+(H-T-B)*(1-v/max);
+  const bw=(W-L-R)/all.length;
+  let s="";
+  for(let v=0;v<=max;v+=2e6){s+=`<line x1="${L}" x2="${W-R}" y1="${sy(v)}" y2="${sy(v)}" stroke="var(--line)" stroke-width="1"/><text x="${L-6}" y="${sy(v)+3}" text-anchor="end">${fmt(v/1e6,0)} млрд</text>`;}
+  all.forEach((x,i)=>{
+    const x0=L+i*bw+bw*0.18,w=bw*0.3;
+    s+=`<rect x="${x0}" y="${sy(x.capex)}" width="${w}" height="${sy(0)-sy(x.capex)}" fill="var(--accent)" rx="2"/>`;
+    s+=`<rect x="${x0+w+3}" y="${sy(x.da)}" width="${w}" height="${sy(0)-sy(x.da)}" fill="var(--muted)" rx="2"/>`;
+    s+=`<text x="${L+i*bw+bw/2}" y="${H-8}" text-anchor="middle">${x.y}</text>`;
+    s+=`<text x="${x0+w/2}" y="${sy(x.capex)-4}" text-anchor="middle">${fmt(x.capex/x.da,1)}×</text>`;
+  });
+  $("capchart").innerHTML=s;
+}
+
+function renderHeat(r){
+  const cols=[["Отчёт",{tm:"report"}],["8%",{tm:"ronic",ronic:8,ronicEqW:false}],["10%",{tm:"ronic",ronic:10,ronicEqW:false}],["12%",{tm:"ronic",ronic:12,ronicEqW:false}],["14%",{tm:"ronic",ronic:14,ronicEqW:false}],["= WACC",{tm:"ronic",ronicEqW:true}]];
+  const shifts=[-0.04,-0.03,-0.02,-0.01,0,0.01,0.02,0.03,0.04];
+  let curCol=0;if(S.tm==="ronic"){const ix=[8,10,12,14].indexOf(S.ronic);curCol=ix>=0?ix+1:(Math.abs(S.ronic-r.w2*100)<0.15?5:-1);}
+  let lo=Infinity,hi=-Infinity;const grid=shifts.map(sh=>cols.map(c=>{const v=compute(S,Object.assign({wshift:sh},c)).ps;if(isFinite(v)){lo=Math.min(lo,v);hi=Math.max(hi,v);}return v;}));
+  let h=`<thead><tr><th>WACC 2027+</th>${cols.map(c=>`<th>RONIC ${c[0]}</th>`).join("").replace("RONIC Отчёт","Как в отчёте")}</tr></thead><tbody>`;
+  shifts.forEach((sh,i)=>{
+    h+=`<tr><td>${pct(r.w2+sh,1)}</td>`;
+    grid[i].forEach((v,j)=>{
+      const k=isFinite(v)?(v-lo)/(hi-lo||1):0;
+      const bg=`color-mix(in srgb, var(--accent) ${Math.round(8+k*55)}%, var(--surface))`;
+      const fg=k>0.6?"var(--surface)":"var(--ink)";
+      const cur=(sh===0&&j===curCol)?" cur":"";
+      h+=`<td class="${cur}" style="background:${bg};color:${fg}">${isFinite(v)?fmt(v,0):"—"}</td>`;
+    });
+    h+="</tr>";
+  });
+  $("heat").innerHTML=h+"</tbody>";
+}
+
+function render(){
+  syncInputs();
+  const r=compute(S);
+  $("o-ps").textContent=fmt(r.ps,2);
+  const d=r.ps/REPORT_PS-1;
+  $("o-ps-d").innerHTML=`<span class="${d>=0?"up":"down"}">${d>=0?"+":""}${fmt(d*100,1)}%</span> к отчёту`;
+  const ratio=r.ps/MRKS_APPR;
+  $("o-ratio").textContent=fmt(ratio,1);
+  $("o-ratio-d").textContent="в сделке: "+fmt(REPORT_PS/MRKS_APPR,1);
+  $("o-conv").textContent=fmt(REPORT_PS/MRKS_APPR*S.mrks,2);
+  $("k-wacc").textContent=pct(r.w1)+" / "+pct(r.w2);
+  $("k-ronic").textContent=pct(r.implied,1);
+  $("k-tvshare").textContent=pct(r.pvTv/r.ev,0);
+  $("k-pe").textContent=fmt(r.eq/NI25,1)+"x";
+  $("k-pb").textContent=fmt(r.ps/BVPS_ADJ,2)+"x";
+  $("k-ev").textContent=fmt(r.ev/EBITDA25,2)+"x";
+  $("k-dy").textContent=pct(DPS24/r.ps,1);
+  $("k-eq").textContent=bln(r.eq);
+  renderBridge(r);renderTable(r);renderCapChart(r);renderHeat(r);
+  const base=compute(Object.assign({},BASE)).ps;
+  const e1=compute(Object.assign({},BASE,{tm:"ronic",ronicEqW:true})).ps;
+  const e1b=compute(Object.assign({},BASE,{tm:"ronic",ronic:10})).ps;
+  $("e1-imp").textContent=`Эффект: +${fmt(e1b-base,0)} ₽ (RONIC 10%) … +${fmt(e1-base,0)} ₽ (RONIC = WACC) на акцию`;
+  const e2=compute(Object.assign({},BASE,{useDTL:false})).ps;
+  $("e2-imp").textContent=`Эффект: +${fmt(e2-base,1)} ₽ на акцию`;
+  document.querySelectorAll("[data-preset]").forEach(b=>b.classList.toggle("on",b.dataset.preset===currentPreset()));
+}
+
+function currentPreset(){
+  const same=(a)=>Object.keys(a).every(k=>Math.abs((typeof a[k]==="number"?a[k]:0)-(typeof S[k]==="number"?S[k]:0))<1e-9&&(typeof a[k]!=="number"?a[k]===S[k]:true));
+  if(same(BASE)) return "report";
+  if(same(preset("term"))) return "term";
+  if(same(preset("all"))) return "all";
+  return "";
+}
+function preset(name){
+  const p=Object.assign({},BASE);
+  const w2=compute(BASE).w2*100;
+  if(name==="term"||name==="all"){p.tm="ronic";p.ronic=Math.round(w2*4)/4;}
+  if(name==="all"){p.useDTL=false;}
+  if(name==="dtl"){p.useDTL=false;}
+  return p;
+}
+
+for(const k in sliders){$(k).addEventListener("input",e=>{S[k]=parseFloat(e.target.value);render();});}
+$("useDTL").addEventListener("change",e=>{S.useDTL=e.target.checked;render();});
+$("useTP").addEventListener("change",e=>{S.useTP=e.target.checked;render();});
+document.querySelectorAll("[data-tm]").forEach(b=>b.addEventListener("click",()=>{S.tm=b.dataset.tm;if(S.tm==="ronic"&&S.ronic===BASE.ronic){S.ronic=Math.round(compute(S).w2*400)/4;}render();}));
+document.querySelectorAll("[data-preset]").forEach(b=>b.addEventListener("click",()=>{S=preset(b.dataset.preset);render();}));
+document.querySelectorAll("[data-fix]").forEach(b=>b.addEventListener("click",()=>{S=preset(b.dataset.fix);render();window.scrollTo({top:0,behavior:"smooth"});}));
+render();
+})();
+</script>
+
+</body>
+</html>

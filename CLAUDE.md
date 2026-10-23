@@ -31,5 +31,5 @@ python3 tools/check_site.py --fix --shots <папка-для-скриншото�
 
 ## Публикация
 - Коммит от `caplaoban-tech <caplaoban-tech@users.noreply.github.com>`, сообщение по-русски: что изменилось по сути.
-- После push проверить сборку Pages: `gh api repos/caplaoban-tech/caplaoban-tech.github.io/pages/builds/latest --jq .status` (из песочницы сам сайт не открывается).
+- После push проверить сборку Pages: `gh run list -L 1` (строка «pages build and deployment» со статусом success) (из песочницы сам сайт не открывается).
 - Рыночные цены для NCKL обновляет `.github/workflows/update-market.yml` по рабочим дням; новые входы для автообновления добавлять в `scripts/update_market.py`.

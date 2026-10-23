@@ -42,8 +42,8 @@
 
     <section id="calc" class="panel" aria-label="Оценка">
       <div class="eyebrow">Как построена оценка · по частям (SOTP) на денежных потоках</div>
-      <h2>Справедливая цена = три денежных потока − долг</h2>
-      <p class="note">Берём реальные денежные потоки FY2025 из отчётности по каждой части бизнеса, поправляем на сегодняшние цены сырья (каждая поправка видна), делим на требуемую доходность и вычитаем чистый долг. Ассоциаты считаем только в той части, что возвращается деньгами. Всё, что модель не учитывает, перечислено ниже.</p>
+      <h2>Справедливая цена = три денежных потока − скидка за невыплаченное − долг</h2>
+      <p class="note">Берём реальные денежные потоки FY2025 из отчётности по каждой части бизнеса, поправляем на сегодняшние цены сырья (каждая поправка видна), делим на требуемую доходность и вычитаем чистый долг. Ассоциаты считаем только в той части, что возвращается деньгами. Так же и с самой NCKL: дивиденд считаем полностью, а оставленное в компании — со скидкой, потому что решает, куда его тратить, контролёр (79,8%). Всё, что модель не учитывает, перечислено ниже.</p>
       <div class="seg" role="group" aria-label="Сценарии" id="scen"></div>
       <div class="calc">
         <div class="calc-bar" id="calc-bar" aria-live="polite">
@@ -59,7 +59,8 @@
           <div class="eyebrow" style="margin-top:6px">Оценка</div>
           <div class="ctl"><label for="y">Требуемая доходность <button type="button" class="q" data-term="yield" aria-label="Что это?">?</button> <output id="y-o"></output></label><input id="y" type="range" min="9" max="18" step="0.5"><small>Сколько процентов в год денежного потока вы хотите получать на вложенное. 13% ≈ доходность гособлигаций Индонезии ~6,5% + премия за риск акций.</small></div>
           <div class="ctl"><label for="ap">Пейаут ассоциатов <button type="button" class="q" data-term="ap" aria-label="Что это?">?</button> <output id="ap-o"></output></label><input id="ap" type="range" min="0" max="100" step="1"><small>Какая доля прибыли HPL, ONC и KPS дойдёт до NCKL деньгами. За 2024–2025 дошло 56%.</small></div>
-          <div class="ctl"><label for="po">Пейаут NCKL <button type="button" class="q" data-term="payout" aria-label="Что это?">?</button> <output id="po-o"></output></label><input id="po" type="range" min="20" max="70" step="5"><small>Исторически 30% от прибыли года.</small></div>
+          <div class="ctl"><label for="po">Пейаут NCKL <button type="button" class="q" data-term="payout" aria-label="Что это?">?</button> <output id="po-o"></output></label><input id="po" type="range" min="0" max="100" step="5"><small>Доля прибыли, которую NCKL платит дивидендами. За FY2025 — 30% (Rp42,64). Выплата не может превысить денежный поток.</small></div>
+          <div class="ctl"><label for="rv">Ценность невыплаченного рубля <button type="button" class="q" data-term="rv" aria-label="Что это?">?</button> <output id="rv-o"></output></label><input id="rv" type="range" min="40" max="100" step="5"><small>Сколько стоит для миноритария рупия, оставленная в компании, против рупии дивидендом. 100% — оставленное так же ценно, как выплаченное. <span id="rv-impl"></span></small></div>
           <button type="button" class="reset" id="reset">Вернуть «Сейчас»</button>
         </div>
         <div class="result">
@@ -177,7 +178,7 @@ function stacked(id, data, max) {
   $(id).replaceChildren(s);
 }
 
-Promise.all([fetch("../data/nckl.json?v=10").then(r => r.json()), fetch("../data/markets.json?v=1").then(r => r.json())]).then(([D, MK]) => { window.__MK = MK; return D; }).then(D => {
+Promise.all([fetch("../data/nckl.json?v=11").then(r => r.json()), fetch("../data/markets.json?v=1").then(r => r.json())]).then(([D, MK]) => { window.__MK = MK; return D; }).then(D => {
   const P = D.price.value;
   $("eyebrow").textContent = `${D.exchange} · ${D.ticker} · обновлено ${D.updated.split("-").reverse().join(".")}`;
   $("price").textContent = f0(P);
@@ -231,7 +232,7 @@ Promise.all([fetch("../data/nckl.json?v=10").then(r => r.json()), fetch("../data
 
   /* SOTP-модель */
   const S = D.sotp, R = S.fy25_ref, SHR = S.shares_m;
-  const C = { lme: $("lme"), co: $("co"), s: $("s"), hpm: $("hpm"), fx: $("fx"), y: $("y"), ap: $("ap"), po: $("po") };
+  const C = { lme: $("lme"), co: $("co"), s: $("s"), hpm: $("hpm"), fx: $("fx"), y: $("y"), ap: $("ap"), po: $("po"), rv: $("rv") };
   const dl = { lme: v => (v - R.lme) / 1000, co: v => v - R.co, s: v => v - R.s, hpm: v => v - R.hpm };
   function model(v) {
     const rows = S.streams.map(st => {
@@ -242,8 +243,12 @@ Promise.all([fetch("../data/nckl.json?v=10").then(r => r.json()), fetch("../data
       const cash = st.cash_based ? f * v.ap / 100 : f;
       return { st, adj, f, cash, val: cash / (v.y / 100) };
     });
-    const ev = rows.reduce((a, r) => a + r.val, 0), eq = ev - S.net_debt;
-    return { rows, ev, eq, ps: eq / SHR * 1e6 };
+    const fcf = rows.reduce((a, r) => a + r.cash, 0), ev = fcf / (v.y / 100);
+    /* прибыль акционерам в этих условиях: FY2025 + те же поправки на сырьё и курс */
+    const np = S.np_fy25 + rows.reduce((a, r) => a + r.f - r.st.fcf, 0);
+    const div = Math.max(0, Math.min(np * v.po / 100, fcf)), ret = fcf - div;
+    const disc = ret * (1 - v.rv / 100) / (v.y / 100), eq = ev - disc - S.net_debt;
+    return { rows, ev, fcf, np, div, ret, disc, eq, ps: eq / SHR * 1e6 };
   }
   const read = () => Object.fromEntries(Object.entries(C).map(([k, i]) => [k, +i.value]));
   const sg = v => (Math.abs(v) < 0.005 ? "0,00" : (v > 0 ? "+" : "−") + Math.abs(v).toLocaleString("ru-RU", { minimumFractionDigits: 2, maximumFractionDigits: 2 }));
@@ -252,7 +257,7 @@ Promise.all([fetch("../data/nckl.json?v=10").then(r => r.json()), fetch("../data
   function calc() {
     const v = read(), m = model(v), up = m.ps / P - 1;
     $("lme-o").textContent = f0(v.lme); $("co-o").textContent = v.co + "%"; $("s-o").textContent = f0(v.s);
-    $("hpm-o").textContent = (v.hpm > 0 ? "+" : "") + v.hpm; $("fx-o").textContent = f0(v.fx); $("y-o").textContent = f1(v.y) + "%"; $("ap-o").textContent = v.ap + "%"; $("po-o").textContent = v.po + "%";
+    $("hpm-o").textContent = (v.hpm > 0 ? "+" : "") + v.hpm; $("fx-o").textContent = f0(v.fx); $("y-o").textContent = f1(v.y) + "%"; $("ap-o").textContent = v.ap + "%"; $("po-o").textContent = v.po + "%"; $("rv-o").textContent = v.rv + "%";
     $("fair").textContent = f0(m.ps); $("bar-fair").textContent = f0(m.ps);
     const ut = `${up >= 0 ? "+" : ""}${Math.round(up * 100)}% к цене ${f0(P)}`;
     for (const id of ["upside", "bar-up"]) { const u = $(id); u.textContent = id === "bar-up" ? `${up >= 0 ? "+" : ""}${Math.round(up * 100)}%` : ut; u.className = "up " + (up >= 0 ? "pos" : "neg"); }
@@ -262,19 +267,24 @@ Promise.all([fetch("../data/nckl.json?v=10").then(r => r.json()), fetch("../data
       const adj = r.adj.lme + r.adj.co + r.adj.s + r.adj.hpm + r.adj.fx;
       h += `<tr><td>${esc(r.st.name)}</td><td>${t2(r.st.fcf)}</td><td>${sg(adj)}</td><td>${t2(r.f)}</td><td>${r.st.cash_based ? t2(r.cash) + ` <span class="muted">(${v.ap}%)</span>` : t2(r.cash)}</td><td>${f1(r.val)}</td><td class="me">${ps(r.val)}</td></tr>`;
     }
+    h += `<tr><td>= Денежный поток NCKL</td><td></td><td></td><td></td><td>${t2(m.fcf)}</td><td>${f1(m.ev)}</td><td class="me">${ps(m.ev)}</td></tr>`;
+    h += `<tr><td>из него дивидендами (${v.po}% прибыли ${t2(m.np)})</td><td></td><td></td><td></td><td>${t2(m.div)}</td><td></td><td></td></tr>`;
+    h += `<tr><td>− Скидка: остаётся в компании ${t2(m.ret)}, ценим в ${v.rv}%</td><td></td><td></td><td></td><td></td><td>−${f1(m.disc)}</td><td class="me">−${ps(m.disc)}</td></tr>`;
     h += `<tr><td>− Чистый долг</td><td></td><td></td><td></td><td></td><td>−${f1(S.net_debt)}</td><td class="me">−${ps(S.net_debt)}</td></tr>`;
     h += `<tr class="tot"><td>Итого: стоимость ÷ доходность ${f1(v.y)}%</td><td></td><td></td><td></td><td></td><td>${f1(m.eq)}</td><td class="me">${f0(m.ps)}</td></tr></tbody>`;
     $("wf").innerHTML = h;
     $("r-bv").textContent = "Rp " + f0(S.book_ps);
-    const np = 8.95 + m.rows.reduce((a, r) => a + r.f - r.st.fcf, 0);
-    $("r-dps").textContent = "Rp " + f0(np / SHR * 1e6 * v.po / 100);
+    $("r-dps").textContent = "Rp " + f0(m.div / SHR * 1e6);
+    /* какую ценность невыплаченного закладывает рынок при этом пейауте */
+    const need = (P * SHR / 1e6 + S.net_debt) * v.y / 100, impl = m.ret > 0 ? (need - m.div) / m.ret : NaN;
+    $("rv-impl").textContent = isFinite(impl) ? (impl > 1.2 ? `Цена ${f0(P)} выше модели даже при 100%.` : impl < 0 ? `Цена ${f0(P)} ниже стоимости одних дивидендов.` : `Цена ${f0(P)} соответствует ${Math.round(impl * 100)}% при этих условиях.`) : "";
     $("r-ldps").textContent = "Rp " + D.facts_div.last_dps.toLocaleString("ru-RU") + " (" + D.facts_div.for_year + ")";
     tornado(v);
   }
   function tornado(v) {
     const base = model(v).ps, items = [
       ["Сера", "s", x => f0(x)], ["Кобальт, %", "co", x => x + "%"], ["Никель", "lme", x => f0(x)],
-      ["Доходность, %", "y", x => x + "%"], ["Курс рупии", "fx", x => f0(x)], ["Пейаут ассоциатов", "ap", x => x + "%"], ["Лимонит к FY25", "hpm", x => (x > 0 ? "+" : "") + x]
+      ["Доходность, %", "y", x => x + "%"], ["Курс рупии", "fx", x => f0(x)], ["Пейаут ассоциатов", "ap", x => x + "%"], ["Лимонит к FY25", "hpm", x => (x > 0 ? "+" : "") + x], ["Пейаут NCKL", "po", x => x + "%"], ["Ценность невыплаченного", "rv", x => x + "%"]
     ].map(([lab, k, fm]) => { const [lo, hi] = S.ranges[k]; const a = model({ ...v, [k]: lo }).ps, b = model({ ...v, [k]: hi }).ps; return { lab, lo, hi, a, b, fm, span: Math.abs(b - a) }; })
      .sort((x, y) => y.span - x.span);
     const mn = Math.min(...items.flatMap(i => [i.a, i.b]), base, P) - 30, mx = Math.max(...items.flatMap(i => [i.a, i.b]), base, P) + 30;

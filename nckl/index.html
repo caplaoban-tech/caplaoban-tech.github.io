@@ -54,10 +54,10 @@
           <div class="ctl"><label for="co">Кобальт в MHP, % оплаты <button type="button" class="q" data-term="payable" aria-label="Что это?">?</button> <output id="co-o"></output></label><input id="co" type="range" min="40" max="95" step="1"><small>Payable упал с ~90% в августе до ~57% в конце сентября. <button type="button" class="qlink" data-term="why_payable">Почему падает скидка, а не цена?</button></small></div>
           <div class="ctl"><label for="s">Сера, US$/т <button type="button" class="q" data-term="sulfur" aria-label="Что это?">?</button> <output id="s-o"></output></label><input id="s" type="range" min="300" max="1400" step="5"><small>~11 т серы на тонну никеля в HPAL. Конец сентября — ~US$965, год назад ~US$250.</small></div>
           <div class="ctl"><label for="idr">Курс, рупий за доллар <button type="button" class="q" data-term="fx" aria-label="Что это?">?</button> <output id="idr-o"></output></label><input id="idr" type="range" min="15000" max="20000" step="100"><small>Выручка в долларах: слабая рупия повышает прибыль в рупиях.</small></div>
-          <div class="ctl"><label for="hpm">Цена лимонита по HPM, US$/т <button type="button" class="q" data-term="hpm" aria-label="Что это?">?</button> <output id="hpm-o"></output></label>
-            <input id="hpm" type="range" min="15" max="55" step="1">
-            <div class="seg" role="group" aria-label="Режим HPM"><button type="button" id="hpm-sept" aria-pressed="true">с 15.09.2026 · ~25</button><button type="button" id="hpm-apr" aria-pressed="false">апрель 2026 · ~45</button></div>
-            <small>Кто выигрывает от каждого решения министерства — в блоке «Кто забирает маржу руды» справа.</small></div>
+          <div class="ctl"><label for="hpm">Цена лимонита NCKL, изменение к сентябрю, US$/т <button type="button" class="q" data-term="hpm" aria-label="Что это?">?</button> <output id="hpm-o"></output></label>
+            <input id="hpm" type="range" min="-10" max="15" step="1">
+            <div class="seg" role="group" aria-label="Режим HPM"><button type="button" id="hpm-sept" aria-pressed="true">формула с 15.09.2026 · 0</button><button type="button" id="hpm-apr" aria-pressed="false">возврат к апрелю · ≈ +6</button></div>
+            <small>Фактически NCKL продаёт лимонит по ~US$10–18 за тонну (по выручке сегмента добычи), а не по формульным US$45. Поэтому решения по HPM двигают цену на единицы долларов. Кто выигрывает — в блоке «Кто забирает маржу руды».</small></div>
           <div class="ctl"><label for="pe">Множитель P/E <button type="button" class="q" data-term="pe" aria-label="Что это?">?</button> <output id="pe-o"></output></label><input id="pe" type="range" min="4" max="12" step="0.5"><small>INCO торгуется около 11x, MBMA около 20x, середина цикла для NCKL — 6–8x.</small></div>
           <div class="ctl"><label for="disc">Скидка к долям в ассоциатах <button type="button" class="q" data-term="discount" aria-label="Что это?">?</button> <output id="disc-o"></output></label><input id="disc" type="range" min="0" max="60" step="5"><small>Кэш HPL, ONC и KPS контролирует Lygend. Сейчас рынок даёт 30–40%; дивиденды ассоциатов её сожмут.</small></div>
           <div class="ctl"><label for="po">Пейаут NCKL <button type="button" class="q" data-term="payout" aria-label="Что это?">?</button> <output id="po-o"></output></label><input id="po" type="range" min="20" max="70" step="5"><small>Исторически 30%.</small></div>
@@ -156,7 +156,7 @@ function stacked(id, data, max) {
   $(id).replaceChildren(s);
 }
 
-fetch("../data/nckl.json?v=5").then(r => r.json()).then(D => {
+fetch("../data/nckl.json?v=6").then(r => r.json()).then(D => {
   const P = D.price.value, SH = D.shares_m, M = D.model;
   $("eyebrow").textContent = `${D.exchange} · ${D.ticker} · обновлено ${D.updated.split("-").reverse().join(".")}`;
   $("price").textContent = f0(P);
@@ -202,7 +202,7 @@ fetch("../data/nckl.json?v=5").then(r => r.json()).then(D => {
     C.lme.value = M.defaults.lme; C.co.value = M.defaults.co_payable; C.s.value = M.defaults.sulfur; C.idr.value = M.defaults.idr;
     C.hpm.value = M.defaults.hpm_lim; C.pe.value = M.defaults.pe; C.disc.value = M.defaults.discount; C.po.value = M.defaults.payout;
   };
-  function markHpm() { const v = +C.hpm.value; $("hpm-sept").setAttribute("aria-pressed", v === 25); $("hpm-apr").setAttribute("aria-pressed", v === 45); }
+  function markHpm() { const v = +C.hpm.value; $("hpm-sept").setAttribute("aria-pressed", v === 0); $("hpm-apr").setAttribute("aria-pressed", v === 6); }
   function calc() {
     const hl = +C.hpm.value, lme = +C.lme.value, co = +C.co.value, s = +C.s.value, idr = +C.idr.value, pe = +C.pe.value, disc = +C.disc.value / 100, po = +C.po.value / 100;
     const b = M.base, fx = Math.pow(idr / b.idr, M.idr_elasticity);
@@ -216,7 +216,7 @@ fetch("../data/nckl.json?v=5").then(r => r.json()).then(D => {
     const sg = v => (v > 0.04 ? "+" : v < -0.04 ? "−" : "") + f1(Math.abs(v)) + " трлн";
     $("h-own").textContent = sg(H.own * dh * fx); $("h-as").textContent = sg(H.assoc * dh * fx);
     $("h-net").textContent = sg((H.own + H.assoc) * dh * fx); $("h-pt").textContent = sg(H.partners * dh * fx);
-    $("hpm-o").textContent = "~" + hl; markHpm();
+    $("hpm-o").textContent = (hl > 0 ? "+" : "") + hl; markHpm();
     $("lme-o").textContent = f0(lme); $("co-o").textContent = co + "%"; $("s-o").textContent = f0(s); $("idr-o").textContent = f0(idr);
     $("pe-o").textContent = f1(pe) + "x"; $("disc-o").textContent = Math.round(disc * 100) + "%"; $("po-o").textContent = Math.round(po * 100) + "%";
     $("fair").textContent = f0(fair);
@@ -243,8 +243,8 @@ fetch("../data/nckl.json?v=5").then(r => r.json()).then(D => {
     C.lme.value = x.lme; C.co.value = x.co_payable; C.s.value = x.sulfur; C.disc.value = x.discount; C.hpm.value = x.hpm_lim;
     scen.querySelectorAll("button").forEach(z => z.setAttribute("aria-pressed", z === b)); calc(); });
   Object.values(C).forEach(i => { i.addEventListener("input", calc); i.addEventListener("change", calc); });
-  $("hpm-sept").addEventListener("click", () => { C.hpm.value = 25; calc(); });
-  $("hpm-apr").addEventListener("click", () => { C.hpm.value = 45; calc(); });
+  $("hpm-sept").addEventListener("click", () => { C.hpm.value = 0; calc(); });
+  $("hpm-apr").addEventListener("click", () => { C.hpm.value = 6; calc(); });
   $("reset").addEventListener("click", () => { setDefaults(); calc(); });
   setDefaults(); calc();
 }).catch(() => { document.querySelector("main").insertAdjacentHTML("afterbegin", '<p class="note">Не удалось загрузить данные компании. Обновите страницу.</p>'); });

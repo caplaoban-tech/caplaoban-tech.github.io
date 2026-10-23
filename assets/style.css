@@ -124,3 +124,21 @@ footer.bot{margin-top:28px;padding-top:16px;border-top:1px solid var(--line);fon
 
 .hpm-box{border:1px dashed var(--line);border-radius:12px;padding:10px 12px;display:flex;flex-direction:column;gap:6px}
 .ctl .seg{margin-top:2px}
+
+table.wf{font-size:13px}
+table.wf td:first-child{white-space:normal;min-width:150px}
+table.wf tr.tot td{font-weight:700;border-top:2px solid var(--ink)}
+details.how{border-top:1px solid var(--line);padding-top:10px}
+details.how summary{cursor:pointer;font-weight:600}
+details.how .stack{margin-top:10px}
+#scen{flex-wrap:wrap}
+@media (min-width:820px){.calc{grid-template-columns:.9fr 1.1fr}}
+.calc > *, .result > *, .stack > * {min-width:0}
+.torn{max-width:640px}
+.tr{display:flex;flex-direction:column;gap:4px;margin-bottom:8px}
+.tr-h{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;font-size:13px}
+.tr-h span{color:var(--muted);font-size:12px}
+.tr-t{position:relative;height:14px;background:var(--line);border-radius:4px}
+.tr-b{position:absolute;top:0;bottom:0;background:var(--ore);border-radius:4px}
+.tr-m{position:absolute;top:-3px;bottom:-3px;width:2px;background:var(--ink)}
+.tr-p{position:absolute;top:-3px;bottom:-3px;width:0;border-left:2px dashed var(--muted)}

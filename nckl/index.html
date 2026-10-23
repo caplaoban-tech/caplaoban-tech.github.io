@@ -12,13 +12,13 @@
 <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;800&family=Golos+Text:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
-<link rel="stylesheet" href="../assets/style.css?v=5">
+<link rel="stylesheet" href="../assets/style.css?v=9">
 </head>
 <body>
 <div class="wrap">
   <header class="top">
     <a class="brand" href="../"><img src="../assets/mark.svg" alt="">Cap Laoban</a>
-    <nav class="nav"><a href="#calc">Калькулятор</a><a href="#peers">Аналоги</a><a href="#risks">Риски</a><a href="#glossary">Словарь</a></nav>
+    <nav class="nav"><a href="#calc">Оценка</a><a href="#peers">Аналоги</a><a href="#risks">Риски</a><a href="#glossary">Словарь</a></nav>
   </header>
 
   <main class="stack">
@@ -40,56 +40,60 @@
       <p class="note" id="fv-note"></p>
     </section>
 
-    <section id="calc" class="panel" aria-label="Калькулятор">
-      <div class="eyebrow">Калькулятор «что если»</div>
-      <h2>Подвигайте сырьё — увидите цену акции</h2>
+    <section id="calc" class="panel" aria-label="Оценка">
+      <div class="eyebrow">Как построена оценка · по частям (SOTP) на денежных потоках</div>
+      <h2>Справедливая цена = три денежных потока − долг</h2>
+      <p class="note">Берём реальные денежные потоки FY2025 из отчётности по каждой части бизнеса, поправляем на сегодняшние цены сырья (каждая поправка видна), делим на требуемую доходность и вычитаем чистый долг. Ассоциаты считаем только в той части, что возвращается деньгами. Всё, что модель не учитывает, перечислено ниже.</p>
       <div class="seg" role="group" aria-label="Сценарии" id="scen"></div>
-      <p class="note" id="mkt-date"></p>
       <div class="calc">
         <div class="calc-bar" id="calc-bar" aria-live="polite">
-          <span>Справедливая цена</span><b class="num" id="bar-fair">—</b><span class="up" id="bar-up">—</span><span class="muted num" id="bar-pe"></span>
+          <span>Справедливая цена</span><b class="num" id="bar-fair">—</b><span class="up" id="bar-up">—</span>
         </div>
         <div class="stack">
-          <div class="ctl"><label for="lme">Никель LME, US$/т <button type="button" class="q" data-term="lme" aria-label="Что это?">?</button> <output id="lme-o"></output></label><input id="lme" type="range" min="13000" max="22000" step="50"><small>22.10 — ~US$16 090. Консенсус брокеров на 2026–27 — US$17–17,5 тыс.</small></div>
-          <div class="ctl"><label for="co">Кобальт в MHP, % оплаты <button type="button" class="q" data-term="payable" aria-label="Что это?">?</button> <output id="co-o"></output></label><input id="co" type="range" min="40" max="95" step="1"><small>Payable упал с ~90% в августе до ~57% в конце сентября. <button type="button" class="qlink" data-term="why_payable">Почему падает скидка, а не цена?</button></small></div>
-          <div class="ctl"><label for="s">Сера, US$/т <button type="button" class="q" data-term="sulfur" aria-label="Что это?">?</button> <output id="s-o"></output></label><input id="s" type="range" min="300" max="1400" step="5"><small>~11 т серы на тонну никеля в HPAL. Конец сентября — ~US$965, год назад ~US$250.</small></div>
-          <div class="ctl"><label for="idr">Курс, рупий за доллар <button type="button" class="q" data-term="fx" aria-label="Что это?">?</button> <output id="idr-o"></output></label><input id="idr" type="range" min="15000" max="20000" step="100"><small>Выручка в долларах: слабая рупия повышает прибыль в рупиях.</small></div>
-          <div class="ctl"><label for="hpm">Цена лимонита NCKL, изменение к сентябрю, US$/т <button type="button" class="q" data-term="hpm" aria-label="Что это?">?</button> <output id="hpm-o"></output></label>
-            <input id="hpm" type="range" min="-10" max="15" step="1">
-            <div class="seg" role="group" aria-label="Режим HPM"><button type="button" id="hpm-sept" aria-pressed="true">формула с 15.09.2026 · 0</button><button type="button" id="hpm-apr" aria-pressed="false">возврат к апрелю · ≈ +6</button></div>
-            <small>Фактически NCKL продаёт лимонит по ~US$10–18 за тонну (по выручке сегмента добычи), а не по формульным US$45. Поэтому решения по HPM двигают цену на единицы долларов. Кто выигрывает — в блоке «Кто забирает маржу руды».</small></div>
-          <div class="ctl"><label for="pe">Множитель P/E <button type="button" class="q" data-term="pe" aria-label="Что это?">?</button> <output id="pe-o"></output></label><input id="pe" type="range" min="4" max="12" step="0.5"><small>INCO торгуется около 11x, MBMA около 20x, середина цикла для NCKL — 6–8x.</small></div>
-          <div class="ctl"><label for="disc">Скидка к долям в ассоциатах <button type="button" class="q" data-term="discount" aria-label="Что это?">?</button> <output id="disc-o"></output></label><input id="disc" type="range" min="0" max="60" step="5"><small>Кэш HPL, ONC и KPS контролирует Lygend. Сейчас рынок даёт 30–40%; дивиденды ассоциатов её сожмут.</small></div>
-          <div class="ctl"><label for="po">Пейаут NCKL <button type="button" class="q" data-term="payout" aria-label="Что это?">?</button> <output id="po-o"></output></label><input id="po" type="range" min="20" max="70" step="5"><small>Исторически 30%.</small></div>
-          <button type="button" class="reset" id="reset">Вернуть базовый сценарий</button>
+          <div class="eyebrow">Сырьё</div>
+          <div class="ctl"><label for="lme">Никель LME, US$/т <button type="button" class="q" data-term="lme" aria-label="Что это?">?</button> <output id="lme-o"></output></label><input id="lme" type="range" min="13000" max="22000" step="50"><small>22.10 — ~US$16 090. FY2025 — ~US$15 300 (оценка).</small></div>
+          <div class="ctl"><label for="co">Кобальт в MHP, % оплаты <button type="button" class="q" data-term="payable" aria-label="Что это?">?</button> <output id="co-o"></output></label><input id="co" type="range" min="40" max="95" step="1"><small>Конец сентября ~57%, FY2025 ~75% (оценка). <button type="button" class="qlink" data-term="why_payable">Почему падает скидка, а не цена?</button></small></div>
+          <div class="ctl"><label for="s">Сера, US$/т <button type="button" class="q" data-term="sulfur" aria-label="Что это?">?</button> <output id="s-o"></output></label><input id="s" type="range" min="250" max="1400" step="5"><small>Конец сентября ~US$965, FY2025 ~US$400 (оценка).</small></div>
+          <div class="ctl"><label for="hpm">Цена лимонита NCKL к FY2025, US$/т <button type="button" class="q" data-term="hpm" aria-label="Что это?">?</button> <output id="hpm-o"></output></label><input id="hpm" type="range" min="-10" max="15" step="1"><small>Фактически NCKL продаёт лимонит по ~US$10–18 за тонну, поэтому решения по HPM двигают цену на единицы долларов.</small></div>
+          <div class="eyebrow" style="margin-top:6px">Оценка</div>
+          <div class="ctl"><label for="y">Требуемая доходность <button type="button" class="q" data-term="yield" aria-label="Что это?">?</button> <output id="y-o"></output></label><input id="y" type="range" min="9" max="18" step="0.5"><small>Сколько процентов в год денежного потока вы хотите получать на вложенное. 13% ≈ доходность гособлигаций Индонезии ~6,5% + премия за риск акций.</small></div>
+          <div class="ctl"><label for="ap">Пейаут ассоциатов <button type="button" class="q" data-term="ap" aria-label="Что это?">?</button> <output id="ap-o"></output></label><input id="ap" type="range" min="0" max="100" step="1"><small>Какая доля прибыли HPL, ONC и KPS дойдёт до NCKL деньгами. За 2024–2025 дошло 56%.</small></div>
+          <div class="ctl"><label for="po">Пейаут NCKL <button type="button" class="q" data-term="payout" aria-label="Что это?">?</button> <output id="po-o"></output></label><input id="po" type="range" min="20" max="70" step="5"><small>Исторически 30% от прибыли года.</small></div>
+          <button type="button" class="reset" id="reset">Вернуть «Сейчас»</button>
         </div>
         <div class="result">
-          <div class="eyebrow">Справедливая цена по модели</div>
+          <div class="eyebrow">Справедливая цена</div>
           <div><span class="big num" id="fair">—</span> <span class="muted">Rp</span></div>
           <div class="up" id="upside">—</div>
-          <div id="split"></div>
-          <div class="legend"><span><i style="background:var(--steel)"></i>Свой бизнес</span><span><i style="background:var(--ore)"></i>Доли в ассоциатах</span></div>
+          <div class="tbl"><table class="wf" id="wf"></table></div>
           <div class="rows">
-            <span>Прибыль акционерам</span><span id="r-np">—</span>
-            <span>— свой бизнес</span><span id="r-own">—</span>
-            <span>— ассоциаты</span><span id="r-as">—</span>
-            <span>Прибыль на акцию</span><span id="r-eps">—</span>
-            <span>P/E при текущей цене (по модели)</span><span id="r-pe">—</span>
-            <span>Дивиденд на акцию</span><span id="r-dps">—</span>
-            <span>Дивдоходность при текущей цене</span><span id="r-dy">—</span>
+            <span>Балансовая стоимость на акцию (пол)</span><span id="r-bv">—</span>
+            <span>Дивиденд по модели (пейаут × прибыль в этих условиях)</span><span id="r-dps">—</span>
+            <span>Последний дивиденд (факт)</span><span id="r-ldps">—</span>
           </div>
-          <div class="hpm-box">
-            <div class="eyebrow">Кто забирает маржу руды · к сентябрьской формуле</div>
-            <div class="rows">
-              <span>Добыча NCKL (100%)</span><span id="h-own">—</span>
-              <span>Доля NCKL в HPL и ONC</span><span id="h-as">—</span>
-              <span><b>Итого для NCKL</b></span><span id="h-net">—</span>
-              <span>Партнёрам по заводам (Lygend и др.)</span><span id="h-pt">—</span>
-            </div>
-          </div>
-          <p class="note" id="model-note"></p>
+          <p class="note" id="div-note"></p>
         </div>
       </div>
+
+      <div class="stack">
+        <h3>Что сильнее всего двигает цену</h3>
+        <p class="note">Каждое допущение меняется в разумном диапазоне, остальные — как сейчас. Чем длиннее полоса, тем внимательнее надо проверять это допущение.</p>
+        <div id="tornado" class="torn"></div>
+      </div>
+      <div class="stack">
+        <h3>Проверка модели на факте</h3>
+        <div class="rows" id="bt"></div>
+        <p class="note" id="bt-note"></p>
+      </div>
+
+      <details class="how">
+        <summary>Как посчитан каждый поток и откуда цифры</summary>
+        <div class="stack" id="how"></div>
+      </details>
+      <details class="how">
+        <summary>Что модель не учитывает</summary>
+        <ul class="list" id="noinc"></ul>
+      </details>
     </section>
 
     <div class="grid2">
@@ -156,17 +160,14 @@ function stacked(id, data, max) {
   $(id).replaceChildren(s);
 }
 
-fetch("../data/nckl.json?v=6").then(r => r.json()).then(D => {
-  const P = D.price.value, SH = D.shares_m, M = D.model;
+fetch("../data/nckl.json?v=9").then(r => r.json()).then(D => {
+  const P = D.price.value;
   $("eyebrow").textContent = `${D.exchange} · ${D.ticker} · обновлено ${D.updated.split("-").reverse().join(".")}`;
   $("price").textContent = f0(P);
   $("price-note").textContent = `Rp за акцию · ${D.price.date.split("-").reverse().join(".")} · ${D.price.source}`;
   $("verdict").textContent = `${D.verdict.label} · ${D.verdict.detail}`;
   $("kpis").innerHTML = D.kpi.map(k => `<div class="kpi"><b class="num">${k.v}</b><span>${esc(k.k)}</span></div>`).join("");
 
-  const fv = D.fair_value, lo = 500, hi = 1500, pos = v => ((v - lo) / (hi - lo)) * 100;
-  $("fv").innerHTML = `<div class="track"></div><div class="band" style="left:${pos(fv.base_lo)}%;width:${pos(fv.base_hi) - pos(fv.base_lo)}%"></div><div class="now" style="left:${pos(P)}%">сейчас ${f0(P)}<i></i></div>` +
-    [fv.bear, fv.base_lo, fv.base_hi, fv.bull].map(v => `<div class="tick" style="left:${pos(v)}%">${f0(v)}</div>`).join("");
 
   stacked("ebitda", D.ebitda_trn, 17);
   stacked("quarters", D.quarters_trn, 4);
@@ -177,8 +178,6 @@ fetch("../data/nckl.json?v=6").then(r => r.json()).then(D => {
   $("risk-list").innerHTML = D.risks.map(r => `<li><span class="dot" style="background:var(--${r.tone})"></span><span>${esc(r.text)}</span></li>`).join("");
   $("trig-list").innerHTML = D.triggers.map(t => `<li><span class="num" style="color:var(--red);font-weight:600;font-size:12px;min-width:62px">${esc(t.when)}</span><span>${esc(t.text)}</span></li>`).join("");
   $("sources").textContent = "Источники: " + D.sources.join("; ") + ".";
-  $("model-note").textContent = M.comment;
-  $("fv-note").textContent = fv.note;
   const GL = D.glossary || {};
   $("gloss").innerHTML = Object.entries(GL).filter(([k]) => k !== "why_payable").map(([k, g]) => `<div id="g-${k}"><dt>${esc(g.t)}</dt><dd>${esc(g.d)}</dd></div>`).join("") +
     (GL.why_payable ? `<div id="g-why_payable"><dt>${esc(GL.why_payable.t)}</dt><dd>${esc(GL.why_payable.d)}</dd></div>` : "");
@@ -194,58 +193,82 @@ fetch("../data/nckl.json?v=6").then(r => r.json()).then(D => {
   });
   $("pop-x").addEventListener("click", () => { pop.hidden = true; });
   document.addEventListener("keydown", e => { if (e.key === "Escape") pop.hidden = true; });
-  $("mkt-date").textContent = "Рынок на " + M.market_date + ".";
 
-  /* калькулятор */
-  const C = { lme: $("lme"), co: $("co"), s: $("s"), idr: $("idr"), hpm: $("hpm"), pe: $("pe"), disc: $("disc"), po: $("po") };
-  const setDefaults = () => {
-    C.lme.value = M.defaults.lme; C.co.value = M.defaults.co_payable; C.s.value = M.defaults.sulfur; C.idr.value = M.defaults.idr;
-    C.hpm.value = M.defaults.hpm_lim; C.pe.value = M.defaults.pe; C.disc.value = M.defaults.discount; C.po.value = M.defaults.payout;
-  };
-  function markHpm() { const v = +C.hpm.value; $("hpm-sept").setAttribute("aria-pressed", v === 0); $("hpm-apr").setAttribute("aria-pressed", v === 6); }
-  function calc() {
-    const hl = +C.hpm.value, lme = +C.lme.value, co = +C.co.value, s = +C.s.value, idr = +C.idr.value, pe = +C.pe.value, disc = +C.disc.value / 100, po = +C.po.value / 100;
-    const b = M.base, fx = Math.pow(idr / b.idr, M.idr_elasticity);
-    const H = M.per_1usd_hpm_lim, dh = hl - b.hpm_lim;
-    let own = M.own_base + M.per_1000_lme.own * (lme - b.lme) / 1000 + H.own * dh;
-    let as = M.assoc_base + M.per_1000_lme.assoc * (lme - b.lme) / 1000 + M.per_10pp_co.assoc * (co - b.co_payable) / 10 + M.per_100_sulfur.assoc * (s - b.sulfur) / 100 + H.assoc * dh;
-    own = Math.max(own, 0) * fx; as = Math.max(as, 0) * fx;
-    const np = own + as, eps = np / SH * 1e6;
-    const vOwn = own * pe, vAs = as * pe * (1 - disc), fair = (vOwn + vAs) / SH * 1e6;
-    const up = fair / P - 1, dps = eps * po;
-    const sg = v => (v > 0.04 ? "+" : v < -0.04 ? "−" : "") + f1(Math.abs(v)) + " трлн";
-    $("h-own").textContent = sg(H.own * dh * fx); $("h-as").textContent = sg(H.assoc * dh * fx);
-    $("h-net").textContent = sg((H.own + H.assoc) * dh * fx); $("h-pt").textContent = sg(H.partners * dh * fx);
-    $("hpm-o").textContent = (hl > 0 ? "+" : "") + hl; markHpm();
-    $("lme-o").textContent = f0(lme); $("co-o").textContent = co + "%"; $("s-o").textContent = f0(s); $("idr-o").textContent = f0(idr);
-    $("pe-o").textContent = f1(pe) + "x"; $("disc-o").textContent = Math.round(disc * 100) + "%"; $("po-o").textContent = Math.round(po * 100) + "%";
-    $("fair").textContent = f0(fair);
-    $("bar-fair").textContent = f0(fair);
-    const bu = $("bar-up"); bu.textContent = `${up >= 0 ? "+" : ""}${Math.round(up * 100)}%`; bu.className = "up " + (up >= 0 ? "pos" : "neg");
-    $("bar-pe").textContent = eps > 0 ? `P/E ${f1(P / eps)}x` : "";
-    [$("fair"), $("bar-fair")].forEach(n => { n.classList.remove("flash"); void n.offsetWidth; n.classList.add("flash"); });
-    const u = $("upside"); u.textContent = `${up >= 0 ? "+" : ""}${Math.round(up * 100)}% к цене ${f0(P)}`; u.className = "up " + (up >= 0 ? "pos" : "neg");
-    $("r-np").textContent = f1(np) + " трлн"; $("r-own").textContent = f1(own) + " трлн"; $("r-as").textContent = f1(as) + " трлн";
-    $("r-eps").textContent = "Rp " + f0(eps); $("r-pe").textContent = eps > 0 ? f1(P / eps) + "x" : "—";
-    $("r-dps").textContent = "Rp " + f0(dps); $("r-dy").textContent = f1(dps / P * 100) + "%";
-    /* полоса: из чего состоит справедливая цена */
-    const W = 520, tot = Math.max(vOwn + vAs, 1e-9), wO = W * vOwn / tot;
-    const sv = el("svg", { viewBox: `0 0 ${W} 46`, role: "img", "aria-label": "Разбивка справедливой цены" });
-    sv.appendChild(el("rect", { x: 0, y: 4, width: Math.max(wO - 2, 0), height: 22, rx: 3, style: "fill:var(--steel)" }));
-    sv.appendChild(el("rect", { x: wO, y: 4, width: Math.max(W - wO, 0), height: 22, rx: 3, style: "fill:var(--ore)" }));
-    sv.appendChild(el("text", { x: 0, y: 42 }, `свой ${f0(vOwn / SH * 1e6)}`));
-    sv.appendChild(el("text", { x: W, y: 42, "text-anchor": "end" }, `ассоциаты ${f0(vAs / SH * 1e6)}`));
-    $("split").replaceChildren(sv);
+  /* SOTP-модель */
+  const S = D.sotp, R = S.fy25_ref, SHR = S.shares_m;
+  const C = { lme: $("lme"), co: $("co"), s: $("s"), hpm: $("hpm"), y: $("y"), ap: $("ap"), po: $("po") };
+  const dl = { lme: v => (v - R.lme) / 1000, co: v => v - R.co, s: v => v - R.s, hpm: v => v - R.hpm };
+  function model(v) {
+    const rows = S.streams.map(st => {
+      const adj = {}; let f = st.fcf;
+      for (const k of ["lme", "co", "s", "hpm"]) { adj[k] = st.sens[k] * dl[k](v[k]); f += adj[k]; }
+      f = Math.max(f, 0);
+      const cash = st.cash_based ? f * v.ap / 100 : f;
+      return { st, adj, f, cash, val: cash / (v.y / 100) };
+    });
+    const ev = rows.reduce((a, r) => a + r.val, 0), eq = ev - S.net_debt;
+    return { rows, ev, eq, ps: eq / SHR * 1e6 };
   }
+  const read = () => Object.fromEntries(Object.entries(C).map(([k, i]) => [k, +i.value]));
+  const sg = v => (Math.abs(v) < 0.005 ? "0,00" : (v > 0 ? "+" : "−") + Math.abs(v).toLocaleString("ru-RU", { minimumFractionDigits: 2, maximumFractionDigits: 2 }));
+  const t2 = v => v.toLocaleString("ru-RU", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  const ps = v => f0(v / SHR * 1e6);
+  function calc() {
+    const v = read(), m = model(v), up = m.ps / P - 1;
+    $("lme-o").textContent = f0(v.lme); $("co-o").textContent = v.co + "%"; $("s-o").textContent = f0(v.s);
+    $("hpm-o").textContent = (v.hpm > 0 ? "+" : "") + v.hpm; $("y-o").textContent = f1(v.y) + "%"; $("ap-o").textContent = v.ap + "%"; $("po-o").textContent = v.po + "%";
+    $("fair").textContent = f0(m.ps); $("bar-fair").textContent = f0(m.ps);
+    const ut = `${up >= 0 ? "+" : ""}${Math.round(up * 100)}% к цене ${f0(P)}`;
+    for (const id of ["upside", "bar-up"]) { const u = $(id); u.textContent = id === "bar-up" ? `${up >= 0 ? "+" : ""}${Math.round(up * 100)}%` : ut; u.className = "up " + (up >= 0 ? "pos" : "neg"); }
+    [$("fair"), $("bar-fair")].forEach(n => { n.classList.remove("flash"); void n.offsetWidth; n.classList.add("flash"); });
+    let h = `<thead><tr><th>Поток, Rp трлн/год</th><th>FY25</th><th>±сырьё</th><th>теперь</th><th>деньгами</th><th>стоим.</th><th>Rp/акц</th></tr></thead><tbody>`;
+    for (const r of m.rows) {
+      const adj = r.adj.lme + r.adj.co + r.adj.s + r.adj.hpm;
+      h += `<tr><td>${esc(r.st.name)}</td><td>${t2(r.st.fcf)}</td><td>${sg(adj)}</td><td>${t2(r.f)}</td><td>${r.st.cash_based ? t2(r.cash) + ` <span class="muted">(${v.ap}%)</span>` : t2(r.cash)}</td><td>${f1(r.val)}</td><td class="me">${ps(r.val)}</td></tr>`;
+    }
+    h += `<tr><td>− Чистый долг</td><td></td><td></td><td></td><td></td><td>−${f1(S.net_debt)}</td><td class="me">−${ps(S.net_debt)}</td></tr>`;
+    h += `<tr class="tot"><td>Итого: стоимость ÷ доходность ${f1(v.y)}%</td><td></td><td></td><td></td><td></td><td>${f1(m.eq)}</td><td class="me">${f0(m.ps)}</td></tr></tbody>`;
+    $("wf").innerHTML = h;
+    $("r-bv").textContent = "Rp " + f0(S.book_ps);
+    const np = 8.95 + m.rows.reduce((a, r) => a + r.f - r.st.fcf, 0);
+    $("r-dps").textContent = "Rp " + f0(np / SHR * 1e6 * v.po / 100);
+    $("r-ldps").textContent = "Rp " + D.facts_div.last_dps.toLocaleString("ru-RU") + " (" + D.facts_div.for_year + ")";
+    tornado(v);
+  }
+  function tornado(v) {
+    const base = model(v).ps, items = [
+      ["Сера", "s", x => f0(x)], ["Кобальт, %", "co", x => x + "%"], ["Никель", "lme", x => f0(x)],
+      ["Доходность, %", "y", x => x + "%"], ["Пейаут ассоциатов", "ap", x => x + "%"], ["Лимонит к FY25", "hpm", x => (x > 0 ? "+" : "") + x]
+    ].map(([lab, k, fm]) => { const [lo, hi] = S.ranges[k]; const a = model({ ...v, [k]: lo }).ps, b = model({ ...v, [k]: hi }).ps; return { lab, lo, hi, a, b, fm, span: Math.abs(b - a) }; })
+     .sort((x, y) => y.span - x.span);
+    const mn = Math.min(...items.flatMap(i => [i.a, i.b]), base, P) - 30, mx = Math.max(...items.flatMap(i => [i.a, i.b]), base, P) + 30;
+    const X = p => (p - mn) / (mx - mn) * 100;
+    $("tornado").innerHTML = items.map(it => { const l = X(Math.min(it.a, it.b)), r = X(Math.max(it.a, it.b));
+      return `<div class="tr"><div class="tr-h"><b>${esc(it.lab)}</b><span class="num">${it.fm(it.lo)} → ${f0(it.a)} · ${it.fm(it.hi)} → ${f0(it.b)}</span></div>
+      <div class="tr-t"><i class="tr-b" style="left:${l}%;width:${Math.max(r - l, .8)}%"></i><i class="tr-m" style="left:${X(base)}%"></i><i class="tr-p" style="left:${X(P)}%"></i></div></div>`; }).join("") +
+      `<div class="legend"><span><i style="background:var(--ink);width:2px"></i>модель ${f0(base)}</span><span><i style="background:none;border-left:2px dashed var(--muted);width:0"></i>цена ${f0(P)}</span></div>`;
+  }
+  $("how").innerHTML = S.streams.map(st => `<div><h3>${esc(st.name)}</h3><p>${esc(st.calc)}</p><p class="note">Откуда: ${esc(st.src)}</p><p class="note">Чувствительность: ${esc(st.sens_note)}</p></div>`).join("") +
+    `<div><h3>Чистый долг</h3><p class="note">${esc(S.net_debt_note)}</p></div><div><h3>Условия FY2025</h3><p class="note">${esc(R.note)}</p></div>`;
+  $("noinc").innerHTML = S.not_included.map(t => `<li><span class="dot" style="background:var(--warn)"></span><span>${esc(t)}</span></li>`).join("");
+  $("div-note").textContent = D.facts_div.note;
+  { const B = S.backtest, mb = model({ ...S.defaults, ...B.cond }), ra = mb.rows.find(r => r.st.id === "assoc");
+    $("bt").innerHTML = `<span>Ассоциаты по модели в условиях ${esc(B.label)}</span><span>${t2(ra.f)} трлн</span><span>Ассоциаты по отчёту, ${esc(B.label)}</span><span>${t2(B.actual.assoc)} трлн</span>`;
+    $("bt-note").textContent = B.note; }
   const scen = $("scen");
-  scen.innerHTML = M.scenarios.map(x => `<button type="button" data-id="${x.id}" aria-pressed="${x.id === "now"}">${esc(x.label)}</button>`).join("");
-  scen.addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return; const x = M.scenarios.find(z => z.id === b.dataset.id);
-    C.lme.value = x.lme; C.co.value = x.co_payable; C.s.value = x.sulfur; C.disc.value = x.discount; C.hpm.value = x.hpm_lim;
-    scen.querySelectorAll("button").forEach(z => z.setAttribute("aria-pressed", z === b)); calc(); });
-  Object.values(C).forEach(i => { i.addEventListener("input", calc); i.addEventListener("change", calc); });
-  $("hpm-sept").addEventListener("click", () => { C.hpm.value = 0; calc(); });
-  $("hpm-apr").addEventListener("click", () => { C.hpm.value = 6; calc(); });
+  scen.innerHTML = S.scenarios.map(x => `<button type="button" data-id="${x.id}" aria-pressed="${x.id === "now"}">${esc(x.label)}</button>`).join("");
+  const apply = x => { C.lme.value = x.lme; C.co.value = x.co; C.s.value = x.s; C.hpm.value = x.hpm; scen.querySelectorAll("button").forEach(z => z.setAttribute("aria-pressed", z.dataset.id === x.id)); calc(); };
+  scen.addEventListener("click", e => { const b = e.target.closest("button"); if (b) apply(S.scenarios.find(z => z.id === b.dataset.id)); });
+  const setDefaults = () => { const d = S.defaults; for (const k in C) C[k].value = d[k]; scen.querySelectorAll("button").forEach(z => z.setAttribute("aria-pressed", z.dataset.id === "now")); };
+  Object.values(C).forEach(i => { i.addEventListener("input", () => { scen.querySelectorAll("button").forEach(z => z.setAttribute("aria-pressed", "false")); calc(); }); });
   $("reset").addEventListener("click", () => { setDefaults(); calc(); });
+  /* шкала справедливой цены — из этой же модели */
+  const base0 = { ...S.defaults }, sc = id => model({ ...base0, ...S.scenarios.find(z => z.id === id) }).ps;
+  const FV = { bear: sc("bear"), lo: Math.min(sc("now"), sc("fy25")), hi: Math.max(sc("now"), sc("fy25")), bull: sc("mid") };
+  const lo0 = Math.min(400, FV.bear - 50), hi0 = Math.max(1500, FV.bull + 80), pos2 = v => ((v - lo0) / (hi0 - lo0)) * 100;
+  $("fv").innerHTML = `<div class="track"></div><div class="band" style="left:${pos2(FV.lo)}%;width:${pos2(FV.hi) - pos2(FV.lo)}%"></div><div class="now" style="left:${pos2(P)}%">сейчас ${f0(P)}<i></i></div>` +
+    [FV.bear, FV.lo, FV.hi, FV.bull].map(x => `<div class="tick" style="left:${pos2(x)}%">${f0(x)}</div>`).join("");
+  $("fv-note").textContent = `Медвежий ${f0(FV.bear)} · «Сейчас» и «Как в FY2025» ${f0(FV.lo)}–${f0(FV.hi)} · середина цикла ${f0(FV.bull)}. ` + D.fair_value.note;
   setDefaults(); calc();
 }).catch(() => { document.querySelector("main").insertAdjacentHTML("afterbegin", '<p class="note">Не удалось загрузить данные компании. Обновите страницу.</p>'); });
 </script>

@@ -12,13 +12,13 @@
 <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;800&family=Golos+Text:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
-<link rel="stylesheet" href="../assets/style.css?v=3">
+<link rel="stylesheet" href="../assets/style.css?v=4">
 </head>
 <body>
 <div class="wrap">
   <header class="top">
     <a class="brand" href="../"><img src="../assets/mark.svg" alt="">Cap Laoban</a>
-    <nav class="nav"><a href="#calc">Калькулятор</a><a href="#peers">Аналоги</a><a href="#risks">Риски</a></nav>
+    <nav class="nav"><a href="#calc">Калькулятор</a><a href="#peers">Аналоги</a><a href="#risks">Риски</a><a href="#glossary">Словарь</a></nav>
   </header>
 
   <main class="stack">
@@ -50,16 +50,16 @@
           <span>Справедливая цена</span><b class="num" id="bar-fair">—</b><span class="up" id="bar-up">—</span><span class="muted num" id="bar-pe"></span>
         </div>
         <div class="stack">
-          <div class="ctl"><label for="lme">Никель LME, US$/т <output id="lme-o"></output></label><input id="lme" type="range" min="13000" max="22000" step="50"><small>22.10 — ~US$16 090. Консенсус брокеров на 2026–27 — US$17–17,5 тыс.</small></div>
-          <div class="ctl"><label for="co">Кобальт в MHP, % оплаты <output id="co-o"></output></label><input id="co" type="range" min="40" max="95" step="1"><small>Payable упал с ~90% в августе до ~57% в конце сентября.</small></div>
-          <div class="ctl"><label for="s">Сера, US$/т <output id="s-o"></output></label><input id="s" type="range" min="300" max="1400" step="5"><small>~11 т серы на тонну никеля в HPAL. Конец сентября — ~US$965, год назад ~US$250.</small></div>
-          <div class="ctl"><label for="idr">Курс, рупий за доллар <output id="idr-o"></output></label><input id="idr" type="range" min="15000" max="20000" step="100"><small>Выручка в долларах: слабая рупия повышает прибыль в рупиях.</small></div>
-          <div class="ctl"><label>Формула цены руды (HPM)</label>
+          <div class="ctl"><label for="lme">Никель LME, US$/т <button type="button" class="q" data-term="lme" aria-label="Что это?">?</button> <output id="lme-o"></output></label><input id="lme" type="range" min="13000" max="22000" step="50"><small>22.10 — ~US$16 090. Консенсус брокеров на 2026–27 — US$17–17,5 тыс.</small></div>
+          <div class="ctl"><label for="co">Кобальт в MHP, % оплаты <button type="button" class="q" data-term="payable" aria-label="Что это?">?</button> <output id="co-o"></output></label><input id="co" type="range" min="40" max="95" step="1"><small>Payable упал с ~90% в августе до ~57% в конце сентября. <button type="button" class="qlink" data-term="why_payable">Почему падает скидка, а не цена?</button></small></div>
+          <div class="ctl"><label for="s">Сера, US$/т <button type="button" class="q" data-term="sulfur" aria-label="Что это?">?</button> <output id="s-o"></output></label><input id="s" type="range" min="300" max="1400" step="5"><small>~11 т серы на тонну никеля в HPAL. Конец сентября — ~US$965, год назад ~US$250.</small></div>
+          <div class="ctl"><label for="idr">Курс, рупий за доллар <button type="button" class="q" data-term="fx" aria-label="Что это?">?</button> <output id="idr-o"></output></label><input id="idr" type="range" min="15000" max="20000" step="100"><small>Выручка в долларах: слабая рупия повышает прибыль в рупиях.</small></div>
+          <div class="ctl"><label>Формула цены руды (HPM) <button type="button" class="q" data-term="hpm" aria-label="Что это?">?</button></label>
             <div class="seg" role="group" aria-label="Режим HPM"><button type="button" id="hpm-sept" aria-pressed="true">с 15.09.2026</button><button type="button" id="hpm-apr" aria-pressed="false">апрель 2026</button></div>
             <small>В сентябре цену лимонита срезали на 45%: маржа ушла от добычи (100% NCKL) к заводам (40–45%).</small></div>
-          <div class="ctl"><label for="pe">Множитель P/E <output id="pe-o"></output></label><input id="pe" type="range" min="4" max="12" step="0.5"><small>INCO торгуется около 11x, MBMA около 20x, середина цикла для NCKL — 6–8x.</small></div>
-          <div class="ctl"><label for="disc">Скидка к долям в ассоциатах <output id="disc-o"></output></label><input id="disc" type="range" min="0" max="60" step="5"><small>Кэш HPL, ONC и KPS контролирует Lygend. Сейчас рынок даёт 30–40%; дивиденды ассоциатов её сожмут.</small></div>
-          <div class="ctl"><label for="po">Пейаут NCKL <output id="po-o"></output></label><input id="po" type="range" min="20" max="70" step="5"><small>Исторически 30%.</small></div>
+          <div class="ctl"><label for="pe">Множитель P/E <button type="button" class="q" data-term="pe" aria-label="Что это?">?</button> <output id="pe-o"></output></label><input id="pe" type="range" min="4" max="12" step="0.5"><small>INCO торгуется около 11x, MBMA около 20x, середина цикла для NCKL — 6–8x.</small></div>
+          <div class="ctl"><label for="disc">Скидка к долям в ассоциатах <button type="button" class="q" data-term="discount" aria-label="Что это?">?</button> <output id="disc-o"></output></label><input id="disc" type="range" min="0" max="60" step="5"><small>Кэш HPL, ONC и KPS контролирует Lygend. Сейчас рынок даёт 30–40%; дивиденды ассоциатов её сожмут.</small></div>
+          <div class="ctl"><label for="po">Пейаут NCKL <button type="button" class="q" data-term="payout" aria-label="Что это?">?</button> <output id="po-o"></output></label><input id="po" type="range" min="20" max="70" step="5"><small>Исторически 30%.</small></div>
           <button type="button" class="reset" id="reset">Вернуть базовый сценарий</button>
         </div>
         <div class="result">
@@ -106,6 +106,11 @@
       <p class="note">Слабое место NCKL — руда: собственных доказанных запасов на ~3,5 года при текущей добыче. Рынок за это даёт скидку.</p>
     </section>
 
+    <section id="glossary" class="panel" aria-label="Словарь">
+      <h2>Словарь</h2>
+      <dl class="gloss" id="gloss"></dl>
+    </section>
+
     <div class="grid2">
       <section id="risks" class="panel" aria-label="Риски"><h2>Что может сломать историю</h2><ul class="list" id="risk-list"></ul></section>
       <section class="panel" aria-label="Календарь"><h2>Что ждём</h2><ul class="list" id="trig-list"></ul></section>
@@ -117,6 +122,7 @@
     <span>Модель упрощённая: чувствительности выведены из отчётности и данных Lygend. Это инструмент «что если», не прогноз и не индивидуальная инвестиционная рекомендация.</span>
   </footer>
 </div>
+<div class="pop" id="pop" role="dialog" aria-modal="false" hidden><button type="button" class="pop-x" id="pop-x" aria-label="Закрыть">×</button><b id="pop-t"></b><p id="pop-d"></p></div>
 
 <script>
 const $ = id => document.getElementById(id);
@@ -140,7 +146,7 @@ function stacked(id, data, max) {
   $(id).replaceChildren(s);
 }
 
-fetch("../data/nckl.json?v=3").then(r => r.json()).then(D => {
+fetch("../data/nckl.json?v=4").then(r => r.json()).then(D => {
   const P = D.price.value, SH = D.shares_m, M = D.model;
   $("eyebrow").textContent = `${D.exchange} · ${D.ticker} · обновлено ${D.updated.split("-").reverse().join(".")}`;
   $("price").textContent = f0(P);
@@ -163,6 +169,21 @@ fetch("../data/nckl.json?v=3").then(r => r.json()).then(D => {
   $("sources").textContent = "Источники: " + D.sources.join("; ") + ".";
   $("model-note").textContent = M.comment;
   $("fv-note").textContent = fv.note;
+  const GL = D.glossary || {};
+  $("gloss").innerHTML = Object.entries(GL).filter(([k]) => k !== "why_payable").map(([k, g]) => `<div id="g-${k}"><dt>${esc(g.t)}</dt><dd>${esc(g.d)}</dd></div>`).join("") +
+    (GL.why_payable ? `<div id="g-why_payable"><dt>${esc(GL.why_payable.t)}</dt><dd>${esc(GL.why_payable.d)}</dd></div>` : "");
+  const pop = $("pop");
+  document.addEventListener("click", e => {
+    const b = e.target.closest("[data-term]");
+    if (b) { e.preventDefault(); const g = GL[b.dataset.term]; if (!g) return;
+      $("pop-t").textContent = g.t; $("pop-d").textContent = g.d; pop.hidden = false;
+      const r = b.getBoundingClientRect(), w = Math.min(340, window.innerWidth - 32);
+      pop.style.width = w + "px"; pop.style.left = Math.max(16, Math.min(r.left, window.innerWidth - w - 16)) + "px";
+      pop.style.top = (window.scrollY + r.bottom + 8) + "px"; return; }
+    if (!e.target.closest("#pop")) pop.hidden = true;
+  });
+  $("pop-x").addEventListener("click", () => { pop.hidden = true; });
+  document.addEventListener("keydown", e => { if (e.key === "Escape") pop.hidden = true; });
   $("mkt-date").textContent = "Рынок на " + M.market_date + ".";
 
   /* калькулятор */

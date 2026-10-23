@@ -107,3 +107,17 @@ button.reset{align-self:flex-start;border:1px solid var(--line);background:var(-
 .dot{width:8px;height:8px;border-radius:50%;margin-top:7px}
 footer.bot{margin-top:28px;padding-top:16px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);display:flex;flex-direction:column;gap:6px}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* подсказки и словарь */
+.q{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;border:1px solid var(--line);background:var(--bg);color:var(--muted);font:600 12px/1 var(--body);cursor:pointer;margin-left:4px;vertical-align:1px;padding:0}
+.q:hover{color:var(--red);border-color:var(--red)}
+.qlink{border:0;background:none;color:var(--red);font:inherit;padding:0;cursor:pointer;text-decoration:underline dotted}
+.ctl label{align-items:center}
+.ctl label output{margin-left:auto}
+.pop{position:absolute;z-index:20;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px 34px 12px 14px;box-shadow:0 10px 30px rgba(0,0,0,.18);font-size:14px;display:flex;flex-direction:column;gap:6px}
+.pop[hidden]{display:none}
+.pop-x{position:absolute;top:6px;right:8px;border:0;background:none;color:var(--muted);font-size:20px;line-height:1;cursor:pointer}
+.gloss{margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px 20px}
+.gloss div{display:flex;flex-direction:column;gap:2px}
+.gloss dt{font-weight:600;font-size:14px}
+.gloss dd{margin:0;font-size:13px;color:var(--muted)}

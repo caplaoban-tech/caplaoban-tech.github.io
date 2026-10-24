@@ -69,6 +69,7 @@ def save(p, o): p.write_text(json.dumps(o, ensure_ascii=False, indent=2) + "\n",
 
 def history(name, date, value):
     p = DATA / "history" / f"{name}.csv"
+    p.parent.mkdir(parents=True, exist_ok=True)
     rows = list(csv.reader(p.open(encoding="utf-8"))) if p.exists() else [["date", "value"]]
     if not any(r[0] == date for r in rows[1:]):
         rows.append([date, str(value)])

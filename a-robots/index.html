@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Китай: роботы и ИИ дешевле 15 прибылей — Cap Laoban</title>
+<meta name="description" content="Материковые A-акции Китая по теме роботов и ИИ с P/E ниже 15 и 15–20: у кого профильная выручка реальна, кто на пике цикла памяти и кто дёшев не случайно.">
+<meta property="og:title" content="Китай: роботы и ИИ дешевле 15 прибылей — Cap Laoban">
+<meta property="og:description" content="452 A-акции с P/E ниже 15; в теме роботов и ИИ — 13, без видимой ловушки — одна.">
+<meta property="og:image" content="../assets/og.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@800&family=Golos+Text:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+/* Скрининг A-акций по теме роботов и ИИ: разделы по меткам, фильтры по подтеме и диапазону P/E. Строки — список, не таблица: на 400 px пять чисел и причина читаются только так. */
+::selection{background:var(--red-soft);color:var(--ink)}
+:focus-visible{outline:2px solid var(--red);outline-offset:2px;border-radius:6px}
+.lead{font-size:17px;max-width:62ch}
+.facts{margin:0;padding-left:1.1em;display:flex;flex-direction:column;gap:8px;max-width:68ch}
+.facts li::marker{color:var(--red)}
+.facts b{font-weight:600}
+details.more>summary{cursor:pointer;font-weight:600;color:var(--red);list-style:none;display:inline-flex;gap:6px;align-items:center}
+details.more>summary::-webkit-details-marker{display:none}
+details.more>summary::before{content:"";width:7px;height:7px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(-45deg);transition:transform .2s ease-out}
+details.more[open]>summary::before{transform:rotate(45deg)}
+.cmp{width:100%;border-collapse:collapse;font-size:13px;min-width:560px}
+.cmp th,.cmp td{text-align:left;vertical-align:top;padding:8px 10px;border-top:1px solid var(--line)}
+.cmp th{font-weight:600;color:var(--muted);font-size:12px}
+.cmp td:first-child{font-weight:600;width:28%}
+.src{margin:0;padding-left:1.4em;font-size:12px;color:var(--muted);display:flex;flex-direction:column;gap:6px;overflow-wrap:anywhere}
+.funnel{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 10px;font-size:14px;color:var(--muted)}
+.funnel b{font-family:var(--display);font-size:22px;color:var(--ink);font-variant-numeric:tabular-nums}
+.funnel .arr{color:var(--line)}
+.tools{display:flex;flex-wrap:wrap;gap:10px;align-items:center;position:sticky;top:0;z-index:2;background:var(--bg);padding:10px 0;border-bottom:1px solid var(--line)}
+.tools label{font-size:13px;color:var(--muted)}
+.tools select{font:inherit;font-size:14px;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:8px 32px 8px 12px;appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--muted) 50%),linear-gradient(135deg,var(--muted) 50%,transparent 50%);background-position:calc(100% - 16px) 55%,calc(100% - 11px) 55%;background-size:5px 5px;background-repeat:no-repeat;max-width:100%}
+.tools select:hover{border-color:var(--muted)}
+.tools .count{font-size:13px;color:var(--muted);margin-left:auto}
+.bucket{border:1px solid var(--line);border-radius:16px;background:var(--panel)}
+.bucket>summary{cursor:pointer;list-style:none;padding:16px 18px;display:grid;grid-template-columns:1fr auto;gap:4px 12px;align-items:center}
+.bucket>summary::-webkit-details-marker{display:none}
+.bucket>summary h2{font-size:18px}
+.bucket>summary .n{font-family:var(--mono);font-size:14px;font-variant-numeric:tabular-nums}
+.bucket>summary p{grid-column:1/-1;font-size:13px;color:var(--muted);max-width:68ch}
+.bucket>summary:hover h2{color:var(--red)}
+.bucket.muted>summary .n{color:var(--muted)} .bucket.good>summary .n{color:var(--good)} .bucket.warn>summary .n{color:var(--warn)} .bucket.bad>summary .n{color:var(--bad)}
+.bucket[hidden],.ahrow[hidden]{display:none}
+.ahrows{list-style:none;margin:0;padding:0 18px 6px}
+.ahrow{padding:14px 0;border-top:1px solid var(--line);display:grid;gap:6px}
+.ahrow .hd{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px}
+.ahrow .nm{font-weight:600}
+.ahrow .cn{color:var(--muted);font-size:13px}
+.ahrow .tk{font-family:var(--mono);font-size:12px;color:var(--muted);margin-left:auto;white-space:nowrap}
+.ahrow .grp{font-size:12px;color:var(--muted)}
+.ahrow .mx{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:4px 8px;margin:2px 0}
+.ahrow .mx div{display:flex;flex-direction:column;min-width:0}
+.ahrow .mx dt{font-size:11px;color:var(--muted);line-height:1.25}
+.ahrow .mx dd{margin:0;font-family:var(--mono);font-size:14px;font-variant-numeric:tabular-nums}
+.ahrow .mx dd.hi{color:var(--bad)}
+.ahrow .why{font-size:13.5px;line-height:1.5;max-width:72ch}
+.ahrow .why a{font-weight:600;white-space:nowrap}
+.ahrow .link{font-size:13px;line-height:1.45;color:var(--ink);max-width:72ch}
+.ahrow .link b{font-weight:600}
+.ahrow .tag{font-size:11px;font-family:var(--mono);border:1px solid var(--line);border-radius:999px;padding:1px 8px;color:var(--muted);white-space:nowrap}
+.ahrow .tag.no{color:var(--bad);border-color:var(--bad)}
+.empty{padding:14px 18px;font-size:13px;color:var(--muted)}
+@media (max-width:420px){.ahrow .mx{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (prefers-reduced-motion:reduce){details.more>summary::before{transition:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="brand" href="../"><img src="../assets/mark.svg" alt="" width="34" height="34">Cap Laoban</a>
+    <nav class="nav"><a href="#list">Компании</a><a href="#method">Метод</a><a href="../ah/">A+H</a></nav>
+  </header>
+
+  <main class="stack" style="gap:28px">
+    <section class="stack">
+      <h1>Роботы и ИИ в Китае дешевле 15 прибылей почти не бывают без причины: из 13 компаний без видимой ловушки — одна</h1>
+      <p class="note"><span class="num" id="dates">Цены на 23.10.2026 · обновлено 25.10.2026</span><br>Все мультипликаторы — к цене A-акции на материке (Шанхай, Шэньчжэнь). Для компаний, у которых есть и H-акция в Гонконге, отдельно указан P/E к цене H.</p>
+      <p class="lead">Мы взяли все акции материкового Китая, оставили прибыльные, не мельче 5 млрд юаней и дешевле 15 годовых прибылей, нашли среди них связанные с роботами и искусственным интеллектом и проверили по структуре выручки, насколько эта связь реальна. Затем — тот же фильтр ловушек и пика цикла, что для <a href="../ah/">пар A+H</a>.</p>
+      <div class="funnel" aria-label="Как сокращался список">
+        <span><b id="f-all">5572</b> A-акций</span><span class="arr" aria-hidden="true">→</span>
+        <span><b id="f-pe15">452</b> с P/E ниже 15</span><span class="arr" aria-hidden="true">→</span>
+        <span><b id="f-theme">13</b> в теме роботов и ИИ</span><span class="arr" aria-hidden="true">→</span>
+        <span><b id="f-cand">1</b> кандидат</span>
+      </div>
+    </section>
+
+    <section class="panel" aria-labelledby="key-h">
+      <h2 id="key-h">Что получилось</h2>
+      <ul class="facts">
+        <li><b>Биржевые ярлыки раздуты.</b> Ярлык «роботы», «искусственный интеллект», «чипы», DeepSeek или «дата-центры» есть у <span id="f-tagged">150</span> из 452 дешёвых акций — в том числе у издательств, платных дорог и электростанций. Мы проверили структуру выручки у 32 компаний; у 8 из них связь оказалась только на ярлыке.</li>
+        <li><b>Дешёвая память — это пик цикла.</b> Производители и дистрибьюторы памяти стоят 9–13 прибылей, но прибыль за год выросла в десятки раз на взлёте цен. На средней прибыли 2021–25 тот же P/E — от 150 до 680.</li>
+        <li><b>Часть низких P/E — разовая прибыль.</b> У трёх компаний основная деятельность почти не приносит денег, а прибыль дала продажа активов или переоценка вложений.</li>
+        <li><b>Если поднять планку до P/E 20</b>, кандидатов становится больше: Hikvision, Desay SV, Foryou, Meyer, Newland. Ещё две компании — CRRC Times Electric и Woer — дешевле покупать в Гонконге: к цене H их P/E около 7–8.</li>
+        <li><b>Купить A-акцию иностранцу</b> можно только через Stock Connect и только из его списка. Все компании ниже в нём есть.</li>
+      </ul>
+    </section>
+
+    <section class="stack" id="list" aria-labelledby="list-h">
+      <h2 id="list-h">Компании по итогам фильтра</h2>
+      <div class="tools">
+        <label for="tier">P/E</label>
+        <select id="tier"><option value="lt15">ниже 15</option><option value="15_20">15–20</option><option value="">все</option></select>
+        <label for="sub">Подтема</label>
+        <select id="sub"><option value="">Все подтемы</option></select>
+        <span class="count num" id="count" aria-live="polite"></span>
+      </div>
+      <div class="stack" id="buckets"></div>
+    </section>
+
+    <section class="panel" id="method" aria-labelledby="method-h">
+      <h2 id="method-h">Как считали</h2>
+      <ul class="facts">
+        <li><b>Отбор:</b> все A-акции на 23.10.2026 (<span id="m-all">5572</span>). Убрали ST и *ST (<span id="m-st">195</span>), акции младше года (<span id="m-young">165</span>), убыточные (<span id="m-loss">1463</span>), капитализацию меньше 5 млрд юаней (<span id="m-small">1371</span>) и P/E от 15 (<span id="m-pehi">1926</span>) [В: Tushare], расчёт [Б].</li>
+        <li><b>P/E:</b> цена A-акции к прибыли акционеров за последние 12 месяцев. Отчёт за III квартал 2026 вышел пока у немногих; у остальных прибыль — до 30.06.2026.</li>
+        <li><b>P/E на средней прибыли:</b> та же цена к средней прибыли 2021–2025. У цикличных компаний он показывает, сколько акция стоит вне пика; у растущих он выше текущего, и это не минус.</li>
+        <li><b>Связь с темой:</b> сначала биржевые ярлыки 同花顺, затем структура выручки по продуктам из годового отчёта за 2025 г. [А, через Tushare]. Реальная — профильная выручка от 30% или профильный продукт — основа бизнеса; частичная — от 5 до 30%; меньше 5% — ярлык натянут. Станки и автоматические линии мы засчитали в «Автоматизацию», хотя это не роботы.</li>
+        <li><b>Stock Connect:</b> список northbound на 23.10.2026 [В: Tushare]. Дивидендная доходность — к цене A, до налога.</li>
+        <li><b>Это быстрый фильтр, не разбор.</b> Залоги акций и аудиторские заключения проверены, связанные стороны и качество дебиторки — нет. Метка говорит, куда смотреть дальше, а не что покупать.</li>
+        <li><b>Сокращения:</b> OCF — денежный поток от операций; ROE — прибыль к капиталу; P/B — цена к балансовой стоимости; TTM — последние 12 месяцев; H1 — первое полугодие; ADAS — системы помощи водителю; HUD — проекция на лобовое стекло; SSD — твердотельный накопитель.</li>
+      </ul>
+    </section>
+  </main>
+</div>
+<script>
+(function(){
+  "use strict";
+  var $ = function(id){ return document.getElementById(id); };
+  var fmt = function(v, d){ return v == null ? "—" : v.toLocaleString("ru-RU", {minimumFractionDigits: d, maximumFractionDigits: d}); };
+  var esc = function(s){ return String(s).replace(/[&<>"]/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c]; }); };
+
+  fetch("../data/a_robots.json").then(function(r){ return r.json(); }).then(function(d){
+    var f = d.funnel;
+    $("dates").textContent = "Цены на " + d.price_date + " · обновлено " + d.updated.split("-").reverse().join(".");
+    $("f-all").textContent = f.all; $("m-all").textContent = f.all;
+    $("f-pe15").textContent = f.pe15; $("f-theme").textContent = f.theme15; $("f-tagged").textContent = f.tagged;
+    $("m-st").textContent = f.st; $("m-young").textContent = f.young; $("m-loss").textContent = f.loss; $("m-small").textContent = f.small; $("m-pehi").textContent = f.pe_hi;
+    $("f-cand").textContent = d.companies.filter(function(c){ return c.tier === "lt15" && c.label === "Кандидат"; }).length;
+
+    var subs = Array.from(new Set(d.companies.map(function(c){ return c.sub; }))).sort(function(a, b){ return a.localeCompare(b, "ru"); });
+    $("sub").insertAdjacentHTML("beforeend", subs.map(function(g){ return '<option value="' + esc(g) + '">' + esc(g) + "</option>"; }).join(""));
+
+    var row = function(c){
+      var avgHi = c.pe_avg != null && c.pe != null && c.pe_avg > c.pe * 1.5;
+      var link = (c.link === "натянутая" ? "Связь натянута" : "Связь " + c.link) + (c.share != null ? " — " + fmt(c.share, 0) + "% выручки" : "");
+      return '<li class="ahrow" data-sub="' + esc(c.sub) + '" data-tier="' + c.tier + '">' +
+        '<div class="hd"><span class="nm">' + esc(c.name) + '</span><span class="cn">' + esc(c.cn) + '</span>' +
+        '<span class="tk">' + esc(c.a) + (c.h ? " · " + esc(c.h.replace(".HK", "")) : "") + "</span></div>" +
+        '<div class="hd"><span class="grp">' + esc(c.sub) + "</span>" +
+          '<span class="tag">P/E ' + (c.tier === "lt15" ? "&lt; 15" : "15–20") + "</span>" +
+          '<span class="tag' + (c.sc ? "" : " no") + '">Stock Connect: ' + (c.sc ? "да" : "нет") + "</span>" +
+          (c.label === "Ярлык натянут" ? '<span class="tag">бизнес: ' + esc(c.fin_label.toLowerCase()) + "</span>" : "") + "</div>" +
+        '<dl class="mx">' +
+          "<div><dt>P/E(A)</dt><dd>" + fmt(c.pe, 1) + "</dd></div>" +
+          (c.pe_h != null ? "<div><dt>P/E(H)</dt><dd>" + fmt(c.pe_h, 1) + "</dd></div>"
+                          : "<div><dt>P/E на ср. прибыли</dt><dd" + (avgHi ? ' class="hi"' : "") + ">" + fmt(c.pe_avg, 1) + "</dd></div>") +
+          "<div><dt>Див. A</dt><dd>" + (c.dv == null ? "—" : fmt(c.dv, 1) + "%") + "</dd></div>" +
+          "<div><dt>P/B(A)</dt><dd>" + fmt(c.pb, 2) + "</dd></div>" +
+          "<div><dt>Капит., млрд ¥</dt><dd>" + fmt(c.mv, 0) + "</dd></div>" +
+        "</dl>" +
+        '<p class="link"><b>' + esc(link) + ".</b> " + esc(c.evidence) + "</p>" +
+        '<p class="why">' + esc(c.reason) + (c.h ? ' <a href="../ah/">Скрининг A+H →</a>' : "") +
+          (c.full ? ' <a href="' + esc(c.full) + '">полный разбор →</a>' : "") + "</p></li>";
+    };
+
+    $("buckets").innerHTML = d.labels.map(function(l, i){
+      var list = d.companies.filter(function(c){ return c.label === l.id; })
+        .sort(function(a, b){ return (a.pe || 99) - (b.pe || 99); });
+      return '<details class="bucket ' + l.tone + '" data-label="' + esc(l.id) + '"' + (i === 0 ? " open" : "") + ">" +
+        "<summary><h2>" + esc(l.id) + '</h2><span class="n">' + list.length + "</span><p>" + esc(l.what) + "</p></summary>" +
+        '<ul class="ahrows">' + list.map(row).join("") + '</ul><p class="empty" hidden>Таких компаний при этом фильтре нет.</p></details>';
+    }).join("");
+
+    var apply = function(){
+      var g = $("sub").value, t = $("tier").value, total = 0;
+      document.querySelectorAll(".bucket").forEach(function(b){
+        var n = 0;
+        b.querySelectorAll(".ahrow").forEach(function(r){ var on = (!g || r.dataset.sub === g) && (!t || r.dataset.tier === t); r.hidden = !on; if (on) n++; });
+        b.querySelector(".n").textContent = n;
+        b.querySelector(".empty").hidden = n > 0;
+        total += n;
+      });
+      $("count").textContent = "показано " + total;
+    };
+    $("sub").addEventListener("change", apply);
+    $("tier").addEventListener("change", apply);
+    apply();
+  }).catch(function(){
+    $("buckets").innerHTML = '<p class="note">Не удалось загрузить данные. Обновите страницу.</p>';
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,5 +1,5 @@
 [
-  {"ticker": "NCKL", "name": "Harita Nickel", "sector": "Никель · HPAL", "price": 785, "verdict": "Держать", "tone": "warn", "updated": "2026-10-23", "url": "nckl/"},
+  {"ticker": "NCKL", "name": "Harita Nickel", "sector": "Никель · HPAL", "price": 785, "verdict": "Держать", "tone": "warn", "updated": "2026-10-24", "url": "nckl/"},
   {"ticker": "BMRI", "name": "Bank Mandiri", "sector": "Банки", "soon": true},
   {"ticker": "TLKM", "name": "Telkom Indonesia", "sector": "Телеком", "soon": true},
   {"ticker": "LSIP", "name": "London Sumatra", "sector": "Плантации CPO", "soon": true},

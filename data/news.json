@@ -1,4 +1,5 @@
 [
+  { "date": "2026-10-24", "tickers": ["NCKL"], "title": "NCKL: доля в новом капексе HPL/ONC по проспекту Lygend ≈ Rp7,5 трлн взносом в капитал; акции ассоциатов заложены под кредиты Lygend", "src": "Cap Laoban", "url": "nckl/" },
   { "date": "2026-10-22", "tickers": ["NCKL"], "title": "Китайские производители обсуждают сокращение MHP на 50% и NPI на 20% в Индонезии", "src": "Reuters, SMM", "url": "https://news.metal.com/newscontent/104173852-smm-analysis-indonesian-nickel-output-cut-talk-gathers-pace-but-the-case-for-cutting-diverges-across-the-supply-chain" },
   { "date": "2026-10-22", "tickers": ["IDX"], "title": "Прабово о возможном понижении статуса MSCI: «Индонезия не дрогнет». IHSG +1,7%", "src": "Warta Ekonomi", "url": "https://wartaekonomi.co.id/read642729/ihsg-bangkit-17-ke-level-5419-usai-prabowo-tantang-msci" },
   { "date": "2026-10-21", "tickers": ["NCKL"], "title": "LME никель выше US$16 000 на ожиданиях сокращений", "src": "Bloomberg / The Edge", "url": "https://theedgemalaysia.com/node/822689" },

@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Китай A+H: 121 компания дешевле 15 прибылей — Cap Laoban</title>
+<meta name="description" content="Компании, чьи акции торгуются и в Гонконге, и на материке: чем H-акции отличаются от A-акций и кто из дешёвых прошёл фильтр ловушек и пика цикла.">
+<meta property="og:title" content="Китай A+H: кто дешёв не случайно — Cap Laoban">
+<meta property="og:description" content="210 пар A/H, 121 с P/E H-акции ниже 15, после фильтра — 36 кандидатов.">
+<meta property="og:image" content="../assets/og.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@800&family=Golos+Text:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+/* Страница-скрининг: короткая справка, затем разделы по меткам фильтра. Строки — список, не таблица: на 400 px пять чисел и причина читаются только так. */
+::selection{background:var(--red-soft);color:var(--ink)}
+:focus-visible{outline:2px solid var(--red);outline-offset:2px;border-radius:6px}
+.lead{font-size:17px;max-width:62ch}
+.facts{margin:0;padding-left:1.1em;display:flex;flex-direction:column;gap:8px;max-width:68ch}
+.facts li::marker{color:var(--red)}
+.facts b{font-weight:600}
+details.more>summary{cursor:pointer;font-weight:600;color:var(--red);list-style:none;display:inline-flex;gap:6px;align-items:center}
+details.more>summary::-webkit-details-marker{display:none}
+details.more>summary::before{content:"";width:7px;height:7px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(-45deg);transition:transform .2s ease-out}
+details.more[open]>summary::before{transform:rotate(45deg)}
+.cmp{width:100%;border-collapse:collapse;font-size:13px;min-width:560px}
+.cmp th,.cmp td{text-align:left;vertical-align:top;padding:8px 10px;border-top:1px solid var(--line)}
+.cmp th{font-weight:600;color:var(--muted);font-size:12px}
+.cmp td:first-child{font-weight:600;width:28%}
+.src{margin:0;padding-left:1.4em;font-size:12px;color:var(--muted);display:flex;flex-direction:column;gap:6px;overflow-wrap:anywhere}
+.funnel{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 10px;font-size:14px;color:var(--muted)}
+.funnel b{font-family:var(--display);font-size:22px;color:var(--ink);font-variant-numeric:tabular-nums}
+.funnel .arr{color:var(--line)}
+.tools{display:flex;flex-wrap:wrap;gap:10px;align-items:center;position:sticky;top:0;z-index:2;background:var(--bg);padding:10px 0;border-bottom:1px solid var(--line)}
+.tools label{font-size:13px;color:var(--muted)}
+.tools select{font:inherit;font-size:14px;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:8px 32px 8px 12px;appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--muted) 50%),linear-gradient(135deg,var(--muted) 50%,transparent 50%);background-position:calc(100% - 16px) 55%,calc(100% - 11px) 55%;background-size:5px 5px;background-repeat:no-repeat;max-width:100%}
+.tools select:hover{border-color:var(--muted)}
+.tools .count{font-size:13px;color:var(--muted);margin-left:auto}
+.bucket{border:1px solid var(--line);border-radius:16px;background:var(--panel)}
+.bucket>summary{cursor:pointer;list-style:none;padding:16px 18px;display:grid;grid-template-columns:1fr auto;gap:4px 12px;align-items:center}
+.bucket>summary::-webkit-details-marker{display:none}
+.bucket>summary h2{font-size:18px}
+.bucket>summary .n{font-family:var(--mono);font-size:14px;font-variant-numeric:tabular-nums}
+.bucket>summary p{grid-column:1/-1;font-size:13px;color:var(--muted);max-width:68ch}
+.bucket>summary:hover h2{color:var(--red)}
+.bucket.good>summary .n{color:var(--good)} .bucket.warn>summary .n{color:var(--warn)} .bucket.bad>summary .n{color:var(--bad)}
+.bucket[hidden],.ahrow[hidden]{display:none}
+.ahrows{list-style:none;margin:0;padding:0 18px 6px}
+.ahrow{padding:14px 0;border-top:1px solid var(--line);display:grid;gap:6px}
+.ahrow .hd{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px}
+.ahrow .nm{font-weight:600}
+.ahrow .cn{color:var(--muted);font-size:13px}
+.ahrow .tk{font-family:var(--mono);font-size:12px;color:var(--muted);margin-left:auto;white-space:nowrap}
+.ahrow .grp{font-size:12px;color:var(--muted)}
+.ahrow .mx{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:4px 8px;margin:2px 0}
+.ahrow .mx div{display:flex;flex-direction:column;min-width:0}
+.ahrow .mx dt{font-size:11px;color:var(--muted);line-height:1.25}
+.ahrow .mx dd{margin:0;font-family:var(--mono);font-size:14px;font-variant-numeric:tabular-nums}
+.ahrow .mx dd.hi{color:var(--bad)}
+.ahrow .why{font-size:13.5px;line-height:1.5;max-width:72ch}
+.empty{padding:14px 18px;font-size:13px;color:var(--muted)}
+@media (max-width:420px){.ahrow .mx{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (prefers-reduced-motion:reduce){details.more>summary::before{transition:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="brand" href="../"><img src="../assets/mark.svg" alt="" width="34" height="34">Cap Laoban</a>
+    <nav class="nav"><a href="#ah">A и H</a><a href="#list">Компании</a><a href="#method">Метод</a></nav>
+  </header>
+
+  <main class="stack" style="gap:28px">
+    <section class="stack">
+      <h1>121 китайская компания стоит в Гонконге дешевле 15 годовых прибылей. Без видимой ловушки — 36</h1>
+      <p class="note num" id="dates">Цены на 23.10.2026 · обновлено 25.10.2026</p>
+      <p class="lead">Эти компании торгуются сразу на двух биржах: в Гонконге (H-акции) и на материке (A-акции). Акции одни и те же, а цены разные: в Гонконге обычно дешевле. Мы взяли все такие пары, оставили те, где гонконгская акция стоит меньше 15 годовых прибылей, и проверили, почему они дешёвые.</p>
+      <div class="funnel" aria-label="Как сокращался список">
+        <span><b id="f-pairs">210</b> пар A+H</span><span class="arr" aria-hidden="true">→</span>
+        <span><b id="f-pe15">121</b> с P/E(H) ниже 15</span><span class="arr" aria-hidden="true">→</span>
+        <span><b id="f-cand">36</b> кандидатов</span>
+      </div>
+    </section>
+
+    <section class="panel" id="ah" aria-labelledby="ah-h">
+      <h2 id="ah-h">Чем H-акция отличается от A-акции</h2>
+      <ul class="facts">
+        <li><b>Права одинаковые.</b> С 2023 года A и H считаются одним классом акций. Отдельно держатели H голосуют только при уходе компании с биржи или выкупе у миноритариев: нужно не меньше 75% их голосов «за» и не больше 10% «против». Это их главная защита.</li>
+        <li><b>Дивиденд на акцию один и тот же.</b> По H его платят в гонконгских долларах по курсу, который выбирает компания. Налог для иностранца обычно 10% и по A, и по H.</li>
+        <li><b>Перевести A в H или обратно нельзя.</b> Поэтому разница в цене держится годами: материковые инвесторы платят за A-акции больше, а покупая H через Stock Connect, отдают с дивидендов 20%.</li>
+        <li><b>Купить иностранцу проще H:</b> подойдёт любой международный брокер. A доступны только через Stock Connect и только из его списка.</li>
+        <li><b>Торговля разная.</b> У H нет дневного лимита цены, расчёты T+2. У A лимит ±10% (на ChiNext и STAR ±20%): в день «на лимите» продать нельзя.</li>
+      </ul>
+      <details class="more">
+        <summary>Таблица «A против H», 20 строк</summary>
+        <div class="tbl" style="margin-top:12px"><table class="cmp" id="cmp"><thead><tr><th scope="col">Параметр</th><th scope="col">A-акции</th><th scope="col">H-акции</th></tr></thead><tbody></tbody></table></div>
+        <p class="note" style="margin-top:10px">Нормы на 24.10.2026. Часть подтверждена только пересказами юрфирм; налоги в своей стране уточняйте у налогового консультанта.</p>
+      </details>
+      <details class="more">
+        <summary>Источники справки</summary>
+        <ol class="src" id="src" style="margin-top:12px"></ol>
+      </details>
+    </section>
+
+    <section class="stack" id="list" aria-labelledby="list-h">
+      <h2 id="list-h">Компании по итогам фильтра</h2>
+      <div class="tools">
+        <label for="grp">Отрасль</label>
+        <select id="grp"><option value="">Все отрасли</option></select>
+        <span class="count num" id="count" aria-live="polite"></span>
+      </div>
+      <div class="stack" id="buckets"></div>
+    </section>
+
+    <section class="panel" id="method" aria-labelledby="method-h">
+      <h2 id="method-h">Как считали</h2>
+      <ul class="facts">
+        <li><b>P/E(H):</b> цена H-акции к прибыли акционеров за последние 12 месяцев. Прибыль у обеих линий одна, поэтому P/E(H) = P/E(A) ÷ (1 + премия A к H). Прибыль взята из последнего вышедшего отчёта: у большинства до 30.06.2026, у части до 30.09.2026 [В: Tushare], расчёт [Б].</li>
+        <li><b>P/E на средней прибыли:</b> та же цена к средней прибыли 2021–2025. У цикличных компаний он показывает, сколько акция стоит вне пика; у растущих он выше текущего P/E, и это не минус.</li>
+        <li><b>Премия A к H</b> показывает, насколько материковая акция дороже гонконгской. Дивидендная доходность считается к цене H, до налога.</li>
+        <li><b>Это быстрый фильтр, не разбор.</b> Аудиторские заключения и залоги акций проверены выборочно, проблемные кредиты банков — нет. Метка говорит, куда смотреть дальше, а не что покупать.</li>
+        <li><b>Сокращения в пояснениях:</b> TTM — последние 12 месяцев; OCF — денежный поток от операций; ND/EBITDA — чистый долг к прибыли до процентов, налогов и амортизации; ROE — прибыль к капиталу; P/B — цена к балансовой стоимости; H1 — первое полугодие.</li>
+        <li>Убыточные компании (29) и пары без данных (1) в список не вошли; ещё 59 стоят дороже 15 прибылей.</li>
+      </ul>
+    </section>
+  </main>
+</div>
+<script>
+(function(){
+  "use strict";
+  var $ = function(id){ return document.getElementById(id); };
+  var fmt = function(v, d){ return v == null ? "—" : v.toLocaleString("ru-RU", {minimumFractionDigits: d, maximumFractionDigits: d}); };
+  var esc = function(s){ return String(s).replace(/[&<>"]/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c]; }); };
+
+  fetch("../data/ah.json").then(function(r){ return r.json(); }).then(function(d){
+    $("dates").textContent = "Цены на " + d.price_date + " · обновлено " + d.updated.split("-").reverse().join(".");
+    $("f-pairs").textContent = d.funnel.pairs;
+    $("f-pe15").textContent = d.funnel.pe15;
+    $("f-cand").textContent = d.companies.filter(function(c){ return c.label === "Кандидат"; }).length;
+
+    $("cmp").tBodies[0].innerHTML = d.compare.map(function(r){
+      return "<tr><td>" + esc(r[0]) + "</td><td>" + esc(r[1]) + "</td><td>" + esc(r[2]) + "</td></tr>";
+    }).join("");
+    $("src").innerHTML = d.sources.map(function(s){
+      return "<li>" + esc(s).replace(/(https?:\/\/[^\s;,)]+)/g, '<a href="$1" rel="noopener">$1</a>') + "</li>";
+    }).join("");
+
+    var groups = Array.from(new Set(d.companies.map(function(c){ return c.group; }))).sort(function(a, b){ return a.localeCompare(b, "ru"); });
+    $("grp").insertAdjacentHTML("beforeend", groups.map(function(g){ return '<option value="' + esc(g) + '">' + esc(g) + "</option>"; }).join(""));
+
+    var row = function(c){
+      var avgHi = c.pe_avg != null && c.pe_h != null && c.pe_avg > c.pe_h * 1.5;
+      return '<li class="ahrow" data-group="' + esc(c.group) + '">' +
+        '<div class="hd"><span class="nm">' + esc(c.name) + '</span><span class="cn">' + esc(c.cn) + '</span>' +
+        '<span class="tk">' + esc(c.h.replace(".HK", "")) + " · " + esc(c.a) + "</span></div>" +
+        '<span class="grp">' + esc(c.group) + "</span>" +
+        '<dl class="mx">' +
+          "<div><dt>P/E(H)</dt><dd>" + fmt(c.pe_h, 1) + "</dd></div>" +
+          "<div><dt>P/E на ср. прибыли</dt><dd" + (avgHi ? ' class="hi"' : "") + ">" + fmt(c.pe_avg, 1) + "</dd></div>" +
+          "<div><dt>Див. H</dt><dd>" + (c.dv_h == null ? "—" : fmt(c.dv_h, 1) + "%") + "</dd></div>" +
+          "<div><dt>P/B(H)</dt><dd>" + fmt(c.pb_h, 2) + "</dd></div>" +
+          "<div><dt>Премия A/H</dt><dd>" + (c.prem == null ? "—" : (c.prem > 0 ? "+" : "") + fmt(c.prem, 0) + "%") + "</dd></div>" +
+        "</dl>" +
+        '<p class="why">' + esc(c.reason) + "</p></li>";
+    };
+
+    $("buckets").innerHTML = d.labels.map(function(l, i){
+      var list = d.companies.filter(function(c){ return c.label === l.id; })
+        .sort(function(a, b){ return (a.pe_h || 99) - (b.pe_h || 99); });
+      return '<details class="bucket ' + l.tone + '" data-label="' + esc(l.id) + '"' + (i === 0 ? " open" : "") + ">" +
+        "<summary><h2>" + esc(l.id) + '</h2><span class="n">' + list.length + "</span><p>" + esc(l.what) + "</p></summary>" +
+        '<ul class="ahrows">' + list.map(row).join("") + '</ul><p class="empty" hidden>В этой отрасли таких компаний нет.</p></details>';
+    }).join("");
+
+    var apply = function(){
+      var g = $("grp").value, total = 0;
+      document.querySelectorAll(".bucket").forEach(function(b){
+        var n = 0;
+        b.querySelectorAll(".ahrow").forEach(function(r){ var on = !g || r.dataset.group === g; r.hidden = !on; if (on) n++; });
+        b.querySelector(".n").textContent = n;
+        b.querySelector(".empty").hidden = n > 0;
+        total += n;
+      });
+      $("count").textContent = (g ? "в отрасли " : "всего ") + total;
+    };
+    $("grp").addEventListener("change", apply);
+    apply();
+  }).catch(function(){
+    $("buckets").innerHTML = '<p class="note">Не удалось загрузить данные. Обновите страницу.</p>';
+  });
+})();
+</script>
+</body>
+</html>

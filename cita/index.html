@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CITA Cita Mineral Investindo — Cap Laoban</title>
+<meta name="description" content="Cita Mineral Investindo (CITA): справедливая цена, из чего она складывается, сравнение с аналогами, риски и калькулятор «что если».">
+<meta property="og:title" content="CITA Cita Mineral Investindo — Cap Laoban">
+<meta property="og:description" content="Cita Mineral Investindo (CITA): справедливая цена, из чего она складывается, сравнение с аналогами, риски и калькулятор «что если».">
+<meta property="og:image" content="/assets/og.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;800&family=Golos+Text:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="/assets/style.css?v=11">
+</head>
+<!-- Страница собрана из templates/company. Все цифры — в ../data/<data-file>. Разметку руками не править: правится JSON. -->
+<body data-file="cita.json">
+<div class="wrap">
+  <header class="top">
+    <a class="brand" href="/"><img src="/assets/mark.svg" alt="">Cap Laoban</a>
+    <nav class="nav"><a href="#calc">Оценка</a><a href="#market">Данные</a><a href="#peers">Аналоги</a><a href="#risks">Риски</a><a href="#glossary">Словарь</a></nav>
+  </header>
+
+  <main class="stack">
+    <section class="stack" style="padding-block:4px 2px">
+      <div class="eyebrow" id="eyebrow"></div>
+      <h1 id="headline">Загружаю разбор…</h1>
+      <div style="display:flex;align-items:baseline;gap:12px;flex-wrap:wrap">
+        <span class="big num" id="price">—</span>
+        <span class="muted" id="price-note"></span>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center"><span class="chip mute" id="verdict">—</span><span class="note" id="verdict-detail"></span></div>
+    </section>
+
+    <section class="kpis" id="kpis" aria-label="Ключевые цифры"></section>
+
+    <section class="panel" aria-label="Справедливая цена">
+      <h2>Сколько стоит</h2>
+      <div class="fv" id="fv" role="img" aria-label="Шкала справедливой цены"></div>
+      <p class="note" id="fv-note"></p>
+    </section>
+
+    <section id="calc" class="panel" aria-label="Оценка">
+      <div class="eyebrow" id="val-method"></div>
+      <h2 id="val-formula"></h2>
+      <p class="note" id="val-comment"></p>
+      <div class="seg" role="group" aria-label="Сценарии" id="scen"></div>
+      <div class="calc">
+        <div class="calc-bar" aria-live="polite"><span>Справедливая цена</span><b class="num" id="bar-fair">—</b><span class="up" id="bar-up">—</span></div>
+        <div class="stack" id="controls"></div>
+        <div class="result">
+          <div class="eyebrow">Справедливая цена</div>
+          <div><span class="big num" id="fair">—</span> <span class="muted" id="fair-unit"></span></div>
+          <div class="up" id="upside">—</div>
+          <div class="tbl"><table class="wf" id="wf"></table></div>
+        </div>
+      </div>
+      <div class="stack">
+        <h3>Что сильнее всего двигает цену</h3>
+        <p class="note">Каждое допущение меняется в своём разумном диапазоне, остальные — как сейчас. Чем длиннее полоса, тем внимательнее к этому допущению.</p>
+        <div id="tornado" class="torn"></div>
+      </div>
+      <details class="how">
+        <summary>Как посчитан каждый поток и откуда цифры</summary>
+        <div class="stack" id="how"></div>
+      </details>
+      <details class="how" id="noinc-box">
+        <summary>Что модель не учитывает</summary>
+        <ul class="list" id="noinc"></ul>
+      </details>
+    </section>
+
+    <section id="market" class="panel" aria-label="Рыночные данные">
+      <div class="eyebrow">Рыночные данные · откуда и когда</div>
+      <h2>Входы модели: источник и дата</h2>
+      <div class="mk-grid" id="mk"></div>
+    </section>
+
+    <div class="grid2" id="charts"></div>
+
+    <section id="peers" class="panel" aria-label="Аналоги">
+      <div class="eyebrow" id="peers-eyebrow">Сравнение с аналогами</div>
+      <h2 id="peers-title">Аналоги</h2>
+      <div class="tbl"><table id="peer-table"></table></div>
+      <p class="note" id="peers-note"></p>
+    </section>
+
+    <div class="grid2">
+      <section id="risks" class="panel" aria-label="Риски"><h2>Что может сломать историю</h2><ul class="list" id="risk-list"></ul></section>
+      <section class="panel" aria-label="Календарь"><h2>Что ждём</h2><ul class="list" id="trig-list"></ul></section>
+    </div>
+
+    <section id="glossary" class="panel" aria-label="Словарь">
+      <h2>Словарь</h2>
+      <dl class="gloss" id="gloss"></dl>
+    </section>
+  </main>
+
+  <footer class="bot">
+    <span id="sources"></span>
+    <span>Метки: [А] — цифра из отчётности, [Б] — расчёт, [В] — внешний источник или оценка. Модель — инструмент «что если», не прогноз и не индивидуальная инвестиционная рекомендация.</span>
+  </footer>
+</div>
+<div class="pop" id="pop" role="dialog" aria-modal="false" hidden><button type="button" class="pop-x" id="pop-x" aria-label="Закрыть">×</button><b id="pop-t"></b><p id="pop-d"></p></div>
+
+<script>
+const $ = id => document.getElementById(id);
+const NS = "http://www.w3.org/2000/svg";
+const svgEl = (t, a = {}, txt) => { const e = document.createElementNS(NS, t); for (const k in a) e.setAttribute(k, a[k]); if (txt != null) e.textContent = txt; return e; };
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const fmt = (v, d = 0) => Number(v).toLocaleString("ru-RU", { minimumFractionDigits: d, maximumFractionDigits: d });
+const dd = s => { if (!s) return "—"; const p = s.split("-"); return p.length === 3 ? `${p[2]}.${p[1]}.${p[0]}` : s; };
+const ageDays = s => s ? Math.round((Date.now() - new Date(s + "T00:00:00Z")) / 864e5) : null;
+const cls = c => c ? ` <span class="muted">[${esc(c)}]</span>` : "";
+// {{term|текст}} в любом тексте превращается в кликабельную сноску на словарь
+const rich = s => esc(s).replace(/\{\{([a-z0-9_]+)\|([^}]+)\}\}/gi, (_, t, x) => `<button type="button" class="qlink" data-term="${t}">${x}</button>`);
+const qBtn = t => t ? ` <button type="button" class="q" data-term="${esc(t)}" aria-label="Что это?">?</button>` : "";
+const TONE = { good: "var(--good)", warn: "var(--warn)", bad: "var(--bad)", mute: "var(--muted)" };
+const COLOR = { steel: "var(--steel)", ore: "var(--ore)", red: "var(--red)", good: "var(--good)", warn: "var(--warn)" };
+
+const file = document.body.dataset.file;
+fetch((file.startsWith("__") ? "example.json" : `/data/${file}`) + `?v=${Date.now() / 36e5 | 0}`).then(r => { if (!r.ok) throw new Error(r.status); return r.json(); }).then(render)
+  .catch(e => { $("headline").textContent = "Не удалось загрузить данные. Обновите страницу."; console.error(e); });
+
+function render(D) {
+  const V = D.valuation, G = D.glossary || {};
+  const cur = V.per_share_unit || D.price.currency || "";
+  document.title = `${D.ticker} ${D.name} — Cap Laoban`;
+  $("eyebrow").textContent = `${D.exchange} · ${D.ticker} · ${D.sector || ""} · обновлено ${dd(D.updated)}`;
+  $("headline").textContent = D.headline || D.name;
+  const P = D.price.value;
+  $("price").textContent = fmt(P, P < 100 ? 2 : 0);
+  $("price-note").innerHTML = `${esc(cur)} за акцию · ${esc(D.price.source)}, ${dd(D.price.date)}${cls(D.price.class)}`;
+  $("verdict").textContent = D.verdict.label; $("verdict").className = `chip ${D.verdict.tone || "mute"}`;
+  $("verdict-detail").innerHTML = rich(D.verdict.detail || "") + (D.risk_gate ? ` · риск-гейт <b>${esc(D.risk_gate)}</b>` : "");
+  $("kpis").innerHTML = (D.kpi || []).map(k => `<div class="kpi"><b class="num">${esc(k.v)}</b><span>${rich(k.k)}${cls(k.class)}</span></div>`).join("");
+
+  // ---------- модель: потоки → стоимость → на акцию ----------
+  const IN = V.inputs, byId = Object.fromEntries(IN.map(i => [i.id, i]));
+  const now = Object.fromEntries(IN.map(i => [i.id, i.now]));
+  const unitMult = V.unit_mult || 1, shares = V.shares_m * 1e6;
+  function compute(x) {
+    const y = V.yield_input ? x[V.yield_input] / 100 : null;
+    const parts = V.streams.map(s => {
+      let amt = s.base;
+      for (const k in (s.sens || {})) amt += s.sens[k] * (x[k] - now[k]);
+      const mult = s.kind === "cf" ? 1 / y : 1;
+      const hc = s.haircut_input ? x[s.haircut_input] / 100 : 1;
+      return { s, amt, value: amt * mult * hc };
+    });
+    const adj = (V.adjustments || []).map(a => ({ a, value: a.value }));
+    const total = parts.reduce((t, p) => t + p.value, 0) + adj.reduce((t, p) => t + p.value, 0);
+    return { parts, adj, total, ps: total * unitMult / shares };
+  }
+  const scenVals = sc => Object.assign({}, now, sc ? sc.values : {});
+  const scens = [{ id: "now", name: "Сейчас", values: {} }].concat(V.scenarios || []);
+  const fairOf = id => compute(scenVals(scens.find(s => s.id === id))).ps;
+
+  // шкала справедливой цены считается этой же моделью из сценариев
+  const FVc = D.fair_value || {};
+  const FV = { bear: fairOf(FVc.bear || "now"), lo: fairOf(FVc.lo || "now"), hi: fairOf(FVc.hi || "now"), bull: fairOf(FVc.bull || "now") };
+  if (FV.lo > FV.hi) [FV.lo, FV.hi] = [FV.hi, FV.lo];
+  const mn = Math.min(FV.bear, P) * .9, mx = Math.max(FV.bull, P) * 1.05, pos = v => ((v - mn) / (mx - mn) * 100).toFixed(2);
+  const nm = id => (scens.find(s => s.id === id) || {}).name || "Сейчас";
+  $("fv").innerHTML = `<div class="track"></div><div class="band" style="left:${pos(FV.lo)}%;width:${pos(FV.hi) - pos(FV.lo)}%"></div><div class="now" style="left:${pos(P)}%">цена ${fmt(P)}<i></i></div>` +
+    [FV.bear, FV.lo, FV.hi, FV.bull].map(v => `<span class="tick" style="left:${pos(v)}%">${fmt(v)}</span>`).join("");
+  $("fv-note").innerHTML = `«${esc(nm(FVc.bear))}» ${fmt(FV.bear)} · полоса «${esc(nm(FVc.lo))}»–«${esc(nm(FVc.hi))}» ${fmt(FV.lo)}–${fmt(FV.hi)} · «${esc(nm(FVc.bull))}» ${fmt(FV.bull)}. ` + rich(FVc.note || "");
+
+  $("val-method").textContent = V.method || "Как построена оценка";
+  $("val-formula").textContent = V.formula || "";
+  $("val-comment").innerHTML = rich(V.comment || "");
+  $("fair-unit").textContent = cur;
+
+  const fmtIn = (i, v) => i.fmt === "pct" ? `${fmt(v, i.decimals || 0)}%` : fmt(v, i.decimals || 0);
+  const groups = [["market", "Рынок"], ["model", "Оценка"]];
+  $("controls").innerHTML = groups.map(([g, title]) => {
+    const list = IN.filter(i => (i.group || "model") === g); if (!list.length) return "";
+    return `<div class="eyebrow">${title}</div>` + list.map(i => `<div class="ctl"><label for="in-${i.id}">${esc(i.label)}${i.unit ? ", " + esc(i.unit) : ""}${qBtn(i.term)} <output id="o-${i.id}"></output></label><input id="in-${i.id}" type="range" min="${i.min}" max="${i.max}" step="${i.step}" value="${i.now}"><small>сейчас ${fmtIn(i, i.now)} · ${esc(i.source || "")}${i.date ? ", " + dd(i.date) : ""}</small></div>`).join("");
+  }).join("") + `<button type="button" class="reset" id="reset">Вернуть «Сейчас»</button>`;
+  $("scen").innerHTML = scens.map(s => `<button type="button" data-s="${esc(s.id)}" aria-pressed="${s.id === "now"}">${esc(s.name)}</button>`).join("");
+
+  const read = () => Object.fromEntries(IN.map(i => [i.id, +$("in-" + i.id).value]));
+  const unitLbl = V.units || "";
+  let last = null;
+  function update() {
+    const x = read(); IN.forEach(i => $("o-" + i.id).textContent = fmtIn(i, x[i.id]));
+    const r = compute(x), up = r.ps / P - 1;
+    const upTxt = `${up >= 0 ? "+" : "−"}${fmt(Math.abs(up) * 100)}% к цене`;
+    [["fair", "upside"], ["bar-fair", "bar-up"]].forEach(([f, u]) => {
+      $(f).textContent = fmt(r.ps); $(u).textContent = upTxt; $(u).className = "up " + (up >= 0 ? "pos" : "neg");
+      if (last !== null && Math.round(last) !== Math.round(r.ps)) { $(f).classList.remove("flash"); void $(f).offsetWidth; $(f).classList.add("flash"); }
+    });
+    last = r.ps;
+    const row = (n, v, extra = "") => `<tr${extra}><td>${n}</td><td class="num">${v >= 0 ? "" : "−"}${fmt(Math.abs(v), 2)}</td></tr>`;
+    $("wf").innerHTML = `<tr><th>Часть</th><th>${esc(unitLbl)}</th></tr>` +
+      r.parts.map(p => row(esc(p.s.name) + (p.s.kind === "cf" ? ` <span class="muted">(поток ${fmt(p.amt, 2)} ÷ ${fmtIn(byId[V.yield_input], x[V.yield_input])}${p.s.haircut_input ? " × " + fmtIn(byId[p.s.haircut_input], x[p.s.haircut_input]) : ""})</span>` : ""), p.value)).join("") +
+      r.adj.map(a => row(esc(a.a.name), a.value)).join("") +
+      row("Итого стоимость", r.total, ' class="tot"') +
+      `<tr><td>На акцию (${fmt(V.shares_m)} млн акций)</td><td class="num">${fmt(r.ps)} ${esc(cur)}</td></tr>`;
+    document.querySelectorAll("#scen button").forEach(b => {
+      const sv = scenVals(scens.find(s => s.id === b.dataset.s));
+      b.setAttribute("aria-pressed", IN.every(i => Math.abs(sv[i.id] - x[i.id]) < 1e-9));
+    });
+  }
+  const setAll = vals => { IN.forEach(i => $("in-" + i.id).value = vals[i.id]); update(); };
+  $("controls").addEventListener("input", update);
+  $("reset").addEventListener("click", () => setAll(now));
+  $("scen").addEventListener("click", e => { const b = e.target.closest("button"); if (b) setAll(scenVals(scens.find(s => s.id === b.dataset.s))); });
+  update();
+
+  // торнадо: каждый вход по своему диапазону
+  const base = compute(now).ps;
+  const tor = IN.map(i => {
+    const [lo, hi] = i.range || [i.min, i.max];
+    const a = compute({ ...now, [i.id]: lo }).ps, b = compute({ ...now, [i.id]: hi }).ps;
+    return { i, lo, hi, a, b, w: Math.abs(b - a) };
+  }).filter(t => t.w > 0.5).sort((p, q) => q.w - p.w);
+  const tmin = Math.min(...tor.map(t => Math.min(t.a, t.b)), P, base), tmax = Math.max(...tor.map(t => Math.max(t.a, t.b)), P, base);
+  const tp = v => ((v - tmin) / (tmax - tmin || 1) * 100).toFixed(2);
+  $("tornado").innerHTML = tor.map(t => {
+    const l = Math.min(t.a, t.b), r = Math.max(t.a, t.b);
+    return `<div class="tr"><div class="tr-h"><b>${esc(t.i.label)}</b><span>${fmtIn(t.i, t.lo)} → ${fmtIn(t.i, t.hi)}: ${fmt(t.a)} … ${fmt(t.b)} ${esc(cur)}</span></div><div class="tr-t"><div class="tr-b" style="left:${tp(l)}%;width:${tp(r) - tp(l)}%"></div><div class="tr-m" style="left:${tp(base)}%" title="Сейчас"></div><div class="tr-p" style="left:${tp(P)}%" title="Цена"></div></div></div>`;
+  }).join("") + `<p class="note">Сплошная черта — «Сейчас» (${fmt(base)}), пунктир — цена акции (${fmt(P)}).</p>`;
+
+  $("how").innerHTML = V.streams.map(s => `<div><b>${esc(s.name)}</b> — ${s.kind === "cf" ? "денежный поток в год" : "стоимость"} ${fmt(s.base, 2)} ${esc(unitLbl)}${cls(s.class)}<br><span class="note">${rich(s.calc || "")}</span><br><span class="note">Источник: ${rich(s.src || "")}</span>${s.sens_note ? `<br><span class="note">Чувствительность: ${rich(s.sens_note)}</span>` : ""}</div>`).join("") +
+    (V.adjustments || []).map(a => `<div><b>${esc(a.name)}</b> ${a.value >= 0 ? "+" : "−"}${fmt(Math.abs(a.value), 2)} ${esc(unitLbl)}${cls(a.class)}<br><span class="note">${rich(a.src || "")}</span></div>`).join("");
+  if ((V.not_included || []).length) $("noinc").innerHTML = V.not_included.map(t => `<li><span class="dot" style="background:var(--muted)"></span><span>${rich(t)}</span></li>`).join("");
+  else $("noinc-box").hidden = true;
+
+  // рыночные входы: значение, источник, дата, свежесть
+  const mk = IN.filter(i => i.group === "market");
+  if (mk.length) $("mk").innerHTML = mk.map(i => {
+    const a = ageDays(i.date), stale = a != null && a > (i.stale_days || 7);
+    return `<div class="mk-card"><div class="mk-n">${esc(i.label)}${qBtn(i.term)}</div><div class="mk-v"><b class="num">${fmtIn(i, i.now)}</b> <span class="muted">${esc(i.unit || "")}</span></div><div class="mk-d">${dd(i.date)}${stale ? ' <span class="chip warn">устарело</span>' : ""} · ${i.url ? `<a href="${esc(i.url)}" target="_blank" rel="noopener">${esc(i.source)}</a>` : esc(i.source || "")}${cls(i.class)}</div>${i.to_company ? `<div class="mk-c">${rich(i.to_company)}</div>` : ""}</div>`;
+  }).join("");
+  else $("market").hidden = true;
+
+  // графики: столбцы с накоплением
+  $("charts").innerHTML = (D.charts || []).map((c, n) => `<section class="panel"><div class="eyebrow">${esc(c.eyebrow || "")}</div><h2>${esc(c.title)}</h2><div id="ch-${n}"></div><div class="legend">${c.series.map(s => `<span><i style="background:${COLOR[s.color] || s.color}"></i>${esc(s.label)}</span>`).join("")}</div>${c.note ? `<p class="note">${rich(c.note)}</p>` : ""}</section>`).join("");
+  (D.charts || []).forEach((c, n) => stacked("ch-" + n, c));
+  if (!(D.charts || []).length) $("charts").hidden = true;
+
+  if (D.peers) {
+    $("peers-eyebrow").textContent = D.peers.eyebrow || "Сравнение с аналогами";
+    $("peers-title").textContent = D.peers.title || "Аналоги";
+    $("peer-table").innerHTML = `<tr><th></th>${D.peers.cols.map((c, i) => `<th${i === 0 ? ' class="me"' : ""}>${esc(c)}</th>`).join("")}</tr>` +
+      D.peers.rows.map(r => `<tr>${r.map((v, i) => `<td${i === 1 ? ' class="me"' : ""}>${i === 0 ? rich(v) : esc(v)}</td>`).join("")}</tr>`).join("");
+    $("peers-note").innerHTML = rich(D.peers.note || "");
+  } else $("peers").hidden = true;
+
+  $("risk-list").innerHTML = (D.risks || []).map(r => `<li><span class="dot" style="background:${TONE[r.tone] || TONE.warn}"></span><span>${rich(r.text)}</span></li>`).join("");
+  $("trig-list").innerHTML = (D.triggers || []).map(t => `<li><span class="chip mute">${esc(t.when)}</span><span>${rich(t.text)}</span></li>`).join("");
+  $("gloss").innerHTML = Object.entries(G).map(([k, g]) => `<div id="g-${esc(k)}"><dt>${esc(g.t)}</dt><dd>${esc(g.d)}</dd></div>`).join("");
+  if (!Object.keys(G).length) $("glossary").hidden = true;
+  $("sources").innerHTML = "Источники: " + (D.sources || []).map(esc).join(" · ");
+
+  // всплывающие подсказки к терминам
+  const pop = $("pop");
+  document.addEventListener("click", e => {
+    const b = e.target.closest("[data-term]");
+    if (b) { const g = G[b.dataset.term]; if (!g) return;
+      $("pop-t").textContent = g.t; $("pop-d").textContent = g.d; pop.hidden = false;
+      const r = b.getBoundingClientRect(), w = Math.min(340, window.innerWidth - 32);
+      pop.style.width = w + "px"; pop.style.left = Math.max(16, Math.min(r.left, window.innerWidth - w - 16)) + "px";
+      pop.style.top = (window.scrollY + r.bottom + 8) + "px"; return; }
+    if (!e.target.closest("#pop")) pop.hidden = true;
+  });
+  $("pop-x").addEventListener("click", () => { pop.hidden = true; });
+  document.addEventListener("keydown", e => { if (e.key === "Escape") pop.hidden = true; });
+}
+
+function stacked(id, c) {
+  const W = 520, H = 220, padB = 26, padT = 22, n = c.data.length, slot = W / n, bw = Math.min(54, slot * .56);
+  const tot = d => c.series.reduce((t, s) => t + (d[s.key] || 0), 0);
+  const max = Math.max(...c.data.map(tot)) * 1.1 || 1;
+  const y = v => H - padB - (v / max) * (H - padB - padT);
+  const s = svgEl("svg", { viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": c.title });
+  [.25, .5, .75, 1].forEach(f => s.appendChild(svgEl("line", { x1: 0, x2: W, y1: y(max * f), y2: y(max * f), style: "stroke:var(--line)" })));
+  c.data.forEach((d, i) => {
+    const x = slot * i + (slot - bw) / 2; let b = 0;
+    c.series.forEach(se => { const v = d[se.key] || 0, y0 = y(b), y1 = y(b + v); s.appendChild(svgEl("rect", { x, y: y1, width: bw, height: Math.max(0, y0 - y1), rx: 2, style: `fill:${COLOR[se.color] || se.color}` })); b += v; });
+    s.appendChild(svgEl("text", { x: x + bw / 2, y: y(b) - 6, "text-anchor": "middle", class: "lbl" }, fmt(b, c.decimals ?? 1)));
+    s.appendChild(svgEl("text", { x: x + bw / 2, y: H - 8, "text-anchor": "middle" }, d.label));
+  });
+  $(id).replaceChildren(s);
+}
+</script>
+</body>
+</html>

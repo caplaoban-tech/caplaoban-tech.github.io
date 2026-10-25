@@ -25,48 +25,51 @@
   }
 
   function render(F, P) {
-    // последняя строка, где есть и H, и курс
-    const last = [...P].reverse().find(p => p.h != null && p.fx) || P[P.length - 1];
+    // «главная» линия: H (HKD) для пар A+H, иначе A (юани, курс = 1)
+    const hasH = !!F.h_code, cur = hasH ? "HK$" : "¥";
+    const M = p => hasH ? p.h : p.a, FX = p => hasH ? p.fx : 1;
+    const last = [...P].reverse().find(p => M(p) != null && FX(p)) || P[P.length - 1];
     const lastA = [...P].reverse().find(p => p.a != null);
-    const fx = last.fx, sh = F.shares_mn, shTot = (sh.A + sh.H) * 1e6;
-    const year = P.filter(p => p.h != null && p.d > iso(addDays(last.d, -365)));
-    const hi = Math.max(...year.map(p => p.h)), lo = Math.min(...year.map(p => p.h));
-    const prevH = [...P].reverse().filter(p => p.h != null)[1];
-    const mcapH = shTot * last.h * fx / 1e9;               // млрд юаней по цене H
+    const fx = FX(last), sh = F.shares_mn, cls = ["A", "H", "D"].filter(k => sh[k]), shTot = cls.reduce((t, k) => t + sh[k], 0) * 1e6;
+    const year = P.filter(p => M(p) != null && p.d > iso(addDays(last.d, -365)));
+    const hi = Math.max(...year.map(M)), lo = Math.min(...year.map(M));
+    const prevM = [...P].reverse().filter(p => M(p) != null)[1];
+    const px = M(last), prev = prevM ? M(prevM) : px;
+    const mcapH = shTot * px * fx / 1e9;               // млрд юаней по главной цене
     const pe = mcapH / F.ttm.net;
     const div12 = F.dividends.filter(d => d.ex_date_a && d.ex_date_a > last.d.replace(/-/g, "").replace(/^(\d{4})/, y => y - 1)).reduce((s, d) => s + d.dps_cny, 0);
-    const yldH = div12 / (last.h * fx) * 100;
-    const prem = lastA && lastA.a ? (lastA.a / (last.h * fx) - 1) * 100 : null;
-    const ncps = F.net_cash ? F.net_cash.value * 1e9 / shTot / fx : null;   // HK$ на акцию
+    const yldH = div12 / (px * fx) * 100;
+    const prem = hasH && lastA && lastA.a ? (lastA.a / (px * fx) - 1) * 100 : null;
+    const ncps = F.net_cash ? F.net_cash.value * 1e9 / shTot / fx : null;   // на акцию в валюте главной линии
     const peX = F.net_cash ? (mcapH - F.net_cash.value) / (F.ttm.net - (F.net_cash.interest_after_tax || 0)) : null;   // прибыль без процентов на деньги
 
     box.hidden = false;
     box.className = "panel term";
     box.innerHTML = `
       <div class="term-head">
-        <div><div class="eyebrow">${esc(F.h_code)} · SEHK · HKD</div>
-          <div class="term-px"><b class="num">${nf(last.h, 2)}</b> <span class="up ${last.h >= (prevH?.h ?? last.h) ? "pos" : "neg"}">${pct((last.h / (prevH?.h ?? last.h) - 1) * 100, 2)}</span></div>
-          <div class="note">закрытие ${dRu(last.d)} · A ${esc(F.a_code)}: ${nf(lastA?.a, 2)} юаня (${dRu(lastA?.d)})</div></div>
+        <div><div class="eyebrow">${hasH ? esc(F.h_code) + " · SEHK · HKD" : esc(F.a_code) + (F.a_code.endsWith("SZ") ? " · SZSE" : " · SSE") + " · юани"}</div>
+          <div class="term-px"><b class="num">${nf(px, 2)}</b> <span class="up ${px >= prev ? "pos" : "neg"}">${pct((px / prev - 1) * 100, 2)}</span></div>
+          <div class="note">закрытие ${dRu(last.d)}${hasH ? ` · A ${esc(F.a_code)}: ${nf(lastA?.a, 2)} юаня (${dRu(lastA?.d)})` : ""}</div></div>
         <div class="term-range"><div class="note">52 недели (закрытия)</div>
-          <div class="rng"><span class="num">${nf(lo, 2)}</span><i><em style="left:${hi > lo ? (last.h - lo) / (hi - lo) * 100 : 50}%"></em></i><span class="num">${nf(hi, 2)}</span></div></div>
+          <div class="rng"><span class="num">${nf(lo, 2)}</span><i><em style="left:${hi > lo ? (px - lo) / (hi - lo) * 100 : 50}%"></em></i><span class="num">${nf(hi, 2)}</span></div></div>
       </div>
       <div class="term-stats">
-        ${stat("Капитализация по H", nf(mcapH, 1) + " млрд ¥", `(${nf(sh.A, 1)} + ${nf(sh.H, 1)}) млн акций × HK$${nf(last.h, 2)} × ${nf(fx, 4)}`)}
+        ${stat(hasH ? "Капитализация по H" : "Капитализация", nf(mcapH, 1) + " млрд ¥", `(${cls.map(k => k + " " + nf(sh[k], 1)).join(" + ")}) млн акций на ${sh.date} × ${cur}${nf(px, 2)}${hasH ? " × " + nf(fx, 4) : ""}`)}
         ${stat("P/E за 12 мес.", nf(pe, 1), `прибыль ${nf(F.ttm.net, 2)} млрд ¥ до ${F.ttm.as_of}`)}
-        ${peX != null ? stat("P/E без чистых денег", nf(peX, 1), `(кап. − чистые деньги ${nf(F.net_cash.value, 2)} млрд ¥ на ${F.net_cash.date}) / (прибыль − проценты на деньги ${nf(F.net_cash.interest_after_tax || 0, 2)})`) : ""}
-        ${stat("Дивиденды за 12 мес.", nf(div12, 2) + " ¥", `доходность по H ${nf(yldH, 1)}% до налога, ${nf(yldH * .9, 1)}% после 10%`)}
-        ${ncps != null ? stat("Чистые деньги на акцию", "HK$" + nf(ncps, 1), `${nf(ncps / last.h * 100, 0)}% цены H`) : ""}
+        ${peX != null ? stat("P/E без чистых денег", nf(peX, 1), `(кап. − чистые деньги ${nf(F.net_cash.value, 2)} млрд ¥ на ${F.net_cash.date}) / (прибыль − чистый процентный доход после налога ${nf(F.net_cash.interest_after_tax || 0, 2)})`) : ""}
+        ${stat("Дивиденды за 12 мес.", nf(div12, 2) + " ¥", `доходность${hasH ? " по H" : ""} ${nf(yldH, 1)}% до налога, ${nf(yldH * .9, 1)}% после 10%${hasH ? "; юани пересчитаны по текущему курсу (H платят в HKD по курсу объявления — фактическая доходность может отличаться)" : ""}`)}
+        ${ncps != null ? stat("Чистые деньги на акцию", cur + nf(ncps, 1), `${nf(ncps / px * 100, 0)}% цены${hasH ? " H" : ""}`) : ""}
         ${prem != null ? stat("Премия A к H", pct(prem, 0), "A стоит дороже H на эту долю") : ""}
       </div>
       <div class="term-ctl">
         <div class="seg sm" id="t-rng">${["1М", "6М", "1Г", "3Г", "Всё"].map((x, i) => `<button type="button" data-r="${[31, 183, 366, 1096, 1e5][i]}"${i == 2 ? ' aria-pressed="true"' : ""}>${x}</button>`).join("")}</div>
-        <div class="seg sm" id="t-mode"><button type="button" data-m="px" aria-pressed="true">Цена H и A</button><button type="button" data-m="prem">Премия A/H</button></div>
+        ${hasH ? '<div class="seg sm" id="t-mode"><button type="button" data-m="px" aria-pressed="true">Цена H и A</button><button type="button" data-m="prem">Премия A/H</button></div>' : ""}
       </div>
       <div class="term-chart" id="t-chart"></div>
       <div class="legend" id="t-leg"></div>
-      <p class="note">Цена: H — ${esc(F.sources.px_h)}; A — ${esc(F.sources.px_a)}; A пересчитана в HKD по курсу ${esc(F.sources.fx)} [В]. ▲ — даты отсечки дивидендов (A).</p>
+      <p class="note">Цена: ${hasH ? `H — ${esc(F.sources.px_h)}; A — ${esc(F.sources.px_a)}; A пересчитана в HKD по курсу ${esc(F.sources.fx)}` : `A — ${esc(F.sources.px_a)}`} [В]. ▲ — даты отсечки дивидендов (A).${F.net_cash ? " Как посчитаны чистые деньги: " + esc(F.net_cash.text) : ""}</p>
 
-      <div class="term-tabs" role="tablist" id="t-tabs">${[["pl", "Прибыль"], ["cf", "Деньги"], ["bs", "Баланс"], ["dv", "Дивиденды"], ["sg", "Сегменты"]].map(([k, n], i) => `<button type="button" role="tab" data-t="${k}"${i == 0 ? ' aria-selected="true"' : ""}>${n}</button>`).join("")}</div>
+      <div class="term-tabs" role="tablist" id="t-tabs">${[["pl", "Прибыль"], ["cf", "Деньги"], ["bs", "Баланс"], ["dv", "Дивиденды"], ["sg", "Сегменты"]].filter(t => t[0] !== "sg" || (F.segments && F.segments.items)).map(([k, n], i) => `<button type="button" role="tab" data-t="${k}"${i == 0 ? ' aria-selected="true"' : ""}>${n}</button>`).join("")}</div>
       <div class="term-ctl"><div class="seg sm" id="t-per"><button type="button" data-p="y" aria-pressed="true">По годам</button><button type="button" data-p="q">По кварталам</button></div><span class="note" id="t-hint">Нажмите строку — график покажет её.</span></div>
       <div class="term-bars" id="t-bars"></div>
       <div class="tbl term-tbl" id="t-tbl"></div>
@@ -77,7 +80,8 @@
     const drawPx = () => {
       const from = iso(addDays(last.d, -range));
       const S = P.filter(p => p.d >= from);
-      const ser = mode === "px"
+      const ser = !hasH ? [{ k: "a", name: "A, юани", col: "var(--red)", v: S.map(p => p.a) }]
+        : mode === "px"
         ? [{ k: "h", name: "H, HKD", col: "var(--red)", v: S.map(p => p.h) }, { k: "a", name: "A в HKD", col: "var(--steel)", v: S.map(p => p.a != null && p.fx ? p.a / p.fx : null) }]
         : [{ k: "p", name: "Премия A к H, %", col: "var(--ore)", v: S.map(p => p.a != null && p.h != null && p.fx ? (p.a / (p.h * p.fx) - 1) * 100 : null) }];
       const ex = mode === "px" ? F.dividends.map(d => d.ex_date_a && `${d.ex_date_a.slice(0, 4)}-${d.ex_date_a.slice(4, 6)}-${d.ex_date_a.slice(6)}`).filter(d => d && d >= from) : [];
@@ -85,7 +89,7 @@
       document.getElementById("t-leg").innerHTML = ser.map(s => `<span><i style="background:${s.col}"></i>${s.name}</span>`).join("");
     };
     seg("t-rng", b => { range = +b.dataset.r; drawPx(); });
-    seg("t-mode", b => { mode = b.dataset.m; drawPx(); });
+    if (hasH) seg("t-mode", b => { mode = b.dataset.m; drawPx(); });
     drawPx();
 
     // ---------- отчётность ----------
@@ -120,7 +124,7 @@
       const r = rows.find(r => r[0] === sel[tab]);
       bar(bars, cols, get(r[0]), r[1] + (r[3] ? "" : `, ${F.unit}`), r[2]);
       src.textContent = tab === "dv"
-        ? `${F.sources.div}. До листинга A (09.2021) выплаты в этой таблице не показаны — см. «Выплачено дивидендов» во вкладке «Деньги». Выплаты по дате отсечки: ` + F.dividends.map(d => `${d.period} — ${nf(d.dps_cny, 2)} ¥ (${nf(d.total_bn, 2)} млрд)`).join("; ") + "."
+        ? `${F.sources.div}.${F.div_note ? " " + F.div_note : ""} Последние выплаты по дате отсечки: ` + F.dividends.slice(-8).map(d => `${d.period} — ${nf(d.dps_cny, 2)} ¥ (${nf(d.total_bn, 2)} млрд)`).join("; ") + "."
         : `${F.sources.fin}. Квартал = разность накопленных итогов. ${tab === "bs" ? "Строка «денежные средства» баланса не видит депозиты в прочих статьях — см. отдельную строку; чистые деньги по примечаниям — " + nf(F.net_cash.value, 2) + " млрд на " + F.net_cash.date + "." : ""}`;
     };
     const drawSeg = () => {

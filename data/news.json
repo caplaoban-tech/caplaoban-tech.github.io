@@ -1,17 +1,164 @@
 [
-  { "date": "2026-10-25", "tickers": ["BMRI"], "title": "Bank Mandiri за 9 месяцев: прибыль +20,7%, но в III квартале рост кредитов резко замедлился и промежуточный дивиденд урезан на треть; цена закладывает ROE 16% при фактических 20%. Новый разбор и сравнение с BCA, BRI, BNI, OCBC NISP, CIMB Niaga", "src": "Cap Laoban", "url": "bmri/" },
-  { "date": "2026-10-26", "tickers": ["3898"], "title": "Новый раздел «Инвест-идеи». Первая — CRRC Times Electric: половина цены H-акции — деньги, таргет HK$38 на три года; вход — после отчёта за 9 месяцев при условиях", "src": "Cap Laoban", "url": "ideas/3898/" },
-  { "date": "2026-10-25", "tickers": ["9981"], "title": "Woer: H-акция в 2,6 раза ниже цены размещения и стоит примерно как термоусадка с сетями; кабели для ИИ растут, но маржа сжимается. Новый разбор", "src": "Cap Laoban", "url": "9981/" },
-  { "date": "2026-10-25", "tickers": ["3898"], "title": "CRRC Times Electric: половина цены H-акции — деньги на счетах, премия A-акции 106%; прибыль даёт железная дорога, а не IGBT. Новый разбор", "src": "Cap Laoban", "url": "3898/" },
-  { "date": "2026-10-25", "tickers": ["A-акции"], "title": "Китай: роботы и ИИ дешевле 15 прибылей. Из 452 дешёвых A-акций в теме 13, без видимой ловушки одна (Ecovacs); память — на пике цикла", "src": "Cap Laoban", "url": "a-robots/" },
-  { "date": "2026-10-25", "tickers": ["A+H"], "title": "Китай A+H: из 121 компании дешевле 15 прибылей фильтр ловушек и пика цикла оставил 36 кандидатов; справка, чем H-акция отличается от A", "src": "Cap Laoban", "url": "ah/" },
-  { "date": "2026-10-24", "tickers": ["2245"], "title": "Lygend: H-акция по HK$16 закладывает никель ~US$19 тыс.; A-акция в Шэньчжэне дороже H в 2,2 раза. Новый разбор", "src": "Cap Laoban", "url": "2245/" },
-  { "date": "2026-10-24", "tickers": ["1378"], "title": "China Hongqiao стоит почти как её пакет 89% в A-дочке 002379 — но прибыль на пике цикла. Новый разбор", "src": "Cap Laoban", "url": "1378/" },
-  { "date": "2026-10-24", "tickers": ["CITA"], "title": "CITA: рудник одного покупателя — цена закладывает глинозём середины цикла, дивиденд 2026 г. выплачен из прошлых денег. Новый разбор", "src": "Cap Laoban", "url": "cita/" },
-  { "date": "2026-10-24", "tickers": ["NCKL"], "title": "NCKL: доля в новом капексе HPL/ONC по проспекту Lygend ≈ Rp7,5 трлн взносом в капитал; акции ассоциатов заложены под кредиты Lygend", "src": "Cap Laoban", "url": "nckl/" },
-  { "date": "2026-10-22", "tickers": ["NCKL"], "title": "Китайские производители обсуждают сокращение MHP на 50% и NPI на 20% в Индонезии", "src": "Reuters, SMM", "url": "https://news.metal.com/newscontent/104173852-smm-analysis-indonesian-nickel-output-cut-talk-gathers-pace-but-the-case-for-cutting-diverges-across-the-supply-chain" },
-  { "date": "2026-10-22", "tickers": ["IDX"], "title": "Прабово о возможном понижении статуса MSCI: «Индонезия не дрогнет». IHSG +1,7%", "src": "Warta Ekonomi", "url": "https://wartaekonomi.co.id/read642729/ihsg-bangkit-17-ke-level-5419-usai-prabowo-tantang-msci" },
-  { "date": "2026-10-21", "tickers": ["NCKL"], "title": "LME никель выше US$16 000 на ожиданиях сокращений", "src": "Bloomberg / The Edge", "url": "https://theedgemalaysia.com/node/822689" },
-  { "date": "2026-10-16", "tickers": ["NCKL"], "title": "Квота RKAB-2026 на руду поднята до ~290 млн т", "src": "SMM", "url": "https://news.metal.com/newscontent/104162642-smm-nickel-flash-indonesia-approves-revised-2026-rkab-nickel-ore-production-quota-of-approximately-290-million-tonnes" },
-  { "date": "2026-09-15", "tickers": ["NCKL"], "title": "Формульная цена лимонита (HPM) снижена на 45%: маржа уходит от добычи к HPAL-заводам", "src": "Kepmen ESDM 363.K/2026", "url": "" }
+  {
+    "date": "2026-10-25",
+    "tickers": [
+      "000651"
+    ],
+    "title": "Gree Electric: три четверти цены — чистые финансовые активы, дивиденд 7,3% после налога, но во II квартале прибыль −15% и дистрибьюторы сократили авансы. Новый разбор с терминалом: цена, отчётность с 2016 года, дивиденды",
+    "src": "Cap Laoban",
+    "url": "000651/"
+  },
+  {
+    "date": "2026-10-25",
+    "tickers": [
+      "6690"
+    ],
+    "title": "Haier Smart Home: P/E 6 без учёта денег и дивиденд около 6%, но прибыль падает, а 40% денег лежит в финкомпании группы. Новый разбор с терминалом: цена H и A, премия, отчётность с 2016 года",
+    "src": "Cap Laoban",
+    "url": "6690/"
+  },
+  {
+    "date": "2026-10-25",
+    "tickers": [
+      "3898"
+    ],
+    "title": "CRRC Times Electric: на странице появился терминал — график цены H и A, премия A/H, выручка, прибыль, деньги и дивиденды по годам и кварталам",
+    "src": "Cap Laoban",
+    "url": "3898/"
+  },
+  {
+    "date": "2026-10-25",
+    "tickers": [
+      "BMRI"
+    ],
+    "title": "Bank Mandiri за 9 месяцев: прибыль +20,7%, но в III квартале рост кредитов резко замедлился и промежуточный дивиденд урезан на треть; цена закладывает ROE 16% при фактических 20%. Новый разбор и сравнение с BCA, BRI, BNI, OCBC NISP, CIMB Niaga",
+    "src": "Cap Laoban",
+    "url": "bmri/"
+  },
+  {
+    "date": "2026-10-26",
+    "tickers": [
+      "3898"
+    ],
+    "title": "Новый раздел «Инвест-идеи». Первая — CRRC Times Electric: половина цены H-акции — деньги, таргет HK$38 на три года; вход — после отчёта за 9 месяцев при условиях",
+    "src": "Cap Laoban",
+    "url": "ideas/3898/"
+  },
+  {
+    "date": "2026-10-25",
+    "tickers": [
+      "9981"
+    ],
+    "title": "Woer: H-акция в 2,6 раза ниже цены размещения и стоит примерно как термоусадка с сетями; кабели для ИИ растут, но маржа сжимается. Новый разбор",
+    "src": "Cap Laoban",
+    "url": "9981/"
+  },
+  {
+    "date": "2026-10-25",
+    "tickers": [
+      "3898"
+    ],
+    "title": "CRRC Times Electric: половина цены H-акции — деньги на счетах, премия A-акции 106%; прибыль даёт железная дорога, а не IGBT. Новый разбор",
+    "src": "Cap Laoban",
+    "url": "3898/"
+  },
+  {
+    "date": "2026-10-25",
+    "tickers": [
+      "A-акции"
+    ],
+    "title": "Китай: роботы и ИИ дешевле 15 прибылей. Из 452 дешёвых A-акций в теме 13, без видимой ловушки одна (Ecovacs); память — на пике цикла",
+    "src": "Cap Laoban",
+    "url": "a-robots/"
+  },
+  {
+    "date": "2026-10-25",
+    "tickers": [
+      "A+H"
+    ],
+    "title": "Китай A+H: из 121 компании дешевле 15 прибылей фильтр ловушек и пика цикла оставил 36 кандидатов; справка, чем H-акция отличается от A",
+    "src": "Cap Laoban",
+    "url": "ah/"
+  },
+  {
+    "date": "2026-10-24",
+    "tickers": [
+      "2245"
+    ],
+    "title": "Lygend: H-акция по HK$16 закладывает никель ~US$19 тыс.; A-акция в Шэньчжэне дороже H в 2,2 раза. Новый разбор",
+    "src": "Cap Laoban",
+    "url": "2245/"
+  },
+  {
+    "date": "2026-10-24",
+    "tickers": [
+      "1378"
+    ],
+    "title": "China Hongqiao стоит почти как её пакет 89% в A-дочке 002379 — но прибыль на пике цикла. Новый разбор",
+    "src": "Cap Laoban",
+    "url": "1378/"
+  },
+  {
+    "date": "2026-10-24",
+    "tickers": [
+      "CITA"
+    ],
+    "title": "CITA: рудник одного покупателя — цена закладывает глинозём середины цикла, дивиденд 2026 г. выплачен из прошлых денег. Новый разбор",
+    "src": "Cap Laoban",
+    "url": "cita/"
+  },
+  {
+    "date": "2026-10-24",
+    "tickers": [
+      "NCKL"
+    ],
+    "title": "NCKL: доля в новом капексе HPL/ONC по проспекту Lygend ≈ Rp7,5 трлн взносом в капитал; акции ассоциатов заложены под кредиты Lygend",
+    "src": "Cap Laoban",
+    "url": "nckl/"
+  },
+  {
+    "date": "2026-10-22",
+    "tickers": [
+      "NCKL"
+    ],
+    "title": "Китайские производители обсуждают сокращение MHP на 50% и NPI на 20% в Индонезии",
+    "src": "Reuters, SMM",
+    "url": "https://news.metal.com/newscontent/104173852-smm-analysis-indonesian-nickel-output-cut-talk-gathers-pace-but-the-case-for-cutting-diverges-across-the-supply-chain"
+  },
+  {
+    "date": "2026-10-22",
+    "tickers": [
+      "IDX"
+    ],
+    "title": "Прабово о возможном понижении статуса MSCI: «Индонезия не дрогнет». IHSG +1,7%",
+    "src": "Warta Ekonomi",
+    "url": "https://wartaekonomi.co.id/read642729/ihsg-bangkit-17-ke-level-5419-usai-prabowo-tantang-msci"
+  },
+  {
+    "date": "2026-10-21",
+    "tickers": [
+      "NCKL"
+    ],
+    "title": "LME никель выше US$16 000 на ожиданиях сокращений",
+    "src": "Bloomberg / The Edge",
+    "url": "https://theedgemalaysia.com/node/822689"
+  },
+  {
+    "date": "2026-10-16",
+    "tickers": [
+      "NCKL"
+    ],
+    "title": "Квота RKAB-2026 на руду поднята до ~290 млн т",
+    "src": "SMM",
+    "url": "https://news.metal.com/newscontent/104162642-smm-nickel-flash-indonesia-approves-revised-2026-rkab-nickel-ore-production-quota-of-approximately-290-million-tonnes"
+  },
+  {
+    "date": "2026-09-15",
+    "tickers": [
+      "NCKL"
+    ],
+    "title": "Формульная цена лимонита (HPM) снижена на 45%: маржа уходит от добычи к HPAL-заводам",
+    "src": "Kepmen ESDM 363.K/2026",
+    "url": ""
+  }
 ]

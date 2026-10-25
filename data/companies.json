@@ -9,6 +9,6 @@
   {"ticker": "TLKM", "name": "Telkom Indonesia", "sector": "Телеком", "soon": true},
   {"ticker": "LSIP", "name": "London Sumatra", "sector": "Плантации CPO", "soon": true},
   {"ticker": "UNVR", "name": "Unilever Indonesia", "sector": "Потребительский сектор", "soon": true},
-  {"ticker": "000651", "name": "Gree Electric", "sector": "Бытовая техника (кондиционеры)", "price": 37.23, "verdict": "Кандидат, решение после отчёта за 9М 27.10.2026", "tone": "warn", "updated": "2026-10-25", "url": "000651/"},
+  {"ticker": "000651", "name": "Gree Electric", "sector": "Бытовая техника (кондиционеры)", "price": 37.23, "verdict": "Кандидат", "tone": "warn", "updated": "2026-10-25", "url": "000651/"},
   {"ticker": "6690", "name": "Haier Smart Home", "sector": "Бытовая техника", "price": 19.41, "verdict": "Кандидат для дальнейшей проверки", "tone": "warn", "updated": "2026-10-25", "url": "6690/"}
 ]

@@ -3,6 +3,8 @@
   {"ticker": "2245", "name": "Lygend Resources", "sector": "Никель · HPAL/RKEF", "price": 16.02, "verdict": "Наблюдать", "tone": "warn", "updated": "2026-10-24", "url": "2245/"},
   {"ticker": "1378", "name": "China Hongqiao", "sector": "Алюминий · глинозём", "price": 19.02, "verdict": "Наблюдать", "tone": "warn", "updated": "2026-10-24", "url": "1378/"},
   {"ticker": "CITA", "name": "Cita Mineral Investindo", "sector": "Боксит", "price": 3140, "verdict": "Наблюдать", "tone": "warn", "updated": "2026-10-24", "url": "cita/"},
+  {"ticker": "3898", "name": "CRRC Times Electric", "sector": "Ж/д электрооборудование · IGBT", "price": 26.88, "verdict": "Кандидат на полный разбор", "tone": "warn", "updated": "2026-10-25", "url": "3898/"},
+  {"ticker": "9981", "name": "Woer Heat-Shrinkable Material", "sector": "Термоусадка · кабели для ИИ", "price": 7.69, "verdict": "Наблюдать", "tone": "warn", "updated": "2026-10-25", "url": "9981/"},
   {"ticker": "BMRI", "name": "Bank Mandiri", "sector": "Банки", "soon": true},
   {"ticker": "TLKM", "name": "Telkom Indonesia", "sector": "Телеком", "soon": true},
   {"ticker": "LSIP", "name": "London Sumatra", "sector": "Плантации CPO", "soon": true},

@@ -127,7 +127,35 @@ def check_company(p, d):
         warn(f"{name}: разбору {a} дн. — пора обновить")
 
 
+def check_nckl():
+    """NCKL: своя модель (sotp) — пересчитать её тем же кодом и поймать ручные числа оценки в тексте."""
+    p = ROOT / "data" / "nckl.json"
+    if not p.exists():
+        return
+    sys.path.insert(0, str(ROOT / "tools"))
+    from nckl_model import scenario, drift
+    d = load_json(p); S = d.get("sotp", {})
+    for k, v in (d.get("fair_value") or {}).items():
+        if isinstance(v, (int, float)):
+            err(f"nckl: fair_value.{k} = {v} — ручное число; шкала считается моделью на странице")
+    texts = S.get("not_included", []) + [S.get("rv_note", ""), (d.get("fair_value") or {}).get("note", "")]
+    for t in texts:
+        if m := re.search(r"≈\s*\d{3,4}\b", t):
+            err(f"nckl: в тексте вписана оценка «{m.group(0)}» — подставлять из модели ({{rv100}}, {{rv60}})")
+    for sc in S.get("scenarios", []):
+        ps = scenario(S, sc["id"])
+        if not (0 < ps < 10 * d["price"]["value"]):
+            err(f"nckl: сценарий {sc['id']} даёт {ps:.0f} — модель сломана")
+    if "anchor" not in S:
+        err("nckl: нет sotp.anchor — неизвестно, при какой оценке сделан вывод")
+        return
+    now, a, stale = drift(d)
+    if stale:
+        warn(f"nckl: вывод сделан при {a['ps']} (цена {a['price']}), модель сейчас {now:.0f} при цене {d['price']['value']} — на странице плашка «пересматривается»")
+
+
 def check_data(fix):
+    check_nckl()
     for p in sorted((ROOT / "data").glob("*.json")):
         d = load_json(p)
         if isinstance(d, dict) and d.get("schema") == 1 and d.get("kind") == "company":

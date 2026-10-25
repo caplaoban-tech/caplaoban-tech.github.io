@@ -35,6 +35,7 @@ h2{font-size:20px} h3{font-size:16px}
 p{margin:0}
 .chip{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:4px 10px;border-radius:999px;border:1px solid currentColor;white-space:nowrap}
 .chip.warn{color:var(--warn)} .chip.good{color:var(--good)} .chip.bad{color:var(--bad)} .chip.mute{color:var(--muted)}
+.stale{margin:8px 0 0;padding:8px 12px;border-left:3px solid var(--bad);background:color-mix(in srgb,var(--bad) 8%,transparent);color:var(--ink);font-size:14px;line-height:1.45;border-radius:4px}
 #verdict{white-space:normal;max-width:100%;border-radius:14px}
 /* карточки компаний */
 .co{display:grid;grid-template-columns:auto 1fr auto;gap:4px 14px;align-items:center;color:var(--ink)}

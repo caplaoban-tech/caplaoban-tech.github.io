@@ -12,7 +12,7 @@
 <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;800&family=Golos+Text:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
-<link rel="stylesheet" href="../assets/style.css?v=11">
+<link rel="stylesheet" href="../assets/style.css?v=12">
 </head>
 <body>
 <div class="wrap">
@@ -30,6 +30,7 @@
         <span class="muted" id="price-note">Rp за акцию</span>
       </div>
       <div><span class="chip warn" id="verdict">—</span></div>
+      <p class="stale" id="stale" hidden></p>
     </section>
 
     <section class="kpis" id="kpis" aria-label="Ключевые цифры"></section>
@@ -178,7 +179,7 @@ function stacked(id, data, max) {
   $(id).replaceChildren(s);
 }
 
-Promise.all([fetch("../data/nckl.json?v=11").then(r => r.json()), fetch("../data/markets.json?v=1").then(r => r.json())]).then(([D, MK]) => { window.__MK = MK; return D; }).then(D => {
+Promise.all([fetch("../data/nckl.json?v=12").then(r => r.json()), fetch("../data/markets.json?v=1").then(r => r.json())]).then(([D, MK]) => { window.__MK = MK; return D; }).then(D => {
   const P = D.price.value;
   $("eyebrow").textContent = `${D.exchange} · ${D.ticker} · обновлено ${D.updated.split("-").reverse().join(".")}`;
   $("price").textContent = f0(P);
@@ -216,7 +217,7 @@ Promise.all([fetch("../data/nckl.json?v=11").then(r => r.json()), fetch("../data
   const MK = window.__MK, ser = Object.fromEntries(MK.series.map(x => [x.id, x]));
   const dd = s => { if (!s) return ""; const p = s.split("-"); return p.length === 3 ? `${p[2]}.${p[1]}.${p[0]}` : p.reverse().join("."); };
   const short = s => { const p = s.split("-"); return p.length === 3 ? `${p[2]}.${p[1]}` : `${p[1]}.${p[0].slice(2)}`; };
-  const ageDays = s => (new Date(D.updated) - new Date(s)) / 864e5;
+  const ageDays = s => (Date.now() - new Date(s)) / 864e5;
   const fv0 = x => typeof x.value === "number" ? x.value.toLocaleString("ru-RU") : x.value;
   document.querySelectorAll(".srcl").forEach(n => { const x = ser[n.dataset.src]; if (!x) return;
     n.innerHTML = `Данные: <b>${esc(fv0(x))} ${esc(x.unit)}</b> на ${dd(x.date)} · ${x.url ? `<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.source)}</a>` : esc(x.source)} [${x.class}]${ageDays(x.date) > 14 ? ' <span class="chip warn">устарело</span>' : ""}`; });
@@ -296,7 +297,8 @@ Promise.all([fetch("../data/nckl.json?v=11").then(r => r.json()), fetch("../data
   }
   $("how").innerHTML = S.streams.map(st => `<div><h3>${esc(st.name)}</h3><p>${esc(st.calc)}</p><p class="note">Откуда: ${esc(st.src)}</p><p class="note">Чувствительность: ${esc(st.sens_note)}</p></div>`).join("") +
     `<div><h3>Чистый долг</h3><p class="note">${esc(S.net_debt_note)}</p></div><div><h3>Условия FY2025</h3><p class="note">${esc(R.note)}</p></div>`;
-  $("noinc").innerHTML = S.not_included.map(t => `<li><span class="dot" style="background:var(--warn)"></span><span>${esc(t)}</span></li>`).join("");
+  const nowAt = rv => f0(model({ ...S.defaults, ...S.scenarios.find(z => z.id === "now"), rv }).ps);
+  $("noinc").innerHTML = S.not_included.map(t => t.replace("{rv100}", nowAt(100)).replace("{rv60}", nowAt(60))).map(t => `<li><span class="dot" style="background:var(--warn)"></span><span>${esc(t)}</span></li>`).join("");
   $("div-note").textContent = D.facts_div.note;
   { const B = S.backtest, mb = model({ ...S.defaults, ...B.cond }), ra = mb.rows.find(r => r.st.id === "assoc");
     $("bt").innerHTML = `<span>Ассоциаты по модели в условиях ${esc(B.label)}</span><span>${t2(ra.f)} трлн</span><span>Ассоциаты по отчёту, ${esc(B.label)}</span><span>${t2(B.actual.assoc)} трлн</span>`;
@@ -315,6 +317,12 @@ Promise.all([fetch("../data/nckl.json?v=11").then(r => r.json()), fetch("../data
   $("fv").innerHTML = `<div class="track"></div><div class="band" style="left:${pos2(FV.lo)}%;width:${pos2(FV.hi) - pos2(FV.lo)}%"></div><div class="now" style="left:${pos2(P)}%">сейчас ${f0(P)}<i></i></div>` +
     [FV.bear, FV.lo, FV.hi, FV.bull].map(x => `<div class="tick" style="left:${pos2(x)}%">${f0(x)}</div>`).join("");
   $("fv-note").textContent = `Медвежий ${f0(FV.bear)} · «Сейчас» и «Как в FY2025» ${f0(FV.lo)}–${f0(FV.hi)} · середина цикла ${f0(FV.bull)}. ` + D.fair_value.note;
+  /* вывод сделан при оценке S.anchor; если рынок сдвинул модель — предупредить */
+  const A = S.anchor, nowPs = sc("now");
+  if (A && (Math.abs(nowPs / A.ps - 1) > (A.tolerance || 0.1) || nowPs < P)) {
+    const st = $("stale"); st.hidden = false;
+    st.textContent = `Вывод от ${dd(A.date)} пересматривается: по текущим ценам модель «Сейчас» даёт ${f0(nowPs)}${nowPs < P ? " — ниже цены" : " при цене"} ${f0(P)} (на ${dd(A.date)} было ${f0(A.ps)} при цене ${f0(A.price)}). «${D.verdict.label}» опирается на диапазон «Сейчас» — «Как в FY2025»; модель упрощённая и пересобирается. ${A.review}`;
+  }
   setDefaults(); calc();
 }).catch(() => { document.querySelector("main").insertAdjacentHTML("afterbegin", '<p class="note">Не удалось загрузить данные компании. Обновите страницу.</p>'); });
 </script>

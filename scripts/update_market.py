@@ -12,6 +12,8 @@ import csv, datetime as dt, json, pathlib, re, sys, urllib.request
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
+sys.path.insert(0, str(ROOT / "tools"))
+from nckl_model import drift  # noqa: E402
 UA = {"User-Agent": "Mozilla/5.0 (compatible; caplaoban-bot/1.0; +https://caplaoban-tech.github.io)"}
 MONTHS = {m: i for i, m in enumerate(["january", "february", "march", "april", "may", "june", "july",
                                        "august", "september", "october", "november", "december"], 1)}
@@ -146,13 +148,16 @@ def main():
             for sc in sotp["scenarios"]:
                 if sc["id"] == "now": sc[k] = got[k]["value"]
                 elif k == "fx" and sc["id"] != "fy25": sc[k] = got[k]["value"]
-    nk["updated"] = dt.date.today().isoformat()
+    # nk["updated"] — дата разбора, робот её не трогает; свежесть цен видна в markets.json и у каждого входа
     save(DATA / "nckl.json", nk)
+    now, a, stale = drift(nk)
+    print(f"NCKL: модель «Сейчас» {now:.0f} при цене {nk['price']['value']} (вывод сделан при {a['ps']} / {a['price']})"
+          + (" — ВЫВОД УСТАРЕЛ, на странице плашка" if stale else ""))
 
     if "px" in got:
         cos = load(DATA / "companies.json")
         for c in cos:
-            if c["ticker"] == "NCKL": c["price"] = got["px"]["value"]; c["updated"] = got["px"]["date"]
+            if c["ticker"] == "NCKL": c["price"] = got["px"]["value"]
         save(DATA / "companies.json", cos)
 
     for k, name in (("lme", "lme_nickel"), ("px", "nckl"), ("fx", "usd_idr")):

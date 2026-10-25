@@ -4,22 +4,22 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>3898 CRRC Times Electric — Cap Laoban</title>
-<meta name="description" content="CRRC Times Electric (3898): справедливая цена, из чего она складывается, сравнение с аналогами, риски и калькулятор «что если».">
+<meta name="description" content="CRRC Times Electric (HKEX 3898 / SSE 688187): тяговое оборудование для поездов и метро, IGBT/SiC, приводы EV. Оценка H-акции по частям, премия A/H 106%, риск-гейт, аналоги и калькулятор.">
 <meta property="og:title" content="3898 CRRC Times Electric — Cap Laoban">
-<meta property="og:description" content="CRRC Times Electric (3898): справедливая цена, из чего она складывается, сравнение с аналогами, риски и калькулятор «что если».">
+<meta property="og:description" content="CRRC Times Electric (HKEX 3898 / SSE 688187): тяговое оборудование для поездов и метро, IGBT/SiC, приводы EV. Оценка H-акции по частям, премия A/H 106%, риск-гейт, аналоги и калькулятор.">
 <meta property="og:image" content="/assets/og.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;800&family=Golos+Text:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
-<link rel="stylesheet" href="/assets/style.css?v=11">
+<link rel="stylesheet" href="/assets/style.css?v=12">
 </head>
 <!-- Страница собрана из templates/company. Все цифры — в ../data/<data-file>. Разметку руками не править: правится JSON. -->
 <body data-file="3898.json">
 <div class="wrap">
   <header class="top">
     <a class="brand" href="/"><img src="/assets/mark.svg" alt="">Cap Laoban</a>
-    <nav class="nav"><a href="#calc">Оценка</a><a href="#market">Данные</a><a href="#peers">Аналоги</a><a href="#risks">Риски</a><a href="#glossary">Словарь</a></nav>
+    <nav class="nav"><a href="#terminal">Цена и отчётность</a><a href="#calc">Оценка</a><a href="#market">Данные</a><a href="#peers">Аналоги</a><a href="#risks">Риски</a><a href="#glossary">Словарь</a></nav>
   </header>
 
   <main class="stack">
@@ -32,6 +32,8 @@
       </div>
       <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center"><span class="chip mute" id="verdict">—</span><span class="note" id="verdict-detail"></span></div>
     </section>
+
+    <section id="terminal" aria-label="Цена и отчётность" hidden></section>
 
     <section class="kpis" id="kpis" aria-label="Ключевые цифры"></section>
 
@@ -286,5 +288,6 @@ function stacked(id, c) {
   $(id).replaceChildren(s);
 }
 </script>
+<script src="/assets/terminal.js?v=3" defer></script>
 </body>
 </html>

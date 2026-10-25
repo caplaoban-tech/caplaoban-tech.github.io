@@ -3,6 +3,7 @@
 Источники (бесплатные, официальные или общепринятые):
   - никель LME cash settlement — westmetall.com (публикует официальные цены LME за день);
   - цена NCKL — Yahoo Finance (NCKL.JK);
+  - терминалы компаний (data/fin/*.json): закрытия A и H и курс HKDCNY=X — Yahoo Finance, в data/history/<тикер>_px.csv;
   - курс USD/IDR — Bank Indonesia JISDOR; запасной вариант — Yahoo (IDR=X).
 Каждый источник обновляется независимо: если один не ответил, остальные всё равно обновятся,
 а у не обновлённого показателя остаются прежние значение и дата.
@@ -76,7 +77,45 @@ def history(name, date, value):
         with p.open("w", newline="", encoding="utf-8") as f:
             csv.writer(f).writerows(rows)
 
+def yahoo_series(symbol):
+    """Дневные закрытия за 5 дней: {дата: цена}."""
+    j = json.loads(get(f"https://query1.finance.yahoo.com/v8/finance/chart/{symbol}?range=5d&interval=1d"))
+    r = j["chart"]["result"][0]; off = r["meta"].get("gmtoffset", 0)
+    cl = r["indicators"]["quote"][0]["close"]
+    return {dt.datetime.utcfromtimestamp(t + off).date().isoformat(): round(c, 4) for t, c in zip(r["timestamp"], cl) if c is not None}
+
+def ysym(code):
+    """Код Tushare → символ Yahoo: 688187.SH → 688187.SS, 03898.HK → 3898.HK."""
+    n, ex = code.split(".")
+    return {"SH": f"{n}.SS", "SZ": f"{n}.SZ", "HK": f"{int(n):04d}.HK"}[ex]
+
+def update_terminals():
+    """Терминалы компаний (data/fin/*.json): дописать закрытия A, H и курс HKD→CNY в data/history/<тикер>_px.csv."""
+    fx = None
+    for f in sorted((DATA / "fin").glob("*.json")):
+        F = load(f); tk = F["ticker"]; csv_p = DATA / "history" / f"{tk}_px.csv"
+        try:
+            a = yahoo_series(ysym(F["a_code"])) if F.get("a_code") else {}
+            h = yahoo_series(ysym(F["h_code"])) if F.get("h_code") else {}
+            if fx is None: fx = yahoo_series("HKDCNY=X")
+        except Exception as e:  # noqa: BLE001
+            print("ошибка терминал", tk, e, file=sys.stderr); continue
+        rows = {r["date"]: r for r in csv.DictReader(csv_p.open())} if csv_p.exists() else {}
+        last_fx = next((rows[d]["hkdcny"] for d in sorted(rows, reverse=True) if rows[d].get("hkdcny")), "")
+        for d in sorted(set(a) | set(h)):
+            r = rows.get(d, {"date": d, "a": "", "h": "", "hkdcny": ""})
+            if d in a: r["a"] = a[d]
+            if d in h: r["h"] = h[d]
+            if d in fx: r["hkdcny"] = round(fx[d], 5); last_fx = r["hkdcny"]
+            elif not r["hkdcny"]: r["hkdcny"] = last_fx
+            rows[d] = r
+        with csv_p.open("w", newline="") as fh:
+            w = csv.DictWriter(fh, ["date", "a", "h", "hkdcny"]); w.writeheader()
+            for d in sorted(rows): w.writerow(rows[d])
+        print("терминал", tk, "A", a, "H", h)
+
 def main():
+    update_terminals()
     got, errors = {}, []
     for key, fn in (("lme", fetch_lme), ("px", fetch_nckl), ("fx", fetch_fx)):
         try:

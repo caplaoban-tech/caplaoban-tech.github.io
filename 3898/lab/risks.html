@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Что сломает тезис — 3898 · Cap Laoban</title>
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;800&family=Golos+Text:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="/assets/style.css?v=12">
+<link rel="stylesheet" href="lab.css?v=3">
+</head>
+<body>
+<div class="tape" id="tape"></div>
+<div class="wrap">
+  <nav class="rail" id="rail" aria-label="Вопросы"></nav>
+  <main>
+    <header class="qhead" id="qhead"></header>
+
+    <section class="sec" aria-labelledby="h-rk">
+      <h2 id="h-rk">Где застревают деньги</h2>
+      <p class="prose">Деньги реальны: операционный поток — 92% прибыли, аудитор KPMG, залогов нет. Риск в другом: деньги приходят поздно, оседают в группе и не возвращаются акционерам. Риск-гейт — AMBER.</p>
+      <ul class="rk" id="rk"></ul>
+    </section>
+
+    <section class="sec" aria-labelledby="h-trg">
+      <h2 id="h-trg">Что проверить и когда</h2>
+      <div class="panel"><div class="trg" id="trg"></div></div>
+    </section>
+
+    <nav class="pager" id="pager" aria-label="Соседние вопросы"></nav>
+    <div class="foot"><p>Проверка флагов: годовой отчёт 2025 прочитан тремя независимыми проверками, совпадения сверены с первичкой кодом. Оценка «на деньгах» — проверка эффективности капитала от 26.10.2026.</p></div>
+  </main>
+</div>
+<script type="module">
+import {boot, esc, $} from "./lab.js";
+const D = await boot("risks");
+$("rk").innerHTML = D.risks.map(r => `<li><h3>${esc(r.t)}</h3><p>${esc(r.d)}</p><p class="src">${esc(r.src)}</p></li>`).join("");
+$("trg").innerHTML = D.triggers.map(t => `<b>${esc(t.when)}</b><span>${esc(t.t)}</span>`).join("");
+</script>
+</body>
+</html>

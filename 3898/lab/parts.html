@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Из чего складывается цена акции — 3898 · Cap Laoban</title>
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;800&family=Golos+Text:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="/assets/style.css?v=12">
+<link rel="stylesheet" href="lab.css?v=3">
+</head>
+<body>
+<div class="tape" id="tape"></div>
+<div class="wrap">
+  <nav class="rail" id="rail" aria-label="Вопросы"></nav>
+  <main>
+    <header class="qhead" id="qhead"></header>
+
+    <section class="sec" aria-labelledby="h-parts">
+      <h2 id="h-parts">Разберите акцию сами</h2>
+      <p class="prose">Слева — цена H, разложенная на то, что за неё получает покупатель. Справа — сумма частей по вашим допущениям. Двигайте ползунки и смотрите, сколько остаётся на железную дорогу.</p>
+      <div class="split">
+        <div class="stickbox stack">
+          <div class="cols" id="cols">
+            <div class="col" id="c-px"></div>
+            <div class="col" id="c-sum"></div>
+          </div>
+          <div class="key"><span><i style="background:var(--steel)"></i>деньги минус долг</span><span><i style="background:var(--ore)"></i>Times Semiconductor, 77,86%</span><span><i style="background:var(--red)"></i>ж/д и прочее</span></div>
+          <div class="verdict" id="verdict" aria-live="polite"></div>
+        </div>
+        <div class="stack">
+          <div class="segbtn" id="preset" role="group" aria-label="Сценарий"></div>
+          <div class="ctl">
+            <span style="font-size:14px">Как оценить полупроводниковую дочку</span>
+            <div class="segbtn" id="tsm" role="group" aria-label="Метод оценки дочки"></div>
+            <p class="mnote" id="tsm-note"></p>
+          </div>
+          <div class="ctl">
+            <label for="m">Сколько годовых прибылей платить за ж/д <output id="m-o"></output></label>
+            <input type="range" id="m" min="4" max="14" step="0.5" value="8">
+            <small>Прибыль ж/д и прочего после налога (NOPAT) — 3,2 млрд ¥ за 12 мес. [Б]. Alstom и CRRC торгуются за 9–22 прибыли [В].</small>
+          </div>
+          <div class="ctl">
+            <label for="chg">Прибыль ж/д через год <output id="chg-o"></output></label>
+            <input type="range" id="chg" min="-30" max="20" step="1" value="0">
+            <small>−15% закупок поездов срезает прибыль ж/д на ~27% (рычаг постоянных расходов) [Б].</small>
+          </div>
+          <div class="ctl">
+            <label for="ck">Сколько денег дойдёт до акционера <output id="ck-o"></output></label>
+            <input type="range" id="ck" min="30" max="100" step="5" value="75">
+            <small>Госкомпания платит 37% прибыли и остановила выкуп; 2 млрд — в финкомпании контролёра [А].</small>
+          </div>
+        </div>
+      </div>
+      <p class="src" id="src"></p>
+    </section>
+
+    <section class="sec" aria-labelledby="h-why">
+      <h2 id="h-why">Почему дочку нельзя прибавлять к деньгам по цене раунда</h2>
+      <div class="prose">
+        <p>Инвесторы 2024 года заплатили за долю в Times Semiconductor живыми деньгами, и эти деньги лежат у дочки. Они уже входят в 15 млрд ¥ денег группы. Если оценить дочку по раунду и прибавить все деньги группы, часть денег посчитается дважды. Поэтому здесь из денег вычтена доля Times Electric в деньгах дочки: 1,5 млрд ¥ — это допущение, отчёт сумму не раскрывает.</p>
+        <p>Тезис «железная дорога достаётся даром» верен только при оценке дочки по раунду или по аналогам. Условия раунда (цена за акцию, право инвесторов на выкуп) мы не проверили, поэтому основой вывода он не служит.</p>
+      </div>
+    </section>
+
+    <nav class="pager" id="pager" aria-label="Соседние вопросы"></nav>
+  </main>
+</div>
+<script type="module">
+import {boot, esc, fmt, tween, $} from "./lab.js";
+const D = await boot("parts");
+const P = D.parts, px = D.price.h, fx = D.price.fx, sh = D.shares_m, st = 0.7786;
+const hk = bn => bn * 1000 / sh / fx;               // млрд ¥ → HK$ на акцию
+const S = {tsm: "book", m: 8, chg: 0, ck: 75};
+const PRE = [
+  {id: "bear", name: "Медвежий", v: {tsm: "pe10", m: 6, chg: -27, ck: 50}},
+  {id: "base", name: "Базовый", v: {tsm: "book", m: 8, chg: 0, ck: 75}},
+  {id: "bull", name: "Бычий", v: {tsm: "round", m: 11, chg: 5, ck: 100}}];
+$("preset").innerHTML = PRE.map(p => `<button type="button" data-p="${p.id}">${p.name}</button>`).join("");
+$("tsm").innerHTML = P.ts_methods.map(t => `<button type="button" data-t="${t.id}">${esc(t.name)}</button>`).join("");
+$("src").textContent = P.src;
+const tsVal = id => ({pe10: 10 * P.ts_net, book: P.ts_book, round: P.ts_round, peers: P.ts_peer_pb * P.ts_book})[id];
+
+function build() {
+  for (const [col, cap] of [["c-px", "цена H, 23.10"], ["c-sum", "сумма частей"]])
+    $(col).innerHTML = `<div class="cap"><span></span><small>${cap}</small></div>` + ["rail", "ts", "cash"].map(c => `<div class="pc pc-${c}"><span><em></em><b></b></span></div>`).join("");
+}
+const LBL = {rail: ["за ж/д", "ж/д"], ts: ["дочка", "дочка"], cash: ["деньги", "деньги"]};
+function put(col, k, vals, total, H, capV, capTxt) {
+  const c = $(col);
+  c.querySelector(".cap").style.bottom = capV / total * H + "px";
+  c.querySelector(".cap span").textContent = capTxt;
+  for (const [cls, v] of Object.entries(vals)) {
+    const el = c.querySelector(".pc-" + cls), h = Math.max(0, v) / total * H;
+    el.style.height = h + "px";
+    el.querySelector("span").style.visibility = h > 34 ? "visible" : "hidden";
+    el.querySelector("em").textContent = LBL[cls][k];
+    el.querySelector("b").textContent = fmt(v, 1);
+  }
+}
+function draw() {
+  const ck = S.ck / 100;
+  const cash = hk(P.cash_avail * ck - P.debt - P.ts_cash_te * ck);
+  const ts = hk(tsVal(S.tsm) * st);
+  const rail = hk(P.rest_nopat * (1 + S.chg / 100) * S.m);
+  const sum = cash + ts + rail, left = px - cash - ts;
+  const implied = left / hk(P.rest_nopat);
+  const top = Math.max(sum, px) * 1.04, H = $("cols").clientHeight - 64;
+  put("c-px", 0, {rail: Math.max(left, 0), ts: Math.min(ts, px - cash), cash: Math.min(cash, px)}, top, H, px, "HK$" + fmt(px, 2));
+  put("c-sum", 1, {rail, ts, cash}, top, H, sum, "HK$" + fmt(sum, 1));
+  const d = (sum / px - 1) * 100;
+  $("verdict").innerHTML = left > 0
+    ? `Сумма частей <b class="num" id="v-sum"></b> — на <b class="num">${fmt(Math.abs(d), 0)}%</b> ${d >= 0 ? "выше" : "ниже"} цены. За железную дорогу цена H платит <b class="num">${fmt(implied, 1)}</b> годовых прибылей, а вы бы заплатили ${fmt(S.m, 1)}.`
+    : `Сумма частей <b class="num" id="v-sum"></b>. При такой оценке дочки и денег цена H меньше их суммы: ж/д достаётся бесплатно, и ещё остаётся <b class="num">HK$${fmt(-left, 1)}</b>. Рынок явно не верит в эту оценку дочки.`;
+  tween($("v-sum"), sum, 1, "HK$");
+  $("m-o").textContent = fmt(S.m, 1); $("chg-o").textContent = (S.chg > 0 ? "+" : "") + S.chg + "%"; $("ck-o").textContent = S.ck + "%";
+  $("m").value = S.m; $("chg").value = S.chg; $("ck").value = S.ck;
+  document.querySelectorAll("#tsm button").forEach(b => b.setAttribute("aria-pressed", b.dataset.t === S.tsm));
+  $("tsm-note").textContent = P.ts_methods.find(t => t.id === S.tsm).note;
+  document.querySelectorAll("#preset button").forEach(b => { const p = PRE.find(x => x.id === b.dataset.p).v; b.setAttribute("aria-pressed", Object.keys(p).every(k => p[k] === S[k])); });
+}
+$("tsm").addEventListener("click", e => { const b = e.target.closest("button"); if (b) { S.tsm = b.dataset.t; draw(); } });
+$("preset").addEventListener("click", e => { const b = e.target.closest("button"); if (b) { Object.assign(S, PRE.find(p => p.id === b.dataset.p).v); draw(); } });
+for (const k of ["m", "chg", "ck"]) $(k).addEventListener("input", e => { S[k] = +e.target.value; draw(); });
+addEventListener("resize", draw);
+build();
+draw();
+</script>
+</body>
+</html>

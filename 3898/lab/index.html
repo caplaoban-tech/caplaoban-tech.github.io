@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>CRRC Times Electric: железная дорога платит за полупроводники — пять вопросов · Cap Laoban</title>
+<meta name="description" content="CRRC Times Electric (3898 / 688187) в пяти вопросах: что за силовые чипы, из чего складывается цена H, дёшево ли H на самом деле, аналоги и листинг дочки, что сломает тезис.">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;800&family=Golos+Text:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="/assets/style.css?v=12">
+<link rel="stylesheet" href="lab.css?v=3">
+</head>
+<body>
+<div class="tape" id="tape"></div>
+<div class="wrap">
+  <main>
+    <section class="cover">
+      <h1>Железная дорога платит за полупроводники</h1>
+      <p class="lead">CRRC Times Electric делает тяговое оборудование для поездов и силовые чипы для электромобилей и сетей. Ж/д бизнес приносит 84% прибыли. Чипы забрали основную часть стройки 2023–25 годов, а зарабатывают сейчас 6% на капитал. Пять вопросов, которые решают, стоит ли покупать H-акцию.</p>
+    </section>
+    <ol class="qlist" id="qlist" aria-label="Вопросы"></ol>
+    <div class="foot">
+      <p>Метки: [А] отчётность, [Б] расчёт, [В] внешний источник. Цены — закрытие 23.10.2026. Тестовая версия; основной разбор с калькулятором и терминалом — на <a href="/3898/">странице 3898</a>.</p>
+    </div>
+  </main>
+</div>
+<script type="module">
+import {boot, esc, arrow, $} from "./lab.js";
+const D = await boot("");
+$("qlist").innerHTML = D.questions.map((q, k) => `<li><a href="${q.url}"><span class="n">${k + 1}</span><span class="t">${esc(q.q)}</span>${arrow}<span class="a">${esc(q.a)}</span></a></li>`).join("");
+</script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>С кем сравнивать и что даст IPO дочки — 3898 · Cap Laoban</title>
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;800&family=Golos+Text:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="/assets/style.css?v=12">
+<link rel="stylesheet" href="lab.css?v=3">
+</head>
+<body>
+<div class="tape" id="tape"></div>
+<div class="wrap">
+  <nav class="rail" id="rail" aria-label="Вопросы"></nav>
+  <main>
+    <header class="qhead" id="qhead"></header>
+
+    <section class="sec" aria-labelledby="h-semi">
+      <h2 id="h-semi">Дочка против китайских чипмейкеров</h2>
+      <div class="panel"><div class="tbl"><table id="t-semi"></table></div><p class="src" id="n-semi"></p></div>
+      <p class="prose">Маржа дочки выше, чем у StarPower и Silan, а внутри Times Electric её оценивают примерно в один капитал. Аналоги на бирже A стоят 2,5–3,7 капитала при более слабой прибыльности. Это не значит, что дочка недооценена: аналоги торгуются с «технологической» премией STAR, и она может уйти.</p>
+    </section>
+
+    <section class="sec" aria-labelledby="h-ipo">
+      <h2 id="h-ipo">Что даст листинг дочки</h2>
+      <div class="split">
+        <div class="stack">
+          <div class="ctl">
+            <label for="pb">Во сколько капиталов рынок оценит дочку <output id="pb-o"></output></label>
+            <input type="range" id="pb" min="0.8" max="4" step="0.1" value="1.6">
+            <small>1,0 — по балансу; 1,6 — цена раунда 2024; 3,5 — медиана StarPower, Silan, NCE.</small>
+          </div>
+          <div class="uplift" id="up"></div>
+        </div>
+        <div class="prose">
+          <p>Если дочку выведут на биржу, рынок впервые назовёт её цену. Каждые +0,5 капитала к оценке добавляют около HK$4,1 к стоимости акции Times Electric.</p>
+          <p>Чтобы этот выигрыш дошёл до держателя H, рынок должен переоценить материнскую компанию. Сам по себе листинг денег акционерам не приносит. Компания листинг не объявляла.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec" aria-labelledby="h-tl">
+      <h2 id="h-tl">Двадцать лет листингов</h2>
+      <ol class="tl" id="tl"></ol>
+    </section>
+
+    <section class="sec" aria-labelledby="h-grp">
+      <h2 id="h-grp">Вся компания против аналогов</h2>
+      <div class="panel"><div class="tbl"><table id="t-grp"></table></div><p class="src" id="n-grp"></p></div>
+    </section>
+
+    <nav class="pager" id="pager" aria-label="Соседние вопросы"></nav>
+  </main>
+</div>
+<script type="module">
+import {boot, esc, fmt, tween, $} from "./lab.js";
+const D = await boot("peers");
+const tbl = (T, id, nid) => {
+  $(id).innerHTML = `<tr><th></th>${T.cols.map((c, k) => `<th${k ? "" : ' style="color:var(--red)"'}>${esc(c)}</th>`).join("")}</tr>` +
+    T.rows.map(r => `<tr>${r.map((c, k) => k ? `<td${k === 1 ? ' class="me"' : ""}>${esc(c)}</td>` : `<td>${esc(c)}</td>`).join("")}</tr>`).join("");
+  $(nid).textContent = T.note;
+};
+tbl(D.peers_semi, "t-semi", "n-semi");
+tbl(D.peers_group, "t-grp", "n-grp");
+$("tl").innerHTML = D.listings.map(l => `<li${l.d === "сейчас" ? ' class="now"' : ""}><b>${esc(l.d)}</b><span>${esc(l.t)}</span><small>${esc(l.src)}</small></li>`).join("");
+const P = D.parts, fx = D.price.fx, sh = D.shares_m, hk = bn => bn * 1000 / sh / fx;
+$("up").innerHTML = `<span>Доля 77,86% по этой оценке</span><b id="u-v"></b><span>Она же по балансу</span><b>HK$${fmt(hk(P.ts_book * .7786), 1)}</b><span class="tot">Прибавка на акцию</span><b class="tot" id="u-d"></b><span class="tot">К цене H HK$${fmt(D.price.h, 2)}</span><b class="tot" id="u-p"></b>`;
+function upd() {
+  const pb = +$("pb").value, v = hk(P.ts_book * pb * .7786), d = v - hk(P.ts_book * .7786);
+  $("pb-o").textContent = fmt(pb, 1) + "×";
+  tween($("u-v"), v, 1, "HK$"); tween($("u-d"), d, 1, d >= 0 ? "+HK$" : "HK$"); tween($("u-p"), d / D.price.h * 100, 0, d >= 0 ? "+" : "", "%");
+}
+$("pb").addEventListener("input", upd); upd();
+</script>
+</body>
+</html>

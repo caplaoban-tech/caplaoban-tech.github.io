@@ -188,3 +188,23 @@ table.mk td:nth-child(4){white-space:normal;min-width:160px;font-size:12px}
 .term-tbl tbody tr.on td{background:var(--red-soft);font-weight:600}
 .term-tbl tr.grp td{font-weight:600;color:var(--muted);background:var(--bg);cursor:default}
 .term-tbl td.neg{color:var(--bad)}
+/* терминал: «чья дочка и почему так платят» во вкладке «Дивиденды» */
+.dvs{display:flex;flex-direction:column;gap:12px;border-top:1px solid var(--line);padding-top:14px;margin-top:4px;font-size:15px}
+.dvs h3{font-size:18px;margin-top:6px}
+.dvs-chain{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:0}
+.dvs-chain li{position:relative;padding:0 0 12px 22px;display:flex;flex-direction:column;gap:1px}
+.dvs-chain li::before{content:"";position:absolute;left:4px;top:7px;width:9px;height:9px;border-radius:50%;background:var(--panel);border:2px solid var(--steel)}
+.dvs-chain li:not(:last-child)::after{content:"";position:absolute;left:9px;top:19px;bottom:0;width:1px;background:var(--line)}
+.dvs-chain li:last-child::before{background:var(--red);border-color:var(--red)}
+.dvs-chain b{font-weight:600}
+.dvs-chain span{font-size:13px;color:var(--muted)}
+.dvs-cmp{display:flex;flex-direction:column;gap:6px}
+.dvs-row{display:grid;grid-template-columns:minmax(92px,1.4fr) repeat(5,1fr);gap:6px;align-items:end}
+.dvs-row>span:first-child{font-size:13px;align-self:center}
+.dvs-row [role=cell]{position:relative;height:46px;display:flex;align-items:flex-end;justify-content:center}
+.dvs-row [role=cell] i{position:absolute;left:18%;right:18%;bottom:0;border-radius:4px 4px 1px 1px;opacity:.85}
+.dvs-row [role=cell] b{position:relative;font-size:12px;background:var(--panel);padding:0 3px;border-radius:4px;margin-bottom:2px}
+.dvs-head span{font-family:var(--mono);font-size:11px;color:var(--muted);text-align:center}
+.dvs-list{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:8px}
+.dvs-list .note{display:block;margin-top:2px}
+.dvs-verdict{background:var(--red-soft);border-radius:12px;padding:12px 14px}

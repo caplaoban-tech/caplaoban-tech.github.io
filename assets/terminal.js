@@ -73,7 +73,8 @@
       <div class="term-ctl"><div class="seg sm" id="t-per"><button type="button" data-p="y" aria-pressed="true">По годам</button><button type="button" data-p="q">По кварталам</button></div><span class="note" id="t-hint">Нажмите строку — график покажет её.</span></div>
       <div class="term-bars" id="t-bars"></div>
       <div class="tbl term-tbl" id="t-tbl"></div>
-      <p class="note" id="t-src"></p>`;
+      <p class="note" id="t-src"></p>
+      <div class="dvs" id="t-story" hidden></div>`;
 
     // ---------- график цены ----------
     let range = 366, mode = "px";
@@ -108,6 +109,7 @@
     const drawTab = () => {
       const tblEl = document.getElementById("t-tbl"), bars = document.getElementById("t-bars"), src = document.getElementById("t-src");
       document.getElementById("t-per").style.display = tab === "sg" || tab === "dv" ? "none" : "";
+      drawStory();
       if (tab === "sg") return drawSeg();
       const isQ = per === "q" && tab !== "dv";
       const rows = TABS[tab].filter(r => !isQ || QOK[r[0]]);
@@ -126,6 +128,28 @@
       src.textContent = tab === "dv"
         ? `${F.sources.div}.${F.div_note ? " " + F.div_note : ""} Последние выплаты по дате отсечки: ` + F.dividends.slice(-8).map(d => `${d.period} — ${nf(d.dps_cny, 2)} ¥ (${nf(d.total_bn, 2)} млрд)`).join("; ") + "."
         : `${F.sources.fin}. Квартал = разность накопленных итогов. ${tab === "bs" ? "Строка «денежные средства» баланса не видит депозиты в прочих статьях — см. отдельную строку; чистые деньги по примечаниям — " + nf(F.net_cash.value, 2) + " млрд на " + F.net_cash.date + "." : ""}`;
+    };
+    // «Чья дочка и почему так платят» — только во вкладке «Дивиденды», если раздел заполнен
+    const drawStory = () => {
+      const el = document.getElementById("t-story"), S = F.div_story;
+      el.hidden = !(S && tab === "dv");
+      if (el.hidden || el.dataset.done) return;
+      const mx = Math.max(...S.cmp.rows.flatMap(r => r[1]));
+      el.innerHTML = `<h3>${esc(S.title)}</h3>
+        <ol class="dvs-chain">${S.chain.map(c => `<li><b>${esc(c.n)}</b><span>${esc(c.d)}</span></li>`).join("")}</ol>
+        <p class="note">${esc(S.chain_src)}</p>
+        <div class="dvs-cmp" role="table" aria-label="Доля прибыли, выплаченная дивидендами">
+          <div class="dvs-row dvs-head" role="row"><span role="columnheader"></span>${S.cmp.years.map(y => `<span role="columnheader">${y}</span>`).join("")}</div>
+          ${S.cmp.rows.map((r, j) => `<div class="dvs-row" role="row"><span role="rowheader">${esc(r[0])}</span>${r[1].map(v => `<span role="cell"><i style="height:${v / mx * 100}%;background:${j ? "var(--steel)" : "var(--red)"}"></i><b class="num">${v}%</b></span>`).join("")}</div>`).join("")}
+        </div>
+        <p class="note">${esc(S.cmp.src)}</p>
+        <p>${esc(S.history)}</p>
+        <ul class="dvs-list">${S.why.map(w => `<li><b>${esc(w.t)}.</b> ${esc(w.d)} <span class="note">${esc(w.src)}</span></li>`).join("")}</ul>
+        <h3>${esc(S.minor_title)}</h3>
+        <p>${esc(S.minor_lead)}</p>
+        <ul class="dvs-list">${S.minor.map(w => `<li><b>${esc(w.t)}.</b> ${esc(w.d)} <span class="note">${esc(w.src)}</span></li>`).join("")}</ul>
+        <p class="dvs-verdict">${esc(S.verdict)}</p>`;
+      el.dataset.done = 1;
     };
     const drawSeg = () => {
       const S = F.segments; if (!S || !S.items) return;

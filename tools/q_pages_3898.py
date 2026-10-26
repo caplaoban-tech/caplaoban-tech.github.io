@@ -1,6 +1,6 @@
-# Сборщик страниц-вопросов 3898 (обложка + chips/parts/market/peers/risks/data). Запуск: python3 tools/q_pages_3898.py — пишет в 3898/lab/.
+# Сборщик страниц-вопросов 3898 (обложка + chips/parts/market/peers/risks/data). Запуск: python3 tools/q_pages_3898.py — пишет в 3898/.
 import pathlib
-ROOT = pathlib.Path(__file__).resolve().parents[1] / "3898" / "lab"
+ROOT = pathlib.Path(__file__).resolve().parents[1] / "3898"
 HEAD = """<!doctype html>
 <html lang="ru">
 <head>
@@ -40,7 +40,7 @@ HEAD = """<!doctype html>
 """
 RAIL = '  <nav class="rail" id="rail" aria-label="Вопросы"></nav>\n'
 PAGER = '    <nav class="pager" id="pager" aria-label="Соседние страницы"></nav>'
-ROBOTS = '<meta name="robots" content="noindex, nofollow">\n'
+ROBOTS = ''
 
 def page(path, title, desc, body, script, rail=True, extra=""):
     f = ROOT / path / "index.html" if path else ROOT / "index.html"

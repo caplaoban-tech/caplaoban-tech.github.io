@@ -3,11 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="robots" content="noindex, nofollow">
-<title>Цифры: цена, отчётность, дивиденды — 3898 · Cap Laoban</title>
-<meta name="description" content="CRRC Times Electric: цена H и A с премией, отчётность по годам и кварталам, дивиденды и доля прибыли, чья это дочка, словарь.">
-<meta property="og:title" content="Цифры: цена, отчётность, дивиденды — 3898 · Cap Laoban">
-<meta property="og:description" content="CRRC Times Electric: цена H и A с премией, отчётность по годам и кварталам, дивиденды и доля прибыли, чья это дочка, словарь.">
+<title>Что сломает тезис — 3898 · Cap Laoban</title>
+<meta name="description" content="Риски CRRC Times Electric: форензика оборотного капитала и векселей группы CRRC, деньги у контролёра, остановленный выкуп, календарь проверок.">
+<meta property="og:title" content="Что сломает тезис — 3898 · Cap Laoban">
+<meta property="og:description" content="Риски CRRC Times Electric: форензика оборотного капитала и векселей группы CRRC, деньги у контролёра, остановленный выкуп, календарь проверок.">
 <meta property="og:image" content="/assets/og.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
@@ -22,15 +21,19 @@
 <div class="wrap">
   <nav class="rail" id="rail" aria-label="Вопросы"></nav>
   <main>
-    <header class="qhead"><h1>Цифры</h1><p class="lead">Цена A и H с премией, отчётность по годам и кварталам, дивиденды — и почему они такие, сегменты, словарь.</p></header>
-    <section id="terminal" aria-label="Цена и отчётность" hidden></section>
-    <section class="sec" aria-labelledby="h-ch">
-      <h2 id="h-ch">Графики разбора</h2>
-      <div class="grid2" id="charts"></div>
+    <header class="qhead" id="qhead"></header>
+    <section class="sec" aria-labelledby="h-fx">
+      <h2 id="h-fx">Где застревают деньги</h2>
+      <p class="prose">Деньги реальны: операционный поток — 92% прибыли, аудитор KPMG, залогов нет. Риск в другом: деньги приходят поздно, оседают в группе и не возвращаются акционерам. Риск-гейт — AMBER.</p>
+      <ul class="rk" id="rk"></ul>
     </section>
-    <section id="glossary" class="sec" aria-labelledby="h-gl">
-      <h2 id="h-gl">Словарь</h2>
-      <div class="panel"><dl class="gloss" id="gloss"></dl></div>
+    <section id="risks" class="sec" aria-labelledby="h-rk">
+      <h2 id="h-rk">Что может сломать историю</h2>
+      <div class="panel"><ul class="list" id="risk-list"></ul></div>
+    </section>
+    <section class="sec" aria-labelledby="h-trg">
+      <h2 id="h-trg">Что ждём</h2>
+      <div class="panel"><ul class="list" id="trig-list"></ul></div>
     </section>
     <nav class="pager" id="pager" aria-label="Соседние страницы"></nav>
   </main>
@@ -41,12 +44,10 @@
 </div>
 <div class="pop" id="pop" role="dialog" aria-modal="false" hidden><button type="button" class="pop-x" id="pop-x" aria-label="Закрыть">×</button><b id="pop-t"></b><p id="pop-d"></p></div>
 <script src="/assets/company.js?v=1" defer></script>
-<script src="/assets/terminal.js?v=6" defer></script>
 <script type="module">
-import {boot} from "/assets/q.js?v=5";
-await boot("data");
-document.title = "Цифры: цена, отчётность, дивиденды — 3898 · Cap Laoban";
-import("/assets/q.js?v=5").then(m => m.model()).then(() => { document.title = "Цифры: цена, отчётность, дивиденды — 3898 · Cap Laoban"; });
+import {boot, esc, $} from "/assets/q.js?v=5";
+const D = await boot("risks");
+$("rk").innerHTML = D.risks.map(r => `<li><h3>${esc(r.t)}</h3><p>${esc(r.d)}</p><p class="src">${esc(r.src)}</p></li>`).join("");
 </script>
 </body>
 </html>

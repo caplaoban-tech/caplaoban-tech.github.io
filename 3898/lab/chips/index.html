@@ -4,27 +4,31 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
-<title>Что это за чипы — 3898 · Cap Laoban</title>
+<title>Что это за чипы и при чём тут ИИ — 3898 · Cap Laoban</title>
+<meta name="description" content="Силовые полупроводники CRRC Times Electric: путь тока от сети до колеса, IGBT и SiC, Times Semiconductor, связь с ИИ.">
+<meta property="og:title" content="Что это за чипы и при чём тут ИИ — 3898 · Cap Laoban">
+<meta property="og:description" content="Силовые полупроводники CRRC Times Electric: путь тока от сети до колеса, IGBT и SiC, Times Semiconductor, связь с ИИ.">
+<meta property="og:image" content="/assets/og.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;800&family=Golos+Text:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
 <link rel="stylesheet" href="/assets/style.css?v=13">
-<link rel="stylesheet" href="lab.css?v=3">
+<link rel="stylesheet" href="/assets/q.css?v=5">
 </head>
-<body>
+<!-- Страница-вопрос 3898. Модель — data/3898.json (через /assets/company.js), прочее — data/3898_lab.json. Разметку блоков модели не переименовывать: id нужны company.js. -->
+<body data-file="3898.json">
 <div class="tape" id="tape"></div>
 <div class="wrap">
   <nav class="rail" id="rail" aria-label="Вопросы"></nav>
   <main>
     <header class="qhead" id="qhead"></header>
-
     <section class="sec" aria-labelledby="h-path">
       <h2 id="h-path">Путь тока: от сети до колеса</h2>
       <p class="prose">Компания стоит на трёх участках этого пути из четырёх. Нажмите на станцию — она подсветится.</p>
       <div class="wirebox"><div class="flow" aria-hidden="true"><i></i><i></i><i></i></div><ol class="wire" id="wire"></ol></div>
       <p class="src" id="path-src"></p>
     </section>
-
     <section class="sec" aria-labelledby="h-pwm">
       <h2 id="h-pwm">Как ключ делает ток</h2>
       <div class="prose"><p>IGBT умеет только «включено» и «выключено». Если переключать его достаточно часто и менять ширину импульсов, мотор «видит» плавную синусоиду: обмотка сглаживает рывки. Чем чаще переключения, тем ровнее ток и тем горячее чип. Поэтому важны потери на переключение — главный параметр, по которому соревнуются производители.</p></div>
@@ -34,42 +38,39 @@
           <input type="range" id="pwm-n" min="3" max="40" step="1" value="12">
         </div>
         <svg id="pwm-svg" viewBox="0 0 340 150" role="img" aria-label="Импульсы ключа и ток, который видит мотор"></svg>
-        <div class="key"><span><i style="background:var(--steel)"></i>импульсы ключа</span><span><i style="background:var(--ore)"></i>ток, который видит мотор</span><span><i style="background:none;border-top:2px dashed var(--ink);height:0;vertical-align:3px"></i>идеальная синусоида</span></div>
+        <div class="key"><span><i style="background:var(--steel)"></i>импульсы ключа</span><span><i style="background:var(--ore)"></i>ток, который видит мотор</span><span><i class="dash"></i>идеальная синусоида</span></div>
         <p class="src">Иллюстрация принципа (широтно-импульсная модуляция), не данные компании [Б].</p>
       </div>
     </section>
-
     <section class="sec" aria-labelledby="h-prod">
       <h2 id="h-prod">Что именно выпускает Times Semiconductor</h2>
       <div class="prod" id="prod"></div>
       <p class="src" id="prod-src"></p>
     </section>
-
     <section class="sec" aria-labelledby="h-ts">
       <h2 id="h-ts">Выручка растёт, маржа падает втрое</h2>
       <div class="stack">
-        <div class="panel" style="max-width:520px">
-          <h3>Чистая маржа дочки</h3>
-          <div class="bars" id="bars"></div>
-        </div>
-        <div class="panel">
-          <div class="tbl"><table id="ts-tbl"></table></div>
-        </div>
+        <div class="panel" style="max-width:520px"><h3>Чистая маржа дочки</h3><div class="bars" id="bars"></div></div>
+        <div class="panel"><div class="tbl"><table id="ts-tbl"></table></div></div>
       </div>
       <p class="prose" id="ts-why"></p>
       <p class="src" id="ts-src"></p>
     </section>
-
     <section class="sec" aria-labelledby="h-ai">
       <h2 id="h-ai">При чём тут ИИ</h2>
       <ul class="rk" id="ai"></ul>
     </section>
-
-    <nav class="pager" id="pager" aria-label="Соседние вопросы"></nav>
+    <nav class="pager" id="pager" aria-label="Соседние страницы"></nav>
   </main>
+  <footer class="bot foot">
+    <span id="sources"></span>
+    <span>Метки: [А] — цифра из отчётности, [Б] — расчёт, [В] — внешний источник или оценка. Модель — инструмент «что если», не прогноз и не индивидуальная инвестиционная рекомендация.</span>
+  </footer>
 </div>
+<div class="pop" id="pop" role="dialog" aria-modal="false" hidden><button type="button" class="pop-x" id="pop-x" aria-label="Закрыть">×</button><b id="pop-t"></b><p id="pop-d"></p></div>
+<script src="/assets/company.js?v=1" defer></script>
 <script type="module">
-import {boot, esc, $} from "./lab.js";
+import {boot, esc, $} from "/assets/q.js?v=5";
 const D = await boot("chips");
 const ICON = {
   grid: '<path d="M12 2 7 22M12 2l5 20M5.5 7h13M8.6 13h6.8M7.4 18h9.2"/>',
@@ -79,63 +80,52 @@ const ICON = {
 };
 const AI = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="6" rx="1.5"/><rect x="3" y="14" width="18" height="6" rx="1.5"/><path d="M7 7h.01M7 17h.01"/></svg>';
 const w = $("wire");
-w.insertAdjacentHTML("beforeend", D.path.stations.map(s => `<li class="st" tabindex="0" data-id="${s.id}">
+w.innerHTML = D.path.stations.map(s => `<li class="st" tabindex="0" data-id="${s.id}">
   <span class="node"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICON[s.id]}</svg></span>
   <h3>${esc(s.name)}</h3><p class="role">${esc(s.role)}</p>
   <div class="te"><b>${esc(s.fig)}</b><span>${esc(s.te)}</span><small>${esc(s.figk)}</small></div>
-  ${s.ai ? `<p class="ai">${AI}<span>${esc(s.ai)}</span></p>` : ""}</li>`).join(""));
+  ${s.ai ? `<p class="ai">${AI}<span>${esc(s.ai)}</span></p>` : ""}</li>`).join("");
 $("path-src").textContent = D.path.note;
 const sts = [...w.querySelectorAll(".st")];
-const lite = el => { sts.forEach(s => s.classList.toggle("lit", s === el)); };
+const lite = el => sts.forEach(s => s.classList.toggle("lit", s === el));
 sts.forEach(s => { s.addEventListener("click", () => lite(s)); s.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); lite(s); } }); });
-// подсветка станции, которая сейчас в центре экрана
 const io = new IntersectionObserver(es => es.forEach(e => e.isIntersecting && lite(e.target)), {rootMargin: "-45% 0px -45% 0px"});
 sts.forEach(s => io.observe(s));
 
-// ШИМ: синус сравнивается с пилой; среднее за период несущей — то, что «видит» мотор
-const svg = $("pwm-svg"), W = 340, H = 150, X0 = 26, X1 = 334, Y0 = 75, A = 52;
+// ШИМ: синус против пилы; среднее за период несущей — то, что «видит» мотор
+const svg = $("pwm-svg"), X0 = 26, X1 = 334, Y0 = 75, A = 52;
 function pwm(n) {
-  const M = 900, xs = i => X0 + (X1 - X0) * i / M, ys = v => Y0 - v * A;
-  let sq = "", avg = "", ref = "";
-  const per = M / n; let last = null;
+  const M = 900, xs = i => X0 + (X1 - X0) * i / M, ys = v => Y0 - v * A, per = M / n;
+  const tri = i => { const ph = (i % per) / per; return ph < .5 ? 4 * ph - 1 : 3 - 4 * ph; };
+  const out = i => Math.sin(2 * Math.PI * i / M) > tri(i) ? 1 : -1;
+  let sq = `M${xs(0)},${ys(out(0))}`, ref = "", avg = "", last = out(0);
   for (let i = 0; i <= M; i++) {
-    const t = i / M, s = Math.sin(2 * Math.PI * t), ph = (i % per) / per, tri = ph < .5 ? 4 * ph - 1 : 3 - 4 * ph;
-    const o = s > tri ? 1 : -1;
-    sq += (i ? (o !== last ? `L${xs(i).toFixed(1)},${ys(last)}L${xs(i).toFixed(1)},${ys(o)}` : "") : `M${xs(0)},${ys(o)}`);
-    last = o;
-    ref += (i ? "L" : "M") + xs(i).toFixed(1) + "," + ys(s).toFixed(1);
+    const o = out(i);
+    if (o !== last) { sq += `L${xs(i).toFixed(1)},${ys(last)}L${xs(i).toFixed(1)},${ys(o)}`; last = o; }
+    ref += (i ? "L" : "M") + xs(i).toFixed(1) + "," + ys(Math.sin(2 * Math.PI * i / M)).toFixed(1);
   }
   sq += `L${X1},${ys(last)}`;
-  // среднее по окну одного периода несущей
-  const K = 120;
-  for (let j = 0; j <= K; j++) {
-    const c = j / K, a0 = Math.max(0, c - .5 / n), a1 = Math.min(1, c + .5 / n);
-    let s = 0, k = 0;
-    for (let i = Math.round(a0 * M); i <= Math.round(a1 * M); i++) { const t = i / M, ph = (i % per) / per, tri = ph < .5 ? 4 * ph - 1 : 3 - 4 * ph; s += Math.sin(2 * Math.PI * t) > tri ? 1 : -1; k++; }
-    avg += (j ? "L" : "M") + (X0 + (X1 - X0) * c).toFixed(1) + "," + ys(s / k).toFixed(1);
+  for (let j = 0; j <= 120; j++) {
+    const c = j / 120, a0 = Math.round(Math.max(0, c - .5 / n) * M), a1 = Math.round(Math.min(1, c + .5 / n) * M);
+    let s = 0; for (let i = a0; i <= a1; i++) s += out(i);
+    avg += (j ? "L" : "M") + (X0 + (X1 - X0) * c).toFixed(1) + "," + ys(s / (a1 - a0 + 1)).toFixed(1);
   }
-  svg.innerHTML = `<line x1="${X0}" x2="${X1}" y1="${Y0}" y2="${Y0}" stroke="var(--line)"/>
-    <text x="0" y="${Y0 - A + 4}">+U</text><text x="0" y="${Y0 + A + 4}">−U</text>
-    <path d="${sq}" fill="none" stroke="var(--steel)" stroke-width="1.2" opacity=".75"/>
-    <path d="${ref}" fill="none" stroke="var(--ink)" stroke-width="1.2" stroke-dasharray="4 4"/>
-    <path d="${avg}" fill="none" stroke="var(--ore)" stroke-width="3" stroke-linejoin="round"/>`;
+  svg.innerHTML = `<line x1="${X0}" x2="${X1}" y1="${Y0}" y2="${Y0}" stroke="var(--line)"/><text x="0" y="${Y0 - A + 4}">+U</text><text x="0" y="${Y0 + A + 4}">−U</text>
+    <path d="${sq}" fill="none" stroke="var(--steel)" stroke-width="1.2" opacity=".75"/><path d="${ref}" fill="none" stroke="var(--ink)" stroke-width="1.2" stroke-dasharray="4 4"/><path d="${avg}" fill="none" stroke="var(--ore)" stroke-width="3" stroke-linejoin="round"/>`;
   $("pwm-o").textContent = n;
 }
-$("pwm-n").addEventListener("input", e => pwm(+e.target.value));
-pwm(12);
+$("pwm-n").addEventListener("input", e => pwm(+e.target.value)); pwm(12);
 
 $("prod").innerHTML = D.products.map(p => `<div><h3>${esc(p.name)}</h3><p>${esc(p.what)}</p><p>${esc(p.where)}</p><p class="s">${esc(p.status)}</p></div>`).join("");
 $("prod-src").textContent = D.products_src;
 const mx = Math.max(...D.ts.margin.map(m => m.v));
 $("bars").innerHTML = D.ts.margin.map(m => `<div><b>${String(m.v).replace(".", ",")}%</b><i style="height:${m.v / mx * 100}%"></i><span>${m.l}</span></div>`).join("");
-// столбики видны сразу; при появлении на экране один раз «вырастают»
 if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
   const bio = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.querySelectorAll("i").forEach((i, k) => i.animate([{transform: "scaleY(.04)"}, {transform: "scaleY(1)"}], {duration: 900, delay: k * 120, easing: "cubic-bezier(.16,1,.3,1)", fill: "backwards"})); bio.disconnect(); } }), {threshold: .4});
   bio.observe($("bars"));
 }
 $("ts-tbl").innerHTML = D.ts.rows.map((r, k) => `<tr>${r.map(c => k ? `<td>${esc(c)}</td>` : `<th>${esc(c)}</th>`).join("")}</tr>`).join("");
-$("ts-why").textContent = D.ts.why;
-$("ts-src").textContent = D.ts.src;
+$("ts-why").textContent = D.ts.why; $("ts-src").textContent = D.ts.src;
 $("ai").innerHTML = D.ai.map(a => `<li><h3>${esc(a.t)}</h3><p>${esc(a.d)}</p></li>`).join("");
 </script>
 </body>

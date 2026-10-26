@@ -168,3 +168,23 @@ a{text-underline-offset:3px}
 .foot{margin-top:40px;font-size:12px;color:var(--muted);display:flex;flex-direction:column;gap:6px}
 #t-semi td,#t-semi th,#t-grp td,#t-grp th{white-space:normal;vertical-align:top;min-width:64px}
 #t-semi td:first-child,#t-grp td:first-child{min-width:96px}
+
+/* обложка и общие ссылки */
+.cover-px{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-top:6px}
+.cover-vd{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.cover+.kpis{margin-top:18px}
+.kpis+.panel{margin-top:14px}
+.more{font-size:14px;font-weight:500;align-self:flex-start}
+.qdata{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:22px;padding:16px 18px;border-radius:16px;background:var(--panel);border:1px solid var(--line);color:var(--ink)}
+.qdata:hover{text-decoration:none;border-color:var(--red)}
+.qdata span{display:flex;flex-direction:column;gap:2px;font-size:14px;color:var(--muted)}
+.qdata b{font-family:var(--display);font-size:20px;color:var(--ink)}
+.qdata svg{flex:none;width:26px;height:26px;color:var(--red)}
+.tape a.tk{color:var(--muted)} .tape a.tk:hover{text-decoration:none;color:var(--ink)}
+.tape .full[aria-current]{color:var(--ink);font-weight:600}
+.mhead{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center}
+.key i.dash{background:none;border-top:2px dashed var(--ink);height:0;vertical-align:3px}
+.key i.band-r{background:color-mix(in srgb,var(--red) 22%,transparent);outline:1px solid var(--red)}
+.key i.band-o{background:color-mix(in srgb,var(--ore) 30%,transparent);outline:1px solid var(--ore)}
+main>.panel,main>section.panel{margin-top:34px}
+.foot{margin-top:40px}

@@ -5,25 +5,33 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
 <title>С кем сравнивать и что даст IPO дочки — 3898 · Cap Laoban</title>
+<meta name="description" content="CRRC Times Electric против аналогов: ж/д производители и китайские чипмейкеры, что даст листинг Times Semiconductor, история листингов.">
+<meta property="og:title" content="С кем сравнивать и что даст IPO дочки — 3898 · Cap Laoban">
+<meta property="og:description" content="CRRC Times Electric против аналогов: ж/д производители и китайские чипмейкеры, что даст листинг Times Semiconductor, история листингов.">
+<meta property="og:image" content="/assets/og.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;800&family=Golos+Text:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
 <link rel="stylesheet" href="/assets/style.css?v=13">
-<link rel="stylesheet" href="lab.css?v=3">
+<link rel="stylesheet" href="/assets/q.css?v=5">
 </head>
-<body>
+<!-- Страница-вопрос 3898. Модель — data/3898.json (через /assets/company.js), прочее — data/3898_lab.json. Разметку блоков модели не переименовывать: id нужны company.js. -->
+<body data-file="3898.json">
 <div class="tape" id="tape"></div>
 <div class="wrap">
   <nav class="rail" id="rail" aria-label="Вопросы"></nav>
   <main>
     <header class="qhead" id="qhead"></header>
-
+    <section id="peers" class="sec" aria-labelledby="peers-title">
+      <h2 id="peers-title">Аналоги</h2>
+      <div class="panel"><div class="tbl"><table id="peer-table"></table></div><p class="note" id="peers-note"></p></div>
+    </section>
     <section class="sec" aria-labelledby="h-semi">
       <h2 id="h-semi">Дочка против китайских чипмейкеров</h2>
       <div class="panel"><div class="tbl"><table id="t-semi"></table></div><p class="src" id="n-semi"></p></div>
       <p class="prose">Маржа дочки выше, чем у StarPower и Silan, а внутри Times Electric её оценивают примерно в один капитал. Аналоги на бирже A стоят 2,5–3,7 капитала при более слабой прибыльности. Это не значит, что дочка недооценена: аналоги торгуются с «технологической» премией STAR, и она может уйти.</p>
     </section>
-
     <section class="sec" aria-labelledby="h-ipo">
       <h2 id="h-ipo">Что даст листинг дочки</h2>
       <div class="split">
@@ -41,32 +49,28 @@
         </div>
       </div>
     </section>
-
     <section class="sec" aria-labelledby="h-tl">
       <h2 id="h-tl">Двадцать лет листингов</h2>
       <ol class="tl" id="tl"></ol>
     </section>
-
-    <section class="sec" aria-labelledby="h-grp">
-      <h2 id="h-grp">Вся компания против аналогов</h2>
-      <div class="panel"><div class="tbl"><table id="t-grp"></table></div><p class="src" id="n-grp"></p></div>
-    </section>
-
-    <nav class="pager" id="pager" aria-label="Соседние вопросы"></nav>
+    <nav class="pager" id="pager" aria-label="Соседние страницы"></nav>
   </main>
+  <footer class="bot foot">
+    <span id="sources"></span>
+    <span>Метки: [А] — цифра из отчётности, [Б] — расчёт, [В] — внешний источник или оценка. Модель — инструмент «что если», не прогноз и не индивидуальная инвестиционная рекомендация.</span>
+  </footer>
 </div>
+<div class="pop" id="pop" role="dialog" aria-modal="false" hidden><button type="button" class="pop-x" id="pop-x" aria-label="Закрыть">×</button><b id="pop-t"></b><p id="pop-d"></p></div>
+<script src="/assets/company.js?v=1" defer></script>
 <script type="module">
-import {boot, esc, fmt, tween, $} from "./lab.js";
+import {boot, esc, fmt, tween, $} from "/assets/q.js?v=5";
 const D = await boot("peers");
-const tbl = (T, id, nid) => {
-  $(id).innerHTML = `<tr><th></th>${T.cols.map((c, k) => `<th${k ? "" : ' style="color:var(--red)"'}>${esc(c)}</th>`).join("")}</tr>` +
-    T.rows.map(r => `<tr>${r.map((c, k) => k ? `<td${k === 1 ? ' class="me"' : ""}>${esc(c)}</td>` : `<td>${esc(c)}</td>`).join("")}</tr>`).join("");
-  $(nid).textContent = T.note;
-};
-tbl(D.peers_semi, "t-semi", "n-semi");
-tbl(D.peers_group, "t-grp", "n-grp");
+const T = D.peers_semi;
+$("t-semi").innerHTML = `<tr><th></th>${T.cols.map((c, k) => `<th${k ? "" : ' class="me"'}>${esc(c)}</th>`).join("")}</tr>` +
+  T.rows.map(r => `<tr>${r.map((c, k) => `<td${k === 1 ? ' class="me"' : ""}>${esc(c)}</td>`).join("")}</tr>`).join("");
+$("n-semi").textContent = T.note;
 $("tl").innerHTML = D.listings.map(l => `<li${l.d === "сейчас" ? ' class="now"' : ""}><b>${esc(l.d)}</b><span>${esc(l.t)}</span><small>${esc(l.src)}</small></li>`).join("");
-const P = D.parts, fx = D.price.fx, sh = D.shares_m, hk = bn => bn * 1000 / sh / fx;
+const P = D.parts, hk = bn => bn * 1000 / D.shares_m / D.price.fx;
 $("up").innerHTML = `<span>Доля 77,86% по этой оценке</span><b id="u-v"></b><span>Она же по балансу</span><b>HK$${fmt(hk(P.ts_book * .7786), 1)}</b><span class="tot">Прибавка на акцию</span><b class="tot" id="u-d"></b><span class="tot">К цене H HK$${fmt(D.price.h, 2)}</span><b class="tot" id="u-p"></b>`;
 function upd() {
   const pb = +$("pb").value, v = hk(P.ts_book * pb * .7786), d = v - hk(P.ts_book * .7786);

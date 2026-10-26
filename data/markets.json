@@ -65,13 +65,12 @@
     {
       "id": "s",
       "name": "Сера CIF Индонезия",
-      "value": 965,
+      "value": 875,
       "unit": "US$/т",
-      "date": "2026-09-30",
-      "source": "SMM, недельная цена CIF Indonesia",
-      "url": "https://news.metal.com/newscontent/103222082/SMM-Officially-Launches-Weekly-Price-Point-for-Indonesia-CIF-Sulfur",
+      "date": "2026-10-23",
+      "source": "SMM, недельный обзор: CIF Indonesia US$850–900, среднее 875 (16.10 — 885, 30.09 — 965)",
+      "url": "https://news.metal.com/newscontent/104175985-smm-analysis-cobalt-salt-price-decline-risk-remains-nickel-intermediate-product-payables-stable-this-week",
       "class": "В",
-      "stale": true,
       "how": "SMM — еженедельно (платно); ориентир бесплатно — контрактные цены Ближнего Востока FOB (Qatar, ADNOC, KPC) раз в месяц в новостях SMM, + фрахт ~US$60–90.",
       "to_company": "Менеджмент (SIMC 05.08.2026): запас сырья на 2–3 месяца, сера закуплена ниже рынка. Значит, в себестоимость заводов спот приходит с лагом 2–3 месяца. В модели используется «эффективная» цена — средний спот за 3 месяца."
     },
@@ -90,11 +89,11 @@
     {
       "id": "ore",
       "name": "Руда Индонезии, спот: лимонит 1,2% / сапролит 1,6%",
-      "value": "25,5 / 59,0",
+      "value": "25,5 / 57,1",
       "unit": "US$/т влажной",
-      "date": "2026-10-14",
-      "source": "SMM",
-      "url": "https://news.metal.com/newscontent/104157595-smm-nickel-flash-news-indonesia-nickel-ore-price-update-october-14-2026",
+      "date": "2026-10-23",
+      "source": "SMM, недельный обзор руды Индонезии (сапролит −6,3 за неделю)",
+      "url": "https://news.metal.com/newscontent/104176584-indonesia-nickel-ore-market-weekly-report",
       "class": "В",
       "how": "SMM, ежедневно.",
       "to_company": "Фактическая цена лимонита у NCKL по выручке сегмента — ~US$10–18 за тонну (ниже рыночного 1,2% из-за содержания и формулы)."
@@ -166,19 +165,31 @@
   "news": {
     "sulfur": [
       {
+        "date": "2026-10-23",
+        "title": "Сера CIF Индонезия US$850–900, в среднем US$875; японский груз 3 тыс. т по US$850",
+        "url": "https://news.metal.com/newscontent/104175985-smm-analysis-cobalt-salt-price-decline-risk-remains-nickel-intermediate-product-payables-stable-this-week",
+        "src": "SMM"
+      },
+      {
+        "date": "2026-10-16",
+        "title": "Сера CIF Индонезия US$885 — на US$80 ниже, чем 30 сентября",
+        "url": "https://news.metal.com/newscontent/104162710-smm-analysis-downside-risks-for-cobalt-salt-prices-remain-nickel-intermediate-product-payables-stay-weak-this-week",
+        "src": "SMM"
+      },
+      {
         "date": "2026-10-08",
         "title": "Контракты Ближнего Востока на октябрь снижены на US$45–70: Qatar 835, KPC 820, ADNOC 890 FOB",
         "url": "https://news.metal.com/newscontent/104145450-smm-flash-middle-east-october-sulfur-contract-prices-announced",
         "src": "SMM"
-      },
-      {
-        "date": "2026-09-30",
-        "title": "Сера CIF Индонезия US$965 (−6% за сентябрь); Ормуз закрыт для серы с 18.07",
-        "url": "",
-        "src": "SMM, Discovery Alert"
       }
     ],
     "mhp": [
+      {
+        "date": "2026-10-23",
+        "title": "Payable по MHP за неделю не изменились, но SMM ждёт слабости: перезапуски заводов и распродажа запасов трейдерами",
+        "url": "https://news.metal.com/newscontent/104175985-smm-analysis-cobalt-salt-price-decline-risk-remains-nickel-intermediate-product-payables-stable-this-week",
+        "src": "SMM"
+      },
       {
         "date": "2026-10-22",
         "title": "MHP: никель ~US$12 800/т, кобальт US$25 442/т, payable кобальта 56–57%",
@@ -194,10 +205,16 @@
     ],
     "nickel": [
       {
-        "date": "2026-10-22",
-        "title": "LME ~US$16 090 (−1,2% за день), около −20% от майского максимума",
-        "url": "https://theedgemalaysia.com/node/822689",
-        "src": "Bloomberg"
+        "date": "2026-10-23",
+        "title": "Никель отскочил на новостях о сокращениях: LME 3M US$15 995 (+4,1% за неделю), SHFE +5,5%",
+        "url": "https://news.metal.com/newscontent/104176457-smm-analysis-nickel-prices-recovered-this-week-driven-by-market-news-of-production-cuts",
+        "src": "SMM"
+      },
+      {
+        "date": "2026-10-23",
+        "title": "Руда Индонезии дешевеет: сапролит 1,6% US$57,1 (−6,3 за неделю), лимонит 1,2% US$25,5",
+        "url": "https://news.metal.com/newscontent/104176584-indonesia-nickel-ore-market-weekly-report",
+        "src": "SMM"
       },
       {
         "date": "2026-10-15",

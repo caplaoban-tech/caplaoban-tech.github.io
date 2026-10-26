@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-24",
+  "updated": "2026-10-26",
   "update_mode": "Автоматически каждый рабочий день: никель LME, курс рупии, цена акции (GitHub Actions). Вручную раз в неделю: сера, MHP, payable, руда, HMA.",
   "series": [
     {
@@ -101,9 +101,9 @@
     {
       "id": "fx",
       "name": "Курс рупии (JISDOR)",
-      "value": 18069,
+      "value": 18116,
       "unit": "Rp за US$",
-      "date": "2026-10-23",
+      "date": "2026-10-26",
       "source": "Bank Indonesia, JISDOR",
       "url": "https://www.bi.go.id/en/statistik/informasi-kurs/jisdor/Default.aspx",
       "class": "А",
@@ -113,9 +113,9 @@
     {
       "id": "px",
       "name": "Цена акции NCKL",
-      "value": 790,
+      "value": 775,
       "unit": "Rp",
-      "date": "2026-10-23",
+      "date": "2026-10-26",
       "source": "Yahoo Finance (NCKL.JK), закрытие",
       "url": "https://finance.yahoo.com/quote/NCKL.JK",
       "class": "В",

@@ -1,13 +1,13 @@
 {
-  "updated": "2026-10-27",
+  "updated": "2026-10-28",
   "update_mode": "Автоматически каждый рабочий день: никель LME, курс рупии, цена акции (GitHub Actions). Вручную раз в неделю: сера, MHP, payable, руда, HMA.",
   "series": [
     {
       "id": "lme",
       "name": "Никель LME, 3 месяца",
-      "value": 15535,
+      "value": 15440,
       "unit": "US$/т",
-      "date": "2026-10-26",
+      "date": "2026-10-27",
       "source": "LME cash settlement через westmetall.com",
       "url": "https://www.westmetall.com/en/markdaten.php?action=table&field=LME_Ni_cash",
       "class": "В",
@@ -101,9 +101,9 @@
     {
       "id": "fx",
       "name": "Курс рупии (JISDOR)",
-      "value": 18139,
+      "value": 18183,
       "unit": "Rp за US$",
-      "date": "2026-10-27",
+      "date": "2026-10-28",
       "source": "Bank Indonesia, JISDOR",
       "url": "https://www.bi.go.id/en/statistik/informasi-kurs/jisdor/Default.aspx",
       "class": "А",
@@ -113,9 +113,9 @@
     {
       "id": "px",
       "name": "Цена акции NCKL",
-      "value": 735,
+      "value": 750,
       "unit": "Rp",
-      "date": "2026-10-27",
+      "date": "2026-10-28",
       "source": "Yahoo Finance (NCKL.JK), закрытие",
       "url": "https://finance.yahoo.com/quote/NCKL.JK",
       "class": "В",

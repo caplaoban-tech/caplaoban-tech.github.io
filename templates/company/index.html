@@ -19,7 +19,7 @@
 <div class="wrap">
   <header class="top">
     <a class="brand" href="/"><img src="/assets/mark.svg" alt="">Cap Laoban</a>
-    <nav class="nav"><a href="#terminal">Цена и отчётность</a><a href="#calc">Оценка</a><a href="#market">Данные</a><a href="#peers">Аналоги</a><a href="#risks">Риски</a><a href="#glossary">Словарь</a></nav>
+    <nav class="nav"><a href="#terminal">Цена и отчётность</a><a href="#calc">Оценка</a><a href="#market">Данные</a><a href="#peers">Аналоги</a><a href="#risks">Риски</a><a id="qlink" href="q/" hidden>Кварталы</a><a href="#glossary">Словарь</a></nav>
   </header>
 
   <main class="stack">
@@ -133,6 +133,7 @@ function render(D) {
   $("headline").textContent = D.headline || D.name;
   const P = D.price.value;
   $("price").textContent = fmt(P, P < 100 ? 2 : 0);
+  if (D.quarters_page) $("qlink").hidden = false;
   $("price-note").innerHTML = `${esc(cur)} за акцию · ${esc(D.price.source)}, ${dd(D.price.date)}${cls(D.price.class)}`;
   $("verdict").textContent = D.verdict.label; $("verdict").className = `chip ${D.verdict.tone || "mute"}`;
   $("verdict-detail").innerHTML = rich(D.verdict.detail || "") + (D.risk_gate ? ` · риск-гейт <b>${esc(D.risk_gate)}</b>` : "");

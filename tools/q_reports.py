@@ -107,9 +107,14 @@ def chart(D):
     return "".join(s)
 
 
-LEGEND = ('<div class="legend"><span><i style="background:var(--steel)"></i>Свой бизнес</span>'
-          '<span><i style="background:var(--ore)"></i>Доля прибыли ассоциатов</span>'
-          '<span><i style="background:none;border:2px dashed var(--muted)"></i>Прогноз (контур) · факт (заливка)</span></div>')
+PARTS = ("Свой бизнес", "Доля прибыли ассоциатов")  # подписи own/assoc; компания может задать свои в "parts"
+
+
+def legend(D):
+    own, assoc = D.get("parts", PARTS)
+    return (f'<div class="legend"><span><i style="background:var(--steel)"></i>{E(own)}</span>'
+            f'<span><i style="background:var(--ore)"></i>{E(assoc)}</span>'
+            '<span><i style="background:none;border:2px dashed var(--muted)"></i>Прогноз (контур) · факт (заливка)</span></div>')
 
 
 def index_page(D, base):
@@ -139,7 +144,7 @@ def index_page(D, base):
     <section class="panel">
       <div class="eyebrow">Прогноз и факт</div>
       {chart(D)}
-      {LEGEND}
+      {legend(D)}
     </section>
     <section class="panel">
       <div class="eyebrow">Сводка</div>
@@ -173,11 +178,21 @@ def balance(q):
 
 
 def quarter_page(D, q, base):
-    fc, fa = q["forecast"], q["fact"]
-    cmp_rows = "".join(
-        f'<tr><td>{n}</td><td>{num(fc[k]) if k != "t" else num(tot(fc))}</td><td><b>{num(fa[k]) if k != "t" else num(tot(fa))}</b></td>'
-        f'<td>{sgn((fa[k] - fc[k]) if k != "t" else tot(fa) - tot(fc))}</td></tr>'
-        for n, k in (("Свой бизнес", "own"), ("Доля прибыли ассоциатов", "assoc"), ("<b>Прибыль акционерам</b>", "t")))
+    fc, fa = q.get("forecast"), q["fact"]
+    own, assoc = D.get("parts", PARTS)
+    v = lambda d, k: num(d[k]) if k != "t" else num(tot(d))
+    if fc:
+        cmp_rows = "".join(
+            f'<tr><td>{n}</td><td>{v(fc, k)}</td><td><b>{v(fa, k)}</b></td>'
+            f'<td>{sgn((fa[k] - fc[k]) if k != "t" else tot(fa) - tot(fc))}</td></tr>'
+            for n, k in ((E(own), "own"), (E(assoc), "assoc"), ("<b>Прибыль акционерам</b>", "t")))
+        cmp_head = f'<th></th><th>Прогноз {dt(fc["date"])}</th><th>Факт</th><th>Разница</th>'
+        cmp_note = f'Прогноз: {E(fc["src"])}. {E(fc.get("note", ""))}.'
+    else:
+        cmp_rows = "".join(f'<tr><td>{n}</td><td>—</td><td><b>{v(fa, k)}</b></td><td>—</td></tr>'
+                           for n, k in ((E(own), "own"), (E(assoc), "assoc"), ("<b>Прибыль акционерам</b>", "t")))
+        cmp_head = '<th></th><th>Прогноз</th><th>Факт</th><th>Разница</th>'
+        cmp_note = E(q.get("short") or "Прогноза не было.")
     T = q["table"]
     trows = "".join("<tr>" + "".join(f"<td>{c if i == 0 else E(c)}</td>" for i, c in enumerate(r)) + "</tr>" for r in T["rows"])
     icon = {"ok": "✓", "warn": "!", "bad": "✕", "same": "="}
@@ -191,8 +206,8 @@ def quarter_page(D, q, base):
     <section class="panel qv">{"".join(f"<p>{E(v)}</p>" for v in q["verdict"])}</section>
     <section class="panel">
       <div class="eyebrow">Прогноз против факта, {E(D["unit"])}</div>
-      <div class="tbl"><table class="qt"><thead><tr><th></th><th>Прогноз {dt(fc["date"])}</th><th>Факт</th><th>Разница</th></tr></thead><tbody>{cmp_rows}</tbody></table></div>
-      <p class="note">Прогноз: {E(fc["src"])}. {E(fc.get("note", ""))}.</p>
+      <div class="tbl"><table class="qt"><thead><tr>{cmp_head}</tr></thead><tbody>{cmp_rows}</tbody></table></div>
+      <p class="note">{cmp_note}</p>
     </section>
     <section class="panel">
       <div class="eyebrow">Квартал отдельно</div>

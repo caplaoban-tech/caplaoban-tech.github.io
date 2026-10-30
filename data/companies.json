@@ -106,5 +106,15 @@
     "tone": "warn",
     "updated": "2026-10-25",
     "url": "6690/"
+  },
+  {
+    "ticker": "SIMP",
+    "name": "Salim Ivomas Pratama",
+    "sector": "Пальмовое масло · плантации и Bimoli",
+    "price": 500,
+    "verdict": "Наблюдать",
+    "tone": "warn",
+    "updated": "2026-10-30",
+    "url": "simp/"
   }
 ]

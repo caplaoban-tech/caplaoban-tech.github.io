@@ -18,7 +18,7 @@
 <div class="wrap">
   <header class="top">
     <a class="brand" href="../"><img src="../assets/mark.svg" alt="">Cap Laoban</a>
-    <nav class="nav"><a href="#calc">Оценка</a><a href="#market">Данные</a><a href="#peers">Аналоги</a><a href="#risks">Риски</a><a href="#glossary">Словарь</a></nav>
+    <nav class="nav"><a href="#calc">Оценка</a><a href="#market">Данные</a><a href="#peers">Аналоги</a><a href="#risks">Риски</a><a href="q/">Кварталы</a><a href="#glossary">Словарь</a></nav>
   </header>
 
   <main class="stack">
@@ -128,7 +128,7 @@
         <h2>Прибыль акционерам: маржа переезжает за регулятором</h2>
         <div id="quarters"></div>
         <div class="legend"><span><i style="background:var(--steel)"></i>Свой бизнес</span><span><i style="background:var(--ore)"></i>Доля прибыли ассоциатов</span></div>
-        <p class="note">Апрель: дорогая руда, маржа в добыче. Сентябрь: лимонит дешевле на 45%, маржа уходит к заводам. III–IV кв. — оценка по прогнозу Lygend (полупрозрачные столбцы).</p>
+        <p class="note">I–III кв. — факт из отчётности [А]; IV кв. — наш прогноз от 23.10.2026 (полупрозрачный). III кв. вышел 2,88 при прогнозе 2,4: ассоциаты 1,09 вместо 0,8. <a href="q/">Прогноз и факт по кварталам →</a></p>
       </section>
     </div>
 
@@ -179,7 +179,7 @@ function stacked(id, data, max) {
   $(id).replaceChildren(s);
 }
 
-Promise.all([fetch("../data/nckl.json?v=12").then(r => r.json()), fetch("../data/markets.json?v=1").then(r => r.json())]).then(([D, MK]) => { window.__MK = MK; return D; }).then(D => {
+Promise.all([fetch("../data/nckl.json?v=13").then(r => r.json()), fetch("../data/markets.json?v=2").then(r => r.json())]).then(([D, MK]) => { window.__MK = MK; return D; }).then(D => {
   const P = D.price.value;
   $("eyebrow").textContent = `${D.exchange} · ${D.ticker} · обновлено ${D.updated.split("-").reverse().join(".")}`;
   $("price").textContent = f0(P);

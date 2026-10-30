@@ -30,6 +30,16 @@
     "url": "simp/"
   },
   {
+    "ticker": "INDF",
+    "name": "Indofood Sukses Makmur",
+    "sector": "Продукты · Indomie, мука, пальма",
+    "price": 6400,
+    "verdict": "Кандидат на покупку",
+    "tone": "good",
+    "updated": "2026-10-31",
+    "url": "indf/"
+  },
+  {
     "ticker": "2245",
     "name": "Lygend Resources",
     "sector": "Никель · HPAL/RKEF",

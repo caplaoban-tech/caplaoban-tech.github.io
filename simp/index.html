@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>SIMP Salim Ivomas Pratama — Cap Laoban</title>
-<meta name="description" content="Salim Ivomas Pratama (SIMP): справедливая цена, из чего она складывается, сравнение с аналогами, риски и калькулятор «что если».">
+<meta name="description" content="Salim Ivomas Pratama (SIMP): 9М2026 — прибыль III кв. +78% к III кв. 2025; чистый долг без LSIP 8,5 трлн; штраф за лесные зоны 2,49 трлн на эскроу.">
 <meta property="og:title" content="SIMP Salim Ivomas Pratama — Cap Laoban">
-<meta property="og:description" content="Salim Ivomas Pratama (SIMP): справедливая цена, из чего она складывается, сравнение с аналогами, риски и калькулятор «что если».">
+<meta property="og:description" content="Salim Ivomas Pratama (SIMP): 9М2026 — прибыль III кв. +78% к III кв. 2025; чистый долг без LSIP 8,5 трлн; штраф за лесные зоны 2,49 трлн на эскроу.">
 <meta property="og:image" content="/assets/og.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
@@ -36,6 +36,7 @@
     <section id="terminal" aria-label="Цена и отчётность" hidden></section>
 
     <section class="kpis" id="kpis" aria-label="Ключевые цифры"></section>
+    <section id="structure" class="panel" aria-label="Структура владения" hidden></section>
 
     <section class="panel" aria-label="Справедливая цена">
       <h2>Сколько стоит</h2>
@@ -248,6 +249,13 @@ function render(D) {
   (D.charts || []).forEach((c, n) => stacked("ch-" + n, c));
   if (!(D.charts || []).length) $("charts").hidden = true;
 
+  if (D.structure) {
+    const S = D.structure, el = $("structure");
+    el.hidden = false;
+    el.innerHTML = `<div class="eyebrow">${esc(S.eyebrow || "Кто чем владеет")}</div><h2>${esc(S.title)}</h2>` +
+      `<ul class="list">${S.rows.map(r => `<li><span class="dot" style="background:var(--ore);margin-left:${(r.level || 0) * 14}px"></span><span><b>${esc(r.who)}</b>${r.share ? ` — ${esc(r.share)}` : ""}${r.note ? `<br><span class="note">${rich(r.note)}</span>` : ""}</span></li>`).join("")}</ul>` +
+      (S.text || []).map(t => `<p>${rich(t)}</p>`).join("") + (S.note ? `<p class="note">${rich(S.note)}</p>` : "");
+  }
   if (D.peers) {
     $("peers-eyebrow").textContent = D.peers.eyebrow || "Сравнение с аналогами";
     $("peers-title").textContent = D.peers.title || "Аналоги";

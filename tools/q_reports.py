@@ -53,7 +53,7 @@ HEAD = """<!doctype html>
 .qt{{width:100%;border-collapse:collapse;font-size:14px}}
 .qt th,.qt td{{padding:7px 8px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}}
 .qt th:first-child,.qt td:first-child{{text-align:left;white-space:normal}}
-@media(max-width:560px){{.qt{{font-size:13px}} .qt th,.qt td{{padding:6px 5px}} .qt.six th:nth-child(n+5),.qt.six td:nth-child(n+5){{display:none}}}} .qt th{{font-size:12px;color:var(--muted);font-weight:600}}
+@media(max-width:560px){{.qt{{font-size:13px}} .qt th,.qt td{{padding:6px 5px}} .qt.six th:nth-child(n+5),.qt.six td:nth-child(n+5){{display:none}} .qt.bal th:nth-child(-n+4):not(:first-child),.qt.bal td:nth-child(-n+4):not(:first-child){{display:none}}}} .qt th{{font-size:12px;color:var(--muted);font-weight:600}}
 .qcards{{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px}}
 .qcard{{border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:4px;color:inherit;text-decoration:none}}
 a.qcard:hover{{border-color:var(--red)}}
@@ -150,6 +150,28 @@ def index_page(D, base):
     return HEAD.format(title=f'{D["name"]} ({D["ticker"]}) — прогноз и факт по кварталам', desc=f'{D["name"]}: прогноз и факт по кварталам', nav=nav, body=body)
 
 
+def balance(q):
+    """Баланс по концам кварталов и изменение к прошлому кварталу (не к началу года)."""
+    B = q.get("balance")
+    if not B:
+        return ""
+    f = lambda x: "—" if x is None else num(x)
+    head = "".join(f"<th>{E(l)}</th>" for l in B["labels"]) + "<th>Δ за кв.</th>"
+    rows = ""
+    for r in B["rows"]:
+        v = r["values"]
+        dq = "" if r["dq"] is None else ("+" if r["dq"] > 0 else "") + num(r["dq"]) + (" ⚡" if r["jump"] else "")
+        rows += f"<tr><td>{E(r['label'])}</td>" + "".join(f"<td>{f(x)}</td>" for x in v[:-1]) + f"<td><b>{f(v[-1])}</b></td><td>{dq}</td></tr>"
+    notes = "".join(f'<li><span class="dot" style="background:var(--warn)"></span><span>{E(n)}</span></li>' for n in B["notes"])
+    return f"""    <section class="panel">
+      <div class="eyebrow">Баланс к прошлому кварталу, {E(B["unit"])}</div>
+      <p><b>Как читать:</b> {E(B["read"])}</p>
+      <div class="tbl"><table class="qt bal"><thead><tr><th></th>{head}</tr></thead><tbody>{rows}</tbody></table></div>
+      <ul class="list">{notes}</ul>
+      <p class="note">{E(B["method"])} Источник — балансы в отчётах на IDX [А]. На телефоне показаны два последних квартала, история — в пометках выше.</p>
+    </section>"""
+
+
 def quarter_page(D, q, base):
     fc, fa = q["forecast"], q["fact"]
     cmp_rows = "".join(
@@ -177,6 +199,7 @@ def quarter_page(D, q, base):
       <div class="tbl"><table class="qt six"><thead><tr><th></th>{"".join(f"<th>{E(c)}</th>" for c in T["cols"])}</tr></thead><tbody>{trows}</tbody></table></div>
       <p class="note">{E(T["note"])} На телефоне колонки II кв. скрыты.</p>
     </section>
+{balance(q)}
     <section class="panel">
       <div class="eyebrow">Что мы ждали — и что вышло</div>
       <p class="note">✓ как ждали или лучше · ✕ хуже · ! внимание · = без изменений</p>

@@ -137,6 +137,10 @@ function render(D) {
   $("verdict").textContent = D.verdict.label; $("verdict").className = `chip ${D.verdict.tone || "mute"}`;
   $("verdict-detail").innerHTML = rich(D.verdict.detail || "") + (D.risk_gate ? ` · риск-гейт <b>${esc(D.risk_gate)}</b>` : "");
   $("kpis").innerHTML = (D.kpi || []).map(k => `<div class="kpi"><b class="num">${esc(k.v)}</b><span>${rich(k.k)}${cls(k.class)}</span></div>`).join("");
+  if (D.price_review && D.price_review.value && Math.abs(D.price.value / D.price_review.value - 1) > 0.05) {
+    const f = x => Number(x).toLocaleString("ru-RU"), ch = Math.round((D.price.value / D.price_review.value - 1) * 100);
+    $("kpis").insertAdjacentHTML("afterend", `<p class="kpi-note">Цифры в карточках посчитаны при цене ${f(D.price_review.value)} на ${D.price_review.date.split("-").reverse().join(".")}; сейчас ${f(D.price.value)} (${ch > 0 ? "+" : "−"}${Math.abs(ch)}%). Оценка ниже пересчитывается моделью.</p>`);
+  }
 
   // ---------- модель: потоки → стоимость → на акцию ----------
   const IN = V.inputs, byId = Object.fromEntries(IN.map(i => [i.id, i]));

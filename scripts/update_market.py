@@ -116,8 +116,91 @@ def update_terminals():
             for d in sorted(rows): w.writerow(rows[d])
         print("терминал", tk, "A", a, "H", h)
 
+def company_symbol(t):
+    """Тикер сайта → Yahoo: IDX — TICK.JK, Гонконг — 4 цифры .HK, A-акции Шэньчжэня/Шанхая — .SZ/.SS."""
+    if t.isalpha():
+        return f"{t}.JK"
+    if len(t) == 6:
+        return f"{t}.SS" if t.startswith("6") else f"{t}.SZ"
+    return f"{int(t):04d}.HK"
+
+
+def update_company_prices():
+    """Цены всех разборов (data/<тикер>.json, кроме NCKL — у него своя ветка): price ← закрытие Yahoo.
+    Цена, при которой писался разбор, один раз сохраняется в price_review — страница сравнивает с ней цифры в карточках."""
+    cos = load(DATA / "companies.json")
+    changed = False
+    for c in cos:
+        t = c["ticker"]
+        f = DATA / f"{t.lower()}.json"
+        if t == "NCKL" or c.get("soon") or not f.exists():
+            continue
+        d = load(f)
+        if "price" not in d:
+            continue
+        sym = company_symbol(t)
+        try:
+            v, date = fetch_yahoo(sym)
+        except Exception as e:  # noqa: BLE001
+            print("ошибка цены", t, e, file=sys.stderr); continue
+        pr = d["price"]
+        if "price_review" not in d:
+            d["price_review"] = {"value": pr["value"], "date": pr["date"]}
+        v = round(v, 2) if v < 1000 else round(v)
+        if pr.get("value") == v and pr.get("date") == date:
+            continue
+        pr.update({"value": v, "date": date, "source": f"Yahoo Finance ({sym}), закрытие",
+                   "url": f"https://finance.yahoo.com/quote/{sym}/", "class": "В"})
+        save(f, d)
+        c["price"] = v
+        changed = True
+        print("цена", t, v, date)
+    if changed:
+        save(DATA / "companies.json", cos)
+
+
+# Рыночные входы моделей разборов, которые робот обновляет сам: (тикер, id входа) → откуда.
+# Сера, кобальт, алюминий/глинозём SHFE, цена боксита — вручную (нет бесплатного источника без входа или это договор).
+AUTO_INPUTS = {("2245", "lme"): "lme", ("2245", "fx"): "USDCNY=X", ("1378", "fx"): "USDCNY=X",
+               ("3898", "fx"): "HKDCNY=X", ("6690", "fx"): "HKDCNY=X", ("9981", "fx"): "HKDCNY=X",
+               ("BMRI", "bris"): "BRIS.JK", ("CITA", "fx"): "fx"}
+
+
+def update_model_inputs(got):
+    """Обновить рыночные входы моделей (valuation.inputs[].now/date/source) — только из AUTO_INPUTS и только в пределах ползунка."""
+    cache = {}
+    for (t, iid), src in AUTO_INPUTS.items():
+        f = DATA / f"{t.lower()}.json"
+        if not f.exists():
+            continue
+        d = load(f)
+        inp = next((i for i in d.get("valuation", {}).get("inputs", []) if i["id"] == iid), None)
+        if inp is None:
+            continue
+        try:
+            if src in got:                                   # уже получено: lme / fx (JISDOR)
+                v, date, source, url = got[src]["value"], got[src]["date"], got[src]["source"], got[src]["url"]
+            else:
+                if src not in cache:
+                    cache[src] = fetch_yahoo(src)
+                v, date = cache[src]
+                source, url = f"Yahoo Finance ({src}), закрытие", f"https://finance.yahoo.com/quote/{src}/"
+        except Exception as e:  # noqa: BLE001
+            print("ошибка входа", t, iid, e, file=sys.stderr); continue
+        dec = inp.get("decimals", 0 if v > 100 else 4)
+        v = round(v, dec) if dec else round(v)
+        if not (inp.get("min", v) <= v <= inp.get("max", v)):
+            print(f"вход {t}.{iid}={v} вне ползунка — не трогаю", file=sys.stderr); continue
+        if inp.get("now") == v and inp.get("date") == date:
+            continue
+        inp.update({"now": v, "date": date, "source": source, "url": url})
+        save(f, d)
+        print("вход", t, iid, v, date)
+
+
 def main():
     update_terminals()
+    update_company_prices()
     got, errors = {}, []
     for key, fn in (("lme", fetch_lme), ("px", fetch_nckl), ("fx", fetch_fx)):
         try:
@@ -134,7 +217,7 @@ def main():
             s.update({"value": g["value"], "date": g["date"], "source": g["source"], "url": g["url"]})
             if "class" in g: s["class"] = g["class"]
     mk["updated"] = dt.date.today().isoformat()
-    mk["update_mode"] = ("Автоматически каждый рабочий день: никель LME, курс рупии, цена акции (GitHub Actions). "
+    mk["update_mode"] = ("Автоматически: утром (09:00 Бали) и после закрытия IDX — никель LME, курс рупии, цены акций всех разборов (GitHub Actions). "
                          "Вручную раз в неделю: сера, MHP, payable, руда, HMA.")
     save(DATA / "markets.json", mk)
 
@@ -159,6 +242,8 @@ def main():
         for c in cos:
             if c["ticker"] == "NCKL": c["price"] = got["px"]["value"]
         save(DATA / "companies.json", cos)
+
+    update_model_inputs(got)
 
     for k, name in (("lme", "lme_nickel"), ("px", "nckl"), ("fx", "usd_idr")):
         if k in got: history(name, got[k]["date"], got[k]["value"])

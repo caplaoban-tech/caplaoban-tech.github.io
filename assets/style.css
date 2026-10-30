@@ -49,6 +49,7 @@ p{margin:0}
 /* KPI */
 .kpis{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
 @media (min-width:720px){.kpis{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.kpi-note{margin:8px 0 0;font-size:13px;color:var(--muted,#6b6a65)}
 .kpi{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:12px 14px;display:flex;flex-direction:column;gap:2px}
 .kpi b{font-family:var(--display);font-size:24px}
 .kpi span{font-size:12px;color:var(--muted);line-height:1.3}

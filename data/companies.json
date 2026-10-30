@@ -10,6 +10,26 @@
     "url": "nckl/"
   },
   {
+    "ticker": "LSIP",
+    "name": "London Sumatra (Lonsum)",
+    "sector": "Пальмовое масло · плантации",
+    "price": 1420,
+    "verdict": "Держать",
+    "tone": "good",
+    "updated": "2026-10-30",
+    "url": "lsip/"
+  },
+  {
+    "ticker": "SIMP",
+    "name": "Salim Ivomas Pratama",
+    "sector": "Пальмовое масло · плантации и Bimoli",
+    "price": 500,
+    "verdict": "Наблюдать",
+    "tone": "warn",
+    "updated": "2026-10-30",
+    "url": "simp/"
+  },
+  {
     "ticker": "2245",
     "name": "Lygend Resources",
     "sector": "Никель · HPAL/RKEF",
@@ -76,12 +96,6 @@
     "soon": true
   },
   {
-    "ticker": "LSIP",
-    "name": "London Sumatra",
-    "sector": "Плантации CPO",
-    "soon": true
-  },
-  {
     "ticker": "UNVR",
     "name": "Unilever Indonesia",
     "sector": "Потребительский сектор",
@@ -106,15 +120,5 @@
     "tone": "warn",
     "updated": "2026-10-25",
     "url": "6690/"
-  },
-  {
-    "ticker": "SIMP",
-    "name": "Salim Ivomas Pratama",
-    "sector": "Пальмовое масло · плантации и Bimoli",
-    "price": 500,
-    "verdict": "Наблюдать",
-    "tone": "warn",
-    "updated": "2026-10-30",
-    "url": "simp/"
   }
 ]

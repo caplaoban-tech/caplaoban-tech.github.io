@@ -1,6 +1,16 @@
 [
   {
     "date": "2026-10-30",
+    "title": "LSIP: III кв. +60% г/г от плантаций, деньги 8,52 трлн (88% капитализации) без долга, выкуп до Rp750 млрд; EV/EBITDA 0,4",
+    "src": "Cap Laoban",
+    "tickers": [
+      "LSIP",
+      "SIMP"
+    ],
+    "url": "lsip/"
+  },
+  {
+    "date": "2026-10-30",
     "title": "SIMP: III кв. +78% г/г, но это LSIP с долгом — EV/EBITDA 1,9 против 0,4, штраф 2,49 трлн на эскроу",
     "src": "Cap Laoban",
     "tickers": [

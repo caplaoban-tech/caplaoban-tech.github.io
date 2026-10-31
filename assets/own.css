@@ -1,0 +1,45 @@
+/* Схема владения (own/) */
+.own-groups{display:flex;flex-wrap:wrap;gap:8px}
+.own-groups a{font:500 13px/1 var(--body);padding:8px 12px;border:1px solid var(--line);border-radius:999px;color:var(--ink);text-decoration:none;background:var(--panel)}
+.own-groups a.on{border-color:var(--red);color:var(--red)}
+.own-panel{padding:12px}
+.own-tools{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px}
+.own-tools button{font:500 13px/1 var(--body);min-width:36px;height:34px;padding:0 10px;border:1px solid var(--line);border-radius:10px;background:var(--panel);color:var(--ink);cursor:pointer}
+.own-tools button:hover{border-color:var(--ore)}
+.own-canvas{position:relative;width:100%;height:min(68vh,620px);min-height:380px;border:1px solid var(--line);border-radius:14px;background:var(--bg);overflow:hidden;touch-action:none;cursor:grab}
+.own-canvas.drag{cursor:grabbing}
+.own-canvas svg{width:100%;height:100%;display:block;user-select:none}
+.own-canvas .edge{fill:none;stroke:var(--steel);stroke-width:1.4}
+.own-canvas .edge.hl{stroke:var(--red);stroke-width:2.4}
+.own-canvas .edge.minor{stroke-dasharray:3 3}
+.own-canvas .elbl rect{fill:var(--panel);stroke:var(--line)}
+.own-canvas .elbl text{font:600 11px var(--mono);fill:var(--ink)}
+.own-canvas .elbl.hl rect{stroke:var(--red)}
+.own-canvas .node{cursor:pointer}
+.own-canvas .node .box{stroke-width:1.5}
+.own-canvas .node.person .box{fill:var(--red-soft);stroke:var(--ore)}
+.own-canvas .node.listed .box{fill:var(--panel);stroke:var(--ink)}
+.own-canvas .node.private .box,.own-canvas .node.offshore .box{fill:var(--panel);stroke:var(--steel)}
+.own-canvas .node.division .box{fill:var(--bg);stroke:var(--steel);stroke-dasharray:4 3}
+.own-canvas .node.sel .box{stroke:var(--red);stroke-width:3}
+.own-canvas .node .nm{font:600 12.5px var(--body);fill:var(--ink)}
+.own-canvas .node .sub{font:500 10.5px var(--mono);fill:var(--muted)}
+.own-canvas .node .tk{font:700 10.5px var(--mono);fill:var(--red)}
+.own-canvas .tog circle{fill:var(--panel);stroke:var(--ore);stroke-width:1.5}
+.own-canvas .tog text{font:700 11px var(--mono);fill:var(--ore)}
+.own-legend .lg{display:inline-block;width:14px;height:10px;border-radius:3px;margin-right:6px;vertical-align:-1px;border:1.5px solid var(--steel)}
+.own-legend .lg.person{border-radius:999px;border-color:var(--ore);background:var(--red-soft)}
+.own-legend .lg.listed{border-color:var(--ink)}
+.own-legend .lg.division{border-style:dashed}
+.own-card h2{margin:0 0 4px}
+.own-card .meta{font:500 12px var(--mono);color:var(--muted);margin-bottom:10px;text-transform:uppercase;letter-spacing:.04em}
+.own-card .cols{display:grid;grid-template-columns:minmax(0,1fr);gap:14px;margin-top:12px}
+@media (min-width:720px){.own-card .cols{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
+.own-card h3{font:600 14px var(--body);margin:0 0 6px}
+.own-card table{width:100%;border-collapse:collapse;font-size:14px}
+.own-card td{white-space:normal;text-align:left;overflow-wrap:anywhere;padding:6px 0;border-bottom:1px solid var(--line);vertical-align:top}
+.own-card td.p{text-align:right;font:600 13px var(--mono);white-space:nowrap;padding-left:10px}
+.own-card a.jump{color:var(--ink);text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:3px;cursor:pointer}
+.own-card .btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.own-card .btns a{font:500 13px var(--body);padding:8px 12px;border-radius:10px;border:1px solid var(--line);color:var(--ink);text-decoration:none}
+.own-card .btns a.main{border-color:var(--red);color:var(--red)}

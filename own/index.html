@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Структура владения — Cap Laoban</title>
+<meta name="description" content="Кто кому принадлежит: интерактивные схемы владения холдингов — доли, цепочки, сквозное владение и описание каждой компании.">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;800&family=Golos+Text:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="/assets/style.css?v=11">
+<link rel="stylesheet" href="/assets/own.css?v=1">
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="brand" href="/"><img src="/assets/mark.svg" alt="">Cap Laoban</a>
+    <nav class="nav"><a href="/#companies">Компании</a><a href="/own/">Владельцы</a><a href="#how">Как читать</a></nav>
+  </header>
+
+  <main class="stack">
+    <section class="stack" style="padding-block:4px 2px">
+      <div class="eyebrow">Структура владения</div>
+      <h1 id="g-title">Кто кому принадлежит</h1>
+      <div class="own-groups" id="groups"></div>
+    </section>
+
+    <section class="panel own-panel" aria-label="Схема владения">
+      <div class="own-tools">
+        <button type="button" id="z-in" aria-label="Увеличить">+</button>
+        <button type="button" id="z-out" aria-label="Уменьшить">−</button>
+        <button type="button" id="z-fit">Вписать</button>
+        <button type="button" id="x-all">Раскрыть всё</button>
+        <button type="button" id="x-path">Только цепочка</button>
+      </div>
+      <div class="own-canvas" id="canvas"><svg id="svg" role="img" aria-label="Схема владения"><g id="vp"></g></svg></div>
+      <div class="legend own-legend">
+        <span><i class="lg person"></i>Человек, семья</span>
+        <span><i class="lg listed"></i>Биржевая компания</span>
+        <span><i class="lg private"></i>Частная / офшор</span>
+        <span><i class="lg division"></i>Подразделение</span>
+      </div>
+      <p class="note">Нажмите на компанию — внизу откроется карточка. «+N» на компании — у неё ещё N владений: нажмите на «+», чтобы раскрыть. Двигать схему — пальцем или мышью; масштаб — щипком, колесом или кнопками.</p>
+    </section>
+
+    <section class="panel" id="card" aria-label="Карточка компании"></section>
+
+    <section class="panel" id="group-text" aria-label="Что это значит"></section>
+
+    <section class="panel" id="how" aria-label="Как читать">
+      <h2>Как читать схему</h2>
+      <ul class="list">
+        <li><span class="dot" style="background:var(--ore)"></span><span>Стрелка идёт <b>от владельца к компании</b>, на ней — доля в капитале (как в стандарте раскрытия бенефициаров Open Ownership). «экон.» — экономическая доля, «эфф.» — эффективная, через несколько компаний, как её даёт отчётность.</span></li>
+        <li><span class="dot" style="background:var(--ore)"></span><span><b>Сквозная доля</b> — какая часть прибыли компании приходится на владельца наверху: доли перемножаются вдоль цепочки и складываются по всем путям.</span></li>
+        <li><span class="dot" style="background:var(--ore)"></span><span>Свободное обращение (акции у публики) на схеме не рисуется — оно в карточке компании.</span></li>
+      </ul>
+      <p class="note" id="src-note"></p>
+    </section>
+  </main>
+
+  <footer class="bot">
+    <span>Cap Laoban Investments. Материалы — аналитика и личное мнение автора, не индивидуальная инвестиционная рекомендация.</span>
+    <span>Метки: [А] — из отчётности, [Б] — расчёт, [В] — внешний источник.</span>
+  </footer>
+</div>
+<script src="/assets/own.js?v=1"></script>
+</body>
+</html>

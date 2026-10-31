@@ -256,6 +256,22 @@ function render(D) {
       `<ul class="list">${S.rows.map(r => `<li><span class="dot" style="background:var(--ore);margin-left:${(r.level || 0) * 14}px"></span><span><b>${esc(r.who)}</b>${r.share ? ` — ${esc(r.share)}` : ""}${r.note ? `<br><span class="note">${rich(r.note)}</span>` : ""}</span></li>`).join("")}</ul>` +
       (S.text || []).map(t => `<p>${rich(t)}</p>`).join("") + (S.note ? `<p class="note">${rich(S.note)}</p>` : "");
   }
+  fetch("/data/ownership.json").then(r => r.ok ? r.json() : null).then(O => {
+    if (!O || D.structure) return;
+    const id = Object.keys(O.nodes).find(k => k === D.ticker || O.nodes[k].ticker === D.ticker);
+    if (!id) return;
+    const n = O.nodes[id], own = O.edges.filter(e => e.to === id), held = O.edges.filter(e => e.from === id);
+    const up = new Set(), st = [id];
+    while (st.length) { const x = st.pop(); for (const e of O.edges) if (e.to === x && !up.has(e.from)) { up.add(e.from); st.push(e.from); } }
+    const chain = up.size > own.length || held.length > 0 || n.holding;
+    const p = x => String(+x.toFixed(2)).replace(".", ",") + "%";
+    const el = $("structure"); el.hidden = false;
+    el.innerHTML = `<div class="eyebrow">Акционеры${chain ? " · холдинговая структура" : ""}</div>` +
+      `<ul class="list">${own.map(e => `<li><span class="dot" style="background:var(--ore)"></span><span><b>${esc(O.nodes[e.from].name)}</b> — ${p(e.pct)}</span></li>`).join("")}` +
+      `${n.float ? `<li><span class="dot" style="background:var(--steel)"></span><span>Свободное обращение — ${p(n.float)}</span></li>` : ""}</ul>` +
+      (held.length ? `<p class="note">Владеет: ${held.map(e => `${esc(O.nodes[e.to].name)} ${p(e.pct)}`).join(" · ")}</p>` : "") +
+      (chain ? `<p><a href="/own/?id=${encodeURIComponent(id)}">Вся цепочка владения — кто стоит за компанией и чем она владеет →</a></p>` : "");
+  });
   if (D.peers) {
     $("peers-eyebrow").textContent = D.peers.eyebrow || "Сравнение с аналогами";
     $("peers-title").textContent = D.peers.title || "Аналоги";

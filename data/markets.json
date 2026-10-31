@@ -104,9 +104,9 @@
       "value": 18138,
       "unit": "Rp за US$",
       "date": "2026-10-30",
-      "source": "Bank Indonesia, JISDOR",
-      "url": "https://www.bi.go.id/en/statistik/informasi-kurs/jisdor/Default.aspx",
-      "class": "А",
+      "source": "Yahoo Finance (IDR=X), рыночный курс",
+      "url": "https://finance.yahoo.com/quote/IDR=X",
+      "class": "В",
       "how": "Центробанк, ежедневно, бесплатно.",
       "to_company": "Выручка в долларах, отчётность в рупиях: FY2025 считался по ~16 475."
     },

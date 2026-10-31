@@ -225,12 +225,14 @@ def main():
     if "px" in got:
         nk["price"].update({"value": got["px"]["value"], "date": got["px"]["date"], "source": got["px"]["source"]})
     sotp = nk["sotp"]
+    # С 31.10.2026 по умолчанию — база 2027 (прогноз); спот обновляется только в сценарии «сегодняшние цены» (spot: true),
+    # курс — во всех сценариях. База и прогнозные сценарии по никелю робот не трогает.
     for k in ("lme", "fx"):
         if k in got:
-            sotp["defaults"][k] = got[k]["value"]
+            if k == "fx":
+                sotp["defaults"]["fx"] = got[k]["value"]
             for sc in sotp["scenarios"]:
-                if sc["id"] == "now": sc[k] = got[k]["value"]
-                elif k == "fx" and sc["id"] != "fy25": sc[k] = got[k]["value"]
+                if sc.get("spot") or k == "fx": sc[k] = got[k]["value"]
     # nk["updated"] — дата разбора, робот её не трогает; свежесть цен видна в markets.json и у каждого входа
     save(DATA / "nckl.json", nk)
     now, a, stale = drift(nk)

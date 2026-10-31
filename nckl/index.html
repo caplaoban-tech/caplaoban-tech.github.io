@@ -43,8 +43,8 @@
 
     <section id="calc" class="panel" aria-label="Оценка">
       <div class="eyebrow">Как построена оценка · по частям (SOTP) на денежных потоках</div>
-      <h2>Справедливая цена = три денежных потока − скидка за невыплаченное − долг</h2>
-      <p class="note">Берём реальные денежные потоки FY2025 из отчётности по каждой части бизнеса, поправляем на сегодняшние цены сырья (каждая поправка видна), делим на требуемую доходность и вычитаем чистый долг. Ассоциаты считаем только в той части, что возвращается деньгами. Так же и с самой NCKL: дивиденд считаем полностью, а оставленное в компании — со скидкой, потому что решает, куда его тратить, контролёр (79,8%). Всё, что модель не учитывает, перечислено ниже.</p>
+      <h2>Справедливая цена = четыре денежных потока − скидка за невыплаченное − долг</h2>
+      <p class="note">Берём прибыль каждой части бизнеса по фактическим кварталам 2026 года (свои печи, добыча, KPS, HPAL — отдельно), приводим к условиям базы 2027 или к выбранным ползункам (каждая поправка видна), делим на требуемую доходность и вычитаем чистый долг. Ассоциаты считаем только в той части, что возвращается деньгами. Так же и с самой NCKL: дивиденд считаем полностью, а оставленное в компании — со скидкой, потому что решает, куда его тратить, контролёр (79,8%). Всё, что модель не учитывает, перечислено ниже.</p>
       <div class="seg" role="group" aria-label="Сценарии" id="scen"></div>
       <div class="calc">
         <div class="calc-bar" id="calc-bar" aria-live="polite">
@@ -55,8 +55,8 @@
           <div class="ctl"><label for="lme">Никель LME, US$/т <button type="button" class="q" data-term="lme" aria-label="Что это?">?</button> <output id="lme-o"></output></label><input id="lme" type="range" min="13000" max="22000" step="50"><small class="srcl" data-src="lme"></small></div>
           <div class="ctl"><label for="co">Кобальт в MHP, % оплаты <button type="button" class="q" data-term="payable" aria-label="Что это?">?</button> <output id="co-o"></output></label><input id="co" type="range" min="40" max="95" step="1"><small class="srcl" data-src="co"></small><small><button type="button" class="qlink" data-term="why_payable">Почему падает скидка, а не цена?</button></small></div>
           <div class="ctl"><label for="s">Сера, US$/т <button type="button" class="q" data-term="sulfur" aria-label="Что это?">?</button> <output id="s-o"></output></label><input id="s" type="range" min="250" max="1400" step="5"><small class="srcl" data-src="s"></small><small>В модель идёт <b>эффективная</b> цена для заводов: спот доходит до себестоимости с лагом 2–3 месяца (запас сырья, слова менеджмента на SIMC 05.08.2026). Сейчас ≈ US$950: среднее за 3 месяца, контракты Ближнего Востока в октябре уже ниже.</small></div>
-          <div class="ctl"><label for="hpm">Цена лимонита NCKL к FY2025, US$/т <button type="button" class="q" data-term="hpm" aria-label="Что это?">?</button> <output id="hpm-o"></output></label><input id="hpm" type="range" min="-10" max="15" step="1"><small class="srcl" data-src="hma"></small><small>Фактически NCKL продаёт лимонит по ~US$10–18 за тонну, поэтому решения по HPM двигают цену на единицы долларов.</small></div>
-          <div class="ctl"><label for="fx">Курс, рупий за доллар <button type="button" class="q" data-term="fx" aria-label="Что это?">?</button> <output id="fx-o"></output></label><input id="fx" type="range" min="15500" max="20000" step="10"><small class="srcl" data-src="fx"></small><small>FY2025 считался по ~16 475. Выручка в долларах: слабая рупия повышает денежный поток в рупиях.</small></div>
+          <div class="ctl"><label for="hpm">Цена лимонита NCKL к базе, US$/т <button type="button" class="q" data-term="hpm" aria-label="Что это?">?</button> <output id="hpm-o"></output></label><input id="hpm" type="range" min="-10" max="15" step="1"><small class="srcl" data-src="hma"></small><small>Фактически NCKL продаёт лимонит по ~US$10–18 за тонну, поэтому решения по HPM двигают цену на единицы долларов.</small></div>
+          <div class="ctl"><label for="fx">Курс, рупий за доллар <button type="button" class="q" data-term="fx" aria-label="Что это?">?</button> <output id="fx-o"></output></label><input id="fx" type="range" min="15500" max="20000" step="10"><small class="srcl" data-src="fx"></small><small>База считается по 18 138 (JISDOR, 30.10.2026). Выручка в долларах: слабая рупия повышает денежный поток в рупиях.</small></div>
           <div class="eyebrow" style="margin-top:6px">Оценка</div>
           <div class="ctl"><label for="y">Требуемая доходность <button type="button" class="q" data-term="yield" aria-label="Что это?">?</button> <output id="y-o"></output></label><input id="y" type="range" min="9" max="18" step="0.5"><small>Сколько процентов в год денежного потока вы хотите получать на вложенное. 13% ≈ доходность гособлигаций Индонезии ~6,5% + премия за риск акций.</small></div>
           <div class="ctl"><label for="ap">Пейаут ассоциатов <button type="button" class="q" data-term="ap" aria-label="Что это?">?</button> <output id="ap-o"></output></label><input id="ap" type="range" min="0" max="100" step="1"><small>Какая доля прибыли HPL, ONC и KPS дойдёт до NCKL деньгами. За 2024–2025 дошло 56%.</small></div>
@@ -249,7 +249,7 @@ Promise.all([fetch("../data/nckl.json?v=13").then(r => r.json()), fetch("../data
       return { st, adj, f, cash, val: cash / (v.y / 100) };
     });
     const fcf = rows.reduce((a, r) => a + r.cash, 0), ev = fcf / (v.y / 100);
-    /* прибыль акционерам в этих условиях: FY2025 + те же поправки на сырьё и курс */
+    /* прибыль акционерам в этих условиях: база 2027 (10,1 трлн) + те же поправки на сырьё и курс */
     const np = S.np_fy25 + rows.reduce((a, r) => a + r.f - r.st.fcf, 0);
     const div = Math.max(0, Math.min(np * v.po / 100, fcf)), ret = fcf - div;
     const disc = ret * (1 - v.rv / 100) / (v.y / 100), eq = ev - disc - S.net_debt;
@@ -267,7 +267,7 @@ Promise.all([fetch("../data/nckl.json?v=13").then(r => r.json()), fetch("../data
     const ut = `${up >= 0 ? "+" : ""}${Math.round(up * 100)}% к цене ${f0(P)}`;
     for (const id of ["upside", "bar-up"]) { const u = $(id); u.textContent = id === "bar-up" ? `${up >= 0 ? "+" : ""}${Math.round(up * 100)}%` : ut; u.className = "up " + (up >= 0 ? "pos" : "neg"); }
     [$("fair"), $("bar-fair")].forEach(n => { n.classList.remove("flash"); void n.offsetWidth; n.classList.add("flash"); });
-    let h = `<thead><tr><th>Поток, Rp трлн/год</th><th>FY25</th><th>±сырьё, курс</th><th>теперь</th><th>деньгами</th><th>стоим.</th><th>Rp/акц</th></tr></thead><tbody>`;
+    let h = `<thead><tr><th>Поток, Rp трлн/год</th><th>база</th><th>±сырьё, курс</th><th>теперь</th><th>деньгами</th><th>стоим.</th><th>Rp/акц</th></tr></thead><tbody>`;
     for (const r of m.rows) {
       const adj = r.adj.lme + r.adj.co + r.adj.s + r.adj.hpm + r.adj.fx;
       h += `<tr><td>${esc(r.st.name)}</td><td>${t2(r.st.fcf)}</td><td>${sg(adj)}</td><td>${t2(r.f)}</td><td>${r.st.cash_based ? t2(r.cash) + ` <span class="muted">(${v.ap}%)</span>` : t2(r.cash)}</td><td>${f1(r.val)}</td><td class="me">${ps(r.val)}</td></tr>`;
@@ -289,7 +289,7 @@ Promise.all([fetch("../data/nckl.json?v=13").then(r => r.json()), fetch("../data
   function tornado(v) {
     const base = model(v).ps, items = [
       ["Сера", "s", x => f0(x)], ["Кобальт, %", "co", x => x + "%"], ["Никель", "lme", x => f0(x)],
-      ["Доходность, %", "y", x => x + "%"], ["Курс рупии", "fx", x => f0(x)], ["Пейаут ассоциатов", "ap", x => x + "%"], ["Лимонит к FY25", "hpm", x => (x > 0 ? "+" : "") + x], ["Пейаут NCKL", "po", x => x + "%"], ["Ценность невыплаченного", "rv", x => x + "%"]
+      ["Доходность, %", "y", x => x + "%"], ["Курс рупии", "fx", x => f0(x)], ["Пейаут ассоциатов", "ap", x => x + "%"], ["Лимонит к базе", "hpm", x => (x > 0 ? "+" : "") + x], ["Пейаут NCKL", "po", x => x + "%"], ["Ценность невыплаченного", "rv", x => x + "%"]
     ].map(([lab, k, fm]) => { const [lo, hi] = S.ranges[k]; const a = model({ ...v, [k]: lo }).ps, b = model({ ...v, [k]: hi }).ps; return { lab, lo, hi, a, b, fm, span: Math.abs(b - a) }; })
      .sort((x, y) => y.span - x.span);
     const mn = Math.min(...items.flatMap(i => [i.a, i.b]), base, P) - 30, mx = Math.max(...items.flatMap(i => [i.a, i.b]), base, P) + 30;
@@ -300,12 +300,12 @@ Promise.all([fetch("../data/nckl.json?v=13").then(r => r.json()), fetch("../data
       `<div class="legend"><span><i style="background:var(--ink);width:2px"></i>модель ${f0(base)}</span><span><i style="background:none;border-left:2px dashed var(--muted);width:0"></i>цена ${f0(P)}</span></div>`;
   }
   $("how").innerHTML = S.streams.map(st => `<div><h3>${esc(st.name)}</h3><p>${esc(st.calc)}</p><p class="note">Откуда: ${esc(st.src)}</p><p class="note">Чувствительность: ${esc(st.sens_note)}</p></div>`).join("") +
-    `<div><h3>Чистый долг</h3><p class="note">${esc(S.net_debt_note)}</p></div><div><h3>Условия FY2025</h3><p class="note">${esc(R.note)}</p></div>`;
+    `<div><h3>Чистый долг</h3><p class="note">${esc(S.net_debt_note)}</p></div><div><h3>Условия базы 2027</h3><p class="note">${esc(R.note)}</p></div>`;
   const nowAt = rv => f0(model({ ...S.defaults, ...S.scenarios.find(z => z.id === "now"), rv }).ps);
   $("noinc").innerHTML = S.not_included.map(t => t.replace("{rv100}", nowAt(100)).replace("{rv60}", nowAt(60))).map(t => `<li><span class="dot" style="background:var(--warn)"></span><span>${esc(t)}</span></li>`).join("");
   $("div-note").textContent = D.facts_div.note;
-  { const B = S.backtest, mb = model({ ...S.defaults, ...B.cond }), ra = mb.rows.find(r => r.st.id === "assoc");
-    $("bt").innerHTML = `<span>Ассоциаты по модели в условиях ${esc(B.label)}</span><span>${t2(ra.f)} трлн</span><span>Ассоциаты по отчёту, ${esc(B.label)}</span><span>${t2(B.actual.assoc)} трлн</span>`;
+  { const B = S.backtest, mb = model({ ...S.defaults, ...B.cond }), af = mb.rows.filter(r => r.st.cash_based).reduce((a, r) => a + r.f, 0);
+    $("bt").innerHTML = `<span>Ассоциаты (KPS + HPAL) по модели в условиях ${esc(B.label)}</span><span>${t2(af)} трлн</span><span>Ассоциаты по отчёту, ${esc(B.label)}</span><span>${t2(B.actual.assoc)} трлн</span>`;
     $("bt-note").textContent = B.note; }
   const scen = $("scen");
   scen.innerHTML = S.scenarios.map(x => `<button type="button" data-id="${x.id}" aria-pressed="${x.id === "now"}">${esc(x.label)}</button>`).join("");
@@ -319,13 +319,14 @@ Promise.all([fetch("../data/nckl.json?v=13").then(r => r.json()), fetch("../data
   const FV = { bear: sc("bear"), lo: Math.min(sc("now"), sc("fy25")), hi: Math.max(sc("now"), sc("fy25")), bull: sc("mid") };
   const lo0 = Math.min(400, FV.bear - 50), hi0 = Math.max(1500, FV.bull + 80), pos2 = v => ((v - lo0) / (hi0 - lo0)) * 100;
   $("fv").innerHTML = `<div class="track"></div><div class="band" style="left:${pos2(FV.lo)}%;width:${pos2(FV.hi) - pos2(FV.lo)}%"></div><div class="now" style="left:${pos2(P)}%">сейчас ${f0(P)}<i></i></div>` +
-    [FV.bear, FV.lo, FV.hi, FV.bull].map(x => `<div class="tick" style="left:${pos2(x)}%">${f0(x)}</div>`).join("");
-  $("fv-note").textContent = `Медвежий ${f0(FV.bear)} · «Сейчас» и «Как в FY2025» ${f0(FV.lo)}–${f0(FV.hi)} · середина цикла ${f0(FV.bull)}. ` + D.fair_value.note;
+    [FV.bear, FV.lo, FV.hi, FV.bull].reduce((acc, x) => { const l = acc[acc.length - 1]; if (l && pos2(x) - pos2(l[0]) < 7) l.push(x); else acc.push([x]); return acc; }, [])
+      .map(g => `<div class="tick" style="left:${pos2(g[0])}%">${g.map(f0).join(" · ")}</div>`).join("");
+  $("fv-note").textContent = `Медвежий ${f0(FV.bear)} · «сегодняшние цены навсегда» и база 2027 ${f0(FV.lo)}–${f0(FV.hi)} · бычий ${f0(FV.bull)}. ` + D.fair_value.note;
   /* вывод сделан при оценке S.anchor; если рынок сдвинул модель — предупредить */
   const A = S.anchor, nowPs = sc("now");
   if (A && (Math.abs(nowPs / A.ps - 1) > (A.tolerance || 0.1) || nowPs < P)) {
     const st = $("stale"); st.hidden = false;
-    st.textContent = `Вывод от ${dd(A.date)} пересматривается: по текущим ценам модель «Сейчас» даёт ${f0(nowPs)}${nowPs < P ? " — ниже цены" : " при цене"} ${f0(P)} (на ${dd(A.date)} было ${f0(A.ps)} при цене ${f0(A.price)}). «${D.verdict.label}» опирается на диапазон «Сейчас» — «Как в FY2025»; модель упрощённая и пересобирается. ${A.review}`;
+    st.textContent = `Вывод от ${dd(A.date)} пересматривается: база 2027 по модели сейчас даёт ${f0(nowPs)}${nowPs < P ? " — ниже цены" : " при цене"} ${f0(P)} (на ${dd(A.date)} было ${f0(A.ps)} при цене ${f0(A.price)}). «${D.verdict.label}» опирается на диапазон «сегодняшние цены навсегда» — база 2027. ${A.review}`;
   }
   setDefaults(); calc();
 }).catch(() => { document.querySelector("main").insertAdjacentHTML("afterbegin", '<p class="note">Не удалось загрузить данные компании. Обновите страницу.</p>'); });

@@ -5,9 +5,9 @@
     {
       "id": "lme",
       "name": "Никель LME, 3 месяца",
-      "value": 15360,
+      "value": 15240,
       "unit": "US$/т",
-      "date": "2026-10-29",
+      "date": "2026-10-30",
       "source": "LME cash settlement через westmetall.com",
       "url": "https://www.westmetall.com/en/markdaten.php?action=table&field=LME_Ni_cash",
       "class": "В",

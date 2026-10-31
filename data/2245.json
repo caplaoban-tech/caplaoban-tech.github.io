@@ -70,14 +70,14 @@
         "min": 12000,
         "max": 22000,
         "step": 250,
-        "now": 15360,
+        "now": 15240,
         "range": [
           14500,
           18500
         ],
         "source": "LME cash settlement через westmetall.com",
         "url": "https://www.westmetall.com/en/markdaten.php?action=table&field=LME_Ni_cash",
-        "date": "2026-10-29",
+        "date": "2026-10-30",
         "class": "В",
         "to_company": "MHP и ферроникель продаются по формулам от LME/SMM с лагом ~1 месяц. Средний уровень 1П2026 — ~US$18,1 тыс. (пересчёт по фьючерсу SHFE: 1П ≈ 139 тыс. юаней против 121 тыс. 23.10) [Б]."
       },
@@ -131,7 +131,7 @@
         "max": 7.4,
         "step": 0.01,
         "decimals": 2,
-        "now": 6.64,
+        "now": 6.65,
         "range": [
           6.5,
           7.1

@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-31",
+  "updated": "2026-11-02",
   "update_mode": "Автоматически: утром (09:00 Бали) и после закрытия IDX — никель LME, курс рупии, цены акций всех разборов (GitHub Actions). Вручную раз в неделю: сера, MHP, payable, руда, HMA.",
   "series": [
     {
@@ -104,9 +104,9 @@
       "value": 18138,
       "unit": "Rp за US$",
       "date": "2026-10-30",
-      "source": "Yahoo Finance (IDR=X), рыночный курс",
-      "url": "https://finance.yahoo.com/quote/IDR=X",
-      "class": "В",
+      "source": "Bank Indonesia, JISDOR",
+      "url": "https://www.bi.go.id/en/statistik/informasi-kurs/jisdor/Default.aspx",
+      "class": "А",
       "how": "Центробанк, ежедневно, бесплатно.",
       "to_company": "Выручка в долларах, отчётность в рупиях: FY2025 считался по ~16 475."
     },

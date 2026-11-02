@@ -10,10 +10,10 @@
   "headline": "Та же пальма, что у LSIP, но с долгом: EV/EBITDA 1,9 против 0,4 у дочки и 2,5 трлн штрафа на спецсчёте",
   "description": "Salim Ivomas Pratama (SIMP): 9М2026 — прибыль III кв. +78% к III кв. 2025; чистый долг без LSIP 8,5 трлн; штраф за лесные зоны 2,49 трлн на эскроу.",
   "price": {
-    "value": 500,
-    "date": "2026-10-30",
+    "value": 545.0,
+    "date": "2026-11-02",
     "currency": "Rp",
-    "source": "Стокбит, закрытие; сверено с Yahoo SIMP.JK",
+    "source": "Yahoo Finance (SIMP.JK), закрытие",
     "url": "https://finance.yahoo.com/quote/SIMP.JK/",
     "class": "В"
   },
@@ -487,5 +487,9 @@
       "t": "Free float",
       "d": "Доля акций в свободном обращении, не у контролёра."
     }
+  },
+  "price_review": {
+    "value": 500,
+    "date": "2026-10-30"
   }
 }

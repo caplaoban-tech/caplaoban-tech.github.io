@@ -33,15 +33,15 @@ def parse_date_en(s):
     mon = MONTHS.get(m.group(2).lower())
     return dt.date(int(m.group(3)), mon, int(m.group(1))).isoformat() if mon else None
 
-def fetch_lme():
-    html = get("https://www.westmetall.com/en/markdaten.php?action=table&field=LME_Ni_cash")
+def fetch_lme(field="LME_Ni_cash"):
+    html = get(f"https://www.westmetall.com/en/markdaten.php?action=table&field={field}")
     for row in re.findall(r"<tr[^>]*>(.*?)</tr>", html, re.S | re.I):
         cells = [re.sub(r"<[^>]+>", "", c).strip() for c in re.findall(r"<t[dh][^>]*>(.*?)</t[dh]>", row, re.S | re.I)]
         if len(cells) >= 2:
             d = parse_date_en(cells[0])
             if d and re.match(r"^[\d,.]+$", cells[1]):
                 return {"value": round(num(cells[1])), "date": d, "source": "LME cash settlement через westmetall.com",
-                        "url": "https://www.westmetall.com/en/markdaten.php?action=table&field=LME_Ni_cash"}
+                        "url": f"https://www.westmetall.com/en/markdaten.php?action=table&field={field}"}
     raise ValueError("таблица westmetall не распознана")
 
 def fetch_yahoo(symbol):
@@ -163,7 +163,17 @@ def update_company_prices():
 # Сера, кобальт, алюминий/глинозём SHFE, цена боксита — вручную (нет бесплатного источника без входа или это договор).
 AUTO_INPUTS = {("2245", "lme"): "lme", ("2245", "fx"): "USDCNY=X", ("1378", "fx"): "USDCNY=X",
                ("3898", "fx"): "HKDCNY=X", ("6690", "fx"): "HKDCNY=X", ("9981", "fx"): "HKDCNY=X",
-               ("BMRI", "bris"): "BRIS.JK", ("CITA", "fx"): "fx"}
+               ("BMRI", "bris"): "BRIS.JK", ("CITA", "fx"): "fx",
+               ("ADMR", "lme"): "lme_al"}
+
+
+def shift_bases(val, iid, delta):
+    """Потоки хранят base при текущих входах (now): страница считает base + sens × (вход − now).
+    Меняя now, сдвигаем base на sens × Δ — иначе «Сейчас» и сценарии считались бы от старой цены."""
+    for s in val.get("streams", []):
+        k = (s.get("sens") or {}).get(iid)
+        if k:
+            s["base"] = round(s["base"] + k * delta, 6)
 
 
 def update_model_inputs(got):
@@ -193,6 +203,7 @@ def update_model_inputs(got):
             print(f"вход {t}.{iid}={v} вне ползунка — не трогаю", file=sys.stderr); continue
         if inp.get("now") == v and inp.get("date") == date:
             continue
+        shift_bases(d["valuation"], iid, v - inp["now"])
         inp.update({"now": v, "date": date, "source": source, "url": url})
         save(f, d)
         print("вход", t, iid, v, date)
@@ -202,7 +213,7 @@ def main():
     update_terminals()
     update_company_prices()
     got, errors = {}, []
-    for key, fn in (("lme", fetch_lme), ("px", fetch_nckl), ("fx", fetch_fx)):
+    for key, fn in (("lme", fetch_lme), ("lme_al", lambda: fetch_lme("LME_Al_cash")), ("px", fetch_nckl), ("fx", fetch_fx)):
         try:
             got[key] = fn(); print(key, got[key])
         except Exception as e:  # noqa: BLE001
@@ -217,7 +228,7 @@ def main():
             s.update({"value": g["value"], "date": g["date"], "source": g["source"], "url": g["url"]})
             if "class" in g: s["class"] = g["class"]
     mk["updated"] = dt.date.today().isoformat()
-    mk["update_mode"] = ("Автоматически: утром (09:00 Бали) и после закрытия IDX — никель LME, курс рупии, цены акций всех разборов (GitHub Actions). "
+    mk["update_mode"] = ("Автоматически: утром (09:00 Бали) и после закрытия IDX — никель и алюминий LME, курс рупии, цены акций всех разборов (GitHub Actions). "
                          "Вручную раз в неделю: сера, MHP, payable, руда, HMA.")
     save(DATA / "markets.json", mk)
 
@@ -247,7 +258,7 @@ def main():
 
     update_model_inputs(got)
 
-    for k, name in (("lme", "lme_nickel"), ("px", "nckl"), ("fx", "usd_idr")):
+    for k, name in (("lme", "lme_nickel"), ("lme_al", "lme_aluminium"), ("px", "nckl"), ("fx", "usd_idr")):
         if k in got: history(name, got[k]["date"], got[k]["value"])
     if errors: print("Не обновились:", "; ".join(errors))
     return 0

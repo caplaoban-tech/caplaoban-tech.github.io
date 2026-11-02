@@ -1,0 +1,184 @@
+{
+  "updated": "2026-11-02",
+  "companies": {
+    "NCKL": {
+      "period": "III кв. 2026",
+      "period_end": "2026-09-30",
+      "date": "2026-10-30",
+      "url": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202610/20261030185755-65461-0/FinancialStatement-2026-III-NCKL.pdf",
+      "lines": [
+        "Прибыль акционеров за III кв.: Rp2,88 трлн (+23% г/г)",
+        "Выручка за III кв.: Rp9,77 трлн (+18% г/г)",
+        "Прибыль за 9М: Rp8,69 трлн (+35% г/г)"
+      ],
+      "src": "xlsx отчёта на idx.co.id [А]; квартал = накопленный итог − предыдущий [Б]",
+      "review": "2026-10-31",
+      "newer": false
+    },
+    "LSIP": {
+      "period": "III кв. 2026",
+      "period_end": "2026-09-30",
+      "date": "2026-10-30",
+      "url": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202610/20261030195657-65514-0/FinancialStatement-2026-III-LSIP.pdf",
+      "lines": [
+        "Прибыль акционеров за III кв.: Rp0,85 трлн (+60% г/г)",
+        "Выручка за III кв.: Rp1,64 трлн (+0% г/г)",
+        "Прибыль за 9М: Rp1,74 трлн (+40% г/г)"
+      ],
+      "src": "xlsx отчёта на idx.co.id [А]; квартал = накопленный итог − предыдущий [Б]",
+      "review": "2026-10-30",
+      "newer": false
+    },
+    "SIMP": {
+      "period": "III кв. 2026",
+      "period_end": "2026-09-30",
+      "date": "2026-10-30",
+      "url": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202610/20261030200927-64879-0/FinancialStatement-2026-III-SIMP.pdf",
+      "lines": [
+        "Прибыль акционеров за III кв.: Rp1,18 трлн (+78% г/г)",
+        "Выручка за III кв.: Rp6,02 трлн (+9% г/г)",
+        "Прибыль за 9М: Rp2,05 трлн (+45% г/г)"
+      ],
+      "src": "xlsx отчёта на idx.co.id [А]; квартал = накопленный итог − предыдущий [Б]",
+      "review": "2026-10-30",
+      "newer": false
+    },
+    "INDF": {
+      "period": "III кв. 2026",
+      "period_end": "2026-09-30",
+      "date": "2026-10-30",
+      "url": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202610/20261030201043-64876-0/FinancialStatement-2026-III-INDF.pdf",
+      "lines": [
+        "Прибыль акционеров за III кв.: Rp3,14 трлн (+54% г/г)",
+        "Выручка за III кв.: Rp35,96 трлн (+16% г/г)",
+        "Прибыль за 9М: Rp7,87 трлн (−0% г/г)"
+      ],
+      "src": "xlsx отчёта на idx.co.id [А]; квартал = накопленный итог − предыдущий [Б]",
+      "review": "2026-10-31",
+      "newer": false
+    },
+    "ADMR": {
+      "period": "III кв. 2026",
+      "period_end": "2026-09-30",
+      "date": "2026-10-30",
+      "url": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202610/20261030183908-65324-0/FinancialStatement-2026-III-ADMR.pdf",
+      "lines": [
+        "Прибыль акционеров за III кв.: $143,4 млн (+125% г/г)",
+        "Выручка за III кв.: $669,1 млн (+189% г/г)",
+        "Прибыль за 9М: $317,5 млн (+56% г/г)",
+        "Операционный денежный поток за 9М: $113,4 млн"
+      ],
+      "src": "xlsx отчёта на idx.co.id [А]; квартал = накопленный итог − предыдущий [Б]",
+      "review": "2026-11-02",
+      "newer": false
+    },
+    "2245": {
+      "period": "III кв. 2026",
+      "date": "2026-10-30",
+      "url": "http://static.cninfo.com.cn/finalpage/2026-10-30/1225645014.PDF",
+      "lines": [
+        "Выручка за III кв.: 12,12 млрд юаней (+8% г/г); за 9М: 37,49 млрд юаней (+26% г/г)",
+        "Прибыль акционеров за III кв.: 0,58 млрд юаней (−6% г/г); за 9М: 3,32 млрд юаней (+62% г/г)"
+      ],
+      "title": "2026年三季度报告",
+      "src": "отчёт на cninfo.com.cn, таблица основных показателей [А]",
+      "review": "2026-10-24",
+      "newer": true
+    },
+    "CITA": {
+      "period": "III кв. 2026",
+      "period_end": "2026-09-30",
+      "date": "2026-10-30",
+      "url": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202610/20261030185706-65012-0/FinancialStatement-2026-III-CITA.pdf",
+      "lines": [
+        "Прибыль акционеров за III кв.: Rp0,38 трлн (+2% г/г)",
+        "Выручка за III кв.: Rp1,20 трлн (+76% г/г)",
+        "Прибыль за 9М: Rp1,01 трлн (−50% г/г)",
+        "Операционный денежный поток за 9М: Rp0,88 трлн"
+      ],
+      "src": "xlsx отчёта на idx.co.id [А]; квартал = накопленный итог − предыдущий [Б]",
+      "review": "2026-10-24",
+      "newer": true
+    },
+    "3898": {
+      "period": "III кв. 2026",
+      "date": "2026-10-31",
+      "url": "http://static.cninfo.com.cn/finalpage/2026-10-31/1225647837.PDF",
+      "lines": [
+        "Выручка за III кв.: 7,75 млрд юаней (+17% г/г); за 9М: 20,82 млрд юаней (+11% г/г)",
+        "Прибыль акционеров за III кв.: 1,09 млрд юаней (+4% г/г); за 9М: 2,81 млрд юаней (+3% г/г)"
+      ],
+      "title": "株洲中车时代电气股份有限公司2026年第三季度报告",
+      "src": "отчёт на cninfo.com.cn, таблица основных показателей [А]",
+      "review": "2026-10-26",
+      "newer": true
+    },
+    "9981": {
+      "period": "III кв. 2026",
+      "date": "2026-10-28",
+      "url": "http://static.cninfo.com.cn/finalpage/2026-10-28/1225627788.PDF",
+      "lines": [
+        "Выручка за III кв.: 2,79 млрд юаней (+30% г/г); за 9М: 7,44 млрд юаней (+22% г/г)",
+        "Прибыль акционеров за III кв.: 0,31 млрд юаней (+18% г/г); за 9М: 0,88 млрд юаней (+7% г/г)"
+      ],
+      "title": "2026年三季度报告",
+      "src": "отчёт на cninfo.com.cn, таблица основных показателей [А]",
+      "review": "2026-10-25",
+      "newer": true
+    },
+    "BMRI": {
+      "period": "III кв. 2026",
+      "period_end": "2026-09-30",
+      "date": "2026-10-23",
+      "url": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202610/20261023231823-64642-0/FinancialStatement-2026-III-BMRI.pdf",
+      "lines": [
+        "Прибыль акционеров за III кв.: Rp15,12 трлн (+14% г/г)",
+        "Прибыль за 9М: Rp45,53 трлн (+21% г/г)"
+      ],
+      "src": "xlsx отчёта на idx.co.id [А]; квартал = накопленный итог − предыдущий [Б]",
+      "review": "2026-10-25",
+      "newer": false
+    },
+    "TLKM": {
+      "period": "III кв. 2026",
+      "period_end": "2026-09-30",
+      "date": "2026-10-30",
+      "url": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202610/20261030234844-65294-0/FinancialStatement-2026-III-TLKM.pdf",
+      "lines": [
+        "Прибыль акционеров за III кв.: Rp3,82 трлн (−16% г/г)",
+        "Выручка за III кв.: Rp37,62 трлн (+3% г/г)",
+        "Прибыль за 9М: Rp14,45 трлн (−4% г/г)",
+        "Операционный денежный поток за 9М: Rp48,01 трлн"
+      ],
+      "src": "xlsx отчёта на idx.co.id [А]; квартал = накопленный итог − предыдущий [Б]",
+      "review": null,
+      "newer": false
+    },
+    "000651": {
+      "period": "III кв. 2026",
+      "date": "2026-10-27",
+      "url": "http://static.cninfo.com.cn/finalpage/2026-10-27/1225627217.PDF",
+      "lines": [
+        "Выручка за III кв.: 36,68 млрд юаней (−8% г/г); за 9М: 126,08 млрд юаней (−8% г/г)",
+        "Прибыль акционеров за III кв.: 4,00 млрд юаней (−43% г/г); за 9М: 17,27 млрд юаней (−20% г/г)"
+      ],
+      "title": "2026年三季度报告",
+      "src": "отчёт на cninfo.com.cn, таблица основных показателей [А]",
+      "review": "2026-10-25",
+      "newer": true
+    },
+    "6690": {
+      "period": "III кв. 2026",
+      "date": "2026-10-30",
+      "url": "http://static.cninfo.com.cn/finalpage/2026-10-30/1225641263.PDF",
+      "lines": [
+        "Выручка за III кв.: 69,70 млрд юаней (−10% г/г); за 9М: 221,82 млрд юаней (−5% г/г)",
+        "Прибыль акционеров за III кв.: 4,68 млрд юаней (−12% г/г); за 9М: 15,00 млрд юаней (−14% г/г)"
+      ],
+      "title": "海尔智家股份有限公司2026年第三季度报告",
+      "src": "отчёт на cninfo.com.cn, таблица основных показателей [А]",
+      "review": "2026-10-25",
+      "newer": true
+    }
+  }
+}

@@ -40,6 +40,16 @@
     "url": "indf/"
   },
   {
+    "ticker": "ADMR",
+    "name": "Alamtri Minerals Indonesia",
+    "sector": "Коксующийся уголь · алюминий",
+    "price": 1340,
+    "verdict": "Наблюдать",
+    "tone": "warn",
+    "updated": "2026-11-02",
+    "url": "admr/"
+  },
+  {
     "ticker": "2245",
     "name": "Lygend Resources",
     "sector": "Никель · HPAL/RKEF",

@@ -209,3 +209,5 @@ table.mk td:nth-child(4){white-space:normal;min-width:160px;font-size:12px}
 .dvs-list{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:8px}
 .dvs-list .note{display:block;margin-top:2px}
 .dvs-verdict{background:var(--red-soft);border-radius:12px;padding:12px 14px}
+.fresh{margin:12px 0 0;padding:12px 14px;border:1px solid var(--warn);border-left-width:4px;border-radius:10px;font-size:14px;line-height:1.5}
+.fresh ul{margin:6px 0;padding-left:18px}.fresh li{margin:2px 0}

@@ -12,7 +12,7 @@
 <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;800&family=Golos+Text:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
-<link rel="stylesheet" href="../assets/style.css?v=13">
+<link rel="stylesheet" href="../assets/style.css?v=14">
 </head>
 <body>
 <div class="wrap">
@@ -331,5 +331,6 @@ Promise.all([fetch("../data/nckl.json?v=13").then(r => r.json()), fetch("../data
   setDefaults(); calc();
 }).catch(() => { document.querySelector("main").insertAdjacentHTML("afterbegin", '<p class="note">Не удалось загрузить данные компании. Обновите страницу.</p>'); });
 </script>
+<script src="/assets/latest.js?v=1" defer></script>
 </body>
 </html>

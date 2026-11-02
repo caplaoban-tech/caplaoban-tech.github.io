@@ -17,11 +17,11 @@
     {
       "id": "hma",
       "name": "HMA никель (база для HPM руды)",
-      "value": 15847.67,
+      "value": 15478.67,
       "unit": "US$/т",
-      "date": "2026-10-15",
-      "source": "Kepmen ESDM, 2-я половина октября (через IMA)",
-      "url": "https://ima-api.org/wp-content/uploads/2026/10/IMA-Daily-News-Update-Monday-October-19-2026.pdf",
+      "date": "2026-11-01",
+      "source": "Kepmen ESDM, 1-я половина ноября (через SMM): −369 (−2,3%) к 15 847,67",
+      "url": "https://news.metal.com/newscontent/104189860-smm-flash-newsindonesias-hma-nickel-decreased-again-in-first-period-of-november",
       "class": "А",
       "how": "Министерство энергетики, два раза в месяц, бесплатно (jdih.esdm.go.id, minerba.esdm.go.id).",
       "to_company": "Цена руды NCKL своим заводам и ассоциатам считается по HPM от HMA предыдущего периода."
@@ -29,11 +29,11 @@
     {
       "id": "co",
       "name": "Кобальт в MHP: % оплаты (payable)",
-      "value": 56.5,
+      "value": 57,
       "unit": "%",
-      "date": "2026-10-22",
-      "source": "SMM, дневной обзор MHP",
-      "url": "https://news.metal.com/newscontent/104173571-smm-nickel-intermediate-product-daily-review-october-22-mhp-high-grade-nickel-matte-nickel-prices-rise",
+      "date": "2026-10-30",
+      "source": "SMM, дневной обзор MHP (к SMM рафинированному кобальту, склад Роттердам)",
+      "url": "https://news.metal.com/newscontent/104188318-smm-nickel-intermediate-product-daily-review-mhp-and-high-grade-nickel-matte-nickel-prices-declined-on-october-30",
       "class": "В",
       "how": "SMM (metal.com) — ежедневно, заголовки бесплатно, полные данные платно. Альтернатива — Fastmarkets, Benchmark (платно).",
       "to_company": "Контракты MHP HPL/ONC с покупателями обычно на квартал: сентябрьско-октябрьские скидки ложатся на отгрузки IV кв."
@@ -41,11 +41,11 @@
     {
       "id": "mhp_ni",
       "name": "MHP: никель FOB Индонезия",
-      "value": 12827,
+      "value": 13044,
       "unit": "US$/т Ni",
-      "date": "2026-10-22",
-      "source": "SMM, дневной обзор MHP (две цифры в тексте: 12 797 и 12 857, взято среднее)",
-      "url": "https://news.metal.com/newscontent/104173571-smm-nickel-intermediate-product-daily-review-october-22-mhp-high-grade-nickel-matte-nickel-prices-rise",
+      "date": "2026-10-30",
+      "source": "SMM, дневной обзор MHP (payable никеля 81–82,5%)",
+      "url": "https://news.metal.com/newscontent/104188318-smm-nickel-intermediate-product-daily-review-mhp-and-high-grade-nickel-matte-nickel-prices-declined-on-october-30",
       "class": "В",
       "how": "SMM, ежедневно. Payable по никелю 79,5–83% к индексу сульфата никеля.",
       "to_company": "Выручка HPL и ONC. Для справки: денежная себестоимость MHP у рынка ~US$14 500 (SMM), у заводов Оби ниже за счёт своей руды."
@@ -53,11 +53,11 @@
     {
       "id": "mhp_co",
       "name": "MHP: кобальт FOB Индонезия",
-      "value": 25442,
+      "value": 22716,
       "unit": "US$/т Co",
-      "date": "2026-10-22",
+      "date": "2026-10-30",
       "source": "SMM, дневной обзор MHP",
-      "url": "https://news.metal.com/newscontent/104173571-smm-nickel-intermediate-product-daily-review-october-22-mhp-high-grade-nickel-matte-nickel-prices-rise",
+      "url": "https://news.metal.com/newscontent/104188318-smm-nickel-intermediate-product-daily-review-mhp-and-high-grade-nickel-matte-nickel-prices-declined-on-october-30",
       "class": "В",
       "how": "SMM, ежедневно.",
       "to_company": "~0,10–0,11 т кобальта на тонну никеля в MHP."
@@ -89,11 +89,11 @@
     {
       "id": "ore",
       "name": "Руда Индонезии, спот: лимонит 1,2% / сапролит 1,6%",
-      "value": "25,5 / 57,1",
+      "value": "24,5 / 57,1",
       "unit": "US$/т влажной",
-      "date": "2026-10-23",
-      "source": "SMM, недельный обзор руды Индонезии (сапролит −6,3 за неделю)",
-      "url": "https://news.metal.com/newscontent/104176584-indonesia-nickel-ore-market-weekly-report",
+      "date": "2026-10-30",
+      "source": "SMM, недельный обзор руды Индонезии (цена с доставкой в порт; лимонит −1,0 за неделю, сапролит без изменений)",
+      "url": "https://news.metal.com/newscontent/104189254-smm-nickel-ore-market-weekly-review-indonesias-benchmark-price-cut-and-weak-demand-put-regional-nickel-ore-prices-under-pressure",
       "class": "В",
       "how": "SMM, ежедневно.",
       "to_company": "Фактическая цена лимонита у NCKL по выручке сегмента — ~US$10–18 за тонну (ниже рыночного 1,2% из-за содержания и формулы)."
@@ -165,15 +165,15 @@
   "news": {
     "sulfur": [
       {
+        "date": "2026-10-29",
+        "title": "Сера CFR Индонезия US$850–860 — без изменений за неделю; Ближний Восток FOB спот US$740–790; ноябрьские контракты ещё не объявлены",
+        "url": "https://www.chemportal.com.tr/markets/sulphur.html",
+        "src": "Chemportal"
+      },
+      {
         "date": "2026-10-23",
         "title": "Сера CIF Индонезия US$850–900, в среднем US$875; японский груз 3 тыс. т по US$850",
         "url": "https://news.metal.com/newscontent/104175985-smm-analysis-cobalt-salt-price-decline-risk-remains-nickel-intermediate-product-payables-stable-this-week",
-        "src": "SMM"
-      },
-      {
-        "date": "2026-10-16",
-        "title": "Сера CIF Индонезия US$885 — на US$80 ниже, чем 30 сентября",
-        "url": "https://news.metal.com/newscontent/104162710-smm-analysis-downside-risks-for-cobalt-salt-prices-remain-nickel-intermediate-product-payables-stay-weak-this-week",
         "src": "SMM"
       },
       {
@@ -185,42 +185,42 @@
     ],
     "mhp": [
       {
+        "date": "2026-10-30",
+        "title": "MHP подешевел: никель US$13 044/т (−98 за день), кобальт US$22 716/т (−358); payable кобальта 57%, никеля 81–82,5%",
+        "url": "https://news.metal.com/newscontent/104188318-smm-nickel-intermediate-product-daily-review-mhp-and-high-grade-nickel-matte-nickel-prices-declined-on-october-30",
+        "src": "SMM"
+      },
+      {
+        "date": "2026-10-30",
+        "title": "Ожидания сокращений поддерживают рынок слабее: солевые заводы плохо принимают цены сырья, закупки MHP сдержанные",
+        "url": "https://news.metal.com/newscontent/104189176-smm-analysis-expectations-for-production-cuts-provide-less-support-nickel-prices-consolidate-and-pull-back",
+        "src": "SMM"
+      },
+      {
         "date": "2026-10-23",
         "title": "Payable по MHP за неделю не изменились, но SMM ждёт слабости: перезапуски заводов и распродажа запасов трейдерами",
         "url": "https://news.metal.com/newscontent/104175985-smm-analysis-cobalt-salt-price-decline-risk-remains-nickel-intermediate-product-payables-stable-this-week",
         "src": "SMM"
-      },
-      {
-        "date": "2026-10-22",
-        "title": "MHP: никель ~US$12 800/т, кобальт US$25 442/т, payable кобальта 56–57%",
-        "url": "https://news.metal.com/newscontent/104173571-smm-nickel-intermediate-product-daily-review-october-22-mhp-high-grade-nickel-matte-nickel-prices-rise",
-        "src": "SMM"
-      },
-      {
-        "date": "2026-10-22",
-        "title": "Обсуждаются сокращения: MHP −50%, NPI −20% (Tsingshan, CNGR, Lygend, Huayou, GEM); решения нет",
-        "url": "https://news.metal.com/newscontent/104173852-smm-analysis-indonesian-nickel-output-cut-talk-gathers-pace-but-the-case-for-cutting-diverges-across-the-supply-chain",
-        "src": "Reuters, SMM"
       }
     ],
     "nickel": [
       {
-        "date": "2026-10-23",
-        "title": "Никель отскочил на новостях о сокращениях: LME 3M US$15 995 (+4,1% за неделю), SHFE +5,5%",
-        "url": "https://news.metal.com/newscontent/104176457-smm-analysis-nickel-prices-recovered-this-week-driven-by-market-news-of-production-cuts",
+        "date": "2026-11-01",
+        "title": "HMA никеля 1-й половины ноября US$15 478,67 — минус US$369 (−2,3%) ко 2-й половине октября",
+        "url": "https://news.metal.com/newscontent/104189860-smm-flash-newsindonesias-hma-nickel-decreased-again-in-first-period-of-november",
+        "src": "ESDM через SMM"
+      },
+      {
+        "date": "2026-10-30",
+        "title": "Руда Индонезии под давлением снижения HPM и слабого спроса: лимонит 1,2% US$24,5, сапролит 1,6% US$57,1",
+        "url": "https://news.metal.com/newscontent/104189254-smm-nickel-ore-market-weekly-review-indonesias-benchmark-price-cut-and-weak-demand-put-regional-nickel-ore-prices-under-pressure",
         "src": "SMM"
       },
       {
-        "date": "2026-10-23",
-        "title": "Руда Индонезии дешевеет: сапролит 1,6% US$57,1 (−6,3 за неделю), лимонит 1,2% US$25,5",
-        "url": "https://news.metal.com/newscontent/104176584-indonesia-nickel-ore-market-weekly-report",
+        "date": "2026-10-30",
+        "title": "Никель откатился: LME 3M US$15 515 (−2,3% за неделю), SHFE −2,8% — эффект слухов о сокращениях выдыхается",
+        "url": "https://news.metal.com/newscontent/104189176-smm-analysis-expectations-for-production-cuts-provide-less-support-nickel-prices-consolidate-and-pull-back",
         "src": "SMM"
-      },
-      {
-        "date": "2026-10-15",
-        "title": "HMA никеля 2-й половины октября US$15 847,67",
-        "url": "https://ima-api.org/wp-content/uploads/2026/10/IMA-Daily-News-Update-Monday-October-19-2026.pdf",
-        "src": "ESDM через IMA"
       }
     ]
   },

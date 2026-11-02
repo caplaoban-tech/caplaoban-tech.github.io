@@ -12,24 +12,29 @@
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;800&family=Golos+Text:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
-<link rel="stylesheet" href="assets/style.css?v=11">
+<link rel="stylesheet" href="assets/style.css?v=15">
 </head>
 <body>
 <div class="wrap narrow">
   <header class="top">
     <a class="brand" href="./"><img src="assets/mark.svg" alt="">Cap Laoban</a>
-    <nav class="nav"><a href="#companies">Компании</a><a href="own/">Владельцы</a><a href="ideas/">Инвест-идеи</a><a href="ah/">Китай A+H</a><a href="a-robots/">Роботы и ИИ</a><a href="#news">Новости</a></nav>
+    <nav class="nav"><a href="#briefs">Разборы</a><a href="#companies">Компании</a><a href="own/">Владельцы</a><a href="ideas/">Инвест-идеи</a><a href="ah/">Китай A+H</a><a href="a-robots/">Роботы и ИИ</a><a href="#news">Новости</a></nav>
   </header>
 
   <main class="stack">
     <section class="stack" style="padding-block:8px 6px">
       <div class="eyebrow">Investments · Азия</div>
       <h1>Акции Азии в цифрах: риски, оценка и что меняет цену</h1>
-      <p class="muted">Каждый разбор построен на отчётности компании. Видно, откуда цифра, что заложено в цене и что сломает историю. В калькуляторах можно подвигать цену сырья и сразу увидеть стоимость акции.</p>
+      <p class="muted">Вышел отчёт — на одной странице: что произошло, как акционер получает деньги, почему возможен рост и что может сломать историю. Новости после отчёта подгружаются туда же. Подробные разборы с калькулятором оценки — ниже.</p>
+    </section>
+
+    <section id="briefs" class="stack" aria-label="Короткие разборы">
+      <h2>Свежие разборы отчётов</h2>
+      <div class="stack" id="brief-list"><p class="note">Загружаю…</p></div>
     </section>
 
     <section id="companies" class="stack" aria-label="Компании">
-      <h2>Компании</h2>
+      <h2>Подробные разборы и калькуляторы</h2>
       <div class="stack" id="co-list"><p class="note">Загружаю список…</p></div>
     </section>
 
@@ -48,6 +53,10 @@
 <script>
 const fmtDate = s => { const [y,m,d] = s.split("-"); return `${d}.${m}`; };
 const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+fetch("data/briefs.json").then(r => r.json()).then(list => {
+  document.getElementById("brief-list").innerHTML = list.map(b => `<a class="panel bcard" href="${esc(b.url)}"><span class="hd"><span class="tk">${esc(b.ticker)}</span>${esc(b.name)} · ${esc(b.period)} · ${fmtDate(b.date)}</span><span class="tt">${esc(b.card)}</span><span class="kv">${b.kpis.map(k => `<div><b>${esc(k[0])}</b><span>${esc(k[1])}</span></div>`).join("")}</span></a>`).join("");
+}).catch(() => { document.getElementById("brief-list").innerHTML = '<p class="note">Не удалось загрузить разборы. Обновите страницу.</p>'; });
 
 fetch("data/companies.json").then(r => r.json()).then(list => {
   document.getElementById("co-list").innerHTML = list.filter(c => !c.draft).map(c => {

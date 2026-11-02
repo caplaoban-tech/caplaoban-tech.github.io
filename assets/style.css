@@ -211,3 +211,22 @@ table.mk td:nth-child(4){white-space:normal;min-width:160px;font-size:12px}
 .dvs-verdict{background:var(--red-soft);border-radius:12px;padding:12px 14px}
 .fresh{margin:12px 0 0;padding:12px 14px;border:1px solid var(--warn);border-left-width:4px;border-radius:10px;font-size:14px;line-height:1.5}
 .fresh ul{margin:6px 0;padding-left:18px}.fresh li{margin:2px 0}
+/* короткие разборы (tools/brief.py) и лента на главной */
+.brief h2{font-size:17px;margin:0}
+.brief .thesis{border-left:4px solid var(--red)} .brief .thesis p{margin:0;line-height:1.55}
+.kpis.six{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media(min-width:720px){.kpis.six{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.bgrid{display:grid;grid-template-columns:1fr;gap:14px}
+@media(min-width:880px){.bgrid{grid-template-columns:1fr 1fr}}
+.bgrid svg{width:100%;height:auto;display:block}
+.brief ul,.brief ol{margin:0;padding-left:20px;line-height:1.5}.brief li{margin:4px 0}
+.brief .panel.risk{border-left:4px solid var(--bad)}
+.bcard{display:flex;flex-direction:column;gap:8px;color:var(--ink)}
+.bcard:hover{text-decoration:none;border-color:var(--red)}
+.bcard .hd{display:flex;gap:10px;align-items:center;flex-wrap:wrap;font-size:13px;color:var(--muted)}
+.bcard .tk{font-family:var(--mono);font-weight:600;font-size:13px;background:var(--red-soft);color:var(--red);border-radius:8px;padding:4px 8px}
+.bcard .tt{font-family:var(--display);font-weight:800;font-size:19px;line-height:1.25}
+.bcard .kv{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.bcard .kv div{display:flex;flex-direction:column;gap:2px;min-width:0}
+.bcard .kv b{font-family:var(--mono);font-size:15px}
+.bcard .kv span{font-size:11.5px;color:var(--muted);line-height:1.3}

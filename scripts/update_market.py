@@ -14,7 +14,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
 sys.path.insert(0, str(ROOT / "tools"))
 from nckl_model import drift  # noqa: E402
-UA = {"User-Agent": "Mozilla/5.0 (compatible; caplaoban-bot/1.0; +https://caplaoban-tech.github.io)"}
+UA = {"User-Agent": "Mozilla/5.0 (compatible; caplaoban-bot/1.0; +https://caplaoban.com)"}
 MONTHS = {m: i for i, m in enumerate(["january", "february", "march", "april", "may", "june", "july",
                                        "august", "september", "october", "november", "december"], 1)}
 

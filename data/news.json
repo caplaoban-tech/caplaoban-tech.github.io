@@ -1,5 +1,24 @@
 [
   {
+    "date": "2026-11-03",
+    "title": "MTEL (сосед TLKM) — III кв. 2026: прибыль акционерам Rp0,44 трлн (−1% к III кв. 2025); за 9М: Rp1,55 трлн (+1% к 9М 2025); денежный поток от операций за 9М: Rp5,31 трлн",
+    "src": "отчёт на idx.co.id",
+    "tickers": [
+      "TLKM",
+      "MTEL"
+    ],
+    "url": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202611/20261103054944-65702-0/FinancialStatement-2026-III-MTEL.pdf"
+  },
+  {
+    "date": "2026-11-02",
+    "title": "ADMR: IDX запросила пояснения о запуске алюминиевого завода KAI и финансовых рисках: предприятие мощностью 500 тыс",
+    "src": "раскрытие на idx.co.id",
+    "tickers": [
+      "ADMR"
+    ],
+    "url": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202611/bcea9a4434_3c20b63673.pdf"
+  },
+  {
     "date": "2026-10-31",
     "title": "NCKL: модель пересобрана по фактическим кварталам — свои печи, добыча, KPS и HPAL отдельно; база 2027 ≈877 по денежному потоку (≈1 040 по прибыли × P/E 6,5) при цене 725; IV кв. — HPAL под давлением серы",
     "src": "Cap Laoban",

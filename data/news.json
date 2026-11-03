@@ -1,6 +1,16 @@
 [
   {
     "date": "2026-11-03",
+    "title": "INCO (сосед NCKL) — III кв. 2026: прибыль акционерам $42,7 млн (+57% к III кв. 2025); за 9М: $147,1 млн (+181% к 9М 2025); денежный поток от операций за 9М: $104,0 млн",
+    "src": "отчёт на idx.co.id",
+    "tickers": [
+      "NCKL",
+      "INCO"
+    ],
+    "url": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202611/20261103164905-65722-0/FinancialStatement-2026-III-INCO.pdf"
+  },
+  {
+    "date": "2026-11-03",
     "title": "MTEL (сосед TLKM) — III кв. 2026: прибыль акционерам Rp0,44 трлн (−1% к III кв. 2025); за 9М: Rp1,55 трлн (+1% к 9М 2025); денежный поток от операций за 9М: Rp5,31 трлн",
     "src": "отчёт на idx.co.id",
     "tickers": [

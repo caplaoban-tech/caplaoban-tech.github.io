@@ -49,7 +49,7 @@
       <div class="term-head">
         <div><div class="eyebrow">${hasH ? esc(F.h_code) + " · SEHK · HKD" : esc(F.a_code) + (F.a_code.endsWith("SZ") ? " · SZSE" : " · SSE") + " · юани"}</div>
           <div class="term-px"><b class="num">${nf(px, 2)}</b> <span class="up ${px >= prev ? "pos" : "neg"}">${pct((px / prev - 1) * 100, 2)}</span></div>
-          <div class="note">закрытие ${dRu(last.d)}${hasH ? ` · A ${esc(F.a_code)}: ${nf(lastA?.a, 2)} юаня (${dRu(lastA?.d)})` : ""}</div></div>
+          <div class="note">закрытие ${dRu(last.d)}${hasH && F.a_code && lastA ? ` · A ${esc(F.a_code)}: ${nf(lastA?.a, 2)} юаня (${dRu(lastA?.d)})` : ""}</div></div>
         <div class="term-range"><div class="note">52 недели (закрытия)</div>
           <div class="rng"><span class="num">${nf(lo, 2)}</span><i><em style="left:${hi > lo ? (px - lo) / (hi - lo) * 100 : 50}%"></em></i><span class="num">${nf(hi, 2)}</span></div></div>
       </div>
@@ -63,11 +63,11 @@
       </div>
       <div class="term-ctl">
         <div class="seg sm" id="t-rng">${["1М", "6М", "1Г", "3Г", "Всё"].map((x, i) => `<button type="button" data-r="${[31, 183, 366, 1096, 1e5][i]}"${i == 2 ? ' aria-pressed="true"' : ""}>${x}</button>`).join("")}</div>
-        ${hasH ? '<div class="seg sm" id="t-mode"><button type="button" data-m="px" aria-pressed="true">Цена H и A</button><button type="button" data-m="prem">Премия A/H</button></div>' : ""}
+        ${hasH && F.a_code ? '<div class="seg sm" id="t-mode"><button type="button" data-m="px" aria-pressed="true">Цена H и A</button><button type="button" data-m="prem">Премия A/H</button></div>' : ""}
       </div>
       <div class="term-chart" id="t-chart"></div>
       <div class="legend" id="t-leg"></div>
-      <p class="note">Цена: ${hasH ? `H — ${esc(F.sources.px_h)}; A — ${esc(F.sources.px_a)}; A пересчитана в HKD по курсу ${esc(F.sources.fx)}` : `A — ${esc(F.sources.px_a)}`} [В]. ▲ — даты отсечки дивидендов (A).${F.net_cash ? " Как посчитаны чистые деньги: " + esc(F.net_cash.text) : ""}</p>
+      <p class="note">Цена: ${hasH ? (F.a_code ? `H — ${esc(F.sources.px_h)}; A — ${esc(F.sources.px_a)}; A пересчитана в HKD по курсу ${esc(F.sources.fx)}` : `${esc(F.sources.px_h)}; курс HKD/CNY — ${esc(F.sources.fx)}`) : `A — ${esc(F.sources.px_a)}`} [В]. ▲ — даты отсечки дивидендов (A).${F.net_cash ? " Как посчитаны чистые деньги: " + esc(F.net_cash.text) : ""}</p>
 
       <div class="term-tabs" role="tablist" id="t-tabs">${[["pl", "Прибыль"], ["cf", "Деньги"], ["bs", "Баланс"], ["dv", "Дивиденды"], ["sg", "Сегменты"]].filter(t => t[0] !== "sg" || (F.segments && F.segments.items)).map(([k, n], i) => `<button type="button" role="tab" data-t="${k}"${i == 0 ? ' aria-selected="true"' : ""}>${n}</button>`).join("")}</div>
       <div class="term-ctl"><div class="seg sm" id="t-per"><button type="button" data-p="y" aria-pressed="true">По годам</button><button type="button" data-p="q">По кварталам</button></div><span class="note" id="t-hint">Нажмите строку — график покажет её.</span></div>
@@ -83,14 +83,14 @@
       const S = P.filter(p => p.d >= from);
       const ser = !hasH ? [{ k: "a", name: "A, юани", col: "var(--red)", v: S.map(p => p.a) }]
         : mode === "px"
-        ? [{ k: "h", name: "H, HKD", col: "var(--red)", v: S.map(p => p.h) }, { k: "a", name: "A в HKD", col: "var(--steel)", v: S.map(p => p.a != null && p.fx ? p.a / p.fx : null) }]
+        ? [{ k: "h", name: "H, HKD", col: "var(--red)", v: S.map(p => p.h) }].concat(F.a_code ? [{ k: "a", name: "A в HKD", col: "var(--steel)", v: S.map(p => p.a != null && p.fx ? p.a / p.fx : null) }] : [])
         : [{ k: "p", name: "Премия A к H, %", col: "var(--ore)", v: S.map(p => p.a != null && p.h != null && p.fx ? (p.a / (p.h * p.fx) - 1) * 100 : null) }];
       const ex = mode === "px" ? F.dividends.map(d => d.ex_date_a && `${d.ex_date_a.slice(0, 4)}-${d.ex_date_a.slice(4, 6)}-${d.ex_date_a.slice(6)}`).filter(d => d && d >= from) : [];
       line("t-chart", S.map(p => p.d), ser, ex, mode === "px" ? 2 : 0, mode === "px" ? "" : "%");
       document.getElementById("t-leg").innerHTML = ser.map(s => `<span><i style="background:${s.col}"></i>${s.name}</span>`).join("");
     };
     seg("t-rng", b => { range = +b.dataset.r; drawPx(); });
-    if (hasH) seg("t-mode", b => { mode = b.dataset.m; drawPx(); });
+    if (hasH && F.a_code) seg("t-mode", b => { mode = b.dataset.m; drawPx(); });
     drawPx();
 
     // ---------- отчётность ----------

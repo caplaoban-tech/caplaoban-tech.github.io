@@ -1,164 +1,164 @@
 [
-  {
-    "ticker": "NCKL",
-    "name": "Harita Nickel",
-    "sector": "Никель · HPAL",
-    "price": 725,
-    "verdict": "Держать",
-    "tone": "good",
-    "updated": "2026-10-31",
-    "url": "nckl/"
-  },
-  {
-    "ticker": "LSIP",
-    "name": "London Sumatra (Lonsum)",
-    "sector": "Пальмовое масло · плантации",
-    "price": 1440,
-    "verdict": "Держать",
-    "tone": "good",
-    "updated": "2026-10-30",
-    "url": "lsip/"
-  },
-  {
-    "ticker": "SIMP",
-    "name": "Salim Ivomas Pratama",
-    "sector": "Пальмовое масло · плантации и Bimoli",
-    "price": 530.0,
-    "verdict": "Наблюдать",
-    "tone": "warn",
-    "updated": "2026-10-30",
-    "url": "simp/"
-  },
-  {
-    "ticker": "INDF",
-    "name": "Indofood Sukses Makmur",
-    "sector": "Продукты · Indomie, мука, пальма",
-    "price": 6600,
-    "verdict": "Кандидат на покупку",
-    "tone": "good",
-    "updated": "2026-10-31",
-    "url": "indf/"
-  },
-  {
-    "ticker": "ADMR",
-    "name": "Alamtri Minerals Indonesia",
-    "sector": "Коксующийся уголь · алюминий",
-    "price": 1310,
-    "verdict": "Наблюдать",
-    "tone": "warn",
-    "updated": "2026-11-02",
-    "url": "admr/"
-  },
-  {
-    "ticker": "2245",
-    "name": "Lygend Resources",
-    "sector": "Никель · HPAL/RKEF",
-    "price": 17.17,
-    "verdict": "Наблюдать",
-    "tone": "warn",
-    "updated": "2026-10-24",
-    "url": "2245/"
-  },
-  {
-    "ticker": "1378",
-    "name": "China Hongqiao",
-    "sector": "Алюминий · глинозём",
-    "price": 20.34,
-    "verdict": "Наблюдать",
-    "tone": "warn",
-    "updated": "2026-10-24",
-    "url": "1378/"
-  },
-  {
-    "ticker": "CITA",
-    "name": "Cita Mineral Investindo",
-    "sector": "Боксит",
-    "price": 2770,
-    "verdict": "Наблюдать",
-    "tone": "warn",
-    "updated": "2026-10-24",
-    "url": "cita/"
-  },
-  {
-    "ticker": "3898",
-    "name": "CRRC Times Electric",
-    "sector": "Ж/д электрооборудование · IGBT",
-    "price": 28.84,
-    "verdict": "Кандидат на полный разбор",
-    "tone": "warn",
-    "updated": "2026-10-26",
-    "url": "3898/"
-  },
-  {
-    "ticker": "9981",
-    "name": "Woer Heat-Shrinkable Material",
-    "sector": "Термоусадка · кабели для ИИ",
-    "price": 7.89,
-    "verdict": "Наблюдать",
-    "tone": "warn",
-    "updated": "2026-10-25",
-    "url": "9981/"
-  },
-  {
-    "ticker": "BMRI",
-    "name": "Bank Mandiri",
-    "sector": "Банки · госбанк",
-    "price": 3600,
-    "verdict": "Держать",
-    "tone": "warn",
-    "updated": "2026-10-25",
-    "url": "bmri/"
-  },
-  {
-    "ticker": "TLKM",
-    "name": "Telkom Indonesia",
-    "sector": "Телеком",
-    "soon": true
-  },
-  {
-    "ticker": "UNVR",
-    "name": "Unilever Indonesia",
-    "sector": "Потребительский сектор",
-    "soon": true
-  },
-  {
-    "ticker": "000651",
-    "name": "Gree Electric",
-    "sector": "Бытовая техника (кондиционеры)",
-    "price": 38.96,
-    "verdict": "Кандидат",
-    "tone": "warn",
-    "updated": "2026-10-25",
-    "url": "000651/"
-  },
-  {
-    "ticker": "6690",
-    "name": "Haier Smart Home",
-    "sector": "Бытовая техника",
-    "price": 20.84,
-    "verdict": "Кандидат для дальнейшей проверки",
-    "tone": "warn",
-    "updated": "2026-10-25",
-    "url": "6690/"
-  },
-  {
-    "ticker": "9988",
-    "name": "Alibaba Group",
-    "sector": "Электронная торговля · облако и ИИ",
-    "price": 100.6,
-    "verdict": "Наблюдать",
-    "tone": "warn",
-    "updated": "2026-11-04",
-    "url": "9988/"
-  },
-  {
-    "ticker": "1810",
-    "name": "Xiaomi",
-    "sector": "Смартфоны · умный дом · электромобили",
-    "price": 28.76,
-    "verdict": "Не покупать",
-    "tone": "bad",
-    "updated": "2026-11-04",
-    "url": "1810/"
-  }
+ {
+  "ticker": "NCKL",
+  "name": "Harita Nickel",
+  "sector": "Никель · HPAL",
+  "price": 725,
+  "verdict": "Держать",
+  "tone": "good",
+  "updated": "2026-10-31",
+  "url": "nckl/"
+ },
+ {
+  "ticker": "LSIP",
+  "name": "London Sumatra (Lonsum)",
+  "sector": "Пальмовое масло · плантации",
+  "price": 1440,
+  "verdict": "Держать",
+  "tone": "good",
+  "updated": "2026-10-30",
+  "url": "lsip/"
+ },
+ {
+  "ticker": "SIMP",
+  "name": "Salim Ivomas Pratama",
+  "sector": "Пальмовое масло · плантации и Bimoli",
+  "price": 530.0,
+  "verdict": "Наблюдать",
+  "tone": "warn",
+  "updated": "2026-10-30",
+  "url": "simp/"
+ },
+ {
+  "ticker": "INDF",
+  "name": "Indofood Sukses Makmur",
+  "sector": "Продукты · Indomie, мука, пальма",
+  "price": 6600,
+  "verdict": "Кандидат на покупку",
+  "tone": "good",
+  "updated": "2026-10-31",
+  "url": "indf/"
+ },
+ {
+  "ticker": "ADMR",
+  "name": "Alamtri Minerals Indonesia",
+  "sector": "Коксующийся уголь · алюминий",
+  "price": 1310,
+  "verdict": "Наблюдать",
+  "tone": "warn",
+  "updated": "2026-11-02",
+  "url": "admr/"
+ },
+ {
+  "ticker": "2245",
+  "name": "Lygend Resources",
+  "sector": "Никель · HPAL/RKEF",
+  "price": 17.17,
+  "verdict": "Наблюдать",
+  "tone": "warn",
+  "updated": "2026-10-24",
+  "url": "2245/"
+ },
+ {
+  "ticker": "1378",
+  "name": "China Hongqiao",
+  "sector": "Алюминий · глинозём",
+  "price": 20.34,
+  "verdict": "Наблюдать",
+  "tone": "warn",
+  "updated": "2026-10-24",
+  "url": "1378/"
+ },
+ {
+  "ticker": "CITA",
+  "name": "Cita Mineral Investindo",
+  "sector": "Боксит",
+  "price": 2770,
+  "verdict": "Наблюдать",
+  "tone": "warn",
+  "updated": "2026-10-24",
+  "url": "cita/"
+ },
+ {
+  "ticker": "3898",
+  "name": "CRRC Times Electric",
+  "sector": "Ж/д электрооборудование · IGBT",
+  "price": 28.84,
+  "verdict": "Кандидат на полный разбор",
+  "tone": "warn",
+  "updated": "2026-10-26",
+  "url": "3898/"
+ },
+ {
+  "ticker": "9981",
+  "name": "Woer Heat-Shrinkable Material",
+  "sector": "Термоусадка · кабели для ИИ",
+  "price": 7.89,
+  "verdict": "Наблюдать",
+  "tone": "warn",
+  "updated": "2026-10-25",
+  "url": "9981/"
+ },
+ {
+  "ticker": "BMRI",
+  "name": "Bank Mandiri",
+  "sector": "Банки · госбанк",
+  "price": 3600,
+  "verdict": "Держать",
+  "tone": "warn",
+  "updated": "2026-10-25",
+  "url": "bmri/"
+ },
+ {
+  "ticker": "TLKM",
+  "name": "Telkom Indonesia",
+  "sector": "Телеком",
+  "soon": true
+ },
+ {
+  "ticker": "UNVR",
+  "name": "Unilever Indonesia",
+  "sector": "Потребительский сектор",
+  "soon": true
+ },
+ {
+  "ticker": "000651",
+  "name": "Gree Electric",
+  "sector": "Бытовая техника (кондиционеры)",
+  "price": 38.96,
+  "verdict": "Кандидат",
+  "tone": "warn",
+  "updated": "2026-10-25",
+  "url": "000651/"
+ },
+ {
+  "ticker": "6690",
+  "name": "Haier Smart Home",
+  "sector": "Бытовая техника",
+  "price": 20.84,
+  "verdict": "Кандидат для дальнейшей проверки",
+  "tone": "warn",
+  "updated": "2026-10-25",
+  "url": "6690/"
+ },
+ {
+  "ticker": "9988",
+  "name": "Alibaba Group",
+  "sector": "Электронная торговля · облако и ИИ",
+  "price": 100.6,
+  "verdict": "Наблюдать",
+  "tone": "warn",
+  "updated": "2026-11-04",
+  "url": "9988/"
+ },
+ {
+  "ticker": "1810",
+  "name": "Xiaomi",
+  "sector": "Смартфоны · умный дом · электромобили",
+  "price": 28.76,
+  "verdict": "Не покупать",
+  "tone": "bad",
+  "updated": "2026-11-04",
+  "url": "1810/"
+ }
 ]

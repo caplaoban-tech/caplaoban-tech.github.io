@@ -104,6 +104,7 @@
            ["receivables", "Дебиторка (с векселями)", 2], ["inventories", "Запасы", 2], ["assets", "Активы", 2], ["equity", "Капитал акционеров", 2], ["bps", "Капитал на акцию, ¥", 2, "¥"]],
       dv: [["dps", "Дивиденд на акцию за год, ¥", 2, "¥"], ["div_total", "Всего начислено", 3], ["payout", "Доля прибыли, %", 0, "%"]],
     };
+    if (F.labels) Object.values(TABS).forEach(rows => rows.forEach(r => { if (F.labels[r[0]]) r[1] = F.labels[r[0]]; }));
     const QOK = { revenue: 1, gross_profit: 1, gm: 1, net: 1, net_dedt: 1, ocf: 1, capex: 1, cash: 1, deposits: 1, receivables: 1 };
     let tab = "pl", per = "y", sel = { pl: "revenue", cf: "ocf", bs: "cash", dv: "dps", sg: "revenue" };
     const drawTab = () => {

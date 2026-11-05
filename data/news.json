@@ -1,482 +1,590 @@
 [
- {
-  "date": "2026-11-04",
-  "title": "941 China Mobile: разбор по стандарту и телеком-линзе — дивиденд 6,5% покрыт потоком на 0,72×, по EV/(EBITDA − капекс) 7,2× самый дорогой из четырёх операторов; база HK$104, вход ниже 72 или после отчёта 2026. Сравнение с China Telecom, Unicom и Telkom",
-  "src": "Cap Laoban",
-  "tickers": [
-   "941"
-  ],
-  "url": "941/"
- },
- {
-  "date": "2026-11-04",
-  "title": "9888 Baidu: разбор по стандарту — 77% цены это деньги, реклама −19%, облако +50%, обесценение 16 млрд; цена ниже медвежьего сценария, база HK$110. Наблюдать; поводы к пересмотру — релиз 16.11 и первый дивиденд",
-  "src": "Cap Laoban",
-  "tickers": [
-   "9888"
-  ],
-  "url": "9888/"
- },
- {
-  "date": "2026-11-04",
-  "title": "1810 Xiaomi: разбор по стандарту — маржа смартфонов 8,5% (память ×5), EV снова в убытке, прибыль квартала на две трети — переоценка вложений; база HK$19 против 28 — не покупать",
-  "src": "Cap Laoban",
-  "tickers": [
-   "1810"
-  ],
-  "url": "1810/"
- },
- {
-  "date": "2026-11-04",
-  "title": "9988 Alibaba: разбор по стандарту — цена закладывает торговлю на пятую часть меньше нынешней, облако почти бесплатно; но размещение вместо выкупа и −72 млрд ¥ свободного потока. База HK$107, медвежий 53 — наблюдать",
-  "src": "Cap Laoban",
-  "tickers": [
-   "9988"
-  ],
-  "url": "9988/"
- },
- {
-  "date": "2026-11-03",
-  "title": "INCO (сосед NCKL) — III кв. 2026: прибыль акционерам $42,7 млн (+57% к III кв. 2025); за 9М: $147,1 млн (+181% к 9М 2025); денежный поток от операций за 9М: $104,0 млн",
-  "src": "отчёт на idx.co.id",
-  "tickers": [
-   "NCKL",
-   "INCO"
-  ],
-  "url": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202611/20261103164905-65722-0/FinancialStatement-2026-III-INCO.pdf"
- },
- {
-  "date": "2026-11-03",
-  "title": "MTEL (сосед TLKM) — III кв. 2026: прибыль акционерам Rp0,44 трлн (−1% к III кв. 2025); за 9М: Rp1,55 трлн (+1% к 9М 2025); денежный поток от операций за 9М: Rp5,31 трлн",
-  "src": "отчёт на idx.co.id",
-  "tickers": [
-   "TLKM",
-   "MTEL"
-  ],
-  "url": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202611/20261103054944-65702-0/FinancialStatement-2026-III-MTEL.pdf"
- },
- {
-  "date": "2026-11-02",
-  "title": "ADMR: IDX запросила пояснения о запуске алюминиевого завода KAI и финансовых рисках: предприятие мощностью 500 тыс",
-  "src": "раскрытие на idx.co.id",
-  "tickers": [
-   "ADMR"
-  ],
-  "url": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202611/bcea9a4434_3c20b63673.pdf"
- },
- {
-  "date": "2026-10-31",
-  "title": "NCKL: модель пересобрана по фактическим кварталам — свои печи, добыча, KPS и HPAL отдельно; база 2027 ≈877 по денежному потоку (≈1 040 по прибыли × P/E 6,5) при цене 725; IV кв. — HPAL под давлением серы",
-  "src": "Cap Laoban",
-  "tickers": [
-   "NCKL"
-  ],
-  "url": "nckl/"
- },
- {
-  "date": "2026-10-31",
-  "title": "Indofood: капитализация ≈ стоимости пакетов ICBP и SIMP по бирже — мука и дистрибуция бесплатно; core III кв. +21%; структура Салим → First Pacific → INDF",
-  "src": "Cap Laoban",
-  "tickers": [
-   "INDF",
-   "ICBP",
-   "SIMP"
-  ],
-  "url": "indf/"
- },
- {
-  "date": "2026-10-30",
-  "title": "INDF — III кв. 2026: прибыль акционерам Rp3,14 трлн (+54% к III кв. 2025); за 9М: Rp7,87 трлн (−0% к 9М 2025); денежный поток от операций за 9М: Rp12,25 трлн",
-  "src": "отчёт на idx.co.id",
-  "tickers": [
-   "INDF"
-  ],
-  "url": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202610/20261030201043-64876-0/FinancialStatement-2026-III-INDF.pdf"
- },
- {
-  "date": "2026-10-30",
-  "title": "DSNG (сосед LSIP) — III кв. 2026: прибыль акционерам Rp0,46 трлн (+16% к III кв. 2025); за 9М: Rp1,47 трлн (+11% к 9М 2025); денежный поток от операций за 9М: Rp1,91 трлн",
-  "src": "отчёт на idx.co.id",
-  "tickers": [
-   "LSIP",
-   "DSNG"
-  ],
-  "url": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202610/20261030093453-64797-0/FinancialStatement-2026-III-DSNG.pdf"
- },
- {
-  "date": "2026-10-30",
-  "title": "NICE (сосед NCKL) — III кв. 2026: прибыль акционерам Rp21 млрд (−56% к III кв. 2025); за 9М: Rp0,19 трлн (+35% к 9М 2025); денежный поток от операций за 9М: Rp77 млрд",
-  "src": "отчёт на idx.co.id",
-  "tickers": [
-   "NCKL",
-   "NICE"
-  ],
-  "url": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202610/20261030143716-64680-0/FinancialStatement-2026-III-NICE.pdf"
- },
- {
-  "date": "2026-10-30",
-  "title": "INCO (сосед NCKL) — III кв. 2026: прибыль акционерам $42,7 млн (+57% к III кв. 2025); за 9М: $147,1 млн (+181% к 9М 2025); денежный поток от операций за 9М: $104,0 млн",
-  "src": "отчёт на idx.co.id",
-  "tickers": [
-   "NCKL",
-   "INCO"
-  ],
-  "url": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202610/20261030150103-65083-0/FinancialStatement-2026-III-INCO.pdf"
- },
- {
-  "date": "2026-10-30",
-  "title": "TOWR (сосед TLKM) — III кв. 2026: прибыль акционерам Rp0,92 трлн (+2% к III кв. 2025); за 9М: Rp2,77 трлн (+9% к 9М 2025); денежный поток от операций за 9М: Rp8,15 трлн",
-  "src": "отчёт на idx.co.id",
-  "tickers": [
-   "TLKM",
-   "TOWR"
-  ],
-  "url": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202610/20261030152017-65372-0/FinancialStatement-2026-III-TOWR.pdf"
- },
- {
-  "date": "2026-10-30",
-  "title": "MTEL (сосед TLKM) — III кв. 2026: прибыль акционерам Rp0,44 трлн (−1% к III кв. 2025); за 9М: Rp1,55 трлн (+1% к 9М 2025); денежный поток от операций за 9М: Rp5,31 трлн",
-  "src": "отчёт на idx.co.id",
-  "tickers": [
-   "TLKM",
-   "MTEL"
-  ],
-  "url": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202610/20261030164916-65378-0/FinancialStatement-2026-III-MTEL.pdf"
- },
- {
-  "date": "2026-10-30",
-  "title": "CITA — III кв. 2026: прибыль акционерам Rp0,38 трлн (+2% к III кв. 2025); за 9М: Rp1,01 трлн (−50% к 9М 2025); денежный поток от операций за 9М: Rp0,88 трлн",
-  "src": "отчёт на idx.co.id",
-  "tickers": [
-   "CITA"
-  ],
-  "url": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202610/20261030185706-65012-0/FinancialStatement-2026-III-CITA.pdf"
- },
- {
-  "date": "2026-10-30",
-  "title": "NCKL — III кв. 2026: прибыль акционерам Rp2,88 трлн (+23% к III кв. 2025); за 9М: Rp8,69 трлн (+35% к 9М 2025); денежный поток от операций за 9М: Rp3,86 трлн",
-  "src": "отчёт на idx.co.id",
-  "tickers": [
-   "NCKL"
-  ],
-  "url": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202610/20261030185755-65461-0/FinancialStatement-2026-III-NCKL.pdf"
- },
- {
-  "date": "2026-10-30",
-  "title": "HRUM (сосед NCKL) — III кв. 2026: прибыль акционерам $34,2 млн (×4,5 к III кв. 2025); за 9М: $70,7 млн (+90% к 9М 2025); денежный поток от операций за 9М: $49,5 млн",
-  "src": "отчёт на idx.co.id",
-  "tickers": [
-   "NCKL",
-   "HRUM"
-  ],
-  "url": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202610/20261030180628-64782-0/FinancialStatement-2026-III-HRUM.pdf"
- },
- {
-  "date": "2026-10-30",
-  "title": "SSMS (сосед LSIP) — III кв. 2026: прибыль акционерам Rp0,68 трлн (+120% к III кв. 2025); за 9М: Rp1,59 трлн (+58% к 9М 2025); денежный поток от операций за 9М: −Rp2,44 трлн",
-  "src": "отчёт на idx.co.id",
-  "tickers": [
-   "LSIP",
-   "SSMS"
-  ],
-  "url": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202610/20261030203705-65453-0/FinancialStatement-2026-III-SSMS.pdf"
- },
- {
-  "date": "2026-10-30",
-  "title": "LSIP: III кв. +60% г/г от плантаций, деньги 8,52 трлн (88% капитализации) без долга, выкуп до Rp750 млрд; EV/EBITDA 0,4",
-  "src": "Cap Laoban",
-  "tickers": [
-   "LSIP",
-   "SIMP"
-  ],
-  "url": "lsip/"
- },
- {
-  "date": "2026-10-30",
-  "title": "SIMP: III кв. +78% г/г, но это LSIP с долгом — EV/EBITDA 1,9 против 0,4, штраф 2,49 трлн на эскроу",
-  "src": "Cap Laoban",
-  "tickers": [
-   "SIMP",
-   "LSIP"
-  ],
-  "url": "simp/"
- },
- {
-  "date": "2026-10-29",
-  "title": "Lygend (2245) — III кв. 2026: прибыль акционерам ¥581 млн (−6% к III кв. 2025, −62% ко II кв.); валовая маржа 15% против 25% в 1П; запасы выросли вдвое (KPS на полной мощности + закупки сырья), денежный поток от операций за квартал −¥747 млн",
-  "src": "отчёт на cninfo.com.cn",
-  "tickers": [
-   "2245",
-   "NCKL"
-  ],
-  "url": "http://static.cninfo.com.cn/finalpage/2026-10-30/1225645014.PDF"
- },
- {
-  "date": "2026-10-29",
-  "title": "NICL (сосед NCKL) — III кв. 2026: прибыль акционерам Rp67 млрд (+55% к III кв. 2025); за 9М: Rp0,19 трлн (−53% к 9М 2025); денежный поток от операций за 9М: Rp0,19 трлн",
-  "src": "отчёт на idx.co.id",
-  "tickers": [
-   "NCKL",
-   "NICL"
-  ],
-  "url": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202610/20261029134741-65199-0/FinancialStatement-2026-III-NICL.pdf"
- },
- {
-  "date": "2026-10-29",
-  "title": "IFSH (сосед NCKL) — III кв. 2026: прибыль акционерам −Rp41 млрд (был плюс к III кв. 2025); за 9М: −Rp2 млрд (был плюс к 9М 2025); денежный поток от операций за 9М: Rp0,28 трлн",
-  "src": "отчёт на idx.co.id",
-  "tickers": [
-   "NCKL",
-   "IFSH"
-  ],
-  "url": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202610/20261029184931-64874-0/FinancialStatement-2026-III-IFSH.pdf"
- },
- {
-  "date": "2026-10-28",
-  "title": "ISAT (сосед TLKM) — III кв. 2026: прибыль акционерам Rp0,61 трлн (−51% к III кв. 2025); за 9М: Rp4,92 трлн (+37% к 9М 2025); денежный поток от операций за 9М: Rp14,19 трлн",
-  "src": "отчёт на idx.co.id",
-  "tickers": [
-   "TLKM",
-   "ISAT"
-  ],
-  "url": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202610/20261028114253-64647-0/FinancialStatement-2026-III-ISAT.pdf"
- },
- {
-  "date": "2026-10-28",
-  "title": "TAPG (сосед LSIP) — III кв. 2026: прибыль акционерам Rp1,47 трлн (+49% к III кв. 2025); за 9М: Rp3,51 трлн (+31% к 9М 2025); денежный поток от операций за 9М: Rp2,95 трлн",
-  "src": "отчёт на idx.co.id",
-  "tickers": [
-   "LSIP",
-   "TAPG"
-  ],
-  "url": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202610/20261028152218-65240-0/FinancialStatement-2026-III-TAPG.pdf"
- },
- {
-  "date": "2026-10-27",
-  "title": "SGRO (сосед LSIP) — III кв. 2026: прибыль акционерам Rp0,51 трлн (+52% к III кв. 2025); за 9М: Rp0,95 трлн (+9% к 9М 2025); денежный поток от операций за 9М: Rp1,38 трлн",
-  "src": "отчёт на idx.co.id",
-  "tickers": [
-   "LSIP",
-   "SGRO"
-  ],
-  "url": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202610/20261027163338-65017-0/FinancialStatement-2026-III-SGRO.pdf"
- },
- {
-  "date": "2026-10-27",
-  "title": "AALI (сосед LSIP) — III кв. 2026: прибыль акционерам Rp0,81 трлн (+119% к III кв. 2025); за 9М: Rp1,91 трлн (+78% к 9М 2025); денежный поток от операций за 9М: Rp4,18 трлн",
-  "src": "отчёт на idx.co.id",
-  "tickers": [
-   "LSIP",
-   "AALI"
-  ],
-  "url": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202610/20261027200626-64754-0/FinancialStatement-2026-III-AALI.pdf"
- },
- {
-  "date": "2026-10-27",
-  "title": "ANTM (сосед NCKL) — III кв. 2026: прибыль акционерам Rp2,45 трлн (+92% к III кв. 2025); за 9М: Rp8,84 трлн (+48% к 9М 2025); денежный поток от операций за 9М: Rp5,06 трлн",
-  "src": "отчёт на idx.co.id",
-  "tickers": [
-   "NCKL",
-   "ANTM"
-  ],
-  "url": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202610/20261027225243-64928-0/FinancialStatement-2026-III-ANTM.pdf"
- },
- {
-  "date": "2026-10-26",
-  "tickers": [
-   "3898"
-  ],
-  "title": "CRRC Times Electric: разбор переделан в пять вопросов — что за силовые чипы и при чём тут ИИ, из чего складывается цена H, дёшево ли H по прибыли и по деньгам (график «рынок против модели»), аналоги и листинг дочки, что сломает тезис. Терминал с дивидендами — в разделе «Цифры»",
-  "src": "Cap Laoban",
-  "url": "3898/"
- },
- {
-  "date": "2026-10-26",
-  "tickers": [
-   "3898"
-  ],
-  "title": "CRRC Times Electric: пересчёт через стоимость бизнеса. EV/EBITDA по цене H — 3,4x (по смешанной капитализации A/H — 6,8x), отдача на вложенный капитал ~14%. Полупроводниковая дочка зарабатывает 5,9% на капитал — ниже его стоимости; проверка по частям другим методом даёт HK$22–57",
-  "src": "Cap Laoban",
-  "url": "3898/"
- },
- {
-  "date": "2026-10-26",
-  "tickers": [
-   "3898"
-  ],
-  "title": "Новый раздел «Инвест-идеи». Первая — CRRC Times Electric: половина цены H-акции — деньги, таргет HK$38 на три года; вход — после отчёта за 9 месяцев при условиях",
-  "src": "Cap Laoban",
-  "url": "ideas/3898/"
- },
- {
-  "date": "2026-10-25",
-  "tickers": [
-   "000651"
-  ],
-  "title": "Gree Electric: три четверти цены — чистые финансовые активы, дивиденд 7,3% после налога, но во II квартале прибыль −15% и дистрибьюторы сократили авансы. Новый разбор с терминалом: цена, отчётность с 2016 года, дивиденды",
-  "src": "Cap Laoban",
-  "url": "000651/"
- },
- {
-  "date": "2026-10-25",
-  "tickers": [
-   "6690"
-  ],
-  "title": "Haier Smart Home: P/E 6 без учёта денег и дивиденд около 6%, но прибыль падает, а 40% денег лежит в финкомпании группы. Новый разбор с терминалом: цена H и A, премия, отчётность с 2016 года",
-  "src": "Cap Laoban",
-  "url": "6690/"
- },
- {
-  "date": "2026-10-25",
-  "tickers": [
-   "3898"
-  ],
-  "title": "CRRC Times Electric: на странице появился терминал — график цены H и A, премия A/H, выручка, прибыль, деньги и дивиденды по годам и кварталам",
-  "src": "Cap Laoban",
-  "url": "3898/"
- },
- {
-  "date": "2026-10-25",
-  "tickers": [
-   "BMRI"
-  ],
-  "title": "Bank Mandiri за 9 месяцев: прибыль +20,7%, но в III квартале рост кредитов резко замедлился и промежуточный дивиденд урезан на треть; цена закладывает ROE 16% при фактических 20%. Новый разбор и сравнение с BCA, BRI, BNI, OCBC NISP, CIMB Niaga",
-  "src": "Cap Laoban",
-  "url": "bmri/"
- },
- {
-  "date": "2026-10-25",
-  "tickers": [
-   "9981"
-  ],
-  "title": "Woer: H-акция в 2,6 раза ниже цены размещения и стоит примерно как термоусадка с сетями; кабели для ИИ растут, но маржа сжимается. Новый разбор",
-  "src": "Cap Laoban",
-  "url": "9981/"
- },
- {
-  "date": "2026-10-25",
-  "tickers": [
-   "3898"
-  ],
-  "title": "CRRC Times Electric: половина цены H-акции — деньги на счетах, премия A-акции 106%; прибыль даёт железная дорога, а не IGBT. Новый разбор",
-  "src": "Cap Laoban",
-  "url": "3898/"
- },
- {
-  "date": "2026-10-25",
-  "tickers": [
-   "A-акции"
-  ],
-  "title": "Китай: роботы и ИИ дешевле 15 прибылей. Из 452 дешёвых A-акций в теме 13, без видимой ловушки одна (Ecovacs); память — на пике цикла",
-  "src": "Cap Laoban",
-  "url": "a-robots/"
- },
- {
-  "date": "2026-10-25",
-  "tickers": [
-   "A+H"
-  ],
-  "title": "Китай A+H: из 121 компании дешевле 15 прибылей фильтр ловушек и пика цикла оставил 36 кандидатов; справка, чем H-акция отличается от A",
-  "src": "Cap Laoban",
-  "url": "ah/"
- },
- {
-  "date": "2026-10-24",
-  "tickers": [
-   "2245"
-  ],
-  "title": "Lygend: H-акция по HK$16 закладывает никель ~US$19 тыс.; A-акция в Шэньчжэне дороже H в 2,2 раза. Новый разбор",
-  "src": "Cap Laoban",
-  "url": "2245/"
- },
- {
-  "date": "2026-10-24",
-  "tickers": [
-   "1378"
-  ],
-  "title": "China Hongqiao стоит почти как её пакет 89% в A-дочке 002379 — но прибыль на пике цикла. Новый разбор",
-  "src": "Cap Laoban",
-  "url": "1378/"
- },
- {
-  "date": "2026-10-24",
-  "tickers": [
-   "CITA"
-  ],
-  "title": "CITA: рудник одного покупателя — цена закладывает глинозём середины цикла, дивиденд 2026 г. выплачен из прошлых денег. Новый разбор",
-  "src": "Cap Laoban",
-  "url": "cita/"
- },
- {
-  "date": "2026-10-24",
-  "tickers": [
-   "NCKL"
-  ],
-  "title": "NCKL: доля в новом капексе HPL/ONC по проспекту Lygend ≈ Rp7,5 трлн взносом в капитал; акции ассоциатов заложены под кредиты Lygend",
-  "src": "Cap Laoban",
-  "url": "nckl/"
- },
- {
-  "date": "2026-10-23",
-  "title": "BMRI — III кв. 2026: прибыль акционерам Rp15,12 трлн (+14% к III кв. 2025); за 9М: Rp45,53 трлн (+21% к 9М 2025)",
-  "src": "отчёт на idx.co.id",
-  "tickers": [
-   "BMRI"
-  ],
-  "url": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202610/20261023231823-64642-0/FinancialStatement-2026-III-BMRI.pdf"
- },
- {
-  "date": "2026-10-23",
-  "title": "LSIP: LSIP объявила биржевой выкуп акций на сумму до Rp750 млрд из собственных денежных средств без учёта комиссий; количество выкупаемых акций не превысит 20% оплаченного капитала с соблюдением требований к свободному обращению",
-  "src": "раскрытие на idx.co.id",
-  "tickers": [
-   "LSIP"
-  ],
-  "url": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202610/0884db7e64_fba905f667.pdf"
- },
- {
-  "date": "2026-10-22",
-  "tickers": [
-   "NCKL"
-  ],
-  "title": "Китайские производители обсуждают сокращение MHP на 50% и NPI на 20% в Индонезии",
-  "src": "Reuters, SMM",
-  "url": "https://news.metal.com/newscontent/104173852-smm-analysis-indonesian-nickel-output-cut-talk-gathers-pace-but-the-case-for-cutting-diverges-across-the-supply-chain"
- },
- {
-  "date": "2026-10-22",
-  "tickers": [
-   "IDX"
-  ],
-  "title": "Прабово о возможном понижении статуса MSCI: «Индонезия не дрогнет». IHSG +1,7%",
-  "src": "Warta Ekonomi",
-  "url": "https://wartaekonomi.co.id/read642729/ihsg-bangkit-17-ke-level-5419-usai-prabowo-tantang-msci"
- },
- {
-  "date": "2026-10-21",
-  "tickers": [
-   "NCKL"
-  ],
-  "title": "LME никель выше US$16 000 на ожиданиях сокращений",
-  "src": "Bloomberg / The Edge",
-  "url": "https://theedgemalaysia.com/node/822689"
- },
- {
-  "date": "2026-10-16",
-  "tickers": [
-   "NCKL"
-  ],
-  "title": "Квота RKAB-2026 на руду поднята до ~290 млн т",
-  "src": "SMM",
-  "url": "https://news.metal.com/newscontent/104162642-smm-nickel-flash-indonesia-approves-revised-2026-rkab-nickel-ore-production-quota-of-approximately-290-million-tonnes"
- },
- {
-  "date": "2026-09-15",
-  "tickers": [
-   "NCKL"
-  ],
-  "title": "Формульная цена лимонита (HPM) снижена на 45%: маржа уходит от добычи к HPAL-заводам",
-  "src": "Kepmen ESDM 363.K/2026",
-  "url": ""
- }
+  {
+    "date": "2026-11-04",
+    "title": "WINS: Дочерняя компания WINS FOS Management Services Pte. Ltd. учредила в Брунее FOS Management Services Sdn Bhd со 100%-ным владением",
+    "src": "раскрытие на idx.co.id",
+    "tickers": [
+      "WINS"
+    ],
+    "url": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202611/3dca277763_f33ef1a68d.pdf"
+  },
+  {
+    "date": "2026-11-04",
+    "title": "UNVR: Unilever Indonesia созывает внеочередное собрание для одобрения уменьшения капитала путём погашения всех 168 766 700 казначейских акций, составляющих 0,44% размещённого и оплаченного капитала",
+    "src": "раскрытие на idx.co.id",
+    "tickers": [
+      "UNVR"
+    ],
+    "url": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202611/6da8ff3383_dcb938ef74.pdf"
+  },
+  {
+    "date": "2026-11-04",
+    "title": "941 China Mobile: разбор по стандарту и телеком-линзе — дивиденд 6,5% покрыт потоком на 0,72×, по EV/(EBITDA − капекс) 7,2× самый дорогой из четырёх операторов; база HK$104, вход ниже 72 или после отчёта 2026. Сравнение с China Telecom, Unicom и Telkom",
+    "src": "Cap Laoban",
+    "tickers": [
+      "941"
+    ],
+    "url": "941/"
+  },
+  {
+    "date": "2026-11-04",
+    "title": "9888 Baidu: разбор по стандарту — 77% цены это деньги, реклама −19%, облако +50%, обесценение 16 млрд; цена ниже медвежьего сценария, база HK$110. Наблюдать; поводы к пересмотру — релиз 16.11 и первый дивиденд",
+    "src": "Cap Laoban",
+    "tickers": [
+      "9888"
+    ],
+    "url": "9888/"
+  },
+  {
+    "date": "2026-11-04",
+    "title": "1810 Xiaomi: разбор по стандарту — маржа смартфонов 8,5% (память ×5), EV снова в убытке, прибыль квартала на две трети — переоценка вложений; база HK$19 против 28 — не покупать",
+    "src": "Cap Laoban",
+    "tickers": [
+      "1810"
+    ],
+    "url": "1810/"
+  },
+  {
+    "date": "2026-11-04",
+    "title": "9988 Alibaba: разбор по стандарту — цена закладывает торговлю на пятую часть меньше нынешней, облако почти бесплатно; но размещение вместо выкупа и −72 млрд ¥ свободного потока. База HK$107, медвежий 53 — наблюдать",
+    "src": "Cap Laoban",
+    "tickers": [
+      "9988"
+    ],
+    "url": "9988/"
+  },
+  {
+    "date": "2026-11-03",
+    "title": "INCO (сосед NCKL) — III кв. 2026: прибыль акционерам $42,7 млн (+57% к III кв. 2025); за 9М: $147,1 млн (+181% к 9М 2025); денежный поток от операций за 9М: $104,0 млн",
+    "src": "отчёт на idx.co.id",
+    "tickers": [
+      "NCKL",
+      "INCO"
+    ],
+    "url": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202611/20261103164905-65722-0/FinancialStatement-2026-III-INCO.pdf"
+  },
+  {
+    "date": "2026-11-03",
+    "title": "MTEL (сосед TLKM) — III кв. 2026: прибыль акционерам Rp0,44 трлн (−1% к III кв. 2025); за 9М: Rp1,55 трлн (+1% к 9М 2025); денежный поток от операций за 9М: Rp5,31 трлн",
+    "src": "отчёт на idx.co.id",
+    "tickers": [
+      "TLKM",
+      "MTEL"
+    ],
+    "url": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202611/20261103054944-65702-0/FinancialStatement-2026-III-MTEL.pdf"
+  },
+  {
+    "date": "2026-11-02",
+    "title": "WINS: WINS представила исправленную неаудированную отчётность за девять месяцев 2026 года: выручка US$75,99 млн против US$58,47 млн, прибыль акционеров материнской компании US$17,71 млн против US$9,23 млн",
+    "src": "раскрытие на idx.co.id",
+    "tickers": [
+      "WINS"
+    ],
+    "url": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202611/20261102170828-65685-0/FinancialStatement-2026-III-WINS.pdf"
+  },
+  {
+    "date": "2026-11-02",
+    "title": "BMRI: IDX запросила пояснения по бессрочным облигациям AT1: цели выпуска, ставке 7,35%, условиям погашения и роли Mandiri Securities",
+    "src": "раскрытие на idx.co.id",
+    "tickers": [
+      "BMRI"
+    ],
+    "url": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202611/d24697bb8e_9eba2c9eeb.pdf"
+  },
+  {
+    "date": "2026-11-02",
+    "title": "TINS: TIMAH представила исправленную неаудированную консолидированную отчётность за девять месяцев 2026 года: выручка составила Rp16 149 278 млн против Rp6 607 740 млн годом ранее, чистая прибыль — Rp4 121 403 млн против Rp602 417 млн",
+    "src": "раскрытие на idx.co.id",
+    "tickers": [
+      "TINS"
+    ],
+    "url": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202611/20261102204800-65693-0/FinancialStatement-2026-III-TINS.pdf"
+  },
+  {
+    "date": "2026-11-02",
+    "title": "LSIP: IDX запросила пояснения о расследовании пожаров в Сингапуре, возможных поправках к законодательству и последствиях для LSIP",
+    "src": "раскрытие на idx.co.id",
+    "tickers": [
+      "LSIP"
+    ],
+    "url": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202611/06bbf61851_c910241271.pdf"
+  },
+  {
+    "date": "2026-11-02",
+    "title": "SIMP: IDX запросила пояснения о расследовании властей Сингапура по лесным пожарам и возможных последствиях для группы",
+    "src": "раскрытие на idx.co.id",
+    "tickers": [
+      "SIMP"
+    ],
+    "url": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202611/c9f745ba39_13a914c846.pdf"
+  },
+  {
+    "date": "2026-11-02",
+    "title": "INDF: В ответ на запрос IDX о расследовании лесных пожаров INDF подтвердила участие дочерней Indofood Agri Resources (IFAR) во встрече с властями Сингапура: процесс продолжается, ожидаются дальнейшие указания, IFAR обещает сотрудничать",
+    "src": "раскрытие на idx.co.id",
+    "tickers": [
+      "INDF"
+    ],
+    "url": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202611/a108e94d68_ce6e3a80b7.pdf"
+  },
+  {
+    "date": "2026-11-02",
+    "title": "ADMR: IDX запросила пояснения о запуске алюминиевого завода KAI и финансовых рисках: предприятие мощностью 500 тыс",
+    "src": "раскрытие на idx.co.id",
+    "tickers": [
+      "ADMR"
+    ],
+    "url": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202611/bcea9a4434_3c20b63673.pdf"
+  },
+  {
+    "date": "2026-10-31",
+    "title": "NCKL: модель пересобрана по фактическим кварталам — свои печи, добыча, KPS и HPAL отдельно; база 2027 ≈877 по денежному потоку (≈1 040 по прибыли × P/E 6,5) при цене 725; IV кв. — HPAL под давлением серы",
+    "src": "Cap Laoban",
+    "tickers": [
+      "NCKL"
+    ],
+    "url": "nckl/"
+  },
+  {
+    "date": "2026-10-31",
+    "title": "Indofood: капитализация ≈ стоимости пакетов ICBP и SIMP по бирже — мука и дистрибуция бесплатно; core III кв. +21%; структура Салим → First Pacific → INDF",
+    "src": "Cap Laoban",
+    "tickers": [
+      "INDF",
+      "ICBP",
+      "SIMP"
+    ],
+    "url": "indf/"
+  },
+  {
+    "date": "2026-10-30",
+    "title": "TINS — III кв. 2026: прибыль акционерам Rp1,41 трлн (×4,7 к III кв. 2025); за 9М: Rp4,12 трлн (×6,8 к 9М 2025); денежный поток от операций за 9М: Rp4,09 трлн",
+    "src": "отчёт на idx.co.id",
+    "tickers": [
+      "TINS"
+    ],
+    "url": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202610/20261030122511-64455-0/FinancialStatement-2026-III-TINS.pdf"
+  },
+  {
+    "date": "2026-10-30",
+    "title": "WINS — III кв. 2026: прибыль акционерам $9,3 млн (+274% к III кв. 2025); за 9М: $17,7 млн (+92% к 9М 2025); денежный поток от операций за 9М: $33,8 млн",
+    "src": "отчёт на idx.co.id",
+    "tickers": [
+      "WINS"
+    ],
+    "url": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202610/20261030151540-64548-0/FinancialStatement-2026-III-WINS.pdf"
+  },
+  {
+    "date": "2026-10-30",
+    "title": "ADMR — III кв. 2026: прибыль акционерам $143,4 млн (+125% к III кв. 2025); за 9М: $317,5 млн (+56% к 9М 2025); денежный поток от операций за 9М: $113,4 млн",
+    "src": "отчёт на idx.co.id",
+    "tickers": [
+      "ADMR"
+    ],
+    "url": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202610/20261030183908-65324-0/FinancialStatement-2026-III-ADMR.pdf"
+  },
+  {
+    "date": "2026-10-30",
+    "title": "INDF — III кв. 2026: прибыль акционерам Rp3,14 трлн (+54% к III кв. 2025); за 9М: Rp7,87 трлн (−0% к 9М 2025); денежный поток от операций за 9М: Rp12,25 трлн",
+    "src": "отчёт на idx.co.id",
+    "tickers": [
+      "INDF"
+    ],
+    "url": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202610/20261030201043-64876-0/FinancialStatement-2026-III-INDF.pdf"
+  },
+  {
+    "date": "2026-10-30",
+    "title": "DSNG (сосед LSIP) — III кв. 2026: прибыль акционерам Rp0,46 трлн (+16% к III кв. 2025); за 9М: Rp1,47 трлн (+11% к 9М 2025); денежный поток от операций за 9М: Rp1,91 трлн",
+    "src": "отчёт на idx.co.id",
+    "tickers": [
+      "LSIP",
+      "DSNG"
+    ],
+    "url": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202610/20261030093453-64797-0/FinancialStatement-2026-III-DSNG.pdf"
+  },
+  {
+    "date": "2026-10-30",
+    "title": "NICE (сосед NCKL) — III кв. 2026: прибыль акционерам Rp21 млрд (−56% к III кв. 2025); за 9М: Rp0,19 трлн (+35% к 9М 2025); денежный поток от операций за 9М: Rp77 млрд",
+    "src": "отчёт на idx.co.id",
+    "tickers": [
+      "NCKL",
+      "NICE"
+    ],
+    "url": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202610/20261030143716-64680-0/FinancialStatement-2026-III-NICE.pdf"
+  },
+  {
+    "date": "2026-10-30",
+    "title": "INCO (сосед NCKL) — III кв. 2026: прибыль акционерам $42,7 млн (+57% к III кв. 2025); за 9М: $147,1 млн (+181% к 9М 2025); денежный поток от операций за 9М: $104,0 млн",
+    "src": "отчёт на idx.co.id",
+    "tickers": [
+      "NCKL",
+      "INCO"
+    ],
+    "url": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202610/20261030150103-65083-0/FinancialStatement-2026-III-INCO.pdf"
+  },
+  {
+    "date": "2026-10-30",
+    "title": "TOWR (сосед TLKM) — III кв. 2026: прибыль акционерам Rp0,92 трлн (+2% к III кв. 2025); за 9М: Rp2,77 трлн (+9% к 9М 2025); денежный поток от операций за 9М: Rp8,15 трлн",
+    "src": "отчёт на idx.co.id",
+    "tickers": [
+      "TLKM",
+      "TOWR"
+    ],
+    "url": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202610/20261030152017-65372-0/FinancialStatement-2026-III-TOWR.pdf"
+  },
+  {
+    "date": "2026-10-30",
+    "title": "MTEL (сосед TLKM) — III кв. 2026: прибыль акционерам Rp0,44 трлн (−1% к III кв. 2025); за 9М: Rp1,55 трлн (+1% к 9М 2025); денежный поток от операций за 9М: Rp5,31 трлн",
+    "src": "отчёт на idx.co.id",
+    "tickers": [
+      "TLKM",
+      "MTEL"
+    ],
+    "url": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202610/20261030164916-65378-0/FinancialStatement-2026-III-MTEL.pdf"
+  },
+  {
+    "date": "2026-10-30",
+    "title": "CITA — III кв. 2026: прибыль акционерам Rp0,38 трлн (+2% к III кв. 2025); за 9М: Rp1,01 трлн (−50% к 9М 2025); денежный поток от операций за 9М: Rp0,88 трлн",
+    "src": "отчёт на idx.co.id",
+    "tickers": [
+      "CITA"
+    ],
+    "url": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202610/20261030185706-65012-0/FinancialStatement-2026-III-CITA.pdf"
+  },
+  {
+    "date": "2026-10-30",
+    "title": "NCKL — III кв. 2026: прибыль акционерам Rp2,88 трлн (+23% к III кв. 2025); за 9М: Rp8,69 трлн (+35% к 9М 2025); денежный поток от операций за 9М: Rp3,86 трлн",
+    "src": "отчёт на idx.co.id",
+    "tickers": [
+      "NCKL"
+    ],
+    "url": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202610/20261030185755-65461-0/FinancialStatement-2026-III-NCKL.pdf"
+  },
+  {
+    "date": "2026-10-30",
+    "title": "HRUM (сосед NCKL) — III кв. 2026: прибыль акционерам $34,2 млн (×4,5 к III кв. 2025); за 9М: $70,7 млн (+90% к 9М 2025); денежный поток от операций за 9М: $49,5 млн",
+    "src": "отчёт на idx.co.id",
+    "tickers": [
+      "NCKL",
+      "HRUM"
+    ],
+    "url": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202610/20261030180628-64782-0/FinancialStatement-2026-III-HRUM.pdf"
+  },
+  {
+    "date": "2026-10-30",
+    "title": "SSMS (сосед LSIP) — III кв. 2026: прибыль акционерам Rp0,68 трлн (+120% к III кв. 2025); за 9М: Rp1,59 трлн (+58% к 9М 2025); денежный поток от операций за 9М: −Rp2,44 трлн",
+    "src": "отчёт на idx.co.id",
+    "tickers": [
+      "LSIP",
+      "SSMS"
+    ],
+    "url": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202610/20261030203705-65453-0/FinancialStatement-2026-III-SSMS.pdf"
+  },
+  {
+    "date": "2026-10-30",
+    "title": "LSIP: III кв. +60% г/г от плантаций, деньги 8,52 трлн (88% капитализации) без долга, выкуп до Rp750 млрд; EV/EBITDA 0,4",
+    "src": "Cap Laoban",
+    "tickers": [
+      "LSIP",
+      "SIMP"
+    ],
+    "url": "lsip/"
+  },
+  {
+    "date": "2026-10-30",
+    "title": "SIMP: III кв. +78% г/г, но это LSIP с долгом — EV/EBITDA 1,9 против 0,4, штраф 2,49 трлн на эскроу",
+    "src": "Cap Laoban",
+    "tickers": [
+      "SIMP",
+      "LSIP"
+    ],
+    "url": "simp/"
+  },
+  {
+    "date": "2026-10-29",
+    "title": "BMRI: Bank Mandiri опубликовал исправленное раскрытие об условной продаже IFG Life оставшихся 200 000 акций Inhealth, составляющих 20% капитала, за Rp570 млрд; после завершения IFG Life будет владеть 100% Inhealth",
+    "src": "раскрытие на idx.co.id",
+    "tickers": [
+      "BMRI"
+    ],
+    "url": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202610/5293c1c7af_9330a5f63a.pdf"
+  },
+  {
+    "date": "2026-10-29",
+    "title": "Lygend (2245) — III кв. 2026: прибыль акционерам ¥581 млн (−6% к III кв. 2025, −62% ко II кв.); валовая маржа 15% против 25% в 1П; запасы выросли вдвое (KPS на полной мощности + закупки сырья), денежный поток от операций за квартал −¥747 млн",
+    "src": "отчёт на cninfo.com.cn",
+    "tickers": [
+      "2245",
+      "NCKL"
+    ],
+    "url": "http://static.cninfo.com.cn/finalpage/2026-10-30/1225645014.PDF"
+  },
+  {
+    "date": "2026-10-29",
+    "title": "NICL (сосед NCKL) — III кв. 2026: прибыль акционерам Rp67 млрд (+55% к III кв. 2025); за 9М: Rp0,19 трлн (−53% к 9М 2025); денежный поток от операций за 9М: Rp0,19 трлн",
+    "src": "отчёт на idx.co.id",
+    "tickers": [
+      "NCKL",
+      "NICL"
+    ],
+    "url": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202610/20261029134741-65199-0/FinancialStatement-2026-III-NICL.pdf"
+  },
+  {
+    "date": "2026-10-29",
+    "title": "IFSH (сосед NCKL) — III кв. 2026: прибыль акционерам −Rp41 млрд (был плюс к III кв. 2025); за 9М: −Rp2 млрд (был плюс к 9М 2025); денежный поток от операций за 9М: Rp0,28 трлн",
+    "src": "отчёт на idx.co.id",
+    "tickers": [
+      "NCKL",
+      "IFSH"
+    ],
+    "url": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202610/20261029184931-64874-0/FinancialStatement-2026-III-IFSH.pdf"
+  },
+  {
+    "date": "2026-10-28",
+    "title": "ISAT (сосед TLKM) — III кв. 2026: прибыль акционерам Rp0,61 трлн (−51% к III кв. 2025); за 9М: Rp4,92 трлн (+37% к 9М 2025); денежный поток от операций за 9М: Rp14,19 трлн",
+    "src": "отчёт на idx.co.id",
+    "tickers": [
+      "TLKM",
+      "ISAT"
+    ],
+    "url": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202610/20261028114253-64647-0/FinancialStatement-2026-III-ISAT.pdf"
+  },
+  {
+    "date": "2026-10-28",
+    "title": "TAPG (сосед LSIP) — III кв. 2026: прибыль акционерам Rp1,47 трлн (+49% к III кв. 2025); за 9М: Rp3,51 трлн (+31% к 9М 2025); денежный поток от операций за 9М: Rp2,95 трлн",
+    "src": "отчёт на idx.co.id",
+    "tickers": [
+      "LSIP",
+      "TAPG"
+    ],
+    "url": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202610/20261028152218-65240-0/FinancialStatement-2026-III-TAPG.pdf"
+  },
+  {
+    "date": "2026-10-27",
+    "title": "SGRO (сосед LSIP) — III кв. 2026: прибыль акционерам Rp0,51 трлн (+52% к III кв. 2025); за 9М: Rp0,95 трлн (+9% к 9М 2025); денежный поток от операций за 9М: Rp1,38 трлн",
+    "src": "отчёт на idx.co.id",
+    "tickers": [
+      "LSIP",
+      "SGRO"
+    ],
+    "url": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202610/20261027163338-65017-0/FinancialStatement-2026-III-SGRO.pdf"
+  },
+  {
+    "date": "2026-10-27",
+    "title": "AALI (сосед LSIP) — III кв. 2026: прибыль акционерам Rp0,81 трлн (+119% к III кв. 2025); за 9М: Rp1,91 трлн (+78% к 9М 2025); денежный поток от операций за 9М: Rp4,18 трлн",
+    "src": "отчёт на idx.co.id",
+    "tickers": [
+      "LSIP",
+      "AALI"
+    ],
+    "url": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202610/20261027200626-64754-0/FinancialStatement-2026-III-AALI.pdf"
+  },
+  {
+    "date": "2026-10-27",
+    "title": "ANTM (сосед NCKL) — III кв. 2026: прибыль акционерам Rp2,45 трлн (+92% к III кв. 2025); за 9М: Rp8,84 трлн (+48% к 9М 2025); денежный поток от операций за 9М: Rp5,06 трлн",
+    "src": "отчёт на idx.co.id",
+    "tickers": [
+      "NCKL",
+      "ANTM"
+    ],
+    "url": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202610/20261027225243-64928-0/FinancialStatement-2026-III-ANTM.pdf"
+  },
+  {
+    "date": "2026-10-26",
+    "tickers": [
+      "3898"
+    ],
+    "title": "CRRC Times Electric: разбор переделан в пять вопросов — что за силовые чипы и при чём тут ИИ, из чего складывается цена H, дёшево ли H по прибыли и по деньгам (график «рынок против модели»), аналоги и листинг дочки, что сломает тезис. Терминал с дивидендами — в разделе «Цифры»",
+    "src": "Cap Laoban",
+    "url": "3898/"
+  },
+  {
+    "date": "2026-10-26",
+    "tickers": [
+      "3898"
+    ],
+    "title": "CRRC Times Electric: пересчёт через стоимость бизнеса. EV/EBITDA по цене H — 3,4x (по смешанной капитализации A/H — 6,8x), отдача на вложенный капитал ~14%. Полупроводниковая дочка зарабатывает 5,9% на капитал — ниже его стоимости; проверка по частям другим методом даёт HK$22–57",
+    "src": "Cap Laoban",
+    "url": "3898/"
+  },
+  {
+    "date": "2026-10-26",
+    "tickers": [
+      "3898"
+    ],
+    "title": "Новый раздел «Инвест-идеи». Первая — CRRC Times Electric: половина цены H-акции — деньги, таргет HK$38 на три года; вход — после отчёта за 9 месяцев при условиях",
+    "src": "Cap Laoban",
+    "url": "ideas/3898/"
+  },
+  {
+    "date": "2026-10-25",
+    "tickers": [
+      "000651"
+    ],
+    "title": "Gree Electric: три четверти цены — чистые финансовые активы, дивиденд 7,3% после налога, но во II квартале прибыль −15% и дистрибьюторы сократили авансы. Новый разбор с терминалом: цена, отчётность с 2016 года, дивиденды",
+    "src": "Cap Laoban",
+    "url": "000651/"
+  },
+  {
+    "date": "2026-10-25",
+    "tickers": [
+      "6690"
+    ],
+    "title": "Haier Smart Home: P/E 6 без учёта денег и дивиденд около 6%, но прибыль падает, а 40% денег лежит в финкомпании группы. Новый разбор с терминалом: цена H и A, премия, отчётность с 2016 года",
+    "src": "Cap Laoban",
+    "url": "6690/"
+  },
+  {
+    "date": "2026-10-25",
+    "tickers": [
+      "3898"
+    ],
+    "title": "CRRC Times Electric: на странице появился терминал — график цены H и A, премия A/H, выручка, прибыль, деньги и дивиденды по годам и кварталам",
+    "src": "Cap Laoban",
+    "url": "3898/"
+  },
+  {
+    "date": "2026-10-25",
+    "tickers": [
+      "BMRI"
+    ],
+    "title": "Bank Mandiri за 9 месяцев: прибыль +20,7%, но в III квартале рост кредитов резко замедлился и промежуточный дивиденд урезан на треть; цена закладывает ROE 16% при фактических 20%. Новый разбор и сравнение с BCA, BRI, BNI, OCBC NISP, CIMB Niaga",
+    "src": "Cap Laoban",
+    "url": "bmri/"
+  },
+  {
+    "date": "2026-10-25",
+    "tickers": [
+      "9981"
+    ],
+    "title": "Woer: H-акция в 2,6 раза ниже цены размещения и стоит примерно как термоусадка с сетями; кабели для ИИ растут, но маржа сжимается. Новый разбор",
+    "src": "Cap Laoban",
+    "url": "9981/"
+  },
+  {
+    "date": "2026-10-25",
+    "tickers": [
+      "3898"
+    ],
+    "title": "CRRC Times Electric: половина цены H-акции — деньги на счетах, премия A-акции 106%; прибыль даёт железная дорога, а не IGBT. Новый разбор",
+    "src": "Cap Laoban",
+    "url": "3898/"
+  },
+  {
+    "date": "2026-10-25",
+    "tickers": [
+      "A-акции"
+    ],
+    "title": "Китай: роботы и ИИ дешевле 15 прибылей. Из 452 дешёвых A-акций в теме 13, без видимой ловушки одна (Ecovacs); память — на пике цикла",
+    "src": "Cap Laoban",
+    "url": "a-robots/"
+  },
+  {
+    "date": "2026-10-25",
+    "tickers": [
+      "A+H"
+    ],
+    "title": "Китай A+H: из 121 компании дешевле 15 прибылей фильтр ловушек и пика цикла оставил 36 кандидатов; справка, чем H-акция отличается от A",
+    "src": "Cap Laoban",
+    "url": "ah/"
+  },
+  {
+    "date": "2026-10-24",
+    "tickers": [
+      "2245"
+    ],
+    "title": "Lygend: H-акция по HK$16 закладывает никель ~US$19 тыс.; A-акция в Шэньчжэне дороже H в 2,2 раза. Новый разбор",
+    "src": "Cap Laoban",
+    "url": "2245/"
+  },
+  {
+    "date": "2026-10-24",
+    "tickers": [
+      "1378"
+    ],
+    "title": "China Hongqiao стоит почти как её пакет 89% в A-дочке 002379 — но прибыль на пике цикла. Новый разбор",
+    "src": "Cap Laoban",
+    "url": "1378/"
+  },
+  {
+    "date": "2026-10-24",
+    "tickers": [
+      "CITA"
+    ],
+    "title": "CITA: рудник одного покупателя — цена закладывает глинозём середины цикла, дивиденд 2026 г. выплачен из прошлых денег. Новый разбор",
+    "src": "Cap Laoban",
+    "url": "cita/"
+  },
+  {
+    "date": "2026-10-24",
+    "tickers": [
+      "NCKL"
+    ],
+    "title": "NCKL: доля в новом капексе HPL/ONC по проспекту Lygend ≈ Rp7,5 трлн взносом в капитал; акции ассоциатов заложены под кредиты Lygend",
+    "src": "Cap Laoban",
+    "url": "nckl/"
+  },
+  {
+    "date": "2026-10-23",
+    "title": "BMRI — III кв. 2026: прибыль акционерам Rp15,12 трлн (+14% к III кв. 2025); за 9М: Rp45,53 трлн (+21% к 9М 2025)",
+    "src": "отчёт на idx.co.id",
+    "tickers": [
+      "BMRI"
+    ],
+    "url": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202610/20261023231823-64642-0/FinancialStatement-2026-III-BMRI.pdf"
+  },
+  {
+    "date": "2026-10-23",
+    "title": "LSIP: LSIP объявила биржевой выкуп акций на сумму до Rp750 млрд из собственных денежных средств без учёта комиссий; количество выкупаемых акций не превысит 20% оплаченного капитала с соблюдением требований к свободному обращению",
+    "src": "раскрытие на idx.co.id",
+    "tickers": [
+      "LSIP"
+    ],
+    "url": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202610/0884db7e64_fba905f667.pdf"
+  },
+  {
+    "date": "2026-10-22",
+    "tickers": [
+      "NCKL"
+    ],
+    "title": "Китайские производители обсуждают сокращение MHP на 50% и NPI на 20% в Индонезии",
+    "src": "Reuters, SMM",
+    "url": "https://news.metal.com/newscontent/104173852-smm-analysis-indonesian-nickel-output-cut-talk-gathers-pace-but-the-case-for-cutting-diverges-across-the-supply-chain"
+  },
+  {
+    "date": "2026-10-22",
+    "tickers": [
+      "IDX"
+    ],
+    "title": "Прабово о возможном понижении статуса MSCI: «Индонезия не дрогнет». IHSG +1,7%",
+    "src": "Warta Ekonomi",
+    "url": "https://wartaekonomi.co.id/read642729/ihsg-bangkit-17-ke-level-5419-usai-prabowo-tantang-msci"
+  },
+  {
+    "date": "2026-10-21",
+    "tickers": [
+      "NCKL"
+    ],
+    "title": "LME никель выше US$16 000 на ожиданиях сокращений",
+    "src": "Bloomberg / The Edge",
+    "url": "https://theedgemalaysia.com/node/822689"
+  },
+  {
+    "date": "2026-10-16",
+    "tickers": [
+      "NCKL"
+    ],
+    "title": "Квота RKAB-2026 на руду поднята до ~290 млн т",
+    "src": "SMM",
+    "url": "https://news.metal.com/newscontent/104162642-smm-nickel-flash-indonesia-approves-revised-2026-rkab-nickel-ore-production-quota-of-approximately-290-million-tonnes"
+  },
+  {
+    "date": "2026-09-15",
+    "tickers": [
+      "NCKL"
+    ],
+    "title": "Формульная цена лимонита (HPM) снижена на 45%: маржа уходит от добычи к HPAL-заводам",
+    "src": "Kepmen ESDM 363.K/2026",
+    "url": ""
+  }
 ]

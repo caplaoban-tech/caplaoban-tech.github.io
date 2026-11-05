@@ -180,5 +180,15 @@
     "tone": "warn",
     "updated": "2026-11-04",
     "url": "941/"
+  },
+  {
+    "ticker": "KSPI",
+    "name": "Kaspi.kz",
+    "sector": "Суперапп: платежи · маркетплейс · банк",
+    "price": 90.45,
+    "verdict": "Держать",
+    "tone": "warn",
+    "updated": "2026-11-06",
+    "url": "kspi/"
   }
 ]

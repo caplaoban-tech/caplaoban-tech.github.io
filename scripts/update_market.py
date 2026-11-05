@@ -116,8 +116,13 @@ def update_terminals():
             for d in sorted(rows): w.writerow(rows[d])
         print("терминал", tk, "A", a, "H", h)
 
+US_LISTED = {"KSPI"}   # ADS на Nasdaq: тикер Yahoo без суффикса
+
+
 def company_symbol(t):
-    """Тикер сайта → Yahoo: IDX — TICK.JK, Гонконг — 4 цифры .HK, A-акции Шэньчжэня/Шанхая — .SZ/.SS."""
+    """Тикер сайта → Yahoo: IDX — TICK.JK, Гонконг — 4 цифры .HK, A-акции Шэньчжэня/Шанхая — .SZ/.SS, США — как есть."""
+    if t in US_LISTED:
+        return t
     if t.isalpha():
         return f"{t}.JK"
     if len(t) == 6:

@@ -1,5 +1,14 @@
 [
   {
+    "date": "2026-11-06",
+    "title": "KSPI: разбор Kaspi.kz — P/E 7, дивидендная доходность при ₸1 000 в квартал 9,8%, но прибыль год не растёт, а капитал банка у минимума; оценка $95 при цене $90 («Держать»), отчёт за III кв. — 09.11",
+    "src": "Cap Laoban",
+    "tickers": [
+      "KSPI"
+    ],
+    "url": "kspi/"
+  },
+  {
     "date": "2026-11-04",
     "title": "WINS: Дочерняя компания WINS FOS Management Services Pte. Ltd. учредила в Брунее FOS Management Services Sdn Bhd со 100%-ным владением",
     "src": "раскрытие на idx.co.id",

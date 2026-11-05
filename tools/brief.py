@@ -84,6 +84,9 @@ dd = lambda s: ".".join(reversed(s.split("-")))
 
 def page(c, depth):
     up = "../" * depth
+    th = next((t for t in json.loads((ROOT / "data" / "themes.json").read_text()) if c["ticker"] in t["tickers"]), None) \
+        if (ROOT / "data" / "themes.json").exists() else None
+    back = f'<a href="/#{th["id"]}">{E(th["name"])}</a>' if th else ""
     charts = "".join(f'<div class="panel"><h2>{E(ch["title"])}</h2>{DRAW[ch["type"]](ch)}<p class="note">{E(ch.get("note", ""))}</p></div>' for ch in c["charts"])
     secs = ""
     for s in c["sections"]:
@@ -107,13 +110,13 @@ def page(c, depth):
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;800&family=Golos+Text:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
-<link rel="stylesheet" href="/assets/style.css?v=15">
+<link rel="stylesheet" href="/assets/style.css?v=16">
 </head>
 <body>
 <div class="wrap narrow">
   <header class="top">
     <a class="brand" href="/"><img src="/assets/mark.svg" alt="">Cap Laoban</a>
-    <nav class="nav"><a href="/">Все разборы</a>{f'<a href="{E(c["page"])}">Подробно</a>' if c.get("page") else ""}<a href="#news">Новости</a></nav>
+    <nav class="nav">{back}<a href="/">Все разборы</a>{f'<a href="{E(c["page"])}">Подробно</a>' if c.get("page") else ""}<a href="#news">Новости</a></nav>
   </header>
   <main class="stack brief">
     <section class="stack" style="padding-block:8px 0">

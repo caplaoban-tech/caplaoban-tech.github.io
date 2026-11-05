@@ -1,0 +1,8 @@
+[
+ {"id": "nickel", "name": "Никель", "tickers": ["NCKL", "HRUM", "DKFT", "2245", "MBMA", "INCO", "ANTM"]},
+ {"id": "metals", "name": "Алюминий, олово, уголь", "tickers": ["ADMR", "1378", "CITA", "TINS", "AADI", "PTBA"]},
+ {"id": "palm", "name": "Пальма и продукты", "tickers": ["LSIP", "SIMP", "INDF", "ICBP", "UNVR", "AALI", "TAPG"]},
+ {"id": "china", "name": "Китай", "tickers": ["000651", "6690", "3898", "9981", "9988", "1810", "9888"]},
+ {"id": "telbank", "name": "Телеком и банки", "tickers": ["TLKM", "941", "BMRI", "ISAT", "EXCL"]},
+ {"id": "energy", "name": "Энергия и транспорт", "tickers": ["WINS"]}
+]

@@ -12,7 +12,7 @@
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;800&family=Golos+Text:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
-<link rel="stylesheet" href="assets/style.css?v=15">
+<link rel="stylesheet" href="assets/style.css?v=16">
 </head>
 <body>
 <div class="wrap narrow">
@@ -30,6 +30,7 @@
 
     <section id="briefs" class="stack" aria-label="Короткие разборы">
       <h2>Свежие разборы отчётов</h2>
+      <div class="tabs" id="tabs" role="tablist"></div>
       <div class="stack" id="brief-list"><p class="note">Загружаю…</p></div>
     </section>
 
@@ -54,18 +55,36 @@
 const fmtDate = s => { const [y,m,d] = s.split("-"); return `${d}.${m}`; };
 const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 
-fetch("data/briefs.json").then(r => r.json()).then(list => {
-  document.getElementById("brief-list").innerHTML = list.map(b => `<a class="panel bcard" href="${esc(b.url)}"><span class="hd"><span class="tk">${esc(b.ticker)}</span>${esc(b.name)} · ${esc(b.period)} · ${fmtDate(b.date)}</span><span class="tt">${esc(b.card)}</span><span class="kv">${b.kpis.map(k => `<div><b>${esc(k[0])}</b><span>${esc(k[1])}</span></div>`).join("")}</span></a>`).join("");
+// вкладки по темам: data/themes.json (тема → тикеры); #nickel в адресе открывает вкладку
+let THEMES = [], BRIEFS = [], COS = [];
+const themeOf = t => (THEMES.find(x => x.tickers.includes(t)) || {}).id || "other";
+const cur = () => (location.hash || "#all").slice(1);
+function drawTabs() {
+  const have = new Set([...BRIEFS.map(b => themeOf(b.ticker)), ...COS.filter(c => !c.draft).map(c => themeOf(c.ticker))]);
+  const tabs = [{ id: "all", name: "Все" }].concat(THEMES.filter(t => have.has(t.id)));
+  document.getElementById("tabs").innerHTML = tabs.map(t => `<a role="tab" href="#${t.id}" class="tab${cur() === t.id ? " on" : ""}">${esc(t.name)}</a>`).join("");
+}
+const pick = xs => cur() === "all" ? xs : xs.filter(x => themeOf(x.ticker) === cur());
+function drawBriefs() {
+  const list = pick(BRIEFS);
+  document.getElementById("brief-list").innerHTML = list.length ? list.map(b => `<a class="panel bcard" href="${esc(b.url)}"><span class="hd"><span class="tk">${esc(b.ticker)}</span>${esc(b.name)} · ${esc(b.period)} · ${fmtDate(b.date)}</span><span class="tt">${esc(b.card)}</span><span class="kv">${b.kpis.map(k => `<div><b>${esc(k[0])}</b><span>${esc(k[1])}</span></div>`).join("")}</span></a>`).join("") : '<p class="note">В этой теме коротких разборов пока нет — подробные ниже.</p>';
+}
+Promise.all([fetch("data/themes.json").then(r => r.json()).catch(() => []), fetch("data/briefs.json").then(r => r.json())]).then(([t, b]) => {
+  THEMES = t; BRIEFS = b; drawTabs(); drawBriefs(); if (COS.length) drawCos();
 }).catch(() => { document.getElementById("brief-list").innerHTML = '<p class="note">Не удалось загрузить разборы. Обновите страницу.</p>'; });
+window.addEventListener("hashchange", () => { drawTabs(); drawBriefs(); drawCos(); });
 
-fetch("data/companies.json").then(r => r.json()).then(list => {
-  document.getElementById("co-list").innerHTML = list.filter(c => !c.draft).map(c => {
+function drawCos() {
+  const list = pick(COS.filter(c => !c.draft));
+  document.getElementById("co-list").innerHTML = (list.length ? list : []).map(c => {
     if (c.soon) return `<div class="panel co soon"><span class="tk">${esc(c.ticker)}</span><span class="nm">${esc(c.name)}</span><span class="chip mute">скоро</span><span class="sub">${esc(c.sector)}</span></div>`;
     const px = c.price != null ? `<span class="px"><b class="num">${Number(c.price).toLocaleString("ru-RU")}</b></span>` : `<span class="px"></span>`;
     const verdict = c.verdict ? ` · <span class="chip ${esc(c.tone || "mute")}">${esc(c.verdict)}</span>` : "";
     const kind = c.kind === "report" ? " · разбор отчёта об оценке" : "";
     return `<a class="panel co" href="${esc(c.url)}"><span class="tk">${esc(c.ticker)}</span><span class="nm">${esc(c.name)}</span>${px}<span class="sub">${esc(c.sector)}${kind}${verdict} · обновлено ${fmtDate(c.updated)}</span></a>`;
-  }).join("");
+  }).join("") || '<p class="note">В этой теме подробных разборов пока нет.</p>';
+}
+fetch("data/companies.json").then(r => r.json()).then(list => { COS = list; if (THEMES.length || BRIEFS.length) drawTabs(); drawCos();
 }).catch(() => { document.getElementById("co-list").innerHTML = '<p class="note">Не удалось загрузить список компаний. Обновите страницу.</p>'; });
 
 fetch("data/news.json").then(r => r.json()).then(items => {

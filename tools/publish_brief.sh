@@ -4,6 +4,7 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 T="$1"; MSG="${2:-Короткий разбор: $1}"
+python3 -c "import json,sys; t=sys.argv[1].upper(); sys.exit(0 if any(t in x['tickers'] for x in json.load(open('data/themes.json'))) else 'тикер '+t+' не в data/themes.json — добавьте в тему (вкладку) и повторите')" "$T"
 python3 tools/brief.py "$T" > /dev/null
 # в ленту главной — только уже опубликованные разборы и текущий (черновики других не светим)
 python3 - "$T" <<'PY'

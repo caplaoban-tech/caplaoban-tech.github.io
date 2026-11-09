@@ -65,11 +65,11 @@
     {
       "id": "s",
       "name": "Сера CIF Индонезия",
-      "value": 875,
+      "value": 785,
       "unit": "US$/т",
-      "date": "2026-10-23",
-      "source": "SMM, недельный обзор: CIF Indonesia US$850–900, среднее 875 (16.10 — 885, 30.09 — 965)",
-      "url": "https://news.metal.com/newscontent/104175985-smm-analysis-cobalt-salt-price-decline-risk-remains-nickel-intermediate-product-payables-stable-this-week",
+      "date": "2026-11-06",
+      "source": "SMM, недельный обзор: CIF Indonesia US$750–820, среднее 785 (30.10 — 850, 23.10 — 875); SMM ждёт US$720–800 в ближайшее время",
+      "url": "https://news.metal.com/newscontent/104209963-smm-analysis-spot-market-transactions-sluggish-nickel-intermediate-product-payables-stable-this-week",
       "class": "В",
       "how": "SMM — еженедельно (платно); ориентир бесплатно — контрактные цены Ближнего Востока FOB (Qatar, ADNOC, KPC) раз в месяц в новостях SMM, + фрахт ~US$60–90.",
       "to_company": "Менеджмент (SIMC 05.08.2026): запас сырья на 2–3 месяца, сера закуплена ниже рынка. Значит, в себестоимость заводов спот приходит с лагом 2–3 месяца. В модели используется «эффективная» цена — средний спот за 3 месяца."
@@ -165,6 +165,12 @@
   "news": {
     "sulfur": [
       {
+        "date": "2026-11-06",
+        "title": "Сера CIF Индонезия US$750–820, в среднем US$785 — минус US$65 к концу октября; SMM ждёт консолидацию в US$720–800",
+        "url": "https://news.metal.com/newscontent/104209963-smm-analysis-spot-market-transactions-sluggish-nickel-intermediate-product-payables-stable-this-week",
+        "src": "SMM"
+      },
+      {
         "date": "2026-10-29",
         "title": "Сера CFR Индонезия US$850–860 — без изменений за неделю; Ближний Восток FOB спот US$740–790; ноябрьские контракты ещё не объявлены",
         "url": "https://www.chemportal.com.tr/markets/sulphur.html",
@@ -175,52 +181,46 @@
         "title": "Сера CIF Индонезия US$850–900, в среднем US$875; японский груз 3 тыс. т по US$850",
         "url": "https://news.metal.com/newscontent/104175985-smm-analysis-cobalt-salt-price-decline-risk-remains-nickel-intermediate-product-payables-stable-this-week",
         "src": "SMM"
-      },
-      {
-        "date": "2026-10-08",
-        "title": "Контракты Ближнего Востока на октябрь снижены на US$45–70: Qatar 835, KPC 820, ADNOC 890 FOB",
-        "url": "https://news.metal.com/newscontent/104145450-smm-flash-middle-east-october-sulfur-contract-prices-announced",
-        "src": "SMM"
       }
     ],
     "mhp": [
+      {
+        "date": "2026-11-06",
+        "title": "MHP за день: никель +US$126/т Ni, кобальт −US$358/т Co; абсолютные цены в бесплатной части SMM не показаны",
+        "url": "https://news.metal.com/newscontent/104210058-smm-nickel-flash",
+        "src": "SMM"
+      },
+      {
+        "date": "2026-11-06",
+        "title": "Спотовые сделки вялые: MHP подорожал вслед за никелем, кобальтовая часть резко подешевела на снижении payable",
+        "url": "https://news.metal.com/newscontent/104209963-smm-analysis-spot-market-transactions-sluggish-nickel-intermediate-product-payables-stable-this-week",
+        "src": "SMM"
+      },
       {
         "date": "2026-10-30",
         "title": "MHP подешевел: никель US$13 044/т (−98 за день), кобальт US$22 716/т (−358); payable кобальта 57%, никеля 81–82,5%",
         "url": "https://news.metal.com/newscontent/104188318-smm-nickel-intermediate-product-daily-review-mhp-and-high-grade-nickel-matte-nickel-prices-declined-on-october-30",
         "src": "SMM"
-      },
-      {
-        "date": "2026-10-30",
-        "title": "Ожидания сокращений поддерживают рынок слабее: солевые заводы плохо принимают цены сырья, закупки MHP сдержанные",
-        "url": "https://news.metal.com/newscontent/104189176-smm-analysis-expectations-for-production-cuts-provide-less-support-nickel-prices-consolidate-and-pull-back",
-        "src": "SMM"
-      },
-      {
-        "date": "2026-10-23",
-        "title": "Payable по MHP за неделю не изменились, но SMM ждёт слабости: перезапуски заводов и распродажа запасов трейдерами",
-        "url": "https://news.metal.com/newscontent/104175985-smm-analysis-cobalt-salt-price-decline-risk-remains-nickel-intermediate-product-payables-stable-this-week",
-        "src": "SMM"
       }
     ],
     "nickel": [
+      {
+        "date": "2026-11-06",
+        "title": "SHFE никель +4,7% за неделю на ожиданиях более жёстких квот Индонезии; премия Jinchuan откатилась",
+        "url": "https://news.metal.com/newscontent/104210126-smm-analysis-shfe-nickel-rose-47-this-week-on-expectations-of-tighter-indonesian-quotas-while-jinchuan-nickel-premium-pulled-back",
+        "src": "SMM"
+      },
+      {
+        "date": "2026-11-04",
+        "title": "ESDM намекает на более жёсткое сокращение квот руды RKAB на 2027 год: квота ещё не объявлена, RKAB 2026 после пересмотра ≈295–300 млн т влажной",
+        "url": "https://news.metal.com/newscontent/104204762-smm-nickel-flash-news-indonesia-signals-more-aggressive-nickel-ore-rkab-cuts-for-2027",
+        "src": "SMM"
+      },
       {
         "date": "2026-11-01",
         "title": "HMA никеля 1-й половины ноября US$15 478,67 — минус US$369 (−2,3%) ко 2-й половине октября",
         "url": "https://news.metal.com/newscontent/104189860-smm-flash-newsindonesias-hma-nickel-decreased-again-in-first-period-of-november",
         "src": "ESDM через SMM"
-      },
-      {
-        "date": "2026-10-30",
-        "title": "Руда Индонезии под давлением снижения HPM и слабого спроса: лимонит 1,2% US$24,5, сапролит 1,6% US$57,1",
-        "url": "https://news.metal.com/newscontent/104189254-smm-nickel-ore-market-weekly-review-indonesias-benchmark-price-cut-and-weak-demand-put-regional-nickel-ore-prices-under-pressure",
-        "src": "SMM"
-      },
-      {
-        "date": "2026-10-30",
-        "title": "Никель откатился: LME 3M US$15 515 (−2,3% за неделю), SHFE −2,8% — эффект слухов о сокращениях выдыхается",
-        "url": "https://news.metal.com/newscontent/104189176-smm-analysis-expectations-for-production-cuts-provide-less-support-nickel-prices-consolidate-and-pull-back",
-        "src": "SMM"
       }
     ]
   },

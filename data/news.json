@@ -1,6 +1,15 @@
 [
   {
     "date": "2026-11-09",
+    "title": "ADMR: За октябрь доля PT Alamtri Resources Indonesia выросла с 85,448% до 85,724%, или на 112 695 180 акций",
+    "src": "раскрытие на idx.co.id",
+    "tickers": [
+      "ADMR"
+    ],
+    "url": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202611/0cf8abd348_07c7eeffa6.pdf"
+  },
+  {
+    "date": "2026-11-09",
     "title": "CITA: Октябрьский отчёт подтверждает неизменные пакеты Harita Jayaraya — 60,455% и Glencore International — 31,613%, вместе 92,068%",
     "src": "раскрытие на idx.co.id",
     "tickers": [

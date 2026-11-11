@@ -1,5 +1,32 @@
 [
   {
+    "date": "2026-11-11",
+    "title": "TINS: TIMAH исправила реестр акционеров за май 2026 года: доля PT Mineral Industri Indonesia (Persero) осталась 65%, free float — 34,96%",
+    "src": "раскрытие на idx.co.id",
+    "tickers": [
+      "TINS"
+    ],
+    "url": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202611/e012d052e1_0c5ef85cfc.pdf"
+  },
+  {
+    "date": "2026-11-10",
+    "title": "BMRI: За октябрь пакет PT Danantara Asset Management вырос на 277 725 200 акций до 48 325 725 201 акции: в основной форме доля указана как 51,77%, в приложении — 51,778%",
+    "src": "раскрытие на idx.co.id",
+    "tickers": [
+      "BMRI"
+    ],
+    "url": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202611/92569a05aa_bafb7fd4e6.pdf"
+  },
+  {
+    "date": "2026-11-10",
+    "title": "SIMP: Октябрьский реестр показывает неизменные доли Indofood Agri Resources — 73,46%, PT Indofood Sukses — 6,68% и Lo Kheng Hong — 5,26%",
+    "src": "раскрытие на idx.co.id",
+    "tickers": [
+      "SIMP"
+    ],
+    "url": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202611/15fff7d0b2_4e06f237c8.pdf"
+  },
+  {
     "date": "2026-11-09",
     "title": "ADMR: За октябрь доля PT Alamtri Resources Indonesia выросла с 85,448% до 85,724%, или на 112 695 180 акций",
     "src": "раскрытие на idx.co.id",

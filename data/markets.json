@@ -101,9 +101,9 @@
     {
       "id": "fx",
       "name": "Курс рупии (JISDOR)",
-      "value": 18154,
+      "value": 18241,
       "unit": "Rp за US$",
-      "date": "2026-11-11",
+      "date": "2026-11-12",
       "source": "Bank Indonesia, JISDOR",
       "url": "https://www.bi.go.id/en/statistik/informasi-kurs/jisdor/Default.aspx",
       "class": "А",
@@ -113,9 +113,9 @@
     {
       "id": "px",
       "name": "Цена акции NCKL",
-      "value": 735,
+      "value": 715,
       "unit": "Rp",
-      "date": "2026-11-11",
+      "date": "2026-11-12",
       "source": "Yahoo Finance (NCKL.JK), закрытие",
       "url": "https://finance.yahoo.com/quote/NCKL.JK",
       "class": "В",

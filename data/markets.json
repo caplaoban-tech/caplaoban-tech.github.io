@@ -1,13 +1,13 @@
 {
-  "updated": "2026-11-12",
+  "updated": "2026-11-13",
   "update_mode": "Автоматически: утром (09:00 Бали) и после закрытия IDX — никель и алюминий LME, курс рупии, цены акций всех разборов (GitHub Actions). Вручную раз в неделю: сера, MHP, payable, руда, HMA.",
   "series": [
     {
       "id": "lme",
       "name": "Никель LME, 3 месяца",
-      "value": 15930,
+      "value": 16010,
       "unit": "US$/т",
-      "date": "2026-11-11",
+      "date": "2026-11-12",
       "source": "LME cash settlement через westmetall.com",
       "url": "https://www.westmetall.com/en/markdaten.php?action=table&field=LME_Ni_cash",
       "class": "В",

@@ -584,7 +584,7 @@
         "2,4%"
       ]
     ],
-    "note": "Сбор: china-reports/analysis/scripts/peers_bidu_2026-11-04.py по релизам SEC/HKEX [А]; цены Yahoo/IBKR, курсы Tushare [В]. TTM = год + полугодие − полугодие (Alphabet — 9 мес.). Weibo (P/E 4x, дивиденд 9,7%) — в скрипте, в таблице опущен."
+    "note": "Сбор: china-reports/analysis/scripts/peers_bidu_2026-11-04.py по релизам SEC/HKEX [А]; цены Yahoo/брокер, курсы Tushare [В]. TTM = год + полугодие − полугодие (Alphabet — 9 мес.). Weibo (P/E 4x, дивиденд 9,7%) — в скрипте, в таблице опущен."
   },
   "risks": [
     {

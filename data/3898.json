@@ -440,7 +440,7 @@
         "—"
       ]
     ],
-    "note": "Times Electric: рост — 1П2026, дивиденд 4,5% после налога, P/E A — 15,15x, чистые деньги 13,3 млрд юаней (после выплат и без ограниченных). CRRC (1766.HK / 601766.SH): P/E A — 13,1x. StarPower — 603290.SH, Inovance — 300124.SZ. Китайские компании — Tushare daily_basic на 23.10 и fina_indicator_vip за 1П2026 [В]; CRRC H — IBKR 5,245 HK$, P/E H пересчитан из A [Б]. Alstom: год до 03.2026, P/E по скорректированной прибыли — 13x, скорр. EBIT 6,1%. Alstom — отчёт FY2025/26 (13.05.2026), цена ADR ALSMY через IBKR [В]. Ещё: Silan (600460) 67x, NCE Power (605111) 43x, Infineon ~62x по прибыли FY9/2025, Mitsubishi Electric ~24x [В]."
+    "note": "Times Electric: рост — 1П2026, дивиденд 4,5% после налога, P/E A — 15,15x, чистые деньги 13,3 млрд юаней (после выплат и без ограниченных). CRRC (1766.HK / 601766.SH): P/E A — 13,1x. StarPower — 603290.SH, Inovance — 300124.SZ. Китайские компании — Tushare daily_basic на 23.10 и fina_indicator_vip за 1П2026 [В]; CRRC H — 5,245 HK$, P/E H пересчитан из A [Б]. Alstom: год до 03.2026, P/E по скорректированной прибыли — 13x, скорр. EBIT 6,1%. Alstom — отчёт FY2025/26 (13.05.2026), цена ADR ALSMY через брокера [В]. Ещё: Silan (600460) 67x, NCE Power (605111) 43x, Infineon ~62x по прибыли FY9/2025, Mitsubishi Electric ~24x [В]."
   },
   "risks": [
     {
@@ -490,7 +490,7 @@
     "Отчётность Times Electric: годовой отчёт 2025 (SSE/HKEX, 27.03.2026; KPMG Huazhen), промежуточный 1П2026 (19.08.2026): сегменты с. 41–43 / 31, 176; клиенты и CRRC с. 45, 119; CRRC Finance с. 120 / 212; дебиторка с. 197–198 / 132, 213; деньги и сертификаты прим. 10 и 21; Times Semiconductor с. 271–273 / 194; амортизация — косвенный метод ОДДС (Tushare cashflow, выгрузка 26.10.2026)",
     "HKEX: месячный отчёт об акциях (09.2026), выкуп и погашение H (13.07.2026), промежуточный дивиденд H (11.09.2026), итоги ГОСА 26.06.2026",
     "Tushare (выгрузка 25.10.2026): отчётность, fina_mainbz, dividend, stk_ah_comparison, daily_basic, hk_daily, hk_hold, fx_daily",
-    "IBKR: котировки 03898 и 1766 (SEHK), ADR Alstom, Infineon, Mitsubishi Electric",
+    "Брокер: котировки 03898 и 1766 (SEHK), ADR Alstom, Infineon, Mitsubishi Electric",
     "Alstom FY2025/26 (13.05.2026); Infineon Q3 FY2026 (05.08.2026); Mitsubishi Electric FY2026 (27.04.2026)"
   ],
   "glossary": {

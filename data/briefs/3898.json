@@ -445,7 +445,7 @@
     ]
    ],
    "color": "r",
-   "label": "HK$, закрытие (IBKR / Yahoo)",
+   "label": "HK$, закрытие (брокер / Yahoo)",
    "fmt": "{:,.2f}",
    "note": "Ноябрь 2024 – ноябрь 2026, каждая пятая торговая сессия. После отчёта 02.11.2026: H +10,1%, A +7,2%; премия A к H — 97%."
   },
@@ -585,5 +585,5 @@
    ]
   }
  ],
- "sources": "Отчёт за III кв. 2026 (<a href=\"http://static.cninfo.com.cn/finalpage/2026-10-31/1225647837.PDF\">cninfo</a>), 1П 2026 (<a href=\"http://static.cninfo.com.cn/finalpage/2026-08-20/1225481549.PDF\">cninfo</a>), годовой 2025 (<a href=\"http://static.cninfo.com.cn/finalpage/2026-03-28/1225041946.PDF\">cninfo</a>) [А]; кварталы — Tushare по 688187.SH, сверены с отчётом [А]. Цены A/H и курс — IBKR / Yahoo [В]. Расчёты — скрипт build_brief_q3_2026.py [Б]. Подробный разбор от 26.10.2026 — до отчёта."
+ "sources": "Отчёт за III кв. 2026 (<a href=\"http://static.cninfo.com.cn/finalpage/2026-10-31/1225647837.PDF\">cninfo</a>), 1П 2026 (<a href=\"http://static.cninfo.com.cn/finalpage/2026-08-20/1225481549.PDF\">cninfo</a>), годовой 2025 (<a href=\"http://static.cninfo.com.cn/finalpage/2026-03-28/1225041946.PDF\">cninfo</a>) [А]; кварталы — Tushare по 688187.SH, сверены с отчётом [А]. Цены A/H и курс — брокер / Yahoo [В]. Расчёты — скрипт build_brief_q3_2026.py [Б]. Подробный разбор от 26.10.2026 — до отчёта."
 }

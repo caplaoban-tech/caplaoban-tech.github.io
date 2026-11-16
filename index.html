@@ -77,7 +77,11 @@ window.addEventListener("hashchange", () => { drawTabs(); drawBriefs(); drawCos(
 function drawCos() {
   const list = pick(COS.filter(c => !c.draft));
   document.getElementById("co-list").innerHTML = (list.length ? list : []).map(c => {
-    if (c.soon) return `<div class="panel co soon"><span class="tk">${esc(c.ticker)}</span><span class="nm">${esc(c.name)}</span><span class="chip mute">скоро</span><span class="sub">${esc(c.sector)}</span></div>`;
+    if (c.soon) {
+      const b = BRIEFS.find(x => x.ticker === c.ticker);
+      if (b) return `<a class="panel co" href="${esc(b.url)}"><span class="tk">${esc(c.ticker)}</span><span class="nm">${esc(c.name)}</span><span class="chip mute">короткий разбор</span><span class="sub">${esc(c.sector)} · ${esc(b.period)} · подробный разбор — скоро</span></a>`;
+      return `<div class="panel co soon"><span class="tk">${esc(c.ticker)}</span><span class="nm">${esc(c.name)}</span><span class="chip mute">скоро</span><span class="sub">${esc(c.sector)}</span></div>`;
+    }
     const px = c.price != null ? `<span class="px"><b class="num">${Number(c.price).toLocaleString("ru-RU")}</b></span>` : `<span class="px"></span>`;
     const verdict = c.verdict ? ` · <span class="chip ${esc(c.tone || "mute")}">${esc(c.verdict)}</span>` : "";
     const kind = c.kind === "report" ? " · разбор отчёта об оценке" : "";

@@ -1,5 +1,23 @@
 [
   {
+    "date": "2026-11-16",
+    "title": "WINS: Wintermar объявила промежуточный дивиденд за 2026 год в размере Rp5 на акцию, всего Rp22 316 035 465",
+    "src": "раскрытие на idx.co.id",
+    "tickers": [
+      "WINS"
+    ],
+    "url": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202611/7e08131d45_982b81a037.pdf"
+  },
+  {
+    "date": "2026-11-16",
+    "title": "HRUM: Harum Energy досрочно прекращает программу выкупа акций с 17 ноября 2026 года из-за планируемой внутренней реструктуризации у контролирующих акционеров и необходимости соблюдать регулирование",
+    "src": "раскрытие на idx.co.id",
+    "tickers": [
+      "HRUM"
+    ],
+    "url": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202611/932e44e08b_108486d2f7.pdf"
+  },
+  {
     "date": "2026-11-11",
     "title": "TINS: TIMAH исправила реестр акционеров за май 2026 года: доля PT Mineral Industri Indonesia (Persero) осталась 65%, free float — 34,96%",
     "src": "раскрытие на idx.co.id",

@@ -113,9 +113,9 @@
     {
       "id": "px",
       "name": "Цена акции NCKL",
-      "value": 745,
+      "value": 735,
       "unit": "Rp",
-      "date": "2026-11-13",
+      "date": "2026-11-16",
       "source": "Yahoo Finance (NCKL.JK), закрытие",
       "url": "https://finance.yahoo.com/quote/NCKL.JK",
       "class": "В",

@@ -500,5 +500,5 @@ r"""import {boot} from "/assets/q.js?v=5";
 await boot("data");
 document.title = "Цифры: цена, отчётность, дивиденды — 3898 · Cap Laoban";
 import("/assets/q.js?v=5").then(m => m.model()).then(() => { document.title = "Цифры: цена, отчётность, дивиденды — 3898 · Cap Laoban"; });""",
- extra='<script src="/assets/terminal.js?v=6" defer></script>\n')
+ extra='<script src="/assets/terminal.js?v=9" defer></script>\n')
 print("ok")

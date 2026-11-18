@@ -1,12 +1,14 @@
 /* Cap Laoban — «терминал» компании: цена A/H, отчётность по годам и кварталам, дивиденды, сегменты.
    Данные: /data/fin/<тикер>.json (собирает china-reports/terminal/scripts/build_terminal.py)
    и /data/history/<тикер>_px.csv (date,a,h,hkdcny — дописывает робот scripts/update_market.py).
-   Подключается на странице компании: <section id="terminal" hidden></section> + этот скрипт. Нет файла — блок скрыт. */
+   Подключается на странице компании: <section id="terminal" hidden></section> + этот скрипт. Нет файла — блок и пункт меню скрыты. */
 (function () {
   const box = document.getElementById("terminal");
   if (!box) return;
+  // Нет данных терминала — прячем и блок, и пункт «Цена и отчётность» в меню, чтобы он не вёл в пустоту.
+  const off = () => { box.hidden = true; box.style.display = "none"; document.querySelectorAll('a[href="#terminal"]').forEach(a => { a.hidden = true; }); };
   const tk = (document.body.dataset.file || "").replace(/\.json$/, "");
-  if (!tk || tk.startsWith("__")) return;
+  if (!tk || tk.startsWith("__")) return off();
   const ver = `?v=${Date.now() / 36e5 | 0}`;
   const NS = "http://www.w3.org/2000/svg";
   const el = (t, a = {}, txt) => { const e = document.createElementNS(NS, t); for (const k in a) e.setAttribute(k, a[k]); if (txt != null) e.textContent = txt; return e; };
@@ -18,7 +20,7 @@
   Promise.all([
     fetch(`/data/fin/${tk}.json${ver}`).then(r => r.ok ? r.json() : null),
     fetch(`/data/history/${tk}_px.csv${ver}`).then(r => r.ok ? r.text() : null),
-  ]).then(([F, csv]) => { if (F && csv) render(F, parse(csv)); }).catch(() => {});
+  ]).then(([F, csv]) => { if (F && csv) render(F, parse(csv)); else off(); }).catch(off);
 
   function parse(t) {
     return t.trim().split("\n").slice(1).map(l => { const [d, a, h, fx] = l.split(","); return { d, a: a ? +a : null, h: h ? +h : null, fx: fx ? +fx : null }; });

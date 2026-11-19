@@ -146,7 +146,7 @@ def page(c, depth):
   }}).catch(() => {{ el.innerHTML = '<li><span></span><span class="note">Не удалось загрузить новости.</span></li>'; }});
 }})();
 </script>
-<script src="/assets/latest.js?v=1" defer></script>
+<script src="/assets/latest.js?v=2" defer></script>
 </body>
 </html>
 """

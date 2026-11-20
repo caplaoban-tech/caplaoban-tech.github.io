@@ -1,5 +1,15 @@
 [
   {
+    "date": "2026-11-20",
+    "title": "MBMA (сосед NCKL) — III кв. 2026: прибыль акционерам $91,8 млн (×4,7 к III кв. 2025); за 9М: $146,2 млн (×5,8 к 9М 2025); денежный поток от операций за 9М: $312,7 млн",
+    "src": "отчёт на idx.co.id",
+    "tickers": [
+      "NCKL",
+      "MBMA"
+    ],
+    "url": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202611/20261120170555-65807-0/FinancialStatement-2026-III-MBMA.pdf"
+  },
+  {
     "date": "2026-11-19",
     "title": "HRUM: В рамках внутригрупповой реструктуризации через IDX продано 6 759 000 000 акций Harum Energy, или 50% капитала, по цене, привязанной к закрытию предыдущей сессии",
     "src": "раскрытие на idx.co.id",

@@ -214,6 +214,8 @@ def check_render(shots):
     port = srv.server_address[1]
     threading.Thread(target=srv.serve_forever, daemon=True).start()
     pages = [rel(p.parent) + "/" if p.parent != ROOT else "" for p in public_files({".html"}) if p.name == "index.html"]
+    # отдельные страницы (en.html и т. п.) тоже проверяем на телефоне; 404.html — служебная
+    pages += [rel(p) for p in public_files({".html"}) if p.name not in ("index.html", "404.html")]
     if (ROOT / "templates" / "company" / "index.html").exists():
         pages.append("__tpl__/")
     if shots:

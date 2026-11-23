@@ -65,23 +65,23 @@
     {
       "id": "s",
       "name": "Сера CIF Индонезия",
-      "value": 785,
+      "value": 700,
       "unit": "US$/т",
-      "date": "2026-11-13",
-      "source": "SMM, недельный обзор 13.11: CIF Indonesia US$750–820, среднее 785 — без изменений к 06.11 (30.10 — 850, 23.10 — 875); канадский груз 50 тыс. т по US$750 в начале ноября; SMM ждёт слабой консолидации",
-      "url": "https://news.metal.com/newscontent/OYXAJGW2JYSS3J2W5USZGCNXXHVOA6N577GSW5Q-smm-analysis-nickel-and-cobalt-price-rebound-boosts-sentiment-nickel-intermediate-product-payables-edge-up-this-week",
+      "date": "2026-11-20",
+      "source": "SMM, недельный обзор 20.11: CIF Indonesia US$650–750, среднее 700 — минус 85 к 13.11 (06.11 — 785, 30.10 — 850); в середине недели сделка по US$650; SMM ждёт слабой консолидации, ниже 650 — сопротивление",
+      "url": "https://news.metal.com/newscontent/Q4XMWFOQHYUW63MZRVUJBHYF2A5HNPIOSSLTH7I-smm-analysis-expectations-for-production-cuts-prompt-some-enterprises-to-stockpile-in-advance-intermediate-product-payables-rebound-slightly-this-week",
       "class": "В",
       "how": "SMM — еженедельно (платно); ориентир бесплатно — контрактные цены Ближнего Востока FOB (Qatar, ADNOC, KPC) раз в месяц в новостях SMM, + фрахт ~US$60–90.",
       "to_company": "Менеджмент (SIMC 05.08.2026): запас сырья на 2–3 месяца, сера закуплена ниже рынка. Значит, в себестоимость заводов спот приходит с лагом 2–3 месяца. В модели используется «эффективная» цена — средний спот за 3 месяца."
     },
     {
       "id": "s_me",
-      "name": "Сера Ближний Восток, контракт октября FOB",
-      "value": 835,
+      "name": "Сера Ближний Восток, контракт ноября FOB",
+      "value": 735,
       "unit": "US$/т",
-      "date": "2026-10-08",
-      "source": "SMM: Qatar 835 (−45), KPC 820, ADNOC 890",
-      "url": "https://news.metal.com/newscontent/104145450-smm-flash-middle-east-october-sulfur-contract-prices-announced",
+      "date": "2026-11-19",
+      "source": "Chemportal (сводка на 19.11): Qatar QSP 735 (−100 к октябрю), KPC 720 (−100), ADNOC/UAE OSP 740 (−150); спот FOB Ближний Восток 620–640",
+      "url": "https://www.chemportal.com.tr/markets/sulphur.html",
       "class": "В",
       "how": "Раз в месяц, бесплатно в новостях.",
       "to_company": "Ведущий индикатор: CIF Индонезия ≈ FOB + фрахт; падение контрактов в октябре → CIF ~US$900–930 в ноябре (оценка)."
@@ -91,9 +91,9 @@
       "name": "Руда Индонезии, спот: лимонит 1,2% / сапролит 1,6%",
       "value": "24,0 / 52,4",
       "unit": "US$/т влажной",
-      "date": "2026-11-13",
-      "source": "SMM, недельный обзор руды Индонезии 13.11 (цена с доставкой, CIF; держится на минимумах, за неделю без изменений)",
-      "url": "https://news.metal.com/newscontent/Q3UI2LYPLZAFQOWVXGEKB77ACKUNPMUCRDE5ATA-smm-nickel-ore-market-weekly-review-philippine-ore-prices-diverge-indonesian-ore-prices-hold-steady-at-lows",
+      "date": "2026-11-19",
+      "source": "SMM, недельный обзор руды 20.11 (цены CIF на 19.11, без изменений; сапролит 1,4–1,5% −0,1–0,2)",
+      "url": "https://news.metal.com/newscontent/RWCZI6NYDU4XWJT2YX76NXNRLHODNKHAJZ2RYHY-smm-nickel-ore-weekly-review-review-of-the-nickel-ore-markets-in-the-philippines-and-indonesia",
       "class": "В",
       "how": "SMM, ежедневно.",
       "to_company": "Фактическая цена лимонита у NCKL по выручке сегмента — ~US$10–18 за тонну (ниже рыночного 1,2% из-за содержания и формулы)."
@@ -165,45 +165,51 @@
   "news": {
     "sulfur": [
       {
+        "date": "2026-11-20",
+        "title": "Сера CIF Индонезия US$650–750, в среднем US$700 — минус US$85 за неделю; прошла сделка по US$650; SMM ждёт слабой консолидации",
+        "url": "https://news.metal.com/newscontent/Q4XMWFOQHYUW63MZRVUJBHYF2A5HNPIOSSLTH7I-smm-analysis-expectations-for-production-cuts-prompt-some-enterprises-to-stockpile-in-advance-intermediate-product-payables-rebound-slightly-this-week",
+        "src": "SMM"
+      },
+      {
+        "date": "2026-11-19",
+        "title": "Ноябрьские контракты Ближнего Востока FOB: Qatar 735, KPC 720, ADNOC 740 — на US$100–150 ниже октября; спот FOB 620–640, CFR Индонезия 735–745",
+        "url": "https://www.chemportal.com.tr/markets/sulphur.html",
+        "src": "Chemportal"
+      },
+      {
         "date": "2026-11-13",
         "title": "Сера CIF Индонезия US$750–820, в среднем US$785 — без изменений за неделю; канадский груз 50 тыс. т ушёл по US$750; SMM ждёт слабой консолидации",
         "url": "https://news.metal.com/newscontent/OYXAJGW2JYSS3J2W5USZGCNXXHVOA6N577GSW5Q-smm-analysis-nickel-and-cobalt-price-rebound-boosts-sentiment-nickel-intermediate-product-payables-edge-up-this-week",
         "src": "SMM"
-      },
-      {
-        "date": "2026-11-06",
-        "title": "Сера CIF Индонезия US$750–820, в среднем US$785 — минус US$65 к концу октября; SMM ждёт консолидацию в US$720–800",
-        "url": "https://news.metal.com/newscontent/104209963-smm-analysis-spot-market-transactions-sluggish-nickel-intermediate-product-payables-stable-this-week",
-        "src": "SMM"
-      },
-      {
-        "date": "2026-10-29",
-        "title": "Сера CFR Индонезия US$850–860 — без изменений за неделю; Ближний Восток FOB спот US$740–790; ноябрьские контракты ещё не объявлены",
-        "url": "https://www.chemportal.com.tr/markets/sulphur.html",
-        "src": "Chemportal"
       }
     ],
     "mhp": [
+      {
+        "date": "2026-11-20",
+        "title": "MHP подешевел вслед за никелем, кобальтовая часть перестала падать; payable слегка подросли; часть заводов запасается сырьём в ожидании сокращений выпуска",
+        "url": "https://news.metal.com/newscontent/Q4XMWFOQHYUW63MZRVUJBHYF2A5HNPIOSSLTH7I-smm-analysis-expectations-for-production-cuts-prompt-some-enterprises-to-stockpile-in-advance-intermediate-product-payables-rebound-slightly-this-week",
+        "src": "SMM"
+      },
+      {
+        "date": "2026-11-19",
+        "title": "MHP за день: никель −US$22/т Ni, кобальт +US$59/т Co; абсолютные цены в бесплатной части SMM не показаны",
+        "url": "https://news.metal.com/newscontent/46KR5ZMBGWZFIOLMCZ37YEKE4FG6MT5OK6RHY3I-indonesian-mhp-nickel-and-cobalt-prices-see-mixed-movements-high-grade-nickel-matte-falls",
+        "src": "SMM"
+      },
       {
         "date": "2026-11-13",
         "title": "MHP подорожал вслед за никелем, кобальтовая часть подешевела; payable кобальта слегка подрос, никеля без изменений; SMM ждёт давления на рынке полупродуктов",
         "url": "https://news.metal.com/newscontent/OYXAJGW2JYSS3J2W5USZGCNXXHVOA6N577GSW5Q-smm-analysis-nickel-and-cobalt-price-rebound-boosts-sentiment-nickel-intermediate-product-payables-edge-up-this-week",
         "src": "SMM"
-      },
-      {
-        "date": "2026-11-06",
-        "title": "MHP за день: никель +US$126/т Ni, кобальт −US$358/т Co; абсолютные цены в бесплатной части SMM не показаны",
-        "url": "https://news.metal.com/newscontent/104210058-smm-nickel-flash",
-        "src": "SMM"
-      },
-      {
-        "date": "2026-11-06",
-        "title": "Спотовые сделки вялые: MHP подорожал вслед за никелем, кобальтовая часть резко подешевела на снижении payable",
-        "url": "https://news.metal.com/newscontent/104209963-smm-analysis-spot-market-transactions-sluggish-nickel-intermediate-product-payables-stable-this-week",
-        "src": "SMM"
       }
     ],
     "nickel": [
+      {
+        "date": "2026-11-20",
+        "title": "LME никель 17.11 дошёл до максимума с конца сентября, затем откатился на ожиданиях повышения ставки ФРС; квоты RKAB 2027 всё ещё не утверждены, Джакарта говорит о более жёсткой раздаче",
+        "url": "https://news.metal.com/newscontent/HSM7GAYYK3Y3ARYBN27Z4WJPXSMAPQGST2JMEOI-smm-analysis-ex-china-stainless-offers-hold-as-nickel-swings-and-indonesias-2027-ore-quota-stays-pending",
+        "src": "SMM"
+      },
       {
         "date": "2026-11-15",
         "title": "HMA никеля 2-й половины ноября US$15 596,88 — плюс US$118 (+0,8%) к 1-й половине, тренд по-прежнему вниз",
@@ -214,12 +220,6 @@
         "date": "2026-11-13",
         "title": "Никель за неделю: LME 3M US$16 215 (−1,0%), SHFE −0,45%; цену держат ожидания жёстких квот RKAB 2027 и сокращений выпуска в Индонезии, но они не подтверждены",
         "url": "https://news.metal.com/newscontent/4GL7JJTAZYQORB2JNYFKNGEZOPC64WEJ3IGYINQ-smm-weekly-review-nickel-prices-consolidate-at-highs-macro-pressure-and-expectations-for-production-cuts-counterbalance-each-other",
-        "src": "SMM"
-      },
-      {
-        "date": "2026-11-06",
-        "title": "SHFE никель +4,7% за неделю на ожиданиях более жёстких квот Индонезии; премия Jinchuan откатилась",
-        "url": "https://news.metal.com/newscontent/104210126-smm-analysis-shfe-nickel-rose-47-this-week-on-expectations-of-tighter-indonesian-quotas-while-jinchuan-nickel-premium-pulled-back",
         "src": "SMM"
       }
     ]

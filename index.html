@@ -12,7 +12,7 @@
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;800&family=Golos+Text:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
-<link rel="stylesheet" href="assets/style.css?v=16">
+<link rel="stylesheet" href="assets/style.css?v=17">
 </head>
 <body>
 <div class="wrap narrow">
@@ -42,6 +42,7 @@
     <section id="news" class="panel" aria-label="Новости">
       <h2>Что происходит</h2>
       <ul class="feed" id="feed"><li><span></span><span class="note">Загружаю ленту…</span></li></ul>
+      <button type="button" class="reset more" id="feed-more" hidden></button>
     </section>
   </main>
 
@@ -58,11 +59,12 @@ const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":
 // вкладки по темам: data/themes.json (тема → тикеры); #nickel в адресе открывает вкладку
 let THEMES = [], BRIEFS = [], COS = [];
 const themeOf = t => (THEMES.find(x => x.tickers.includes(t)) || {}).id || "other";
-const cur = () => (location.hash || "#all").slice(1);
+// якоря разделов (#briefs, #companies, #news) — не темы: для них «Все»
+const cur = () => { const h = (location.hash || "#all").slice(1); return THEMES.some(t => t.id === h) ? h : "all"; };
 function drawTabs() {
   const have = new Set([...BRIEFS.map(b => themeOf(b.ticker)), ...COS.filter(c => !c.draft).map(c => themeOf(c.ticker))]);
   const tabs = [{ id: "all", name: "Все" }].concat(THEMES.filter(t => have.has(t.id)));
-  document.getElementById("tabs").innerHTML = tabs.map(t => `<a role="tab" href="#${t.id}" class="tab${cur() === t.id ? " on" : ""}">${esc(t.name)}</a>`).join("");
+  document.getElementById("tabs").innerHTML = tabs.map(t => `<a role="tab" href="#${esc(t.id)}" class="tab${cur() === t.id ? " on" : ""}">${esc(t.name)}</a>`).join("");
 }
 const pick = xs => cur() === "all" ? xs : xs.filter(x => themeOf(x.ticker) === cur());
 function drawBriefs() {
@@ -70,7 +72,7 @@ function drawBriefs() {
   document.getElementById("brief-list").innerHTML = list.length ? list.map(b => `<a class="panel bcard" href="${esc(b.url)}"><span class="hd"><span class="tk">${esc(b.ticker)}</span>${esc(b.name)} · ${esc(b.period)} · ${fmtDate(b.date)}</span><span class="tt">${esc(b.card)}</span><span class="kv">${b.kpis.map(k => `<div><b>${esc(k[0])}</b><span>${esc(k[1])}</span></div>`).join("")}</span></a>`).join("") : '<p class="note">В этой теме коротких разборов пока нет — подробные ниже.</p>';
 }
 Promise.all([fetch("data/themes.json").then(r => r.json()).catch(() => []), fetch("data/briefs.json").then(r => r.json())]).then(([t, b]) => {
-  THEMES = t; BRIEFS = b; drawTabs(); drawBriefs(); if (COS.length) drawCos();
+  THEMES = Array.isArray(t) ? t : []; BRIEFS = b; drawTabs(); drawBriefs(); if (COS.length) drawCos(); SHOWN = 10; drawNews();
 }).catch(() => { document.getElementById("brief-list").innerHTML = '<p class="note">Не удалось загрузить разборы. Обновите страницу.</p>'; });
 window.addEventListener("hashchange", () => { drawTabs(); drawBriefs(); drawCos(); });
 
@@ -91,8 +93,25 @@ function drawCos() {
 fetch("data/companies.json").then(r => r.json()).then(list => { COS = list; if (THEMES.length || BRIEFS.length) drawTabs(); drawCos();
 }).catch(() => { document.getElementById("co-list").innerHTML = '<p class="note">Не удалось загрузить список компаний. Обновите страницу.</p>'; });
 
+// лента: по теме вкладки, сначала 10 свежих, дальше по 20 кнопкой
+let NEWS = null, SHOWN = 10;
+const newsPick = () => cur() === "all" ? NEWS : NEWS.filter(n => (n.tickers || []).some(t => themeOf(t) === cur()));
+function drawNews() {
+  if (!NEWS) return;
+  const list = newsPick(), more = document.getElementById("feed-more");
+  document.getElementById("feed").innerHTML = list.slice(0, SHOWN).map(n => `<li><time datetime="${esc(n.date)}">${esc(fmtDate(n.date))}</time><span>${n.url ? `<a href="${esc(n.url)}" target="_blank" rel="noopener">${esc(n.title)}</a>` : esc(n.title)}<br><span class="src">${esc(n.src)} · ${(n.tickers || []).map(esc).join(", ")}</span></span></li>`).join("") || '<li><span></span><span class="note">По этой теме новостей пока нет.</span></li>';
+  const rest = list.length - SHOWN;
+  more.hidden = rest <= 0;
+  if (rest > 0) more.textContent = `Показать ещё ${Math.min(rest, 20)} из ${rest}`;
+}
+document.getElementById("feed-more").addEventListener("click", () => {
+  const was = SHOWN; SHOWN += 20; drawNews();
+  const li = document.querySelector(`#feed li:nth-child(${was + 1})`); // фокус на первую новую запись
+  if (li) { const a = li.querySelector("a"); if (a) a.focus(); else { li.tabIndex = -1; li.focus(); } }
+});
+window.addEventListener("hashchange", () => { SHOWN = 10; drawNews(); });
 fetch("data/news.json").then(r => r.json()).then(items => {
-  document.getElementById("feed").innerHTML = items.map(n => `<li><time datetime="${n.date}">${fmtDate(n.date)}</time><span>${n.url ? `<a href="${esc(n.url)}" target="_blank" rel="noopener">${esc(n.title)}</a>` : esc(n.title)}<br><span class="src">${esc(n.src)} · ${(n.tickers || []).join(", ")}</span></span></li>`).join("");
+  NEWS = items.slice().sort((a, b) => (b.date || "").localeCompare(a.date || "")); drawNews();
 }).catch(() => { document.getElementById("feed").innerHTML = '<li><span></span><span class="note">Не удалось загрузить ленту. Обновите страницу.</span></li>'; });
 </script>
 </body>

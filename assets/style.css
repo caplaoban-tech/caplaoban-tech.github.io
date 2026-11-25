@@ -93,6 +93,8 @@ input[type=range]::-moz-range-thumb{width:24px;height:24px}
 .rows{display:grid;grid-template-columns:1fr auto;gap:6px 12px;font-size:14px}
 .rows span:nth-child(even){font-family:var(--mono);text-align:right}
 button.reset{align-self:flex-start;border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:10px;padding:6px 12px;font:inherit;font-size:13px;cursor:pointer}
+button.more{margin-top:14px;min-height:44px;padding:8px 16px;font-size:14px;font-weight:600}
+button.more:hover{border-color:var(--red)}
 /* лента */
 .feed{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
 .feed li{display:grid;grid-template-columns:70px 1fr;gap:10px;font-size:14px}

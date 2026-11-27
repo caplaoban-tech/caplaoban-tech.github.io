@@ -1,5 +1,15 @@
 [
   {
+    "date": "2026-11-27",
+    "title": "UNVR: Unilever Indonesia заключила договор о продаже активов и передаче обязательств продовольственного бизнеса компании PT McCormick Foods Indonesia за Rp20,5 трлн без НДС",
+    "src": "раскрытие на idx.co.id",
+    "check": "пересказ Codex, документ прочитан частично",
+    "tickers": [
+      "UNVR"
+    ],
+    "url": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202611/20261127_UNVR_E019_0f391953-1cc0-4207-ac2f-34ba79dc4805-20261127163231.pdf"
+  },
+  {
     "date": "2026-11-25",
     "title": "TLKM — 6М 2026: прибыль акционерам Rp10,62 трлн (+1% к 6М 2025); денежный поток от операций за 6М: Rp34,86 трлн",
     "src": "отчёт на idx.co.id",
@@ -732,14 +742,5 @@
     "title": "Квота RKAB-2026 на руду поднята до ~290 млн т",
     "src": "SMM",
     "url": "https://news.metal.com/newscontent/104162642-smm-nickel-flash-indonesia-approves-revised-2026-rkab-nickel-ore-production-quota-of-approximately-290-million-tonnes"
-  },
-  {
-    "date": "2026-09-15",
-    "tickers": [
-      "NCKL"
-    ],
-    "title": "Формульная цена лимонита (HPM) снижена на 45%: маржа уходит от добычи к HPAL-заводам",
-    "src": "Kepmen ESDM 363.K/2026",
-    "url": ""
   }
 ]

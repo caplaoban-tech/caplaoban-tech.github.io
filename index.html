@@ -99,7 +99,7 @@ const newsPick = () => cur() === "all" ? NEWS : NEWS.filter(n => (n.tickers || [
 function drawNews() {
   if (!NEWS) return;
   const list = newsPick(), more = document.getElementById("feed-more");
-  document.getElementById("feed").innerHTML = list.slice(0, SHOWN).map(n => `<li><time datetime="${esc(n.date)}">${esc(fmtDate(n.date))}</time><span>${n.url ? `<a href="${esc(n.url)}" target="_blank" rel="noopener">${esc(n.title)}</a>` : esc(n.title)}<br><span class="src">${esc(n.src)} · ${(n.tickers || []).map(esc).join(", ")}</span></span></li>`).join("") || '<li><span></span><span class="note">По этой теме новостей пока нет.</span></li>';
+  document.getElementById("feed").innerHTML = list.slice(0, SHOWN).map(n => `<li><time datetime="${esc(n.date)}">${esc(fmtDate(n.date))}</time><span>${n.url ? `<a href="${esc(n.url)}" target="_blank" rel="noopener">${esc(n.title)}</a>` : esc(n.title)}<br><span class="src">${esc(n.src)}${n.check ? ` · ${esc(n.check)}` : ""} · ${(n.tickers || []).map(esc).join(", ")}</span></span></li>`).join("") || '<li><span></span><span class="note">По этой теме новостей пока нет.</span></li>';
   const rest = list.length - SHOWN;
   more.hidden = rest <= 0;
   if (rest > 0) more.textContent = `Показать ещё ${Math.min(rest, 20)} из ${rest}`;

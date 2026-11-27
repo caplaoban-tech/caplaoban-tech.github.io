@@ -141,7 +141,7 @@ def page(c, depth):
   const el = document.getElementById("bnews");
   fetch("/data/news.json?v=" + (Date.now() / 36e5 | 0)).then(r => r.json()).then(items => {{
     const xs = items.filter(n => (n.tickers || []).includes(T) && n.date > D);
-    el.innerHTML = xs.length ? xs.map(n => `<li><time datetime="${{n.date}}">${{n.date.slice(8)}}.${{n.date.slice(5, 7)}}</time><span>${{n.url ? `<a href="${{esc(n.url)}}" target="_blank" rel="noopener">${{esc(n.title)}}</a>` : esc(n.title)}}<br><span class="src">${{esc(n.src || "")}}</span></span></li>`).join("")
+    el.innerHTML = xs.length ? xs.map(n => `<li><time datetime="${{esc(n.date)}}">${{esc(n.date.slice(8))}}.${{esc(n.date.slice(5, 7))}}</time><span>${{n.url ? `<a href="${{esc(n.url)}}" target="_blank" rel="noopener">${{esc(n.title)}}</a>` : esc(n.title)}}<br><span class="src">${{esc(n.src || "")}}${{n.check ? ` · ${{esc(n.check)}}` : ""}}</span></span></li>`).join("")
       : '<li><span></span><span class="note">Пока ничего существенного. Новые раскрытия и отчёты появятся здесь сами.</span></li>';
   }}).catch(() => {{ el.innerHTML = '<li><span></span><span class="note">Не удалось загрузить новости.</span></li>'; }});
 }})();

@@ -32,6 +32,7 @@
       <h2>Свежие разборы отчётов</h2>
       <div class="tabs" id="tabs" role="tablist"></div>
       <div class="stack" id="brief-list"><p class="note">Загружаю…</p></div>
+      <button type="button" class="reset more" id="brief-more" hidden></button>
     </section>
 
     <section id="companies" class="stack" aria-label="Компании">
@@ -67,14 +68,24 @@ function drawTabs() {
   document.getElementById("tabs").innerHTML = tabs.map(t => `<a role="tab" href="#${esc(t.id)}" class="tab${cur() === t.id ? " on" : ""}">${esc(t.name)}</a>`).join("");
 }
 const pick = xs => cur() === "all" ? xs : xs.filter(x => themeOf(x.ticker) === cur());
+// разборы: сначала 6 свежих, остальные — кнопкой (на телефоне лента разборов была ≈4 800 px)
+const BRIEF_FIRST = 6; let BRIEF_ALL = false;
 function drawBriefs() {
-  const list = pick(BRIEFS);
+  const all = pick(BRIEFS), more = document.getElementById("brief-more");
+  const list = BRIEF_ALL ? all : all.slice(0, BRIEF_FIRST), rest = all.length - list.length;
+  more.hidden = rest <= 0;
+  if (rest > 0) more.textContent = `Показать ещё ${rest} ${rest % 10 === 1 && rest % 100 !== 11 ? "разбор" : [2,3,4].includes(rest % 10) && ![12,13,14].includes(rest % 100) ? "разбора" : "разборов"}`;
   document.getElementById("brief-list").innerHTML = list.length ? list.map(b => `<a class="panel bcard" href="${esc(b.url)}"><span class="hd"><span class="tk">${esc(b.ticker)}</span>${esc(b.name)} · ${esc(b.period)} · ${fmtDate(b.date)}</span><span class="tt">${esc(b.card)}</span><span class="kv">${b.kpis.map(k => `<div><b>${esc(k[0])}</b><span>${esc(k[1])}</span></div>`).join("")}</span></a>`).join("") : '<p class="note">В этой теме коротких разборов пока нет — подробные ниже.</p>';
 }
 Promise.all([fetch("data/themes.json").then(r => r.json()).catch(() => []), fetch("data/briefs.json").then(r => r.json())]).then(([t, b]) => {
-  THEMES = Array.isArray(t) ? t : []; BRIEFS = b; drawTabs(); drawBriefs(); if (COS.length) drawCos(); SHOWN = 10; drawNews();
+  THEMES = Array.isArray(t) ? t : []; BRIEFS = b; drawTabs(); drawBriefs(); if (COS.length) drawCos(); drawNews();
 }).catch(() => { document.getElementById("brief-list").innerHTML = '<p class="note">Не удалось загрузить разборы. Обновите страницу.</p>'; });
-window.addEventListener("hashchange", () => { drawTabs(); drawBriefs(); drawCos(); });
+window.addEventListener("hashchange", () => { BRIEF_ALL = false; drawTabs(); drawBriefs(); drawCos(); });
+document.getElementById("brief-more").addEventListener("click", () => {
+  BRIEF_ALL = true; drawBriefs();
+  const a = document.querySelector(`#brief-list > a:nth-child(${BRIEF_FIRST + 1})`); // фокус на первый открывшийся разбор
+  if (a) a.focus();
+});
 
 function drawCos() {
   const list = pick(COS.filter(c => !c.draft));
